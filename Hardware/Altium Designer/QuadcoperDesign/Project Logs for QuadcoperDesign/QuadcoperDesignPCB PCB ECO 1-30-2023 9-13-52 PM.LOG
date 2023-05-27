@@ -1,0 +1,89 @@
+Added Component: Designator=P6.3(Connector ZH1.5 4P SMD)
+Added Component: Designator=S1.3(DIP Switches SMD 1.27mm 4P)
+Add component (AddParameter): Name = "Actuator Type"; Value = "Slide (Standard)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Body Material"; Value = "Polyphenylene,Polyphthalamide"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Category"; Value = "DIP Switches"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "https://datasheet.ciiva.com/30467/0900766b812902d9-30467107.pdf?src-supplier=RSComponents"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://datasheet.ciiva.com/30467/0900766b812902d9-30467107.pdf?src-supplier=RSComponents"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "https://datasheet.ciiva.com/1528/4161311608xx-1528928.pdf?src-supplier=Element14"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://datasheet.ciiva.com/1528/4161311608xx-1528928.pdf?src-supplier=Element14"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "https://datasheet.ciiva.com/2863/4161311608xx-2863702.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "https://datasheet.ciiva.com/2863/4161311608xx-2863702.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink4Description"; Value = "https://datasheet.ciiva.com/2863/4161311608xx-2863701.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink4URL"; Value = "https://datasheet.ciiva.com/2863/4161311608xx-2863701.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink5Description"; Value = "https://datasheet.ciiva.com/1625/4161311608xx-1625344.pdf?src-supplier=Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink5URL"; Value = "https://datasheet.ciiva.com/1625/4161311608xx-1625344.pdf?src-supplier=Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Current Rating"; Value = "25mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Material"; Value = "Copper Alloy,Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Plating"; Value = "Gold"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Contact Resistance"; Value = "50mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating"; Value = "25mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Electrical Life"; Value = "1000Cycles"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "2mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Insulation Resistance"; Value = "100MR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Lead Free"; Value = "Lead Free"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Length"; Value = "0.241inch"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Wurth Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "416131160804"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "85°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Voltage Rating (DC)"; Value = "24V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mechanical Life"; Value = "2000Cycles"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-40°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Circuits"; Value = "4"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Positions"; Value = "4"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Quantity"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Cut Tape"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pitch"; Value = "0.05inch"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pricing 1"; Value = "1=5.25000, 10=5.08200, 50=4.81400, 100=4.27900, 500=4.01200 (USD)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Reach SVHC Compliant"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Series"; Value = "WS-DISV"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Stock 1"; Value = "13030"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "732-3854-1-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Termination"; Value = "Gull Wing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Throw Configuration"; Value = "SPST"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating (DC)"; Value = "24V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Washable"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Width"; Value = "5.6mm"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=P6.3-5
+Added Pin To Net: NetName=GND Pin=P6.3-5
+Added Pin To Net: NetName=NetP6.3_1 Pin=P6.3-1
+Added Pin To Net: NetName=NetP6.3_1 Pin=S1.3-1
+Added Pin To Net: NetName=NetP6.3_1 Pin=U1.2-50
+Added Net: Name=NetP6.3_1
+Added Pin To Net: NetName=NetP6.3_2 Pin=P6.3-2
+Added Pin To Net: NetName=NetP6.3_2 Pin=S1.3-2
+Added Pin To Net: NetName=NetP6.3_2 Pin=U1.2-55
+Added Net: Name=NetP6.3_2
+Added Pin To Net: NetName=NetP6.3_3 Pin=P6.3-3
+Added Pin To Net: NetName=NetP6.3_3 Pin=S1.3-3
+Added Pin To Net: NetName=NetP6.3_3 Pin=U1.2-29
+Added Net: Name=NetP6.3_3
+Added Pin To Net: NetName=NetP6.3_4 Pin=P6.3-4
+Added Pin To Net: NetName=NetP6.3_4 Pin=S1.3-4
+Added Pin To Net: NetName=NetP6.3_4 Pin=U1.2-30
+Added Net: Name=NetP6.3_4
+Added Pin To Net: NetName=TIM2_ICA_1 Pin=S1.3-8
+Added Pin To Net: NetName=TIM2_ICA_1 Pin=U4.3-2
+Added Net: Name=TIM2_ICA_1
+Added Pin To Net: NetName=TIM2_ICA_2 Pin=S1.3-7
+Added Pin To Net: NetName=TIM2_ICA_2 Pin=U4.3-4
+Added Net: Name=TIM2_ICA_2
+Added Pin To Net: NetName=TIM2_ICA_3 Pin=S1.3-6
+Added Pin To Net: NetName=TIM2_ICA_3 Pin=U4.3-8
+Added Net: Name=TIM2_ICA_3
+Added Pin To Net: NetName=TIM2_ICA_4 Pin=S1.3-5
+Added Pin To Net: NetName=TIM2_ICA_4 Pin=U4.3-10
+Added Net: Name=TIM2_ICA_4
+Added Member To Class: ClassName=[3] Sensor Member=Component P6.3 SCT1501WR-S-04PT
+Added Member To Class: ClassName=[3] Sensor Member=Component S1.3 416131160804
+Added Room: Name=[1] PowerSupply
+Added Room: Name=[2] MicroController
+Added Room: Name=[3] Sensor
+Added Room: Name=[4] Wifi_ESP32_Antenna
+Added Room: Name=[5] Peripheral_Module
+Added Room: Name=[6] Radio Frequency
+Added Room: Name=[7] Motor_Control

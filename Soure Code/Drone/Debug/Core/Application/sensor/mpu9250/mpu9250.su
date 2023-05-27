@@ -1,0 +1,7 @@
+../Core/Application/sensor/mpu9250/mpu9250.c:32:12:mpu9250_read	32	static
+../Core/Application/sensor/mpu9250/mpu9250.c:40:12:mpu9250_write	32	static
+../Core/Application/sensor/mpu9250/mpu9250.c:46:12:mpu9250_read_bytes	32	static
+../Core/Application/sensor/mpu9250/mpu9250.c:118:5:mpu9250_init	24	static,ignoring_inline_asm
+../Core/Application/sensor/mpu9250/mpu9250.c:235:5:mpu9250_test	16	static
+../Core/Application/sensor/mpu9250/mpu9250.c:247:5:mpu9250_get_accel_gyro	40	static
+../Core/Application/sensor/mpu9250/mpu9250.c:262:7:mpu9250_gettemp	4	static

@@ -1,0 +1,19 @@
+/*
+ * bno055.h
+ *
+ *  Created on: Mar 15, 2023
+ *      Author: nguye
+ */
+
+#ifndef APPLICATION_SENSOR_BNO055_BNO055_H_
+#define APPLICATION_SENSOR_BNO055_BNO055_H_
+
+static int bno055_read(uint8_t addr, uint8_t *value);
+static int bno055_write(uint8_t addr, uint8_t *value);
+static int bno055_read_bytes(uint8_t addr, uint8_t *value, uint8_t len);
+static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len);
+
+int bno055_init();
+
+
+#endif /* APPLICATION_SENSOR_BNO055_BNO055_H_ */

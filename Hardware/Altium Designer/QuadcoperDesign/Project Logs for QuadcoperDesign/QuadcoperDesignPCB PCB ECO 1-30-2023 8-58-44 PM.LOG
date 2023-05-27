@@ -1,0 +1,14 @@
+Added Component: Designator=P2.2(Connector ZH1.5 3P SMD)
+Added Pin To Net: NetName=GND Pin=P2.2-1
+Added Pin To Net: NetName=SWDIO Pin=P2.2-2
+Added Pin To Net: NetName=SWCLK Pin=P2.2-3
+Added Pin To Net: NetName=GND Pin=P2.2-4
+Added Pin To Net: NetName=GND Pin=P2.2-4
+Added Member To Class: ClassName=[2] MicroController Member=Component P2.2 SCT1501WR-S-03PT
+Added Room: Name=[1] PowerSupply
+Added Room: Name=[2] MicroController
+Added Room: Name=[3] Sensor
+Added Room: Name=[4] Wifi_ESP32_Antenna
+Added Room: Name=[5] Peripheral_Module
+Added Room: Name=[6] Radio Frequency
+Added Room: Name=[7] Motor_Control

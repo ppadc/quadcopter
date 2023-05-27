@@ -1,0 +1,13 @@
+git init 
+git config --global user.name "unmeiongaku"
+git config --global user.email "nguyenhoangminhdo@gmail.com"
+git remote add origin https://github.com/unmeiongaku/quadcopter.git
+git remote  
+git remote -v
+git status
+git add .
+git commit -m "first commit"
+git log
+git log --oneline
+git branch
+git push origin master 

@@ -1,0 +1,16 @@
+../Core/Application/imu/imu.c:36:13:accel_gyro_callback	40	static
+../Core/Application/imu/imu.c:48:5:imu_init	8	static
+../Core/Application/imu/imu.c:53:5:imu_test_connection	8	static
+../Core/Application/imu/imu.c:57:5:imu_deint	4	static
+../Core/Application/imu/imu.c:61:13:magnetometer_data_callback	8	static
+../Core/Application/imu/imu.c:68:13:rpy_euler_data_callback	8	static
+../Core/Application/imu/imu.c:75:13:imu_get_quaternions_data	8	static
+../Core/Application/imu/imu.c:83:7:imu_get_accel	16	static
+../Core/Application/imu/imu.c:90:7:imu_get_gyro	16	static
+../Core/Application/imu/imu.c:97:7:imu_get_roll_calc	4	static
+../Core/Application/imu/imu.c:101:7:imu_get_pitch_calc	4	static
+../Core/Application/imu/imu.c:105:7:imu_get_roll_euler	4	static
+../Core/Application/imu/imu.c:109:7:imu_get_pitch_euler	4	static
+../Core/Application/imu/imu.c:113:7:imu_get_yaw_euler	4	static
+../Core/Application/imu/imu.c:117:7:imu_get_mag	16	static
+../Core/Application/imu/imu.c:124:7:imu_get_quaternions	16	static

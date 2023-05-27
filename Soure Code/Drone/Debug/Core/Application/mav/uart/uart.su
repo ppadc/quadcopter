@@ -1,0 +1,15 @@
+../Core/Application/mav/uart/uart.c:6:12:add_uart_drv_instant	24	static
+../Core/Application/mav/uart/uart.c:16:12:find_uart_dev_instant	24	static
+../Core/Application/mav/uart/uart.c:25:6:HAL_UART_TxCpltCallback	24	static
+../Core/Application/mav/uart/uart.c:30:6:HAL_UART_RxHalfCpltCallback	16	static
+../Core/Application/mav/uart/uart.c:34:6:HAL_UART_RxCpltCallback	32	static
+../Core/Application/mav/uart/uart.c:53:6:uart_cb	32	static
+../Core/Application/mav/uart/uart.c:73:5:uart_init	16	static
+../Core/Application/mav/uart/uart.c:94:5:uart_send_chr	16	static
+../Core/Application/mav/uart/uart.c:98:5:uart_recv_chr	16	static
+../Core/Application/mav/uart/uart.c:102:5:uart_send	32	static
+../Core/Application/mav/uart/uart.c:110:5:uart_recv	32	static
+../Core/Application/mav/uart/uart.c:119:5:uart_readline	40	static
+../Core/Application/mav/uart/uart.c:142:6:uart_tx_reset	16	static
+../Core/Application/mav/uart/uart.c:146:6:uart_rx_reset	16	static
+../Core/Application/mav/uart/uart.c:150:6:uart_reset	16	static

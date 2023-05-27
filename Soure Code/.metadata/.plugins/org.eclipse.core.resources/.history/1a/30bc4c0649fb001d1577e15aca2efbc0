@@ -1,0 +1,53 @@
+/*
+ * params.h
+ *
+ *  Created on: Mar 14, 2023
+ *      Author: nguye
+ */
+
+#ifndef APPLICATION_PARAMS_PARAMS_H_
+#define APPLICATION_PARAMS_PARAMS_H_
+
+#include <stdint.h>
+#include "params.h"
+#include "pid.h"
+
+typedef struct{
+	pid_params_t PID[4];
+	float tilt_roll_offset;
+	float tilt_pitch_offset;
+	float tilt_yaw_offset;
+
+	float g_believe;
+
+	float gx_bias;
+	float gy_bias;
+	float gz_bias;
+
+	float ax_bias;
+	float ay_bias;
+	float az_bias;
+
+	float mx_bias;
+	float my_bias;
+	float mz_bias;
+
+	float mx_scale;
+	float my_scale;
+	float mz_scale;
+
+	int16_t motor0_deadband;
+	int16_t motor1_deadband;
+	int16_t motor2_deadband;
+	int16_t motor3_deadband;
+
+	//define MPC Constants
+	float Ix;
+}params_t;
+
+extern params_t params;
+
+void params_save();
+bool params_load();
+
+#endif /* APPLICATION_PARAMS_PARAMS_H_ */

@@ -1,0 +1,5 @@
+../Core/Application/timer/timer.c:13:5:timer_init	4	static
+../Core/Application/timer/timer.c:18:12:timer_register_callback	32	static
+../Core/Application/timer/timer.c:33:12:timer_unregister_callback	16	static
+../Core/Application/timer/timer.c:39:10:milis	16	static
+../Core/Application/timer/timer.c:43:6:user_systick	16	static

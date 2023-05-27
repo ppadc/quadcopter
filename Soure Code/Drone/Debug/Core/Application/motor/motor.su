@@ -1,0 +1,7 @@
+../Core/Application/motor/motor.c:26:6:motors_init	8	static
+../Core/Application/motor/motor.c:43:6:motor_deinit	4	static
+../Core/Application/motor/motor.c:51:13:motor0_setspeed	16	static
+../Core/Application/motor/motor.c:55:13:motor1_setspeed	16	static
+../Core/Application/motor/motor.c:59:13:motor2_setspeed	16	static
+../Core/Application/motor/motor.c:63:13:motor3_setspeed	16	static
+../Core/Application/motor/motor.c:67:6:motors_setspeed	16	static

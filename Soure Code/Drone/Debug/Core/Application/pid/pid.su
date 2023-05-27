@@ -1,0 +1,2 @@
+../Core/Application/pid/pid.c:44:7:pid_compute	24	static
+../Core/Application/pid/pid.c:72:6:pid_reset	16	static

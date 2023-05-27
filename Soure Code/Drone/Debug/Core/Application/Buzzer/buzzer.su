@@ -1,0 +1,4 @@
+../Core/Application/Buzzer/buzzer.c:18:6:buzzer_cb	16	static
+../Core/Application/Buzzer/buzzer.c:32:6:buzzer_sys_start	8	static
+../Core/Application/Buzzer/buzzer.c:42:6:buzzer_sys_error	8	static
+../Core/Application/Buzzer/buzzer.c:47:6:buzzer_sys_ok	4	static

@@ -1,0 +1,4 @@
+../Core/Application/sensor/bme680/bme680.c:15:12:bme680_read	32	static
+../Core/Application/sensor/bme680/bme680.c:23:12:bme680_write	32	static
+../Core/Application/sensor/bme680/bme680.c:29:12:bme680_read_bytes	32	static
+../Core/Application/sensor/bme680/bme680.c:44:5:bme680_init	16	static

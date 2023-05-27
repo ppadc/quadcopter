@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=3V3_MC Pin=B1.2-1
+Removed Pin From Net: NetName=NetB1.2_2 Pin=B1.2-2
+Added Component: Designator=B1.2(Buzzer 9x5mm 60dB)
+Add component (AddParameter): Name = "Local Supplier"; Value = "thegioiic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Local Supplier Link"; Value = "https://www.thegioiic.com/products/1209-dip-buzzer-12x9mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Local Supplier Part Number"; Value = "1209 DIP Buzzer 12x9mm"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3V3_MC Pin=B1.2-1
+Added Pin To Net: NetName=NetB1.2_2 Pin=B1.2-2
+Added Pin To Net: NetName=NetRF1.6_4 Pin=RF1.6-4
+Added Pin To Net: NetName=NetRF1.6_4 Pin=U1.2-45
+Added Net: Name=NetRF1.6_4
+Added Pin To Net: NetName=NetU1.2_57 Pin=U1.2-57
+Added Pin To Net: NetName=NetU1.2_57 Pin=U1.7-8
+Added Net: Name=NetU1.2_57

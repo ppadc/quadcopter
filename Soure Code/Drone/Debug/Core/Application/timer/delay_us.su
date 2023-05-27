@@ -1,0 +1,2 @@
+../Core/Application/timer/delay_us.c:11:6:delay_us	16	static
+../Core/Application/timer/delay_us.c:16:6:delay_ms	16	static

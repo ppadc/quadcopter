@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<mavlink>
+	<version>3</version>
+
+
+	<enums>
+		<enum name="resond_t">
+			<entry name="RESPOND_OK"></entry>
+			<entry name="RESPOND_ERROR"></entry>
+		</enum>
+
+		<enum name="rmode_t">
+			<entry name="MODE_STATE_BALANCING"></entry>
+			<entry name="MODE_HW"></entry>
+			<entry name="MODE_IMU"></entry>
+			<entry name="MODE_PIDT_TW"></entry>
+		</enum>
+
+		<enum name="cmd_t">
+			<entry name="CMD_SAVE"></entry>
+			<entry name="CMD_LOAD"></entry>
+		</enum>
+
+		<enum name="sensor_t">
+			<entry name="SENSOR_IMU_OK"></entry>
+			<entry name="SENSOR_IMU_ERROR"></entry>
+		</enum>
+
+		<enum name="bool_t">
+			<entry name="MAV_FALSE"></entry>
+			<entry name="MAV_TRUE"></entry>
+		</enum>
+
+
+		<enum name="pidc_t">
+			<entry name="PID_ROLL"></entry>
+			<entry name="PID_PITCH"></entry>
+			<entry name="PID_YAW"></entry>
+			<entry name="PID_VEL"></entry>
+			<entry name="PID_POS"></entry>
+		</enum>
+
+		<enum name="tilt_type_t">
+			<entry name="ROLL"></entry>
+			<entry name="PITCH"></entry>
+			<entry name="YAW"></entry>
+		</enum>
+	</enums>
+
+	<messages>
+		<message id="0" name="RESPOND">
+			<description>Respond for a reliable communication</description>
+			<field type="uint8_t" name="respond" enum="resond_t">Respond</field>
+		</message>
+	
+		<message id="1" name="CMD_CHANGE_MODE">
+			<description>Command Change Mode. Need a respond message for confimation</description>
+			<field type="uint8_t" name="cmd_change_mode" enum="rmode_t">Mode</field>
+		</message>
+
+		<message id="2" name="CMD_PARAMS">
+			<description>Save Or Load Params</description>
+			<field type="int8_t" name="cmd_params" enum="cmd_params_t">save or load params</field>
+		</message>
+	</messages>
+</mavlink>
