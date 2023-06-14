@@ -1,9 +1,0 @@
-Change Component Comment : Designator=C1.2 Old Comment=100nF-0603 New Comment=100nF
-Added Component: Designator=P3.6(HDR1x2_2.54_MALE)
-Added Pin To Net: NetName=NetP3.6_1 Pin=P3.6-1
-Added Pin To Net: NetName=NetP3.6_1 Pin=RF1.6-5
-Added Net: Name=NetP3.6_1
-Added Pin To Net: NetName=NetP3.6_2 Pin=P3.6-2
-Added Pin To Net: NetName=NetP3.6_2 Pin=RF1.6-6
-Added Net: Name=NetP3.6_2
-Added Member To Class: ClassName=[6] Radio Frequency Member=Component P3.6 Header1x2_Male

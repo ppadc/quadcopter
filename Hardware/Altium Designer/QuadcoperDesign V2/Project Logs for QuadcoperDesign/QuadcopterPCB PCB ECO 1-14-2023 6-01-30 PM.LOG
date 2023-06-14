@@ -1,0 +1,4 @@
+Change Net Name : Old Net Name=NetP1.3_1 New Net Name=32KHz
+Added Pin To Net: NetName=INT Pin=P1.3-2
+Added Pin To Net: NetName=INT Pin=R9.3-2
+Added Net: Name=INT

@@ -1,0 +1,8 @@
+Added Component: Designator=P3.2(Connector ZH1.5 2P SMD)
+Added Pin To Net: NetName=PB6 Pin=P3.2-1
+Added Pin To Net: NetName=PB7 Pin=P3.2-2
+Added Pin To Net: NetName=GND Pin=P3.2-3
+Added Pin To Net: NetName=GND Pin=P3.2-3
+Added Member To Class: ClassName=[2] MicroController Member=Component P3.2 SCT1501WR-S-02PT
+Added Room: Name=[1] PowerSupply
+Added Room: Name=[2] MicroController

@@ -1,0 +1,6 @@
+Record=TopLevelDocument|FileName=[1] PowerSupply.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=[1] PowerSupply.SchDoc|FileName=[2] MicroController.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=[1] PowerSupply.SchDoc|FileName=[3] Sensor.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=[1] PowerSupply.SchDoc|FileName=[4] Peripheral_Module.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=[1] PowerSupply.SchDoc|FileName=[5] Radio Frequency.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=[1] PowerSupply.SchDoc|FileName=[6] Motor_Control.SchDoc|SheetNumber=6

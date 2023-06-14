@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=NetP1.2_1 Pin=U1.2-10
+Removed Pin From Net: NetName=NetP1.2_2 Pin=U1.2-11
+Added Component: Designator=P1.2(Connector ZH1.5 2P SMD)
+Added Pin To Net: NetName=NetP1.2_1 Pin=P1.2-1
+Added Pin To Net: NetName=NetP1.2_2 Pin=P1.2-2
+Added Pin To Net: NetName=GND Pin=P1.2-3
+Added Pin To Net: NetName=GND Pin=P1.2-3
+Added Pin To Net: NetName=NetP1.2_2 Pin=U1.2-10
+Added Pin To Net: NetName=NetP1.2_1 Pin=U1.2-11
+Added Member To Class: ClassName=[2] MicroController Member=Component P1.2 SCT1501WR-S-02PT
+Added Room: Name=[1] PowerSupply
+Added Room: Name=[2] MicroController
+Added Room: Name=[3] Sensor
+Added Room: Name=[4] Peripheral_Module
+Added Room: Name=[5] Radio Frequency
+Added Room: Name=[6] Motor_Control
