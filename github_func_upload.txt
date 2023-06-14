@@ -7,6 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
+git commit -m "Fix I2C error and change BNO055 Position"
 git log
 git log --oneline
 git branch

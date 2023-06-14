@@ -57,10 +57,15 @@
 #define BNO055__I2C 		hi2c1
 #define MPU9250_I2C 		hi2c1
 #define BME680_I2C 			hi2c1
+#define SSD1306_I2C			hi2c1
 
 #define BME680_STATUS 									0
 //HIGH 				1
 //LOW 				0
+
+#define SSD1306_STATUS 									0
+//0X78 				0
+//0X7A 				1
 
 #define BNO055_STATUS 									0
 // ADR_Pin is LOW or not connect	--> 0
@@ -165,6 +170,13 @@
 #define BME680_I2C_ADDR			(0x76 << 1)
 #elif BME680_STATUS == 1
 #define BME680_I2C_ADDR			(0x77 << 1)
+#endif
+
+/*SSD1306_DEFINE_FUNC*/
+#if SSD1306_STATUS == 0
+#define SSD1306_STATUS_I2C_ADDR			(0x78 << 1)
+#elif SSD1306_STATUS == 1
+#define SSD1306_STATUS_ADDR			(0x7A << 1)
 #endif
 
 #define I2C_TIMEOUT_MS			100

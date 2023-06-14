@@ -268,7 +268,9 @@ int main(void)
     	}
     	HAL_Delay(1000);
     	SSD1306_Clear();
-    	char snum[8];
+    	char snum_roll[10];
+    	char snum_pitch[10];
+    	char snum_yaw[10];
   /* USER CODE BEGIN WHILE */
   while (1)
   {
@@ -281,25 +283,69 @@ int main(void)
 	  	  else
 	  		  HAL_GPIO_WritePin(GPIOC, LED_Pin, RESET);
 
-	  bno055_get_elu_data(&roll, &pitch, &yaw);
-			itoa(roll, snum, 10);
-			SSD1306_GotoXY (0, 30);
-			SSD1306_Puts ("             ", &Font_11x18, 1);
+	  	  	bno055_get_elu_data(&roll, &pitch, &yaw);
+	  	  	//sprintf(snum,"%f",roll);
+	  	  	SSD1306_GotoXY (0, 0);
+	  	  	SSD1306_Puts ("ROLL: ", &Font_11x18, 1);
+	  	  	SSD1306_GotoXY (0, 20);
+	  	  	SSD1306_Puts ("PITCH: ", &Font_11x18, 1);
+	  	  	SSD1306_GotoXY (0, 40);
+	  	  	SSD1306_Puts ("YAW: ", &Font_11x18, 1);
+			itoa(roll, snum_roll, 10);
+			itoa(pitch, snum_pitch, 10);
+			itoa(yaw, snum_yaw, 10);
+//			SSD1306_GotoXY (0, 0);
+//			SSD1306_Puts ("             ", &Font_11x18, 1);
 			SSD1306_UpdateScreen();
 			if(roll < 10) {
-				SSD1306_GotoXY (53, 30);  // 1 DIGIT
+				SSD1306_GotoXY (69, 0);  // 1 DIGIT
 			}
 			else if (roll < 100 ) {
-				SSD1306_GotoXY (45, 30);  // 2 DIGITS
+				SSD1306_GotoXY (61, 0);  // 2 DIGITS
 			}
 			else if (roll < 1000 ) {
-				SSD1306_GotoXY (37, 30);  // 3 DIGITS
+				SSD1306_GotoXY (53, 0);  // 3 DIGITS
 			}
 			else {
-				SSD1306_GotoXY (30, 30);  // 4 DIGIS
+				SSD1306_GotoXY (45, 0);  // 4 DIGIS
 			}
-			SSD1306_Puts (snum, &Font_11x18, 1);
+
+			SSD1306_Puts (snum_roll, &Font_11x18, 1);
 			SSD1306_UpdateScreen();
+
+			if(pitch < 10) {
+				SSD1306_GotoXY (69, 20);  // 1 DIGIT
+			}
+			else if (pitch < 100 ) {
+				SSD1306_GotoXY (61, 20);  // 2 DIGITS
+			}
+			else if (pitch < 1000 ) {
+				SSD1306_GotoXY (53, 20);  // 3 DIGITS
+			}
+			else {
+				SSD1306_GotoXY (45, 20);  // 4 DIGIS
+			}
+
+			SSD1306_Puts (snum_pitch, &Font_11x18, 1);
+			SSD1306_UpdateScreen();
+
+			if(yaw < 10) {
+				SSD1306_GotoXY (69, 40);  // 1 DIGIT
+			}
+			else if (yaw < 100 ) {
+				SSD1306_GotoXY (61, 40);  // 2 DIGITS
+			}
+			else if (yaw < 1000 ) {
+				SSD1306_GotoXY (53, 40);  // 3 DIGITS
+			}
+			else {
+				SSD1306_GotoXY (45, 40);  // 4 DIGIS
+			}
+
+			SSD1306_Puts (snum_yaw, &Font_11x18, 1);
+			SSD1306_UpdateScreen();
+
+			//SSD1306_Clear();
 			HAL_Delay (100);
     /* USER CODE BEGIN 3 */
   }
