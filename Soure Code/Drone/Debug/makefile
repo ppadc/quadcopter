@@ -24,8 +24,10 @@ RM := rm -rf
 -include Core/Application/mav/utils/circular_buffer/subdir.mk
 -include Core/Application/mav/uart/subdir.mk
 -include Core/Application/mav/subdir.mk
+-include Core/Application/lcd/subdir.mk
 -include Core/Application/imu/subdir.mk
 -include Core/Application/eeprom/subdir.mk
+-include Core/Application/MPC/Rotational_matrix/subdir.mk
 -include Core/Application/Buzzer/subdir.mk
 -include objects.mk
 

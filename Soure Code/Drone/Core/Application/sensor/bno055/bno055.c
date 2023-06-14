@@ -13,6 +13,7 @@
 
 //static char calib_sys_sta, calib_gyr_sta, calib_acc_sta, calib_mag_sta;
 
+//static uint8_t chk;
 
 /* Define value units */
 #if BNO055_ACCEL_LINEARACC_GRAVITYVECTOR_UNITS == 0
@@ -249,7 +250,7 @@ uint8_t bno055_sys_err(){
 			return -1;
 		}
 	error_sys = buffer_sys_err[0];
-	return error_sys;
+	return error_sys+3;
 }
 
 uint8_t bno055_sys_status(){
@@ -436,135 +437,9 @@ int bno055_get_acc_mag_radius(float *acc_radius, float *mag_radius){
 	if(bno055_read_bytes(ACC_RADIUS_LSB,buffer_radius,4)<0) return -1;
 	*acc_radius = (int16_t)((int16_t)buffer_radius[1]) << 8 | buffer_radius[0];
 	*mag_radius = (int16_t)((int16_t)buffer_radius[3]) << 8 | buffer_radius[2];
-	return 0;
+	return -1;
 }
 
-int bno055_init(){
-	uint8_t tmp;
-	//char  err_num = 0;
-	//char sys_status;
-	if(HAL_I2C_IsDeviceReady(&BNO055__I2C, BNO055_I2C_ADDR, 1, 100)!=HAL_OK){
-		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
-	}
-	else{
-	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, SET);
-	}
-	tmp = 0x00;
-	//if(bno055_write(PAGE_ID,&tmp)<0) return -1;
-	if(bno055_write(PAGE_ID,&tmp)==HAL_OK){
-		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, RESET);
-	}
-	bno055_set_operation_mode(BNO055_OPERATION_CONFIG_MODE);
-	//Reset SYSTEM
-	tmp = 0x20;
-	if(bno055_write(SYS_TRIGGER,&tmp)<0) return -1;
-	//Wait Time to reset (20ns)
-	HAL_Delay(20);
-	//for(int i=0;i<10;i++)for(int j=0;j<1000;j++)__NOP();
-	//delay_us(10);
-	tmp = POWER_MODE_NORMAL;
-	if(bno055_write(PWR_MODE,&tmp)<0) return -1;
-	//Check System Status
-//	sys_status = bno055_sys_status();
-//	switch(sys_status){
-//	case '0':
-//		//System Idle
-//		return -1;
-//		break;
-//	case '1':
-//		//System Error- Move to check what error was
-//		err_num = bno055_sys_err();
-//		return err_num;
-//		break;
-//	case '2':
-//		//Initializing peripherals
-//		//for(int i=0;i<10;i++)for(int j=0;j<1000;j++)__NOP();
-//		break;
-//	case '3':
-//		//System Initialization
-//		//for(int i=0;i<10;i++)for(int j=0;j<1000;j++)__NOP();
-//		break;
-//	case '4':
-//		//Executing selftest
-//		break;
-//	case '5':
-//		//Sensor fusion algorithm running
-//		break;
-//	case '6':
-//		//System running without fusion algorithm
-//		break;
-//	}
-	/* Configurations Accelerometer */
-	//Move to Page 1//
-	tmp = 0x01;
-	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
-	tmp = (ACCEL_OPERATION_MODE_NORMAL | ACCEL_BANDWIDTH)| ACCEL_G_RANGE;
-	if(bno055_write(ACC_CONFIG,&tmp)<0) return -1;
-	/* Configurations Gyroscope */
-	tmp = GYR_BANDWIDTH | GYRO_RANGE;
-	if(bno055_write(GYR_CONFIG_0,&tmp)<0) return -1;
-	tmp = GYR_OPERATION_MODE;
-	if(bno055_write(GYR_CONFIG_1,&tmp)<0) return -1;
-	/* Configurations Magnetometer */
-	tmp = (MAG_PWR_MODE | MAG_OPERATION_MODE)| BNO055_MAG_DATA_OUTPUT_RATE;
-	if(bno055_write(MAG_CONFIG,&tmp)<0) return -1;
-
-	/*Configuration Sensor Unit*/
-	//Move to Page 0//
-	tmp = 0x00;
-	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
-	tmp = (((TEMPERATURE_UNITS | EULER_ANGLES_UNITS)| ANGULAR_RATE_UNITS)| BNO055_ACCEL_UNITS);
-	if(bno055_write(UNIT_SEL,&tmp)<0) return -1;
-	bno055_fusion_data_output_systems(WINDOWS_FUSION_DATA_OUTPUT);
-	/* Configure axis mapping*/
-	bno055_axis_remap_config(REMAP_CONFIG_P1_2_4_7);
-	bno055_axis_remap_sign(REMAP_SIGN_P1);
-	tmp = 0x00;
-	if(bno055_write(SYS_TRIGGER,&tmp)<0) return -1;
-	//Configuration Sensor's Operation Mode
-	bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
-	//for(int i=0;i<10;i++)for(int j=0;j<10000;j++)__NOP();
-	HAL_Delay(20);
-	//delay_us(10);
-	//Sensor Auto Move to Calibrations
-//	if(bno055_calibrations_status(&calib_sys_sta,&calib_gyr_sta,&calib_acc_sta,&calib_mag_sta) == 1){
-//		return 3;
-//	}
-//	else{
-//		switch(calib_sys_sta){
-//		case	'3':
-//			break;
-//		case	'0':
-//			return -1;
-//			break;
-//		}
-//		switch(calib_gyr_sta){
-//		case	'3':
-//			break;
-//		case	'0':
-//			return -1;
-//				break;
-//		}
-//		switch(calib_acc_sta){
-//		case	'3':
-//			break;
-//		case	'0':
-//			return -1;
-//				break;
-//		}
-//		switch(calib_mag_sta){
-//		case	'3':
-//			break;
-//		case	'0':
-//			return -1;
-//				break;
-//		}
-//	}
-	//for(int i=0;i<10;i++)for(int j=0;j<1000;j++)__NOP();
-	//delay_us(10);
-	HAL_Delay(20);
-	return 0;
-}
 int bno055_test(){
 	uint8_t tmp;
 	uint8_t buffer_test[1] ={};
@@ -579,6 +454,63 @@ int bno055_test(){
 	st_gyr = (int8_t)((int8_t)buffer_test[0]) & 0b0100;
 	st_mcu = (int8_t)((int8_t)buffer_test[0]) & 0b1000;
 	if((seft_test = (((st_mcu|st_gyr)|st_mag)|st_acc))!=15) return -1;
+	return 0;
+}
+
+int bno055_initization(){
+	uint8_t tmp,chk;
+	//for(int i=0;i<10;i++)for(int j=0;j<100;j++)__NOP();
+	tmp = 0x20;
+	bno055_write(SYS_TRIGGER,&tmp);
+	/*must be delay for 510ms after reset*/
+	HAL_Delay(510);
+	bno055_read(CHIP_ID_PAGE_0, &chk);
+	if(chk!=BNO055_ID){
+		HAL_GPIO_WritePin(GPIOC, LED_Pin, SET);
+	}
+	else{
+		HAL_GPIO_WritePin(GPIOC, LED_Pin, RESET);
+	}
+	bno055_set_operation_mode(BNO055_OPERATION_CONFIG_MODE);
+
+	/* Configurations Power Mode */
+
+	tmp = POWER_MODE_NORMAL;
+	bno055_write(PWR_MODE,&tmp);
+
+	/* Configurations Accelerometer */
+	//Move to Page 1//
+	tmp = 0x01;
+	bno055_write(PAGE_ID,&tmp);
+	tmp = (ACCEL_OPERATION_MODE_NORMAL | ACCEL_BANDWIDTH)| ACCEL_G_RANGE;
+	bno055_write(ACC_CONFIG,&tmp);
+
+	/* Configurations Gyroscope */
+	tmp = GYR_BANDWIDTH | GYRO_RANGE;
+	bno055_write(GYR_CONFIG_0,&tmp);
+	tmp = GYR_OPERATION_MODE;
+	bno055_write(GYR_CONFIG_1,&tmp);
+
+	/* Configurations Magnetometer */
+	tmp = (MAG_PWR_MODE | MAG_OPERATION_MODE)| BNO055_MAG_DATA_OUTPUT_RATE;
+	bno055_write(MAG_CONFIG,&tmp);
+
+	/*Configuration Sensor Unit*/
+	//Move to Page 0//
+	tmp = 0x00;
+	bno055_write(PAGE_ID,&tmp);
+	tmp = (((TEMPERATURE_UNITS | EULER_ANGLES_UNITS)| ANGULAR_RATE_UNITS)| BNO055_ACCEL_UNITS);
+	bno055_write(UNIT_SEL,&tmp);
+	bno055_fusion_data_output_systems(WINDOWS_FUSION_DATA_OUTPUT);
+	/* Configure axis mapping*/
+	bno055_axis_remap_config(REMAP_CONFIG_P1_2_4_7);
+	bno055_axis_remap_sign(REMAP_SIGN_P1);
+//	tmp = 0x00;
+//	bno055_write(SYS_TRIGGER,&tmp);
+	//Configuration Sensor's Operation Mode
+	bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
+	//for(int i=0;i<10;i++)for(int j=0;j<10000;j++)__NOP();
+  //Sensor Auto Move to Calibrations
 	return 0;
 }
 
@@ -615,7 +547,7 @@ int bno055_get_mag(float *mx,float *my,float *mz){
 	*mz = (int16_t)((int16_t)buffer_mag[5]  << 8) | buffer_mag[4]; *mz /= BNO055_MAG_SCALE;
 	return 0;
 }
-int bno055__get_temp(float *temp){
+int bno055_get_temp(float *temp){
 	uint8_t tmp;
 	uint8_t buffer_temp[1] = {};
 	tmp = 0x00;
@@ -631,7 +563,7 @@ int bno055_get_elu_data(float *roll, float *pitch, float *yaw){
 	uint8_t buffer_eul[6] = {};
 	tmp = 0;
 	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
-	if(bno055_read_bytes(EUL_HEADING_LSB,buffer_eul,8)<0){
+	if(bno055_read_bytes(EUL_HEADING_LSB,buffer_eul,6)<0){
 					return -1;
 	}
 	*yaw = (int16_t)((int16_t)buffer_eul[1]  << 8) | buffer_eul[0]; *yaw /= BNO055_EUL_SCALE;

@@ -36,8 +36,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/can.h ../Core/Inc/dma.h \
  ../Core/Inc/i2c.h ../Core/Inc/spi.h ../Core/Inc/tim.h \
- ../Core/Inc/usart.h ../Core/Inc/gpio.h ../Core/Application/imu/imu.h \
- ../Core/Application/sensor/bno055/bno055.h \
+ ../Core/Inc/usart.h ../Core/Inc/gpio.h ../Core/Application/lcd/ssd1306.h \
+ ../Core/Application/lcd/fonts.h ../Core/Application/lcd/fonts.h \
+ ../Core/Application/imu/imu.h ../Core/Application/sensor/bno055/bno055.h \
  ../Core/Application/sensor/bno055/bno055_register_map.h \
  ../Core/Inc/user_define.h ../Core/Inc/adc.h ../Core/Inc/can.h \
  ../Core/Inc/dma.h ../Core/Inc/i2c.h ../Core/Inc/spi.h ../Core/Inc/tim.h \
@@ -90,6 +91,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/tim.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
+../Core/Application/lcd/ssd1306.h:
+../Core/Application/lcd/fonts.h:
+../Core/Application/lcd/fonts.h:
 ../Core/Application/imu/imu.h:
 ../Core/Application/sensor/bno055/bno055.h:
 ../Core/Application/sensor/bno055/bno055_register_map.h:

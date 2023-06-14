@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Drone/Core/Application/MPC/Rotational_matrix/rotation_matrix.h&apos; to &apos;rotational_matrix.h&apos;" description="Rename resource &apos;rotation_matrix.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Application/MPC/Rotational_matrix/rotation_matrix.h" name="rotational_matrix.h" stamp="1685160532871" updateReferences="true"/>
+</session>

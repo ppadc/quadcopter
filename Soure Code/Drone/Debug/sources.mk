@@ -22,8 +22,10 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Core/Application/Buzzer \
+Core/Application/MPC/Rotational_matrix \
 Core/Application/eeprom \
 Core/Application/imu \
+Core/Application/lcd \
 Core/Application/mav \
 Core/Application/mav/uart \
 Core/Application/mav/utils/circular_buffer \

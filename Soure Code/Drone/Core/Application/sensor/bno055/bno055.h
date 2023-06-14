@@ -63,13 +63,12 @@ void bno055_fusion_data_output_systems(fusion_data_output_systems_t data_systems
 
 int bno055_get_calibrations_offset(float *accx_ofs,float *accy_ofs, float *accz_ofs, float *magx_ofs, float *magy_ofs, float *magz_ofs, float *gyrx_ofs, float *gyry_ofs, float *gyrz_ofs);
 
-
-int bno055_init();
+int bno055_initization();
 int bno055_test();
 
 int bno055_get_accel_gyro(float *ax,float *ay,float *az ,float *gx ,float *gy ,float *gz);
 int bno055_get_mag(float *mx,float *my,float *mz);
-int bno055__get_temp(float *temp);
+int bno055_get_temp(float *temp);
 int bno055_get_elu_data(float *roll, float *pitch, float *yaw);
 int bno055_get_qua_data(float *qua_w, float *qua_x, float *qua_y, float *qua_z);
 int bno055_get_lia_data(float *lia_x, float *lia_y, float *lia_z);
