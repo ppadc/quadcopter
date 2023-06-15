@@ -58,6 +58,9 @@
 #define MPU9250_I2C 		hi2c1
 #define BME680_I2C 			hi2c1
 #define SSD1306_I2C			hi2c1
+#define I2C_RETURN				1
+//RETURN_SYS_ON					1
+//RETURN_SYS_OFF 				0
 
 #define BME680_STATUS 									0
 //HIGH 				1

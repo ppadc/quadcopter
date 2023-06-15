@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Drone/Core/Inc/test_and_save_function&apos; to &apos;test_and_save_function.h&apos;" description="Rename resource &apos;test_and_save_function&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/test_and_save_function" name="test_and_save_function.h" stamp="1686822144732" updateReferences="true"/>
+</session>

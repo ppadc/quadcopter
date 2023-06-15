@@ -6,16 +6,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Application/lcd/fonts.c \
+../Core/Application/lcd/lcd.c \
 ../Core/Application/lcd/ssd1306.c \
 ../Core/Application/lcd/test.c 
 
 OBJS += \
 ./Core/Application/lcd/fonts.o \
+./Core/Application/lcd/lcd.o \
 ./Core/Application/lcd/ssd1306.o \
 ./Core/Application/lcd/test.o 
 
 C_DEPS += \
 ./Core/Application/lcd/fonts.d \
+./Core/Application/lcd/lcd.d \
 ./Core/Application/lcd/ssd1306.d \
 ./Core/Application/lcd/test.d 
 
@@ -27,7 +30,7 @@ Core/Application/lcd/%.o Core/Application/lcd/%.su: ../Core/Application/lcd/%.c 
 clean: clean-Core-2f-Application-2f-lcd
 
 clean-Core-2f-Application-2f-lcd:
-	-$(RM) ./Core/Application/lcd/fonts.d ./Core/Application/lcd/fonts.o ./Core/Application/lcd/fonts.su ./Core/Application/lcd/ssd1306.d ./Core/Application/lcd/ssd1306.o ./Core/Application/lcd/ssd1306.su ./Core/Application/lcd/test.d ./Core/Application/lcd/test.o ./Core/Application/lcd/test.su
+	-$(RM) ./Core/Application/lcd/fonts.d ./Core/Application/lcd/fonts.o ./Core/Application/lcd/fonts.su ./Core/Application/lcd/lcd.d ./Core/Application/lcd/lcd.o ./Core/Application/lcd/lcd.su ./Core/Application/lcd/ssd1306.d ./Core/Application/lcd/ssd1306.o ./Core/Application/lcd/ssd1306.su ./Core/Application/lcd/test.d ./Core/Application/lcd/test.o ./Core/Application/lcd/test.su
 
 .PHONY: clean-Core-2f-Application-2f-lcd
 

@@ -3,6 +3,7 @@
 "./Core/Application/eeprom/eeprom.o"
 "./Core/Application/imu/imu.o"
 "./Core/Application/lcd/fonts.o"
+"./Core/Application/lcd/lcd.o"
 "./Core/Application/lcd/ssd1306.o"
 "./Core/Application/lcd/test.o"
 "./Core/Application/mav/mav.o"

@@ -23016,3 +23016,1297 @@ Finished building: default.size.stdout
  
 Finished building: Drone.list
  
+15:27:42 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:349:23: warning: passing argument 1 of 'SSD1306_Puts' makes pointer from integer without a cast [-Wint-conversion]
+  349 |    SSD1306_Puts (calib[0], &Font_11x18, 1);
+      |                  ~~~~~^~~
+      |                       |
+      |                       char
+In file included from ../Core/Src/main.c:29:
+../Core/Application/lcd/ssd1306.h:152:25: note: expected 'char *' but argument is of type 'char'
+  152 | char SSD1306_Puts(char* str, FontDef_t* Font, SSD1306_COLOR_t color);
+      |                   ~~~~~~^~~
+../Core/Src/main.c:352:23: warning: passing argument 1 of 'SSD1306_Puts' makes pointer from integer without a cast [-Wint-conversion]
+  352 |    SSD1306_Puts (calib[1], &Font_11x18, 1);
+      |                  ~~~~~^~~
+      |                       |
+      |                       char
+In file included from ../Core/Src/main.c:29:
+../Core/Application/lcd/ssd1306.h:152:25: note: expected 'char *' but argument is of type 'char'
+  152 | char SSD1306_Puts(char* str, FontDef_t* Font, SSD1306_COLOR_t color);
+      |                   ~~~~~~^~~
+../Core/Src/main.c:355:23: warning: passing argument 1 of 'SSD1306_Puts' makes pointer from integer without a cast [-Wint-conversion]
+  355 |    SSD1306_Puts (calib[2], &Font_11x18, 1);
+      |                  ~~~~~^~~
+      |                       |
+      |                       char
+In file included from ../Core/Src/main.c:29:
+../Core/Application/lcd/ssd1306.h:152:25: note: expected 'char *' but argument is of type 'char'
+  152 | char SSD1306_Puts(char* str, FontDef_t* Font, SSD1306_COLOR_t color);
+      |                   ~~~~~~^~~
+../Core/Src/main.c:358:23: warning: passing argument 1 of 'SSD1306_Puts' makes pointer from integer without a cast [-Wint-conversion]
+  358 |    SSD1306_Puts (calib[3], &Font_11x18, 1);
+      |                  ~~~~~^~~
+      |                       |
+      |                       char
+In file included from ../Core/Src/main.c:29:
+../Core/Application/lcd/ssd1306.h:152:25: note: expected 'char *' but argument is of type 'char'
+  152 | char SSD1306_Puts(char* str, FontDef_t* Font, SSD1306_COLOR_t color);
+      |                   ~~~~~~^~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  41956	     36	   4844	  46836	   b6f4	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:30:50 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  42024	     36	   4844	  46904	   b738	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:30:55 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	     36	   4844	  46904	   b738	Drone.elf
+Finished building: default.size.stdout
+ 
+15:32:23 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:359:29: error: 'Font7x10' undeclared (first use in this function); did you mean 'Font_7x10'?
+  359 |    SSD1306_Puts (snum_sys, &Font7x10, 1);
+      |                             ^~~~~~~~
+      |                             Font_7x10
+../Core/Src/main.c:359:29: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:64: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+15:32:58 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43928	     44	   4844	  48816	   beb0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:33:45 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43928	     44	   4844	  48816	   beb0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:34:40 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43928	     44	   4844	  48816	   beb0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:43:31 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/app_main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_main.d" -MT"Core/Src/app_main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/app_main.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Application/timer/delay_us.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/timer/delay_us.d" -MT"Core/Application/timer/delay_us.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/timer/delay_us.o"
+arm-none-eabi-gcc "../Core/Application/timer/timer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/timer/timer.d" -MT"Core/Application/timer/timer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/timer/timer.o"
+arm-none-eabi-gcc "../Core/Application/sensor/mpu9250/mpu9250.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/mpu9250/mpu9250.d" -MT"Core/Application/sensor/mpu9250/mpu9250.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/mpu9250/mpu9250.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bme680/bme680.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bme680/bme680.d" -MT"Core/Application/sensor/bme680/bme680.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bme680/bme680.o"
+arm-none-eabi-gcc "../Core/Application/pid/pid.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/pid/pid.d" -MT"Core/Application/pid/pid.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/pid/pid.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_sys_err':
+../Core/Application/sensor/bno055/bno055.c:272:5: error: void value not ignored as it ought to be
+  272 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:273:5: error: void value not ignored as it ought to be
+  273 |  if(bno055_read(SYS_ERR,buffer_sys_err)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_sys_status':
+../Core/Application/sensor/bno055/bno055.c:285:5: error: void value not ignored as it ought to be
+  285 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:286:5: error: void value not ignored as it ought to be
+  286 |  if(bno055_read_bytes(SYS_STATUS,buffer_sys_status,1)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_calibrations_status':
+../Core/Application/sensor/bno055/bno055.c:425:5: error: void value not ignored as it ought to be
+  425 |  if(bno055_read(CALIB_STAT,buffer_calib_sta)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_calibrations_offset':
+../Core/Application/sensor/bno055/bno055.c:443:5: error: void value not ignored as it ought to be
+  443 |  if(bno055_read_bytes(ACC_OFFSET_X_lSB,buffer_calibrations,18)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_acc_mag_radius':
+../Core/Application/sensor/bno055/bno055.c:461:5: error: void value not ignored as it ought to be
+  461 |  if(bno055_read_bytes(ACC_RADIUS_LSB,buffer_radius,4)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_test':
+../Core/Application/sensor/bno055/bno055.c:472:5: error: void value not ignored as it ought to be
+  472 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:473:5: error: void value not ignored as it ought to be
+  473 |  if(bno055_read_bytes(ST_RESULT,buffer_test,1)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_accel_gyro':
+../Core/Application/sensor/bno055/bno055.c:546:5: error: void value not ignored as it ought to be
+  546 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:547:5: error: void value not ignored as it ought to be
+  547 |  if(bno055_read_bytes(ACC_DATA_X_LSB,buffer_accel,6)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:553:5: error: void value not ignored as it ought to be
+  553 |  if(bno055_read_bytes(GYR_DATA_X_LSB,buffer_gyro,6)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_mag':
+../Core/Application/sensor/bno055/bno055.c:565:5: error: void value not ignored as it ought to be
+  565 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:566:5: error: void value not ignored as it ought to be
+  566 |  if(bno055_read_bytes(MAG_DATA_X_LSB,buffer_mag,6)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_temp':
+../Core/Application/sensor/bno055/bno055.c:578:5: error: void value not ignored as it ought to be
+  578 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:579:5: error: void value not ignored as it ought to be
+  579 |  if(bno055_read_bytes(TEMP,buffer_temp,1)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_elu_data':
+../Core/Application/sensor/bno055/bno055.c:589:5: error: void value not ignored as it ought to be
+  589 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:590:5: error: void value not ignored as it ought to be
+  590 |  if(bno055_read_bytes(EUL_HEADING_LSB,buffer_eul,6)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_qua_data':
+../Core/Application/sensor/bno055/bno055.c:602:5: error: void value not ignored as it ought to be
+  602 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:603:5: error: void value not ignored as it ought to be
+  603 |  if(bno055_read_bytes(QUA_DATA_W_LSB,buffer_qua,8)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_lia_data':
+../Core/Application/sensor/bno055/bno055.c:616:5: error: void value not ignored as it ought to be
+  616 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:617:5: error: void value not ignored as it ought to be
+  617 |  if(bno055_read_bytes(LIA_DATA_X_LSB,buffer_lia,6)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_get_grv_data':
+../Core/Application/sensor/bno055/bno055.c:629:5: error: void value not ignored as it ought to be
+  629 |  if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:630:5: error: void value not ignored as it ought to be
+  630 |  if(bno055_read_bytes(GRV_DATA_X_LSB,buffer_grv,6)<0){
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:261:13: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  261 | static void bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |             ^~~~~~~~~~~~~~~~
+../Core/Application/sensor/bme680/bme680.c: In function 'bme680_init':
+../Core/Application/sensor/bme680/bme680.c:45:10: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+   45 |  uint8_t tmp;
+      |          ^~~
+../Core/Application/sensor/bme680/bme680.c:47:1: warning: control reaches end of non-void function [-Wreturn-type]
+   47 | }
+      | ^
+At top level:
+../Core/Application/sensor/bme680/bme680.c:29:12: warning: 'bme680_read_bytes' defined but not used [-Wunused-function]
+   29 | static int bme680_read_bytes(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bme680/bme680.c:23:12: warning: 'bme680_write' defined but not used [-Wunused-function]
+   23 | static int bme680_write(uint8_t addr, uint8_t *value){
+      |            ^~~~~~~~~~~~
+../Core/Application/sensor/bme680/bme680.c:15:12: warning: 'bme680_read' defined but not used [-Wunused-function]
+   15 | static int bme680_read(uint8_t addr, uint8_t *value){
+      |            ^~~~~~~~~~~
+make: *** [Core/Application/sensor/bno055/subdir.mk:19: Core/Application/sensor/bno055/bno055.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+15:44:46 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/app_main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_main.d" -MT"Core/Src/app_main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/app_main.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Application/timer/delay_us.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/timer/delay_us.d" -MT"Core/Application/timer/delay_us.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/timer/delay_us.o"
+arm-none-eabi-gcc "../Core/Application/timer/timer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/timer/timer.d" -MT"Core/Application/timer/timer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/timer/timer.o"
+arm-none-eabi-gcc "../Core/Application/sensor/mpu9250/mpu9250.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/mpu9250/mpu9250.d" -MT"Core/Application/sensor/mpu9250/mpu9250.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/mpu9250/mpu9250.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bme680/bme680.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bme680/bme680.d" -MT"Core/Application/sensor/bme680/bme680.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bme680/bme680.o"
+arm-none-eabi-gcc "../Core/Application/pid/pid.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/pid/pid.d" -MT"Core/Application/pid/pid.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/pid/pid.o"
+../Core/Application/sensor/bme680/bme680.c: In function 'bme680_init':
+../Core/Application/sensor/bme680/bme680.c:45:10: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+   45 |  uint8_t tmp;
+      |          ^~~
+../Core/Application/sensor/bme680/bme680.c:47:1: warning: control reaches end of non-void function [-Wreturn-type]
+   47 | }
+      | ^
+At top level:
+../Core/Application/sensor/bme680/bme680.c:29:12: warning: 'bme680_read_bytes' defined but not used [-Wunused-function]
+   29 | static int bme680_read_bytes(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bme680/bme680.c:23:12: warning: 'bme680_write' defined but not used [-Wunused-function]
+   23 | static int bme680_write(uint8_t addr, uint8_t *value){
+      |            ^~~~~~~~~~~~
+../Core/Application/sensor/bme680/bme680.c:15:12: warning: 'bme680_read' defined but not used [-Wunused-function]
+   15 | static int bme680_read(uint8_t addr, uint8_t *value){
+      |            ^~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc "../Core/Application/params/params.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/params/params.d" -MT"Core/Application/params/params.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/params/params.o"
+arm-none-eabi-gcc "../Core/Application/motor/motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/motor/motor.d" -MT"Core/Application/motor/motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/motor/motor.o"
+arm-none-eabi-gcc "../Core/Application/mode/mode_state_balancing/mode_state_balancing.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/mode/mode_state_balancing/mode_state_balancing.d" -MT"Core/Application/mode/mode_state_balancing/mode_state_balancing.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/mode/mode_state_balancing/mode_state_balancing.o"
+arm-none-eabi-gcc "../Core/Application/mav/uart/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/mav/uart/uart.d" -MT"Core/Application/mav/uart/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/mav/uart/uart.o"
+arm-none-eabi-gcc "../Core/Application/mav/mav.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/mav/mav.d" -MT"Core/Application/mav/mav.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/mav/mav.o"
+arm-none-eabi-gcc "../Core/Application/lcd/ssd1306.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/lcd/ssd1306.d" -MT"Core/Application/lcd/ssd1306.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/lcd/ssd1306.o"
+arm-none-eabi-gcc "../Core/Application/lcd/test.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/lcd/test.d" -MT"Core/Application/lcd/test.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/lcd/test.o"
+arm-none-eabi-gcc "../Core/Application/imu/imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/imu/imu.d" -MT"Core/Application/imu/imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/imu/imu.o"
+../Core/Application/mode/mode_state_balancing/mode_state_balancing.c:14:13: warning: 'tilt_controller_callback_euler' defined but not used [-Wunused-function]
+   14 | static void tilt_controller_callback_euler(){
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/imu/imu.c: In function 'imu_init':
+../Core/Application/imu/imu.c:49:2: warning: implicit declaration of function 'bno055_init'; did you mean 'bno055_test'? [-Wimplicit-function-declaration]
+   49 |  bno055_init();
+      |  ^~~~~~~~~~~
+      |  bno055_test
+At top level:
+../Core/Application/imu/imu.c:75:13: warning: 'imu_get_quaternions_data' defined but not used [-Wunused-function]
+   75 | static void imu_get_quaternions_data(void){
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/imu/imu.c:68:13: warning: 'rpy_euler_data_callback' defined but not used [-Wunused-function]
+   68 | static void rpy_euler_data_callback(void){
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/imu/imu.c:61:13: warning: 'magnetometer_data_callback' defined but not used [-Wunused-function]
+   61 | static void magnetometer_data_callback(void){
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/imu/imu.c:36:13: warning: 'accel_gyro_callback' defined but not used [-Wunused-function]
+   36 | static void accel_gyro_callback(void){
+      |             ^~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Application/imu/imu.h:13,
+                 from ../Core/Application/imu/imu.c:11:
+../Core/Application/imu/imu.c:34:5: warning: 'gtid_rpy_callback' defined but not used [-Wunused-variable]
+   34 | TID(gtid_rpy_callback);
+      |     ^~~~~~~~~~~~~~~~~
+../Core/Application/timer/timer.h:18:34: note: in definition of macro 'TID'
+   18 | #define TID(x) static timer_id_t x=TID_INVALID;
+      |                                  ^
+../Core/Application/imu/imu.c:33:5: warning: 'gtid_tilt_callback' defined but not used [-Wunused-variable]
+   33 | TID(gtid_tilt_callback);
+      |     ^~~~~~~~~~~~~~~~~~
+../Core/Application/timer/timer.h:18:34: note: in definition of macro 'TID'
+   18 | #define TID(x) static timer_id_t x=TID_INVALID;
+      |                                  ^
+arm-none-eabi-gcc "../Core/Application/MPC/Rotational_matrix/rotational_matrix.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/MPC/Rotational_matrix/rotational_matrix.d" -MT"Core/Application/MPC/Rotational_matrix/rotational_matrix.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/MPC/Rotational_matrix/rotational_matrix.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:45:05 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:47:58 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:320:2: warning: implicit declaration of function 'bno055_axis_remap_config' [-Wimplicit-function-declaration]
+  320 |  bno055_axis_remap_config(REMAP_CONFIG_P1_2_4_7);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:321:2: warning: implicit declaration of function 'bno055_axis_remap_sign' [-Wimplicit-function-declaration]
+  321 |  bno055_axis_remap_sign(REMAP_SIGN_P1);
+      |  ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c: At top level:
+../Core/Application/sensor/bno055/bno055.c:406:6: warning: conflicting types for 'bno055_axis_remap_config'
+  406 | void bno055_axis_remap_config(bno055_axis_remap_config_t axis_remap){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:320:2: note: previous implicit declaration of 'bno055_axis_remap_config' was here
+  320 |  bno055_axis_remap_config(REMAP_CONFIG_P1_2_4_7);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:420:6: warning: conflicting types for 'bno055_axis_remap_sign'
+  420 | void bno055_axis_remap_sign(bno055_axis_remap_sign_t axis_remap_sign){
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:321:2: note: previous implicit declaration of 'bno055_axis_remap_sign' was here
+  321 |  bno055_axis_remap_sign(REMAP_SIGN_P1);
+      |  ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:48:38 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:49:33 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:50:05 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+15:50:08 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43628	     44	   4836	  48508	   bd7c	Drone.elf
+Finished building: default.size.stdout
+ 
+15:51:52 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43636	     44	   4836	  48516	   bd84	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:51:55 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43636	     44	   4836	  48516	   bd84	Drone.elf
+Finished building: default.size.stdout
+ 
+15:53:45 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43956	     44	   4844	  48844	   becc	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:55:49 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:512:7: error: 'tmp' undeclared (first use in this function)
+  512 |       tmp = 0x20;
+      |       ^~~
+../Core/Application/sensor/bno055/bno055.c:512:7: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Application/sensor/bno055/bno055.c:521:7: error: 'member' undeclared (first use in this function); did you mean 'memset'?
+  521 |       member = 0;
+      |       ^~~~~~
+      |       memset
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+make: *** [Core/Application/sensor/bno055/subdir.mk:19: Core/Application/sensor/bno055/bno055.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+15:56:03 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:522:7: error: 'member' undeclared (first use in this function); did you mean 'memset'?
+  522 |       member = 0;
+      |       ^~~~~~
+      |       memset
+../Core/Application/sensor/bno055/bno055.c:522:7: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+make: *** [Core/Application/sensor/bno055/subdir.mk:19: Core/Application/sensor/bno055/bno055.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+15:56:22 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  42744	     44	   4836	  47624	   ba08	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:56:53 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43896	     44	   4836	  48776	   be88	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:58:44 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43712	     44	   4836	  48592	   bdd0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+15:59:33 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43896	     44	   4836	  48776	   be88	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:01:05 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43720	     44	   4836	  48600	   bdd8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:01:58 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43896	     44	   4836	  48776	   be88	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:03:13 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43720	     44	   4836	  48600	   bdd8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:05:22 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43984	     44	   4836	  48864	   bee0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:06:09 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43660	     44	   4836	  48540	   bd9c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:08:11 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  44144	     44	   4836	  49024	   bf80	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:09:17 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  44064	     44	   4836	  48944	   bf30	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:11:39 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43564	     44	   4836	  48444	   bd3c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:13:26 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  44040	     44	   4836	  48920	   bf18	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:15:40 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43996	     44	   4836	  48876	   beec	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:16:09 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43996	     44	   4836	  48876	   beec	Drone.elf
+Finished building: default.size.stdout
+ 
+16:17:51 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43904	     44	   4836	  48784	   be90	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:20:27 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43812	     44	   4836	  48692	   be34	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:26:30 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43764	     44	   4836	  48644	   be04	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:28:42 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43712	     44	   4836	  48592	   bdd0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:30:17 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43652	     44	   4836	  48532	   bd94	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:31:56 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43516	     44	   4836	  48396	   bd0c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:32:34 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43516	     44	   4836	  48396	   bd0c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:33:25 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43516	     44	   4836	  48396	   bd0c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:36:11 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43516	     44	   4836	  48396	   bd0c	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:36:14 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43516	     44	   4836	  48396	   bd0c	Drone.elf
+Finished building: default.size.stdout
+ 
+16:37:36 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43508	     44	   4836	  48388	   bd04	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:38:37 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:18: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |                  ^~~~~~
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'chk' [-Wunused-variable]
+  439 |  uint8_t tmp,chk,member;
+      |              ^~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:38:53 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c: In function 'bno055_initization':
+../Core/Application/sensor/bno055/bno055.c:439:14: warning: unused variable 'member' [-Wunused-variable]
+  439 |  uint8_t tmp,member;
+      |              ^~~~~~
+At top level:
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:39:05 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+16:39:09 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+16:41:02 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/lcd/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/lcd/fonts.d" -MT"Core/Application/lcd/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/lcd/fonts.o"
+arm-none-eabi-gcc "../Core/Application/lcd/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/lcd/lcd.d" -MT"Core/Application/lcd/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/lcd/lcd.o"
+arm-none-eabi-gcc "../Core/Application/lcd/ssd1306.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/lcd/ssd1306.d" -MT"Core/Application/lcd/ssd1306.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/lcd/ssd1306.o"
+arm-none-eabi-gcc "../Core/Application/lcd/test.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/lcd/test.d" -MT"Core/Application/lcd/test.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/lcd/test.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:43:00 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:43:22 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43668	     44	   4836	  48548	   bda4	Drone.elf
+Finished building: default.size.stdout
+ 
+16:44:12 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43720	     44	   4836	  48600	   bdd8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:44:49 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43796	     44	   4836	  48676	   be24	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:45:52 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43728	     44	   4836	  48608	   bde0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:45:59 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:238:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  238 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43728	     44	   4836	  48608	   bde0	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:48:55 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+../Core/Application/sensor/bno055/bno055.c:237:12: warning: 'bno055_write_bye' defined but not used [-Wunused-function]
+  237 | static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+      |            ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43720	     44	   4836	  48600	   bdd8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:49:05 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43720	     44	   4836	  48600	   bdd8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:51:33 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Application/sensor/bno055/bno055.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/sensor/bno055/bno055.d" -MT"Core/Application/sensor/bno055/bno055.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/sensor/bno055/bno055.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43992	     44	   4836	  48872	   bee8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:51:49 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-size   Drone.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43992	     44	   4836	  48872	   bee8	Drone.elf
+Finished building: default.size.stdout
+ 
+16:52:35 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43992	     44	   4836	  48872	   bee8	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
+16:53:25 **** Incremental Build of configuration Debug for project Drone ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/MPC -I../Core/Application/MPC/Rotational_matrix -I../Core/Application/lcd -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
+arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
+   text	   data	    bss	    dec	    hex	filename
+  43932	     44	   4836	  48812	   beac	Drone.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone.list
+ 
