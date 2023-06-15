@@ -26,6 +26,8 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "ssd1306.h"
+#include "fonts.h"
 #include "imu.h"
 #include "lcd.h"
 /* Private includes ----------------------------------------------------------*/

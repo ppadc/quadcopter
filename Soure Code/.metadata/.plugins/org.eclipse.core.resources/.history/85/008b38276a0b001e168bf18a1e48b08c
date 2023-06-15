@@ -26,6 +26,8 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "ssd1306.h"
+#include "fonts.h"
 #include "imu.h"
 #include "lcd.h"
 /* Private includes ----------------------------------------------------------*/
@@ -117,13 +119,10 @@ int main(void)
   SSD1306_GotoXY (10, 38);
   SSD1306_Puts ("WORLD!!", &Font_7x10, 1);
   SSD1306_UpdateScreen(); // update screen
-  HAL_Delay(1000);
 
-  SSD1306_Clear();
-
-  SSD1306_DrawBitmap(0, 0,drone_logo,128, 64, 1);
-  SSD1306_UpdateScreen();
-  HAL_Delay(5000);
+//  SSD1306_DrawBitmap(0, 0,drone_logo,128, 64, 1);
+//  SSD1306_UpdateScreen();
+//  HAL_Delay(5000);
   /* Infinite loop */
   bno055_initization();
     	HAL_Delay(1000);

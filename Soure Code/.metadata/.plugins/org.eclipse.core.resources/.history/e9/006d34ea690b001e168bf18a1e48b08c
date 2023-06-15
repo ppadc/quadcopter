@@ -26,6 +26,8 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "ssd1306.h"
+#include "fonts.h"
 #include "imu.h"
 #include "lcd.h"
 /* Private includes ----------------------------------------------------------*/
@@ -111,15 +113,12 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start(&htim5);
   /* USER CODE END 2 */
-  SSD1306_Init (); // initialize the display
-  SSD1306_GotoXY (10,10); // goto 10, 10
-  SSD1306_Puts ("HELLO", &Font_16x26, 1); // print Hello
-  SSD1306_GotoXY (10, 38);
-  SSD1306_Puts ("WORLD!!", &Font_7x10, 1);
-  SSD1306_UpdateScreen(); // update screen
-  HAL_Delay(1000);
-
-  SSD1306_Clear();
+//  SSD1306_Init (); // initialize the display
+//  SSD1306_GotoXY (10,10); // goto 10, 10
+//  SSD1306_Puts ("HELLO", &Font_16x26, 1); // print Hello
+//  SSD1306_GotoXY (10, 38);
+//  SSD1306_Puts ("WORLD!!", &Font_7x10, 1);
+//  SSD1306_UpdateScreen(); // update screen
 
   SSD1306_DrawBitmap(0, 0,drone_logo,128, 64, 1);
   SSD1306_UpdateScreen();
