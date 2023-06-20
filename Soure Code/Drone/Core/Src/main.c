@@ -145,6 +145,7 @@ int main(void)
   {
 	  bno055_calibrations_status(&calib[0],&calib[1],&calib[2],&calib[3]);
 	  bno055_get_elu_data(&roll, &pitch, &yaw);
+	  pitch += 2;
 	  SSD1306_GotoXY (0, 0);
 	  SSD1306_Puts ("ROLL: ", &Font_11x18, 1);
 	  SSD1306_GotoXY (0, 20);
@@ -224,7 +225,7 @@ int main(void)
 
 	  			SSD1306_UpdateScreen();
 	  			SSD1306_Clear();
-	  			delay_ms(10);
+	  			delay_us(10);
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
   }

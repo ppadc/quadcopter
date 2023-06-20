@@ -42,6 +42,7 @@ static int bme680_read_bytes(uint8_t addr, uint8_t *value, uint8_t len){
 //}
 void bme680_oversampling_humidity(bme680_variant_id_macro oversampling);
 void bme680_oversampling_temperature(bme680_variant_id_macro oversampling);
+void bme680_oversampling_pressure(bme680_variant_id_macro oversampling);
 
 void bme680_oversampling_humidity(bme680_variant_id_macro oversampling){
 	uint8_t tmp;
@@ -141,8 +142,10 @@ int bme680_soft_reset(){
 
 int bme680_init(){
 	uint8_t tmp;
-	tmp = 0x00;
-	/*  Configure the oversampling settings */
+	/*  Enable FORCED MODE */
+	tmp = 0x01;
+	bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	/*  Configure the oversampling T P H settings */
 	// Configure the Humidity Oversampling
 	bme680_oversampling_humidity(BME680_OS_1X);
 	// Configure the Temperature Oversampling

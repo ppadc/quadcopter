@@ -1,6 +1,5 @@
 tmp
 chk
-temp
 i
 roll
 member
@@ -8,3 +7,8 @@ j
 pitch
 yaw
 raw_mpu
+temp
+calib_sys
+calib_gyr
+calib_acc
+calib_mag
