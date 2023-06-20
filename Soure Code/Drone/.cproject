@@ -116,6 +116,7 @@
 									<listOptionValue builtIn="false" value="../Core/Application/MPC"/>
 									<listOptionValue builtIn="false" value="../Core/Application/MPC/Rotational_matrix"/>
 									<listOptionValue builtIn="false" value="../Core/Application/lcd"/>
+									<listOptionValue builtIn="false" value="../Core/Application/button"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1299848448" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -172,6 +173,7 @@
 									<listOptionValue builtIn="false" value="../Core/Application/imu"/>
 									<listOptionValue builtIn="false" value="../Core/Application/motor"/>
 									<listOptionValue builtIn="false" value="../Core/Application/eeprom"/>
+									<listOptionValue builtIn="false" value="../Core/Application/lcd"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.226545817" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>

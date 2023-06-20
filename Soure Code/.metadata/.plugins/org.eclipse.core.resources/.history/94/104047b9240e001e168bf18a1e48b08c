@@ -1,0 +1,13 @@
+/*
+ * lcd.c
+ *
+ *  Created on: Jun 15, 2023
+ *      Author: nguye
+ */
+
+#include "bno055.h"
+
+int check_loi_kivl(){
+	return 0;
+}
+

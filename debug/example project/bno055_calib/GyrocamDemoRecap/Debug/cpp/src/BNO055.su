@@ -1,0 +1,15 @@
+BNO055.cpp:10:1:BNO055::BNO055(I2C_HandleTypeDef*, uint8_t)	24	static
+BNO055.cpp:19:1:BNO055::~BNO055()	16	static
+BNO055.cpp:19:1:virtual BNO055::~BNO055()	16	static
+BNO055.cpp:23:5:int BNO055::readReg(unsigned char, unsigned char*, uint8_t)	64	static
+BNO055.cpp:31:5:int BNO055::writeReg(unsigned char, unsigned char*, uint8_t)	64	static
+BNO055.cpp:39:6:void BNO055::reset()	16	static
+BNO055.cpp:52:6:void BNO055::enableNDOF()	16	static
+BNO055.cpp:73:6:void BNO055::getData()	16	static
+BNO055.cpp:113:6:void BNO055::initMemory()	64	dynamic
+BNO055.cpp:129:6:void BNO055::readMemory(unsigned char*, int, int)	32	static
+BNO055.cpp:139:6:void BNO055::writeMemory(unsigned char*, int, int)	72	static
+BNO055.cpp:169:6:void BNO055::enableConfig()	16	static
+BNO055.cpp:177:6:void BNO055::saveOrientationAsPitch(uint8_t)	16	static
+BNO055.cpp:188:7:char* BNO055::getOrientationText()	16	static
+BNO055.cpp:195:6:void BNO055::saveMaxServoRoll(uint8_t)	16	static

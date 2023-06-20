@@ -52,9 +52,12 @@ Core/Src/app_main.o: ../Core/Src/app_main.c \
  ../Core/Inc/user_define.h ../Core/Inc/adc.h ../Core/Inc/can.h \
  ../Core/Inc/dma.h ../Core/Inc/i2c.h ../Core/Inc/spi.h ../Core/Inc/tim.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h \
- ../Core/Application/timer/delay_us.h ../Core/Application/params/params.h \
- ../Core/Application/params/params.h ../Core/Application/pid/pid.h \
- ../Core/Inc/app_main.h
+ ../Core/Application/timer/delay_us.h ../Core/Application/imu/imu.h \
+ ../Core/Application/sensor/bno055/bno055.h \
+ ../Core/Application/sensor/bno055/bno055_register_map.h \
+ ../Core/Application/sensor/mpu9250/mpu9250.h \
+ ../Core/Application/params/params.h ../Core/Application/params/params.h \
+ ../Core/Application/pid/pid.h ../Core/Inc/app_main.h
 ../Core/Application/Buzzer/buzzer.h:
 ../Core/Application/mav/mav.h:
 ../Core/Application/mav/mavlink/quadcopter_protocol/mavlink.h:
@@ -118,6 +121,10 @@ Core/Src/app_main.o: ../Core/Src/app_main.c \
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
 ../Core/Application/timer/delay_us.h:
+../Core/Application/imu/imu.h:
+../Core/Application/sensor/bno055/bno055.h:
+../Core/Application/sensor/bno055/bno055_register_map.h:
+../Core/Application/sensor/mpu9250/mpu9250.h:
 ../Core/Application/params/params.h:
 ../Core/Application/params/params.h:
 ../Core/Application/pid/pid.h:

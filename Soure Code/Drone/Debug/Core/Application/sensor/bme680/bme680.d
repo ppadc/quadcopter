@@ -40,7 +40,11 @@ Core/Application/sensor/bme680/bme680.o: \
  ../Core/Inc/user_define.h ../Core/Inc/adc.h ../Core/Inc/can.h \
  ../Core/Inc/dma.h ../Core/Inc/i2c.h ../Core/Inc/spi.h ../Core/Inc/tim.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h \
- ../Core/Application/timer/delay_us.h \
+ ../Core/Application/timer/delay_us.h ../Core/Application/imu/imu.h \
+ ../Core/Application/sensor/bno055/bno055.h \
+ ../Core/Application/sensor/bno055/bno055_register_map.h \
+ ../Core/Application/sensor/mpu9250/mpu9250.h \
+ ../Core/Application/timer/timer.h \
  ../Core/Application/sensor/bme680/bme680.h \
  ../Core/Application/sensor/bme680/bme680_register_map.h
 ../Core/Application/sensor/bme680/bme680_register_map.h:
@@ -92,5 +96,10 @@ Core/Application/sensor/bme680/bme680.o: \
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
 ../Core/Application/timer/delay_us.h:
+../Core/Application/imu/imu.h:
+../Core/Application/sensor/bno055/bno055.h:
+../Core/Application/sensor/bno055/bno055_register_map.h:
+../Core/Application/sensor/mpu9250/mpu9250.h:
+../Core/Application/timer/timer.h:
 ../Core/Application/sensor/bme680/bme680.h:
 ../Core/Application/sensor/bme680/bme680_register_map.h:

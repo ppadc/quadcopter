@@ -1,0 +1,6 @@
+main.c:71:6:log_i	16	static
+main.c:88:6:HAL_UART_TxCpltCallback	0	static
+main.c:92:6:HAL_UART_RxCpltCallback	8	static
+main.c:153:6:SystemClock_Config	104	static,ignoring_inline_asm
+main.c:105:5:main	48	static,ignoring_inline_asm
+main.c:380:6:Error_Handler	0	static,ignoring_inline_asm

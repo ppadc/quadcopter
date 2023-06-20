@@ -1,0 +1,12 @@
+/*
+ * lcd.c
+ *
+ *  Created on: Jun 15, 2023
+ *      Author: nguye
+ */
+int check;
+
+void checkloi(){
+	check = 1;
+	return 0;
+}

@@ -1,0 +1,179 @@
+/*
+ * bme680_register_map.h
+ *
+ *  Created on: Mar 28, 2023
+ *      Author: nguye
+ */
+
+#include "bme680_def.h"
+
+#ifndef CORE_APPLICATION_SENSOR_BME680_BME680_REGISTER_MAP_H_
+#define CORE_APPLICATION_SENSOR_BME680_BME680_REGISTER_MAP_H_
+
+#ifndef	BME680_I2C
+enum bme680_register_i2c{
+	/* Register for 3rd group of coefficients */
+	BME68X_REG_COEFF3 		= 0x00,
+	/* 0th Field address*/
+	MEAS_STATUS_0			= 0x1D,
+	/* 0th Field address*/
+	BME68X_REG_FIELD0		= 0x1D,
+	PRESS_MSB				= 0x1F,
+	PRESS_LSB				= 0x20,
+	PRESS_XLSB				= 0x21,
+	TEMP_MSB				= 0x22,
+	TEMP_LSB				= 0x23,
+	TEMP_XLSB				= 0x24,
+	HUM_MSB					= 0x25,
+	HUM_LSB					= 0x26,
+	GAS_R_MSB				= 0x2A,
+	GAS_R_LSB				= 0x2B,
+	/* 0th - 9th Current DAC address*/
+	IDAC_HEAT_0				= 0x50,
+	IDAC_HEAT_1				= 0x51,
+	IDAC_HEAT_2				= 0x52,
+	IDAC_HEAT_3				= 0x53,
+	IDAC_HEAT_4				= 0x54,
+	IDAC_HEAT_5				= 0x55,
+	IDAC_HEAT_6				= 0x56,
+	IDAC_HEAT_7				= 0x57,
+	IDAC_HEAT_8				= 0x58,
+	IDAC_HEAT_9				= 0x59,
+	/* 0th -9th Res heat address */
+	RES_HEAT_0				= 0x5A,
+	RES_HEAT_1				= 0x5B,
+	RES_HEAT_2				= 0x5C,
+	RES_HEAT_3				= 0x5D,
+	RES_HEAT_4				= 0x5E,
+	RES_HEAT_5				= 0x5F,
+	RES_HEAT_6				= 0x60,
+	RES_HEAT_7				= 0x61,
+	RES_HEAT_8				= 0x62,
+	RES_HEAT_9				= 0x63,
+	/* 0th - 9th Gas wait address */
+	GAS_WAIT_0				= 0x64,
+	GAS_WAIT_1				= 0x65,
+	GAS_WAIT_2				= 0x66,
+	GAS_WAIT_3				= 0x67,
+	GAS_WAIT_4				= 0x68,
+	GAS_WAIT_5				= 0x69,
+	GAS_WAIT_6				= 0x6A,
+	GAS_WAIT_7				= 0x6B,
+	GAS_WAIT_8				= 0x6C,
+	GAS_WAIT_9				= 0x6D,
+	/* Shared heating duration address */
+	BME68X_REG_SHD_HEATR_DUR= 0x6E,
+	/* CTRL_GAS_0 address */
+	CTRL_GAS_0				= 0x70,
+	/* CTRL_GAS_1 address */
+	CTRL_GAS_1				= 0x71,
+	/* CTRL_HUM address */
+	CTRL_HUM				= 0x72,
+	STATUS 					= 0x73,
+	/* CTRL_MEAS address */
+	BME680_REG_CTRL_MEAS	= 0x74,
+	BME680_REG_CONFIG		= 0x75,
+	/* MEM_PAGE address */
+	BME680_REG_MEM_PAGE		= 0xf3,
+	/* Unique ID address */
+	BME680_REG_UNIQUE_ID 	= 0x83,
+	/* Register for 1st group of coefficients */
+	BME680_REG_COEFF1       = 0x8a,
+
+	/* Chip ID address */
+	BME680_REG_CHIP_ID      = 0xd0,
+
+	/* Soft reset address */
+	BME680_REG_SOFT_RESET	= 0xe0,
+	/* Register for 2nd group of coefficients */
+	BME680_REG_COEFF2		= 0xe1,
+
+	/* Variant ID Register */
+	BME680_REG_VARIANT_ID	= 0xF0,
+};
+#endif
+
+enum bme680_variant_id_macro{
+	/* Low Gas variant */
+	BME680_VARIANT_GAS_LOW  = 0x00,
+	/* High Gas variant */
+	BME680_VARIANT_GAS_HIGH = 0x01,
+	/* Oversampling setting macros */
+	/* Switch off measurement */
+	BME680_OS_NONE 			= 0x00,
+	/* Perform 1 measurement */
+	BME680_OS_1X       		= 1,
+
+	/* Perform 2 measurements */
+	BME680_OS_2X        	= 2,
+
+	/* Perform 4 measurements */
+	BME680_OS_4X          	= 3,
+
+	/* Perform 8 measurements */
+	BME680_OS_8X    	 	= 4,
+
+	/* Perform 16 measurements */
+	BME680_OS_16X        	= 5,
+};
+
+enum bme680_iir_filter_setting{
+	/* Switch off the filter */
+	BME680_FILTER_OFF 		= 0x00,
+	/* Filter coefficient of 2 */
+	BME680_FILTER_SIZE_1  	= 1,
+
+	/* Filter coefficient of 4 */
+	BME680_FILTER_SIZE_3    = 2,
+
+	/* Filter coefficient of 8 */
+	BME680_FILTER_SIZE_7	= 3,
+
+	/* Filter coefficient of 16 */
+	BME680_FILTER_SIZE_15 	= 4,
+
+	/* Filter coefficient of 32 */
+	BME680_FILTER_SIZE_31	= 5,
+
+	/* Filter coefficient of 64 */
+	BME680_FILTER_SIZE_63	= 6,
+
+	/* Filter coefficient of 128 */
+	BME680_FILTER_SIZE_127	= 7,
+};
+
+enum bme680_odr_standby_time_macro{
+	/* Standby time of 0.59ms */
+	BME68X_ODR_0_59_MS      = 0,
+
+	/* Standby time of 62.5ms */
+	BME68X_ODR_62_5_MS                        UINT8_C(1)
+
+	/* Standby time of 125ms */
+	BME68X_ODR_125_MS                         UINT8_C(2)
+
+	/* Standby time of 250ms */
+	BME68X_ODR_250_MS                         UINT8_C(3)
+
+	/* Standby time of 500ms */
+	BME68X_ODR_500_MS                         UINT8_C(4)
+
+	/* Standby time of 1s */
+	BME68X_ODR_1000_MS                        UINT8_C(5)
+
+	/* Standby time of 10ms */
+	BME68X_ODR_10_MS                          UINT8_C(6)
+
+	/* Standby time of 20ms */
+	BME68X_ODR_20_MS                          UINT8_C(7)
+
+	/* No standby time */
+	BME68X_ODR_NONE                           UINT8_C(8)
+};
+
+enum bme680_register_page{
+	BME680_ID			= 0xD0,
+	BME680_RESET		= 0xE0,
+};
+
+#endif /* CORE_APPLICATION_SENSOR_BME680_BME680_REGISTER_MAP_H_ */

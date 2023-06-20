@@ -1,0 +1,22 @@
+/*
+ * delay_us.c
+ *
+ *  Created on: Apr 1, 2023
+ *      Author: nguye
+ */
+
+#include "tim.h"
+#include "user_define.h"
+
+uint32_t timer;
+
+void delay_us(uint32_t us){
+	timer = HAL_GetTick();
+	if(HAL_GetTick() - timer < us ){
+		timer = HAL_GetTick;
+	}
+}
+
+void delay_ms(uint32_t ms){
+
+}

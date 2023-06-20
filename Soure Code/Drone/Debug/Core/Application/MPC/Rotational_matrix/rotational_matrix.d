@@ -43,6 +43,8 @@ Core/Application/MPC/Rotational_matrix/rotational_matrix.o: \
  ../Core/Inc/adc.h ../Core/Inc/can.h ../Core/Inc/dma.h ../Core/Inc/i2c.h \
  ../Core/Inc/spi.h ../Core/Inc/tim.h ../Core/Inc/usart.h \
  ../Core/Inc/gpio.h ../Core/Application/timer/delay_us.h \
+ ../Core/Application/imu/imu.h \
+ ../Core/Application/sensor/mpu9250/mpu9250.h \
  ../Core/Application/params/params.h ../Core/Application/params/params.h \
  ../Core/Application/pid/pid.h
 ../Core/Application/MPC/Rotational_matrix/rotational_matrix.h:
@@ -95,6 +97,8 @@ Core/Application/MPC/Rotational_matrix/rotational_matrix.o: \
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
 ../Core/Application/timer/delay_us.h:
+../Core/Application/imu/imu.h:
+../Core/Application/sensor/mpu9250/mpu9250.h:
 ../Core/Application/params/params.h:
 ../Core/Application/params/params.h:
 ../Core/Application/pid/pid.h:

@@ -10,6 +10,8 @@
 #include <i2c.h>
 #include "user_define.h"
 #include "bno055.h"
+#include "ssd1306.h"
+#include "fonts.h"
 
 //static char calib_sys_sta, calib_gyr_sta, calib_acc_sta, calib_mag_sta;
 
@@ -402,14 +404,12 @@ int bno055_calibrations_status(char *sys, char *gyr, char *acc, char *mag){
 	bno055_write(PAGE_ID,&tmp);
 	if(bno055_read(CALIB_STAT,buffer_calib_sta)<0){
 		return -1;
-		*sys = (int8_t)((int8_t)buffer_calib_sta[0])>>6;
-		*gyr = (int8_t)((int8_t)buffer_calib_sta[0])>>4 & 0b0011;
-		*acc = (int8_t)((int8_t)buffer_calib_sta[0])>>2 & 0b0011;
-		*mag = (int8_t)((int8_t)buffer_calib_sta[0]) & 0b0011;
+		*sys = (int8_t)((int8_t)buffer_calib_sta[0])>>6 & 0b11;
+		*gyr = (int8_t)((int8_t)buffer_calib_sta[0])>>4 & 0b11;
+		*acc = (int8_t)((int8_t)buffer_calib_sta[0])>>2 & 0b11;
+		*mag = (int8_t)((int8_t)buffer_calib_sta[0]) & 0b11;
 	}
-	if((*sys == 3 && *gyr == 3 && *acc == 3 && *mag == 3)){
-		return 1;
-	}
+	if((*sys == 3 && *gyr == 3 && *acc == 3 && *mag == 3)) return 1;
 	return 0;
 }
 
@@ -432,8 +432,14 @@ int bno055_test(){
 
 int bno055_initization(){
 	uint8_t tmp,member;
+	char calib_sys;
+	char calib_gyr, calib_acc, calib_mag;
     char i = 0;
     char j = 0;
+    char snum_sys[5],snum_gyro[5],snum_acc[1],snum_mag[5];
+    char i_check=0;
+    char buzzer = 0;
+    uint8_t check_sys[1] = {};
     for(i=0;i<1;i++){
   	  for(j=0;j<3;j++){
   		  if(HAL_I2C_IsDeviceReady(&BNO055__I2C,BNO055_I2C_ADDR, 1, 100)==HAL_OK){
@@ -446,10 +452,12 @@ int bno055_initization(){
   		  }
   	  }
     }
+
+
 	  /*Reset System */
 	  tmp = 0x20;
 	  bno055_write(SYS_TRIGGER,&tmp);
-      HAL_Delay(600);
+      delay_ms(600);
       member = 0;
       HAL_I2C_Mem_Read(&BNO055__I2C,BNO055_I2C_ADDR,CHIP_ID_PAGE_0, I2C_MEMADD_SIZE_8BIT, &member, 1, I2C_TIMEOUT_MS);
       if(member==BNO055_ID){
@@ -458,8 +466,9 @@ int bno055_initization(){
       else{
     	  HAL_GPIO_WritePin(GPIOC, BUZZER_Pin, SET);
       }
-    //set operation_mode BNO055_OPERATION_CONFIG_MODE
+    /* Set operation_mode BNO055_OPERATION_CONFIG_MODE */
     bno055_set_operation_mode(BNO055_OPERATION_CONFIG_MODE);
+    delay_ms(19);
 	/* Configurations Power Mode */
 	tmp = POWER_MODE_NORMAL;
 	bno055_write(PWR_MODE,&tmp);
@@ -483,13 +492,64 @@ int bno055_initization(){
     bno055_write(PAGE_ID,&tmp);
     tmp = (((TEMPERATURE_UNITS | EULER_ANGLES_UNITS)| ANGULAR_RATE_UNITS)| BNO055_ACCEL_UNITS);
     bno055_write(UNIT_SEL,&tmp);
-    bno055_fusion_data_output_systems(WINDOWS_FUSION_DATA_OUTPUT);
+    bno055_fusion_data_output_systems(ANDROID_FUSION_DATA_OUTPUT);
     /* Configure axis mapping*/
     bno055_axis_remap_config(REMAP_CONFIG_P1_2_4_7);
     bno055_axis_remap_sign(REMAP_SIGN_P1);
+    //set BNO055 SYS_TRIGGER TO 0x00
+    tmp = 0x00;
+    bno055_write(SYS_TRIGGER,&tmp);
+    delay_ms(50);
     //set BNO055_OPERATION_MODE_NDOF
     bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
-	return 0;
+    delay_ms(20);
+    //bno055_calibrations_status(&calib_sys, &calib_gyr, &calib_acc, &calib_mag);
+//    while(i_check<2){
+//       // Still calibrating, out until everything done
+//       //bno055_calibrations_status(&calib_sys, &calib_gyr, &calib_acc, &calib_mag);
+//       	if(HAL_I2C_Mem_Read(&BNO055__I2C, BNO055_I2C_ADDR, CALIB_STAT , I2C_MEMADD_SIZE_8BIT, &check_sys[1], 1, I2C_TIMEOUT_MS)==HAL_OK){
+//       	    	while(buzzer==0){
+//       	             HAL_GPIO_WritePin(GPIOC, BUZZER_Pin, SET);
+//       	             delay_ms(200);
+//       	             HAL_GPIO_WritePin(GPIOC, BUZZER_Pin, RESET);
+//       	             buzzer++;
+//       	        }
+//       	    calib_sys = (int8_t)((int8_t)check_sys[0])>>6 & 0b11;
+//       	    calib_gyr = (int8_t)((int8_t)check_sys[0])>>4 & 0b11;
+//       	    calib_acc = (int8_t)((int8_t)check_sys[0])>>2 & 0b11;
+//       	    calib_mag = (int8_t)((int8_t)check_sys[0]) & 0b11;
+//       		}
+//       	if(calib_sys!=3 && calib_gyr == 3 && calib_acc == 3 && calib_mag == 3){
+//   			SSD1306_Clear();
+//   			SSD1306_GotoXY (0, 20);
+//   			SSD1306_Puts ("ALL CALIBRATED", &Font_7x10, 1);
+//   			SSD1306_UpdateScreen();
+//   			delay_ms(300);
+//   			SSD1306_GotoXY (0, 40);
+//   			SSD1306_Puts ("WAITING...", &Font_7x10, 1);
+//   			SSD1306_UpdateScreen();
+//   			i_check = 2;
+//       	 }
+//            else{
+//   			SSD1306_Clear();
+//   			itoa(calib_sys, snum_sys, 5);
+//   			itoa(calib_gyr, snum_gyro, 5);
+//   			itoa(calib_acc, snum_acc, 5);
+//   			itoa(calib_mag, snum_mag, 5);
+//   			SSD1306_GotoXY (20, 0);
+//   			SSD1306_Puts (snum_sys, &Font_7x10, 1);
+//   			SSD1306_GotoXY (20, 15);
+//   			SSD1306_Puts (snum_gyro, &Font_7x10, 1);
+//   			SSD1306_GotoXY (20, 30);
+//   			SSD1306_Puts (snum_acc, &Font_7x10, 1);
+//   			SSD1306_GotoXY (20, 45);
+//   			SSD1306_Puts (snum_mag, &Font_7x10, 1);
+//   			SSD1306_UpdateScreen();
+//   			HAL_GPIO_TogglePin(GPIOC, LED_Pin);
+//   			delay_ms(50);
+//            }
+//       }
+    return 0;
 }
 int bno055_get_acc_mag_radius(float *acc_radius, float *mag_radius){
 	uint8_t tmp;

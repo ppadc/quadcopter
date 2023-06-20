@@ -40,8 +40,114 @@ static int bme680_read_bytes(uint8_t addr, uint8_t *value, uint8_t len){
 //		return -1;
 //	return 0;
 //}
+void bme680_oversampling_humidity(bme680_variant_id_macro oversampling);
+void bme680_oversampling_temperature(bme680_variant_id_macro oversampling);
+
+void bme680_oversampling_humidity(bme680_variant_id_macro oversampling){
+	uint8_t tmp;
+	switch(oversampling){
+	case BME680_OS_NONE:
+			tmp = BME680_OS_NONE;
+			bme680_write(BME680_REG_CTRL_HUM,&tmp);
+	break;
+	case BME680_OS_1X:
+			tmp = BME680_OS_1X;
+			bme680_write(BME680_REG_CTRL_HUM,&tmp);
+	break;
+	case BME680_OS_2X:
+			tmp = BME680_OS_2X;
+			bme680_write(BME680_REG_CTRL_HUM,&tmp);
+	break;
+	case BME680_OS_4X:
+			tmp = BME680_OS_4X;
+			bme680_write(BME680_REG_CTRL_HUM,&tmp);
+	break;
+	case BME680_OS_8X:
+			tmp = BME680_OS_8X;
+			bme680_write(BME680_REG_CTRL_HUM,&tmp);
+	break;
+	case BME680_OS_16X:
+			tmp = BME680_OS_16X;
+			bme680_write(BME680_REG_CTRL_HUM,&tmp);
+	break;
+	}
+}
+
+void bme680_oversampling_temperature(bme680_variant_id_macro oversampling){
+	uint8_t tmp;
+	switch(oversampling){
+	case BME680_OS_NONE:
+			tmp = BME680_OS_NONE<<5;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_1X:
+			tmp = BME680_OS_1X<<5;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_2X:
+			tmp = BME680_OS_2X<<5;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_4X:
+			tmp = BME680_OS_4X<<5;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_8X:
+			tmp = BME680_OS_8X<<5;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_16X:
+			tmp = BME680_OS_16X<<5;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	}
+}
+
+void bme680_oversampling_pressure(bme680_variant_id_macro oversampling){
+	uint8_t tmp;
+	switch(oversampling){
+	case BME680_OS_NONE:
+			tmp = BME680_OS_NONE<<2;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_1X:
+			tmp = BME680_OS_1X<<2;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_2X:
+			tmp = BME680_OS_2X<<2;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_4X:
+			tmp = BME680_OS_4X<<2;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_8X:
+			tmp = BME680_OS_8X<<2;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	case BME680_OS_16X:
+			tmp = BME680_OS_16X<<2;
+			bme680_write(BME680_REG_CTRL_MEAS,&tmp);
+	break;
+	}
+}
+
+int bme680_soft_reset(){
+	//uint8_t tmp;
+	//tmp =
+	return 0;
+}
 
 int bme680_init(){
 	uint8_t tmp;
 	tmp = 0x00;
+	/*  Configure the oversampling settings */
+	// Configure the Humidity Oversampling
+	bme680_oversampling_humidity(BME680_OS_1X);
+	// Configure the Temperature Oversampling
+	bme680_oversampling_temperature(BME680_OS_2X);
+	// Configure the Pressure Oversampling
+	bme680_oversampling_pressure(BME680_OS_16X);
+	return 0;
 }

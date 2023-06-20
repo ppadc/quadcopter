@@ -39,7 +39,11 @@ Core/Application/lcd/ssd1306.o: ../Core/Application/lcd/ssd1306.c \
  ../Core/Inc/main.h ../Core/Inc/adc.h ../Core/Inc/can.h ../Core/Inc/dma.h \
  ../Core/Inc/i2c.h ../Core/Inc/spi.h ../Core/Inc/tim.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h \
- ../Core/Application/timer/delay_us.h
+ ../Core/Application/timer/delay_us.h ../Core/Application/imu/imu.h \
+ ../Core/Application/sensor/bno055/bno055.h \
+ ../Core/Application/sensor/bno055/bno055_register_map.h \
+ ../Core/Application/sensor/mpu9250/mpu9250.h \
+ ../Core/Application/timer/timer.h
 ../Core/Application/lcd/ssd1306.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -88,3 +92,8 @@ Core/Application/lcd/ssd1306.o: ../Core/Application/lcd/ssd1306.c \
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
 ../Core/Application/timer/delay_us.h:
+../Core/Application/imu/imu.h:
+../Core/Application/sensor/bno055/bno055.h:
+../Core/Application/sensor/bno055/bno055_register_map.h:
+../Core/Application/sensor/mpu9250/mpu9250.h:
+../Core/Application/timer/timer.h:

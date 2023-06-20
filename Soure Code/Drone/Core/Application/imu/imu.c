@@ -46,7 +46,7 @@ static void accel_gyro_callback(void){
 }
 
 int imu_init(void){
-	bno055_init();
+	bno055_initization();
 	return 0;
 }
 

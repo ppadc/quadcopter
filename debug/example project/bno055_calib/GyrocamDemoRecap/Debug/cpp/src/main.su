@@ -1,0 +1,5 @@
+main.cpp:22:6:void rxChar(char)	16	static
+main.cpp:30:6:void maincpp()	208	static
+main.cpp:113:1:void __static_initialization_and_destruction_0(int, int)	16	static
+main.cpp:113:1:cpp)	8	static
+main.cpp:113:1:cpp)	8	static

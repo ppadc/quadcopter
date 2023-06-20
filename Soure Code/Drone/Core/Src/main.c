@@ -26,7 +26,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "imu.h"
+#include "user_define.h"
 #include "lcd.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -100,6 +100,7 @@ int main(void)
   MX_SPI1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
+  MX_TIM5_Init();
   MX_TIM8_Init();
   MX_UART4_Init();
   MX_UART5_Init();
@@ -107,26 +108,25 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   MX_USART6_UART_Init();
-  MX_TIM5_Init();
+  HAL_TIM_Base_Start(&TIM_DELAY_US);
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim5);
-  /* USER CODE END 2 */
   SSD1306_Init (); // initialize the display
+
   SSD1306_GotoXY (10,10); // goto 10, 10
   SSD1306_Puts ("HELLO", &Font_16x26, 1); // print Hello
   SSD1306_GotoXY (10, 38);
   SSD1306_Puts ("WORLD!!", &Font_7x10, 1);
   SSD1306_UpdateScreen(); // update screen
-  HAL_Delay(1000);
-
+  delay_ms(1000);
   SSD1306_Clear();
 
   SSD1306_DrawBitmap(0, 0,drone_logo,128, 64, 1);
   SSD1306_UpdateScreen();
-  HAL_Delay(5000);
+  delay_ms(2000);
+
   /* Infinite loop */
   bno055_initization();
-    	HAL_Delay(1000);
+    	delay_ms(1000);
     	SSD1306_Clear();
     	char snum_roll[10];
     	char snum_pitch[10];
@@ -136,99 +136,96 @@ int main(void)
     	char snum_gyro[10];
     	char snum_acc[10];
     	char snum_mag[10];
+
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  bno055_calibrations_status(&calib[0],&calib[1],&calib[2],&calib[3]);
+	  bno055_get_elu_data(&roll, &pitch, &yaw);
+	  SSD1306_GotoXY (0, 0);
+	  SSD1306_Puts ("ROLL: ", &Font_11x18, 1);
+	  SSD1306_GotoXY (0, 20);
+	  SSD1306_Puts ("PITCH: ", &Font_11x18, 1);
+	  SSD1306_GotoXY (0, 40);
+	  SSD1306_Puts ("YAW: ", &Font_11x18, 1);
+	  	  	  	//sprintf(snum,"%f",roll);
+		itoa(roll, snum_roll, 10);
+		itoa(pitch, snum_pitch, 10);
+		itoa(yaw, snum_yaw, 10);
+		itoa(calib[0], snum_sys, 10);
+		itoa(calib[1], snum_gyro, 10);
+		itoa(calib[2], snum_acc, 10);
+		itoa(calib[3], snum_mag, 10);
+
+	  //			SSD1306_GotoXY (0, 0);
+	  //			SSD1306_Puts ("             ", &Font_11x18, 1);
+	  			SSD1306_UpdateScreen();
+	  			if(roll < 10) {
+	  				SSD1306_GotoXY (69, 0);  // 1 DIGIT
+	  			}
+	  			else if (roll < 100 ) {
+	  				SSD1306_GotoXY (61, 0);  // 2 DIGITS
+	  			}
+	  			else if (roll < 1000 ) {
+	  				SSD1306_GotoXY (53, 0);  // 3 DIGITS
+	  			}
+	  			else {
+	  				SSD1306_GotoXY (45, 0);  // 4 DIGIS
+	  			}
+
+	  			SSD1306_Puts (snum_roll, &Font_11x18, 1);
+	  			SSD1306_UpdateScreen();
+
+	  			if(pitch < 10) {
+	  				SSD1306_GotoXY (69, 20);  // 1 DIGIT
+	  			}
+	  			else if (pitch < 100 ) {
+	  				SSD1306_GotoXY (61, 20);  // 2 DIGITS
+	  			}
+	  			else if (pitch < 1000 ) {
+	  				SSD1306_GotoXY (53, 20);  // 3 DIGITS
+	  			}
+	  			else {
+	  				SSD1306_GotoXY (45, 20);  // 4 DIGIS
+	  			}
+
+	  			SSD1306_Puts (snum_pitch, &Font_11x18, 1);
+	  			SSD1306_UpdateScreen();
+
+	  			if(yaw < 10) {
+	  				SSD1306_GotoXY (69, 40);  // 1 DIGIT
+	  			}
+	  			else if (yaw < 100 ) {
+	  				SSD1306_GotoXY (61, 40);  // 2 DIGITS
+	  			}
+	  			else if (yaw < 1000 ) {
+	  				SSD1306_GotoXY (53, 40);  // 3 DIGITS
+	  			}
+	  			else {
+	  				SSD1306_GotoXY (45, 40);  // 4 DIGIS
+	  			}
+
+	  			SSD1306_Puts (snum_yaw, &Font_11x18, 1);
+
+	  			SSD1306_GotoXY (100, 0);
+	  			SSD1306_Puts (snum_sys, &Font_7x10, 1);
+
+	  			SSD1306_GotoXY (100, 15);
+	  			SSD1306_Puts (snum_gyro, &Font_7x10, 1);
+
+	  			SSD1306_GotoXY (100, 30);
+	  			SSD1306_Puts (snum_acc, &Font_7x10, 1);
+
+	  			SSD1306_GotoXY (100, 45);
+	  			SSD1306_Puts (snum_mag, &Font_7x10, 1);
+
+	  			SSD1306_UpdateScreen();
+	  			SSD1306_Clear();
+	  			delay_ms(10);
     /* USER CODE END WHILE */
-	  bno055_get_temp(&temp);
-	  	  temp = temp*1;
-	  	  if(temp>20 && temp < 40){
-	  		  HAL_GPIO_WritePin(GPIOC, LED_Pin, SET);
-	  	  }
-	  	  else
-	  		  HAL_GPIO_WritePin(GPIOC, LED_Pin, RESET);
-	  	  	bno055_calibrations_status(&calib[0],&calib[1],&calib[2],&calib[3]);
-	  	  	bno055_get_elu_data(&roll, &pitch, &yaw);
-	  	  	//sprintf(snum,"%f",roll);
-	  	  	SSD1306_GotoXY (0, 0);
-	  	  	SSD1306_Puts ("ROLL: ", &Font_11x18, 1);
-	  	  	SSD1306_GotoXY (0, 20);
-	  	  	SSD1306_Puts ("PITCH: ", &Font_11x18, 1);
-	  	  	SSD1306_GotoXY (0, 40);
-	  	  	SSD1306_Puts ("YAW: ", &Font_11x18, 1);
-			itoa(roll, snum_roll, 10);
-			itoa(pitch, snum_pitch, 10);
-			itoa(yaw, snum_yaw, 10);
-			itoa(calib[0], snum_sys, 10);
-			itoa(calib[1], snum_gyro, 10);
-			itoa(calib[2], snum_acc, 10);
-			itoa(calib[3], snum_mag, 10);
-
-//			SSD1306_GotoXY (0, 0);
-//			SSD1306_Puts ("             ", &Font_11x18, 1);
-			SSD1306_UpdateScreen();
-			if(roll < 10) {
-				SSD1306_GotoXY (69, 0);  // 1 DIGIT
-			}
-			else if (roll < 100 ) {
-				SSD1306_GotoXY (61, 0);  // 2 DIGITS
-			}
-			else if (roll < 1000 ) {
-				SSD1306_GotoXY (53, 0);  // 3 DIGITS
-			}
-			else {
-				SSD1306_GotoXY (45, 0);  // 4 DIGIS
-			}
-
-			SSD1306_Puts (snum_roll, &Font_11x18, 1);
-			SSD1306_UpdateScreen();
-
-			if(pitch < 10) {
-				SSD1306_GotoXY (69, 20);  // 1 DIGIT
-			}
-			else if (pitch < 100 ) {
-				SSD1306_GotoXY (61, 20);  // 2 DIGITS
-			}
-			else if (pitch < 1000 ) {
-				SSD1306_GotoXY (53, 20);  // 3 DIGITS
-			}
-			else {
-				SSD1306_GotoXY (45, 20);  // 4 DIGIS
-			}
-
-			SSD1306_Puts (snum_pitch, &Font_11x18, 1);
-			SSD1306_UpdateScreen();
-
-			if(yaw < 10) {
-				SSD1306_GotoXY (69, 40);  // 1 DIGIT
-			}
-			else if (yaw < 100 ) {
-				SSD1306_GotoXY (61, 40);  // 2 DIGITS
-			}
-			else if (yaw < 1000 ) {
-				SSD1306_GotoXY (53, 40);  // 3 DIGITS
-			}
-			else {
-				SSD1306_GotoXY (45, 40);  // 4 DIGIS
-			}
-
-			SSD1306_Puts (snum_yaw, &Font_11x18, 1);
-
-//			SSD1306_GotoXY (100, 0);
-//			SSD1306_Puts (snum_sys, &Font_7x10, 1);
-//
-//			SSD1306_GotoXY (100, 15);
-//			SSD1306_Puts (snum_gyro, &Font_7x10, 1);
-//
-//			SSD1306_GotoXY (100, 30);
-//			SSD1306_Puts (snum_acc, &Font_7x10, 1);
-//
-//			SSD1306_GotoXY (100, 45);
-//			SSD1306_Puts (snum_mag, &Font_7x10, 1);
-
-			SSD1306_UpdateScreen();
-			SSD1306_Clear();
-			HAL_Delay(100);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -283,27 +280,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM2 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM2) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.

@@ -19,6 +19,7 @@
 #include "usart.h"
 #include "gpio.h"
 #include "delay_us.h"
+#include "imu.h"
 
 /* Timer callback define */
 #define MAX_CALLBACK_FUNC								20
@@ -174,6 +175,15 @@
 #elif BME680_STATUS == 1
 #define BME680_I2C_ADDR			(0x77 << 1)
 #endif
+
+/*Configure the oversampling settings */
+#define BME680_OVERSAMPLING_HUMIDITY 			1
+// OVERSAMPLING_SKIPPED 			--> 0
+// OVERSAMPLING_X1 					--> 1
+// OVERSAMPLING_X2					--> 2
+// OVERSAMPLING_X4 					--> 3
+// OVERSAMPLING_X8 					--> 4
+// OVERSAMPLING_X16 				--> 5
 
 /*SSD1306_DEFINE_FUNC*/
 #if SSD1306_STATUS == 0
