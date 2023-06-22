@@ -1,0 +1,11 @@
+/*
+ * bme_init.c
+ *
+ *  Created on: Jun 21, 2023
+ *      Author: nguye
+ */
+
+struct bme680_dev gas_sensor;
+struct bme680_field_data data;
+
+

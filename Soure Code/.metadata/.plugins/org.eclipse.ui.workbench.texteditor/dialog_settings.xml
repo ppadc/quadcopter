@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="hi2c1"/>
+		<item key="selection" value="bme680_dev"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="bme680_dev"/>
+			<item value="struct"/>
+			<item value="BME68X_REG_SOFT_RESET"/>
 			<item value="hi2c1"/>
 			<item value="chip"/>
 			<item value="osThread"/>

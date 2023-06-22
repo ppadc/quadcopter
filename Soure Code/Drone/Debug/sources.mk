@@ -35,7 +35,6 @@ Core/Application/mode/mode_state_balancing \
 Core/Application/motor \
 Core/Application/params \
 Core/Application/pid \
-Core/Application/sensor/bme680 \
 Core/Application/sensor/bno055 \
 Core/Application/sensor/mpu9250 \
 Core/Application/timer \

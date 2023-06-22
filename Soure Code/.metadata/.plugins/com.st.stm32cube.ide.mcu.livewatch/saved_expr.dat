@@ -12,3 +12,6 @@ calib_sys
 calib_gyr
 calib_acc
 calib_mag
+temperature
+humidity
+gas_resistance

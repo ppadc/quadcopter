@@ -1,0 +1,19 @@
+/*
+ * bme_init.c
+ *
+ *  Created on: Jun 21, 2023
+ *      Author: nguye
+ */
+
+struct bme680_dev gas_sensor;
+struct bme680_field_data data;
+
+volatile char bufbme[50];
+volatile char bufbme1[50];
+volatile uint32_t var1 = 0;
+volatile uint32_t var2 = 0;
+volatile uint8_t set_required_settings;
+volatile int8_t rslt = 0;
+volatile uint16_t meas_period;
+volatile uint32_t ii = 0;
+

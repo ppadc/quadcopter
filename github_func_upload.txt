@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m "fix bno055 bug and add bme680 driver"
+git commit -m "add bme680 driver"
 git log
 git log --oneline
 git branch

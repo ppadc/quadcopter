@@ -1,0 +1,56 @@
+/*
+ * bme_init.c
+ *
+ *  Created on: Jun 21, 2023
+ *      Author: nguye
+ */
+#include "bme680.h"
+#include "user_define.h"
+#include "delay_us.h"
+
+struct bme680_dev gas_sensor;
+struct bme680_field_data data;
+
+volatile char bufbme[50];
+volatile char bufbme1[50];
+volatile uint32_t var1 = 0;
+volatile uint32_t var2 = 0;
+volatile uint8_t set_required_settings;
+volatile int8_t rslt = 0;
+volatile uint16_t meas_period;
+volatile uint32_t ii = 0;
+
+void user_delay_ms(uint32_t period);
+
+int8_t user_i2c_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
+		uint16_t len);
+int8_t user_i2c_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
+		uint16_t len);
+
+void user_delay_ms(uint32_t period) {
+	delay_ms(period);
+}
+
+int8_t user_i2c_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
+		uint16_t len) {
+	int8_t rslt = 0;
+	HAL_StatusTypeDef status = HAL_OK;
+	status = HAL_I2C_Mem_Read(&hi2c1, dev_id, reg_addr, I2C_MEMADD_SIZE_8BIT,
+			(uint8_t*) reg_data, len, I2C_TIMEOUT_MS);
+	if (status != HAL_OK)
+		rslt = -3;
+	return rslt;
+}
+
+int8_t user_i2c_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
+		uint16_t len) {
+	int8_t rslt = 0;
+	HAL_StatusTypeDef status = HAL_OK;
+	status = HAL_I2C_Mem_Write(&hi2c1, dev_id, reg_addr, I2C_MEMADD_SIZE_8BIT,
+			(uint8_t*) reg_data, len, 0x10000);
+	if (status != HAL_OK)
+		rslt = -3;
+
+	return rslt;
+
+}

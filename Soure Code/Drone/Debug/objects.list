@@ -15,7 +15,6 @@
 "./Core/Application/motor/motor.o"
 "./Core/Application/params/params.o"
 "./Core/Application/pid/pid.o"
-"./Core/Application/sensor/bme680/bme680.o"
 "./Core/Application/sensor/bno055/bno055.o"
 "./Core/Application/sensor/mpu9250/mpu9250.o"
 "./Core/Application/timer/delay_us.o"
