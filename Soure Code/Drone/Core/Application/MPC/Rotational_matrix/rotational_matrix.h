@@ -13,8 +13,6 @@
 #include "timer.h"
 #include "bno055.h"
 
-typedef struct{
-	float rotational_matrix[3][3];
-}rotational_t;
-
+int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *state_u,float *state_v,float *state_w, float *x_dot, float *y_dot, float *z_dot);
+int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot);
 #endif /* APPLICATION_MPC_ROTATIONAL_MATRIX_ROTATIONAL_MATRIX_H_ */

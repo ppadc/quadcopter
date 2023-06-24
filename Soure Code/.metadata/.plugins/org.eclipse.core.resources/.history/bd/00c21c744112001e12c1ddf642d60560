@@ -1,0 +1,45 @@
+/*
+ * rotational_matrix.c
+ *
+ *  Created on: May 27, 2023
+ *      Author: nguye
+ *      Rotational matrix that relates u,v,w with x_dot,y_dot,z_dot
+ */
+#include "rotational_matrix.h"
+#include "params.h"
+#include "user_define.h"
+#include <math.h>
+
+int get_rotational_matrix(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *T_maxtrix[3][3]){
+	uint8_t tmp;
+	char i = 0;
+	char j = 0;
+	float Rx[3][3],Ry[3][3],Rz[3][3];
+	float RxRy[3][3];
+	float phi,theta,psi;
+//	float roll_in,pitch_in,yaw_in;
+//	roll_in  = *roll; pitch_in = *pitch; yaw_in = *yaw;
+	//roll = phi, pitch = theta, yaw = psi
+	phi = *roll; theta = *pitch; psi = *yaw;
+	/*Init Rx Matrix*/
+	Rx[0][0] = 1; Rx[0][1] = 0; Rx[0][2] = 0;
+	Rx[1][0] = 0; Rx[1][1] = cos(phi); Rx[1][2] = sin(phi);
+	Rx[2][0] = 0; Rx[2][1] = -sin(phi); Rx[2][2] = cos(phi);
+	/*Init Ry Matrix*/
+	Ry[0][0] = cos(theta); Ry[0][1] = 0; Ry[0][2] = -sin(theta);
+	Ry[1][0] = 0; Ry[1][1] = 1; Ry[1][2] = 0;
+	Ry[2][0] = sin(theta); Ry[2][1] = 0; Ry[2][2] = cos(theta);
+	/*Init Rz Matrix*/
+	Ry[0][0] = cos(psi); Ry[0][1] = -sin(psi); Ry[0][2] = 0;
+	Ry[1][0] = sin(psi); Ry[1][1] = cos(psi); Ry[1][2] = 0;
+	Ry[2][0] = 0; Ry[2][1] = 0; Ry[2][2] = 1;
+	/*Calculation for R_matrix*/
+	// Calculation for RxRy
+	for(i=0;i<2;i++){
+		for(j=0;j<2;j++){
+
+		}
+	}
+	return 0;
+}
+

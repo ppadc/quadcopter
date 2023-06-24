@@ -1,0 +1,679 @@
+/*
+ * bno055.c
+ *
+ *  Created on: Mar 15, 2023
+ *      Author: nguye
+ */
+
+#include "bno055_register_map.h"
+#include <string.h>
+#include <i2c.h>
+#include "stdio.h"
+#include "user_define.h"
+#include "bno055.h"
+#include "ssd1306.h"
+#include "fonts.h"
+
+//static char calib_sys_sta, calib_gyr_sta, calib_acc_sta, calib_mag_sta;
+
+//static uint8_t chk;
+
+/* Define value units */
+#if BNO055_ACCEL_LINEARACC_GRAVITYVECTOR_UNITS == 0
+#define BNO055_ACC_SCALE 			100.0f
+#define BNO055_LIA_SCALE 			100.0f
+#define BNO055_GRV_SCALE			100.0f
+#elif BNO055_ACCEL_LINEARACC_GRAVITYVECTOR_UNITS == 1
+#define BNO055_ACC_SCALE 			1.0f
+#define BNO055_GRV_SCALE			1.0f
+#define BNO055_LIA_SCALE			1.0f
+#endif
+
+#define BNO055_MAG_SCALE			16.0f
+
+#if BNO055_ANGULAR_RATE_UNITS == 0
+#define BNO055_GYR_SCALE			16.0f
+#elif BNO055_ANGULAR_RATE_UNITS == 1
+#define BNO055_GYR_SCALE			900.0f
+#endif
+
+#if BNO055_EULER_ANGLES_UNITS == 0
+#define BNO055_EUL_SCALE 			16.0f
+#elif BNO055_EULER_ANGLES_UNITS == 1
+#define BNO055_EUL_SCALE			900.0f
+#endif
+
+#define BNO055_QUATERNIONS_SCALE	(0x4000)
+
+#if BNO055_TEMPERATURE_UNITS == 0
+#define BNO055_TEMP_SCALE			1.0f
+#elif BNO055_TEMPERATURE_UNITS == 1
+#define BNO055_TEMP_SCALE			1.0f
+#endif
+
+/* Configurations Power Mode */
+#if BNO055_POWER_MODE == 0
+#define POWER_MODE_NORMAL  						0b00
+#elif	BNO055_POWER_MODE == 1
+#define POWER_MODE_LOW_POWER  					0b01
+#elif	BNO055_POWER_MODE == 2
+#define POWER_MODE_LOW_POWER  					0b1O
+#endif
+
+/* Configurations Accelerometer */
+
+#if BNO055_ACC_G_RANGE_VALUES == 0
+#define ACCEL_G_RANGE							0b00
+#elif BNO055_ACC_G_RANGE_VALUES == 1
+#define ACCEL_G_RANGE							0b01
+#elif BNO055_ACC_G_RANGE_VALUES == 2
+#define ACCEL_G_RANGE							0b10
+#elif BNO055_ACC_G_RANGE_VALUES == 3
+#define ACCEL_G_RANGE							0b11
+#endif
+
+#if BNO055_ACC_BANDWIDTH_VALUES == 0
+#define ACCEL_BANDWIDTH							(0b000 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 1
+#define ACCEL_BANDWIDTH							(0b001 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 2
+#define ACCEL_BANDWIDTH							(0b010 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 3
+#define ACCEL_BANDWIDTH							(0b011 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 4
+#define ACCEL_BANDWIDTH							(0b100 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 5
+#define ACCEL_BANDWIDTH							(0b101 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 6
+#define ACCEL_BANDWIDTH							(0b110 << 2)
+#elif BNO055_ACC_BANDWIDTH_VALUES == 7
+#define ACCEL_BANDWIDTH							(0b111 << 2)
+#endif
+
+#if BNO055_ACC_MODE_VALUES == 0
+#define ACCEL_OPERATION_MODE_NORMAL 			(0b000 << 5)
+#elif BNO055_ACC_MODE_VALUES == 1
+#define ACCEL_OPERATION_MODE_SUSPEND 			(0b001 << 5)
+#elif BNO055_ACC_MODE_VALUES == 2
+#define ACCEL_OPERATION_MODE_LOW_POWER_1 		(0b010 << 5)
+#elif BNO055_ACC_MODE_VALUES == 3
+#define ACCEL_OPERATION_MODE_STANDBY 			(0b011 << 5)
+#elif BNO055_ACC_MODE_VALUES == 4
+#define ACCEL_OPERATION_MODE_LOW_POWER_2 		(0b100 << 5)
+#elif BNO055_ACC_MODE_VALUES == 5
+#define ACCEL_OPERATION_MODE_DEEP_SUSPEND		(0b101 << 5)
+#endif
+
+/* Configurations Gyroscope */
+/*Note: Write this value at GYR_CONFIG_0 to Configurations Gyroscope Mode*/
+#if BNO055_GYR_RANGE_VALUES == 0
+#define GYRO_RANGE								0b000
+#elif BNO055_GYR_RANGE_VALUES == 1
+#define GYRO_RANGE								0b001
+#elif BNO055_GYR_RANGE_VALUES == 2
+#define GYRO_RANGE								0b010
+#elif BNO055_GYR_RANGE_VALUES == 3
+#define GYRO_RANGE								0b011
+#elif BNO055_GYR_RANGE_VALUES == 4
+#define GYRO_RANGE								0b100
+#endif
+
+/*Note: Write this value at GYR_CONFIG_0 to Configurations Gyroscope Mode*/
+#if BNO055_GYR_BANDWIDTH_VALUES == 0
+#define GYR_BANDWIDTH							(0b000 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 1
+#define GYR_BANDWIDTH							(0b001 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 2
+#define GYR_BANDWIDTH							(0b010 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 3
+#define GYR_BANDWIDTH							(0b011 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 4
+#define GYR_BANDWIDTH							(0b100 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 5
+#define GYR_BANDWIDTH							(0b101 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 6
+#define GYR_BANDWIDTH							(0b110 << 3)
+#elif BNO055_GYR_BANDWIDTH_VALUES == 7
+#define GYR_BANDWIDTH							(0b111 << 3)
+#endif
+
+/*Note: Write this value at GYR_CONFIG_1 to Configurations Gyroscope Mode*/
+#if BNO055_GYR_MODE_VALUES == 0
+#define GYR_OPERATION_MODE						0b000
+#elif BNO055_GYR_MODE_VALUES == 1
+#define ACCEL_OPERATION_MODE 					0b001
+#elif BNO055_GYR_MODE_VALUES == 2
+#define ACCEL_OPERATION_MODE 					0b010
+#elif BNO055_GYR_MODE_VALUES == 3
+#define ACCEL_OPERATION_MODE 					0b011
+#elif BNO055_GYR_MODE_VALUES == 4
+#define ACCEL_OPERATION_MODE					0b100
+#endif
+
+/* Configurations Magnetometer */
+#if BNO055_MAG_DATA_OUTPUT_RATE_VALUES   == 0
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b000
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 1
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b001
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 2
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b010
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 3
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b011
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 4
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b100
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 5
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b101
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 6
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b110
+#elif BNO055_MAG_DATA_OUTPUT_RATE_VALUES == 7
+#define BNO055_MAG_DATA_OUTPUT_RATE 			0b111
+#endif
+
+#if BNO055_MAG_OPERATION_MODE_VALUES == 0
+#define MAG_OPERATION_MODE						(0b00 << 3)
+#elif BNO055_MAG_OPERATION_MODE_VALUES == 1
+#define MAG_OPERATION_MODE						(0b01 << 3)
+#elif BNO055_MAG_OPERATION_MODE_VALUES == 2
+#define MAG_OPERATION_MODE						(0b10 << 3)
+#elif BNO055_MAG_OPERATION_MODE_VALUES == 3
+#define MAG_OPERATION_MODE						(0b11 << 3)
+#endif
+
+#if BNO055_MAG_PWR_MODE_VALUES == 0
+#define MAG_PWR_MODE							(0b00 << 5)
+#elif BNO055_MAG_PWR_MODE_VALUES == 1
+#define MAG_PWR_MODE							(0b01 << 5)
+#elif BNO055_MAG_PWR_MODE_VALUES == 2
+#define MAG_PWR_MODE							(0b10 << 5)
+#elif BNO055_MAG_PWR_MODE_VALUES == 3
+#define MAG_PWR_MODE							(0b11 << 5)
+#endif
+
+/* Configurations Value Units */
+#if BNO055_ACCEL_LINEARACC_GRAVITYVECTOR_UNITS == 0
+#define BNO055_ACCEL_UNITS						 0b00
+#elif BNO055_ACCEL_LINEARACC_GRAVITYVECTOR_UNITS == 1
+#define BNO055_ACCEL_UNITS						 0b01
+#endif
+
+#if BNO055_ANGULAR_RATE_UNITS == 0
+#define ANGULAR_RATE_UNITS				 		(0b00 << 1)
+#elif BNO055_NGULAR_RATE_UNITS == 1
+#define ANGULAR_RATE_UNITS				 		(0b01 << 1)
+#endif
+
+#if BNO055_EULER_ANGLES_UNITS == 0
+#define EULER_ANGLES_UNITS				 		(0b00 << 2)
+#elif BNO055_EULER_ANGLES_UNITS == 1
+#define EULER_ANGLES_UNITS				 		(0b01 << 2)
+#endif
+
+#if BNO055_TEMPERATURE_UNITS == 0
+#define TEMPERATURE_UNITS				 		(0b00 << 4)
+#elif BNO055_TEMPERATURE_UNITS == 1
+#define TEMPERATURE_UNITS				 		(0b01 << 4)
+#endif
+
+static int bno055_read(uint8_t addr, uint8_t *value){
+	if(HAL_I2C_Mem_Read(&BNO055__I2C, BNO055_I2C_ADDR, addr , I2C_MEMADD_SIZE_8BIT, value, 1, I2C_TIMEOUT_MS)!= HAL_OK){
+		*value = 0;
+		return -1;
+	}
+	return 0;
+}
+
+static int bno055_write(uint8_t addr, uint8_t *value){
+	if(HAL_I2C_Mem_Write(&BNO055__I2C, BNO055_I2C_ADDR, addr , I2C_MEMADD_SIZE_8BIT, value, 1, I2C_TIMEOUT_MS)!= HAL_OK)
+		return -1;
+	return 0;
+}
+
+static int bno055_read_bytes(uint8_t addr, uint8_t *value, uint8_t len){
+	if(HAL_I2C_Mem_Read(&BNO055__I2C, BNO055_I2C_ADDR, addr , I2C_MEMADD_SIZE_8BIT, value, len, I2C_TIMEOUT_MS)!= HAL_OK){
+		memset(value,0,len);
+		return -1;
+	}
+	return 0;
+}
+
+/* User use when need I2C write Byes function */
+//static int bno055_write_bye(uint8_t addr, uint8_t *value, uint8_t len){
+//	if(HAL_I2C_Mem_Write(&BNO055__I2C, BNO055_I2C_ADDR, addr , I2C_MEMADD_SIZE_8BIT, value, len, I2C_TIMEOUT_MS)!= HAL_OK)
+//		return -1;
+//	return 0;
+//}
+
+uint8_t bno055_sys_err(){
+	uint8_t tmp;
+	uint8_t error_sys;
+	uint8_t buffer_sys_err[1] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read(SYS_ERR,buffer_sys_err)<0){
+			return -1;
+		}
+	error_sys = buffer_sys_err[0];
+	return error_sys+3;
+}
+
+uint8_t bno055_sys_status(){
+	uint8_t tmp;
+	uint8_t sys_status;
+	uint8_t buffer_sys_status[1] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(SYS_STATUS,buffer_sys_status,1)<0){
+			return -1;
+		}
+	sys_status = buffer_sys_status[0];
+	return sys_status;
+}
+
+
+
+void bno055_set_operation_mode(bno055_opr_mode_t opr_mode);
+void bno055_fusion_data_output_systems(fusion_data_output_systems_t data_systems);
+
+void bno055_set_operation_mode(bno055_opr_mode_t opr_mode){
+	uint8_t tmp;
+	switch(opr_mode){
+	case BNO055_OPERATION_CONFIG_MODE:
+		tmp = BNO055_OPERATION_CONFIG_MODE;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_ACCONLY:
+		tmp = BNO055_OPERATION_MODE_ACCONLY;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_MAGONLY:
+		tmp = BNO055_OPERATION_MODE_MAGONLY;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_GYROONLY:
+		tmp = BNO055_OPERATION_MODE_GYROONLY;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_ACCMAG:
+		tmp = BNO055_OPERATION_MODE_ACCMAG;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_ACCGYRO:
+		tmp = BNO055_OPERATION_MODE_ACCGYRO;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_MAGGYRO:
+		tmp = BNO055_OPERATION_MODE_MAGGYRO;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_AMG:
+		tmp = BNO055_OPERATION_MODE_AMG;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_IMU:
+		tmp = BNO055_OPERATION_MODE_IMU;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_COMPASS:
+		tmp = BNO055_OPERATION_MODE_COMPASS;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_M4G:
+		tmp = BNO055_OPERATION_MODE_M4G;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_NDOF_FMC_OFF:
+		tmp = BNO055_OPERATION_MODE_NDOF_FMC_OFF;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	case BNO055_OPERATION_MODE_NDOF:
+		tmp = BNO055_OPERATION_MODE_NDOF;
+		bno055_write(OPR_MODE,&tmp);
+	break;
+	}
+}
+
+void bno055_set_power_mode(power_mode_t pwr_mode){
+	uint8_t tmp;
+	switch(pwr_mode){
+	case NORMAL_MODE:
+		tmp = NORMAL_MODE;
+		bno055_write(PWR_MODE,&tmp);
+	break;
+	case LOW_POWER_MODE:
+		tmp = LOW_POWER_MODE;
+		bno055_write(PWR_MODE,&tmp);
+	break;
+	case SUSPEND_MODE:
+		tmp = SUSPEND_MODE;
+		bno055_write(PWR_MODE,&tmp);
+	break;
+	}
+}
+
+void bno055_fusion_data_output_systems(fusion_data_output_systems_t data_systems){
+	uint8_t tmp;
+	switch(data_systems){
+	case WINDOWS_FUSION_DATA_OUTPUT:
+	tmp = WINDOWS_FUSION_DATA_OUTPUT,
+	bno055_write(UNIT_SEL,&tmp);
+	break;
+	case ANDROID_FUSION_DATA_OUTPUT:
+	tmp = ANDROID_FUSION_DATA_OUTPUT;
+	bno055_write(UNIT_SEL,&tmp);
+	break;
+	}
+}
+
+void bno055_axis_remap_config(bno055_axis_remap_config_t axis_remap){
+	uint8_t tmp;
+	switch(axis_remap){
+	case REMAP_CONFIG_P0_3_5_6:
+	tmp = REMAP_CONFIG_P0_3_5_6,
+	bno055_write(AXIS_MAP_CONFIG,&tmp);
+	break;
+	case REMAP_CONFIG_P1_2_4_7:
+	tmp = REMAP_CONFIG_P1_2_4_7,
+	bno055_write(AXIS_MAP_CONFIG,&tmp);
+	break;
+	}
+}
+
+void bno055_axis_remap_sign(bno055_axis_remap_sign_t axis_remap_sign){
+	uint8_t tmp;
+	switch(axis_remap_sign){
+	case REMAP_SIGN_P0:
+	tmp = REMAP_SIGN_P0,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P1:
+	tmp = REMAP_SIGN_P1,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P2:
+	tmp = REMAP_SIGN_P2,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P3:
+	tmp = REMAP_SIGN_P3,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P4:
+	tmp = REMAP_SIGN_P4,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P5:
+	tmp = REMAP_SIGN_P5,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P6:
+	tmp = REMAP_SIGN_P6,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	case REMAP_SIGN_P7:
+	tmp = REMAP_SIGN_P7,
+	bno055_write(AXIS_MAP_SIGN,&tmp);
+	break;
+	}
+}
+
+int bno055_calibrations_status(char *sys, char *gyr, char *acc, char *mag){
+	uint8_t tmp;
+	uint8_t buffer_calib_sta[1] ={};
+	tmp = 0x00;
+	bno055_write(PAGE_ID,&tmp);
+	if(bno055_read(CALIB_STAT,buffer_calib_sta)<0){
+		return -1;
+		*sys = (int8_t)((int8_t)buffer_calib_sta[0])>>6 & 0b11;
+		*gyr = (int8_t)((int8_t)buffer_calib_sta[0])>>4 & 0b11;
+		*acc = (int8_t)((int8_t)buffer_calib_sta[0])>>2 & 0b11;
+		*mag = (int8_t)((int8_t)buffer_calib_sta[0]) & 0b11;
+	}
+	if((*sys == 3 && *gyr == 3 && *acc == 3 && *mag == 3)) return 1;
+	return 0;
+}
+
+int bno055_test(){
+	uint8_t tmp;
+	uint8_t buffer_test[1] ={};
+	unsigned char st_acc, st_mag, st_gyr, st_mcu, seft_test;
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(ST_RESULT,buffer_test,1)<0){
+		return -1;
+	}
+	st_acc = (int8_t)((int8_t)buffer_test[0]) & 0b0001;
+	st_mag = (int8_t)((int8_t)buffer_test[0]) & 0b0010;
+	st_gyr = (int8_t)((int8_t)buffer_test[0]) & 0b0100;
+	st_mcu = (int8_t)((int8_t)buffer_test[0]) & 0b1000;
+	if((seft_test = (((st_mcu|st_gyr)|st_mag)|st_acc))!=15) return -1;
+	return 0;
+}
+
+int bno055_initization(){
+	uint8_t tmp,member;
+	char calib_sys;
+	char calib_gyr, calib_acc, calib_mag;
+    char i_check=0;
+    char buzzer = 0;
+    char data[120];
+    //uint8_t Rxbuffer[20];
+    uint8_t check_sys[1] = {};
+//    char i = 0;
+//    char j = 0;
+//    for(i=0;i<1;i++){
+//  	  for(j=0;j<3;j++){
+//  		  if(HAL_I2C_IsDeviceReady(&BNO055__I2C,BNO055_I2C_ADDR, 1, 100)==HAL_OK){
+//  			  HAL_GPIO_TogglePin(GPIOC, LED_Pin);
+//  			  HAL_Delay(80);
+//  		  	  }
+//  		  else{
+//  			  HAL_GPIO_WritePin(GPIOC,BUZZER_Pin, SET);
+//  			  HAL_Delay(100);
+//  		  }
+//  	  }
+//    }
+    bno055_set_power_mode(NORMAL_MODE);
+    /*Calibration IMU*/
+    bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF_FMC_OFF);
+    //bno055_calibrations_status(&calib_sys, &calib_gyr, &calib_acc, &calib_mag);
+    while(i_check<2){
+       // Still calibrating, out until everything done
+       //bno055_calibrations_status(&calib_sys, &calib_gyr, &calib_acc, &calib_mag);
+       	if(HAL_I2C_Mem_Read(&BNO055__I2C, BNO055_I2C_ADDR, CALIB_STAT , I2C_MEMADD_SIZE_8BIT, &check_sys[1], 1, I2C_TIMEOUT_MS)==HAL_OK){
+       	    	while(buzzer==0){
+       	             HAL_GPIO_WritePin(GPIOC, BUZZER_Pin, SET);
+       	             delay_ms(200);
+       	             HAL_GPIO_WritePin(GPIOC, BUZZER_Pin, RESET);
+       	             buzzer++;
+       	        }
+       	    calib_sys = (int8_t)((int8_t)check_sys[0])>>6 & 0b11;
+       	    calib_gyr = (int8_t)((int8_t)check_sys[0])>>4 & 0b11;
+       	    calib_acc = (int8_t)((int8_t)check_sys[0])>>2 & 0b11;
+       	    calib_mag = (int8_t)((int8_t)check_sys[0]) & 0b11;
+       		}
+       	if(calib_sys==3 && calib_gyr == 3 && calib_acc == 3 && calib_mag == 3){
+       		HAL_UART_Transmit(&huart6,(uint8_t *)data,sprintf(data,"%d,%d,%d,%d\n",calib_sys,calib_gyr,calib_acc,calib_mag),10);
+   			i_check = 2;
+   			delay_ms(10);
+       	 }
+            else{
+   			HAL_GPIO_TogglePin(GPIOC, LED_Pin);
+   			HAL_UART_Transmit(&huart6,(uint8_t *)data,sprintf(data,"%d,%d,%d,%d\n",calib_sys,calib_gyr,calib_acc,calib_mag),10);
+   			delay_ms(100);
+            }
+       }
+	  /*Reset System */
+	  tmp = 0x20;
+	  bno055_write(SYS_TRIGGER,&tmp);
+      delay_ms(600);
+      member = 0;
+      HAL_I2C_Mem_Read(&BNO055__I2C,BNO055_I2C_ADDR,CHIP_ID_PAGE_0, I2C_MEMADD_SIZE_8BIT, &member, 1, I2C_TIMEOUT_MS);
+      if(member==BNO055_ID){
+    	  HAL_GPIO_WritePin(GPIOC, LED_Pin, SET);
+      }
+      else{
+    	  HAL_GPIO_WritePin(GPIOC, BUZZER_Pin, SET);
+      }
+    /* Set operation_mode BNO055_OPERATION_CONFIG_MODE */
+    bno055_set_operation_mode(BNO055_OPERATION_CONFIG_MODE);
+    delay_ms(20);
+	/* Configurations Power Mode */
+	tmp = POWER_MODE_NORMAL;
+	bno055_write(PWR_MODE,&tmp);
+    //Move to Page 1//
+	tmp = 0x01;
+	bno055_write(PAGE_ID,&tmp);
+    /* Configurations Accelerometer */
+	tmp = (ACCEL_OPERATION_MODE_NORMAL | ACCEL_BANDWIDTH)| ACCEL_G_RANGE;
+	bno055_write(ACC_CONFIG,&tmp);
+    /* Configurations Gyroscope */
+	tmp = GYR_BANDWIDTH | GYRO_RANGE;
+	bno055_write(GYR_CONFIG_0,&tmp);
+	tmp = GYR_OPERATION_MODE;
+	bno055_write(GYR_CONFIG_1,&tmp);
+    /* Configurations Magnetometer */
+	tmp = (MAG_PWR_MODE | MAG_OPERATION_MODE)| BNO055_MAG_DATA_OUTPUT_RATE;
+	bno055_write(MAG_CONFIG,&tmp);
+  	/*Configuration Sensor Unit*/
+  	//Move to Page 0//
+    tmp = 0x00;
+    bno055_write(PAGE_ID,&tmp);
+    tmp = (((TEMPERATURE_UNITS | EULER_ANGLES_UNITS)| ANGULAR_RATE_UNITS)| BNO055_ACCEL_UNITS);
+    bno055_write(UNIT_SEL,&tmp);
+    bno055_fusion_data_output_systems(ANDROID_FUSION_DATA_OUTPUT);
+    /* Configure axis mapping*/
+    bno055_axis_remap_config(REMAP_CONFIG_P1_2_4_7);
+    bno055_axis_remap_sign(REMAP_SIGN_P1);
+    //set BNO055 SYS_TRIGGER TO 0x00
+    tmp = 0x00;
+    bno055_write(SYS_TRIGGER,&tmp);
+    delay_ms(50);
+    //set BNO055_OPERATION_MODE_NDOF
+    bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
+    delay_ms(20);
+    return 0;
+}
+int bno055_get_acc_mag_radius(float *acc_radius, float *mag_radius){
+	uint8_t tmp;
+	uint8_t buffer_radius[4];
+	tmp = 0x00;
+	bno055_write(PAGE_ID,&tmp);
+	if(bno055_read_bytes(ACC_RADIUS_LSB,buffer_radius,4)<0) return -1;
+	*acc_radius = (int16_t)((int16_t)buffer_radius[1]) << 8 | buffer_radius[0];
+	*mag_radius = (int16_t)((int16_t)buffer_radius[3]) << 8 | buffer_radius[2];
+	return -1;
+}
+int bno055_get_calibrations_offset(float *accx_ofs,float *accy_ofs, float *accz_ofs, float *magx_ofs, float *magy_ofs, float *magz_ofs, float *gyrx_ofs, float *gyry_ofs, float *gyrz_ofs){
+	uint8_t tmp;
+	uint8_t buffer_calibrations[18];
+	tmp = 0x00;
+	bno055_write(PAGE_ID,&tmp);
+	if(bno055_read_bytes(ACC_OFFSET_X_lSB,buffer_calibrations,18)<0) return -1;
+	*accx_ofs = (int16_t)((int16_t)buffer_calibrations[1]) << 8 | buffer_calibrations[0];
+	*accy_ofs = (int16_t)((int16_t)buffer_calibrations[3]) << 8 | buffer_calibrations[2];
+	*accz_ofs = (int16_t)((int16_t)buffer_calibrations[5]) << 8 | buffer_calibrations[4];
+	*magx_ofs = (int16_t)((int16_t)buffer_calibrations[7]) << 8 | buffer_calibrations[6];
+	*magy_ofs = (int16_t)((int16_t)buffer_calibrations[9]) << 8 | buffer_calibrations[8];
+	*magz_ofs = (int16_t)((int16_t)buffer_calibrations[11]) << 8 | buffer_calibrations[10];
+	*gyrx_ofs = (int16_t)((int16_t)buffer_calibrations[13]) << 8 | buffer_calibrations[12];
+	*gyry_ofs = (int16_t)((int16_t)buffer_calibrations[15]) << 8 | buffer_calibrations[14];
+	*gyrz_ofs = (int16_t)((int16_t)buffer_calibrations[17]) << 8 | buffer_calibrations[16];
+	return 0;
+}
+int bno055_get_accel_gyro(float *ax,float *ay,float *az ,float *gx ,float *gy ,float *gz){
+	uint8_t tmp;
+	uint8_t buffer_accel[6] = {};
+	uint8_t buffer_gyro[6] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(ACC_DATA_X_LSB,buffer_accel,6)<0){
+		return -1;
+	}
+	*ax = (int16_t)((int16_t)buffer_accel[1]  << 8) | buffer_accel[0]; *ax /= BNO055_ACC_SCALE;
+	*ay = (int16_t)((int16_t)buffer_accel[3]  << 8) | buffer_accel[2]; *ay /= BNO055_ACC_SCALE;
+	*az = (int16_t)((int16_t)buffer_accel[5]  << 8) | buffer_accel[4]; *az /= BNO055_ACC_SCALE;
+	if(bno055_read_bytes(GYR_DATA_X_LSB,buffer_gyro,6)<0){
+			return -1;
+		}
+	*gx = (int16_t)((int16_t)buffer_gyro[1]  << 8) | buffer_gyro[0]; *gx /= BNO055_GYR_SCALE;
+	*gy = (int16_t)((int16_t)buffer_gyro[3]  << 8) | buffer_gyro[2]; *gy /= BNO055_GYR_SCALE;
+	*gz = (int16_t)((int16_t)buffer_gyro[5]  << 8) | buffer_gyro[4]; *gz /= BNO055_GYR_SCALE;
+	return 0;
+}
+int bno055_get_mag(float *mx,float *my,float *mz){
+	uint8_t tmp;
+	uint8_t buffer_mag[6] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(MAG_DATA_X_LSB,buffer_mag,6)<0){
+			return -1;
+		}
+	*mx = (int16_t)((int16_t)buffer_mag[1]  << 8) | buffer_mag[0]; *mx /= BNO055_MAG_SCALE;
+	*my = (int16_t)((int16_t)buffer_mag[3]  << 8) | buffer_mag[2]; *my /= BNO055_MAG_SCALE;
+	*mz = (int16_t)((int16_t)buffer_mag[5]  << 8) | buffer_mag[4]; *mz /= BNO055_MAG_SCALE;
+	return 0;
+}
+int bno055_get_temp(float *temp){
+	uint8_t tmp;
+	uint8_t buffer_temp[1] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(TEMP,buffer_temp,1)<0){
+				return -1;
+			}
+	*temp = buffer_temp[0] / BNO055_TEMP_SCALE;
+	return 0;
+}
+int bno055_get_elu_data(float *roll, float *pitch, float *yaw){
+	uint8_t tmp;
+	uint8_t buffer_eul[6] = {};
+	tmp = 0;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(EUL_HEADING_LSB,buffer_eul,6)<0){
+					return -1;
+	}
+	*yaw = (int16_t)((int16_t)buffer_eul[1]  << 8) | buffer_eul[0]; *yaw /= BNO055_EUL_SCALE;
+	*roll = (int16_t)((int16_t)buffer_eul[3]  << 8) | buffer_eul[2]; *roll /= BNO055_EUL_SCALE;
+	*pitch = (int16_t)((int16_t)buffer_eul[5]  << 8) | buffer_eul[4]; *pitch /= BNO055_EUL_SCALE;
+	return 0;
+}
+int bno055_get_qua_data(float *qua_w, float *qua_x, float *qua_y, float *qua_z){
+	uint8_t tmp;
+	uint8_t buffer_qua[8] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(QUA_DATA_W_LSB,buffer_qua,8)<0){
+					return -1;
+			}
+	*qua_w = (int16_t)((int16_t)buffer_qua[1]  << 8) | buffer_qua[0]; *qua_w /= BNO055_QUATERNIONS_SCALE;
+	*qua_x = (int16_t)((int16_t)buffer_qua[3]  << 8) | buffer_qua[2]; *qua_x /= BNO055_QUATERNIONS_SCALE;
+	*qua_y = (int16_t)((int16_t)buffer_qua[5]  << 8) | buffer_qua[4]; *qua_y /= BNO055_QUATERNIONS_SCALE;
+	*qua_z = (int16_t)((int16_t)buffer_qua[7]  << 8) | buffer_qua[6]; *qua_z /= BNO055_QUATERNIONS_SCALE;
+	return 0;
+}
+int bno055_get_lia_data(float *lia_x, float *lia_y, float *lia_z){
+	uint8_t tmp;
+	uint8_t buffer_lia[6] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(LIA_DATA_X_LSB,buffer_lia,6)<0){
+				return -1;
+			}
+	*lia_x = (int16_t)((int16_t)buffer_lia[1]  << 8) | buffer_lia[0]; *lia_x /= BNO055_LIA_SCALE;
+	*lia_y = (int16_t)((int16_t)buffer_lia[3]  << 8) | buffer_lia[2]; *lia_y /= BNO055_LIA_SCALE;
+	*lia_z = (int16_t)((int16_t)buffer_lia[5]  << 8) | buffer_lia[4]; *lia_z /= BNO055_LIA_SCALE;
+	return 0;
+}
+int bno055_get_grv_data(float *grv_x, float *grv_y, float *grv_z){
+	uint8_t tmp;
+	uint8_t buffer_grv[6] = {};
+	tmp = 0x00;
+	if(bno055_write(PAGE_ID,&tmp)<0) return -1;
+	if(bno055_read_bytes(GRV_DATA_X_LSB,buffer_grv,6)<0){
+				return -1;
+			}
+	*grv_x = (int16_t)((int16_t)buffer_grv[1]  << 8) | buffer_grv[0]; *grv_x/= BNO055_GRV_SCALE;
+	*grv_y = (int16_t)((int16_t)buffer_grv[3]  << 8) | buffer_grv[2]; *grv_y/= BNO055_GRV_SCALE;
+	*grv_z = (int16_t)((int16_t)buffer_grv[5]  << 8) | buffer_grv[4]; *grv_z/= BNO055_GRV_SCALE;
+	return 0;
+}

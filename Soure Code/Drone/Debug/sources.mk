@@ -23,6 +23,7 @@ C_DEPS :=
 SUBDIRS := \
 Core/Application/Buzzer \
 Core/Application/MPC/Rotational_matrix \
+Core/Application/MPC \
 Core/Application/button \
 Core/Application/eeprom \
 Core/Application/imu \

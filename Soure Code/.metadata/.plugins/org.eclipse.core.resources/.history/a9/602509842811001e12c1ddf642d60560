@@ -1,0 +1,81 @@
+/*
+ * bno055.h
+ *
+ *  Created on: Mar 15, 2023
+ *      Author: nguye
+ */
+
+#include <bno055_register_map.h>
+#include "user_define.h"
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#ifndef APPLICATION_SENSOR_BNO055_BNO055_H_
+#define APPLICATION_SENSOR_BNO055_BNO055_H_
+
+typedef enum{
+	//Config Mode
+	BNO055_OPERATION_CONFIG_MODE   		= 0b0000,
+	// Non Fusion Mode
+	BNO055_OPERATION_MODE_ACCONLY  		= 0b0001,
+	BNO055_OPERATION_MODE_MAGONLY  		= 0b0010,
+	BNO055_OPERATION_MODE_GYROONLY 		= 0b0011,
+	BNO055_OPERATION_MODE_ACCMAG		= 0b0100,
+	BNO055_OPERATION_MODE_ACCGYRO		= 0b0101,
+	BNO055_OPERATION_MODE_MAGGYRO		= 0b0110,
+	BNO055_OPERATION_MODE_AMG			= 0b0111,
+	//Fusion Mode
+	BNO055_OPERATION_MODE_IMU 			= 0b1000,
+	BNO055_OPERATION_MODE_COMPASS 		= 0b1001,
+	BNO055_OPERATION_MODE_M4G 			= 0b1010,
+	BNO055_OPERATION_MODE_NDOF_FMC_OFF 	= 0b1011,
+	BNO055_OPERATION_MODE_NDOF 			= 0b1100,
+}bno055_opr_mode_t;
+
+typedef enum{
+	WINDOWS_FUSION_DATA_OUTPUT 			= 0b0<<7,
+	ANDROID_FUSION_DATA_OUTPUT 			= 0b1<<7,
+}fusion_data_output_systems_t;
+
+typedef enum{
+	REMAP_CONFIG_P0_3_5_6 = 0x21,
+	REMAP_CONFIG_P1_2_4_7 = 0x24, // default
+}bno055_axis_remap_config_t;
+
+typedef enum{
+    REMAP_SIGN_P0 = 0x04,
+    REMAP_SIGN_P1 = 0x00, // default
+    REMAP_SIGN_P2 = 0x06,
+    REMAP_SIGN_P3 = 0x02,
+    REMAP_SIGN_P4 = 0x03,
+    REMAP_SIGN_P5 = 0x01,
+    REMAP_SIGN_P6 = 0x07,
+    REMAP_SIGN_P7 = 0x05,
+}bno055_axis_remap_sign_t;
+
+typedef enum{
+
+}power_mode_t;
+
+uint8_t bno055_sys_status();
+uint8_t bno055_sys_err();
+int bno055_calibrations_status(char *sys, char *gyr, char *acc, char *mag);
+
+void bno055_set_operation_mode(bno055_opr_mode_t opr_mode);
+void bno055_fusion_data_output_systems(fusion_data_output_systems_t data_systems);
+
+int bno055_get_calibrations_offset(float *accx_ofs,float *accy_ofs, float *accz_ofs, float *magx_ofs, float *magy_ofs, float *magz_ofs, float *gyrx_ofs, float *gyry_ofs, float *gyrz_ofs);
+
+int bno055_initization();
+int bno055_test();
+
+int bno055_get_accel_gyro(float *ax,float *ay,float *az ,float *gx ,float *gy ,float *gz);
+int bno055_get_mag(float *mx,float *my,float *mz);
+int bno055_get_temp(float *temp);
+int bno055_get_elu_data(float *roll, float *pitch, float *yaw);
+int bno055_get_qua_data(float *qua_w, float *qua_x, float *qua_y, float *qua_z);
+int bno055_get_lia_data(float *lia_x, float *lia_y, float *lia_z);
+int bno055_get_grv_data(float *grv_x, float *grv_y, float *grv_z);
+int bno055_get_acc_mag_radius(float *acc_radius, float *mag_radius);
+#endif /* APPLICATION_SENSOR_BNO055_BNO055_H_ */

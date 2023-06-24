@@ -158,7 +158,7 @@
 #define BNO055_ANGULAR_RATE_UNITS				   		0
 // DPS								--> 0
 // RPS								--> 1
-#define BNO055_EULER_ANGLES_UNITS						0
+#define BNO055_EULER_ANGLES_UNITS						1
 // Degress 							--> 0
 // Radians 							--> 1
 #define BNO055_TEMPERATURE_UNITS						0

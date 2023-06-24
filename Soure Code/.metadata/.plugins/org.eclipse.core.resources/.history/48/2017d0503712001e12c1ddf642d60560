@@ -1,0 +1,16 @@
+/*
+ * rotational_matrix.c
+ *
+ *  Created on: May 27, 2023
+ *      Author: nguye
+ *      Rotational matrix that relates u,v,w with x_dot,y_dot,z_dot
+ */
+#include "rotational_matrix.h"
+#include "params.h"
+#include "user_define.h"
+#include <math.h>
+
+int get_rotational_matrix(float *Rx, float *Ry,float *Rz){
+
+	return 0;
+}

@@ -1,0 +1,18 @@
+/*
+ * rotational_matrix.c
+ *
+ *  Created on: May 27, 2023
+ *      Author: nguye
+ *      Rotational matrix that relates u,v,w with x_dot,y_dot,z_dot
+ */
+#include "rotational_matrix.h"
+#include "params.h"
+#include "user_define.h"
+#include <math.h>
+#include "bno055.h"
+
+int get_rotational_matrix(float *roll, float *pitch,float *yaw, float *T_matrix[3][3]){
+	uint8_t tmp;
+	bno055_get_elu_data(&roll, &pitch, &yaw);
+	return 0;
+}

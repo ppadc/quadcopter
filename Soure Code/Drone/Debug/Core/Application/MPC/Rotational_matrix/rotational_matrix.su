@@ -1,0 +1,2 @@
+../Core/Application/MPC/Rotational_matrix/rotational_matrix.c:14:5:get_rotational_matrix_pos_controller	208	static
+../Core/Application/MPC/Rotational_matrix/rotational_matrix.c:79:5:get_rotational_matrix_lpv_cont_discrete	216	static

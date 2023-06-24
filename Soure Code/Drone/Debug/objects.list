@@ -1,5 +1,6 @@
 "./Core/Application/Buzzer/buzzer.o"
 "./Core/Application/MPC/Rotational_matrix/rotational_matrix.o"
+"./Core/Application/MPC/mpc.o"
 "./Core/Application/button/button.o"
 "./Core/Application/eeprom/eeprom.o"
 "./Core/Application/imu/imu.o"

@@ -39,8 +39,11 @@ char status[4];
 char data1[120];
 char data2[120];
 char data3[120];
+char data4[120];
 float temp,roll,pitch,yaw;
 float lia_x,lia_y,lia_z;
+float gyr_x,gyr_y,gyr_z;
+float angular_acc_x,angular_acc_y,angular_acc_z;
 int sys,gyr,acc,mag;
 float ax,ay,az,gx,gy,gz;
 uint8_t Rxbuffer[20];
@@ -150,12 +153,19 @@ int main(void)
 	  bno055_get_elu_data(&roll, &pitch, &yaw);
 	  bno055_get_temp(&temp);
 	  bno055_get_accel_gyro(&ax,&ay,&az,&gx,&gy,&gz);
+	  delay_ms(50);
+	  bno055_get_accel_gyro(&ax,&ay,&az,&gyr_x,&gyr_x,&gyr_x);
+	  angular_acc_x = (gyr_x - gx ) / 50;
+	  angular_acc_y = (gyr_y - gy ) / 50;
+	  angular_acc_z = (gyr_z - gz ) / 50;
 	  bno055_get_lia_data(&lia_x, &lia_y, &lia_z);
-	  HAL_UART_Transmit(&huart6,(uint8_t *)data1, sprintf(data1,"%0.5f,%0.5f,%0.5f,%0.5f,%0.5f,%0.5f,%0.5f\n",roll,pitch,yaw,temp,lia_x,lia_y,lia_z),10);
+	  //HAL_UART_Transmit(&huart6,(uint8_t *)data1, sprintf(data1,"%0.5f,%0.5f,%0.5f,%0.5f,%0.5f,%0.5f,%0.5f\n",roll,pitch,yaw,temp,lia_x,lia_y,lia_z),10);
+	  //HAL_UART_Transmit(&huart6,(uint8_t *)data1, sprintf(data1,"%0.5f,%0.5f,%0.5f\n",gx,gy,gz),10);
+	  HAL_UART_Transmit(&huart6,(uint8_t *)data2, sprintf(data2,"%0.5f,%0.5f,%0.5f\n",angular_acc_x,angular_acc_y,angular_acc_z),10);
 	  //sprintf(data2,"%c,%c,%c,%c\n",sys,gyr,acc,mag);
-	  HAL_UART_Transmit(&huart6,(uint8_t *)data2,sprintf(data2,"%d,%d,%d,%d\n",sys,gyr,acc,mag),10);
-	  HAL_UART_Transmit(&huart6,(uint8_t *)data3,sprintf(data3,"%0.5f,%0.5f,%0.5f,%0.5f,%0.5f,%0.5f\n",ax,ay,az,gx,gy,gz),10);
-	  delay_ms(1000);
+	  //HAL_UART_Transmit(&huart6,(uint8_t *)data2,sprintf(data2,"%d,%d,%d,%d\n",sys,gyr,acc,mag),10);
+	  //HAL_UART_Transmit(&huart6,(uint8_t *)data3,sprintf(data3,"%0.5f,%0.5f,%0.5f,%0.5f,%0.5f,%0.5f\n",ax,ay,az,gx,gy,gz),10);
+	  delay_ms(100);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
