@@ -17,8 +17,8 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	uint8_t k = 0;
 	float Rx[3][3],Ry[3][3],Rz[3][3];
 	float RyRx[3][3];
-	float pos_vel_body[1][3];
-	float pos_vel_fixed[1][3];
+	float pos_vel_body[3];
+	float pos_vel_fixed[3];
 	float phi,theta,psi;
 #if BNO055_EULER_ANGLES_UNITS == 0
 	/*Convert Degree to Radian*/
@@ -63,17 +63,17 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	}
 	/*Create pos_vel_body*/
 	//vector for the linear velocities in the body frame V vector B = [ u v w ]T m/s
-	pos_vel_body[0][0] = *state_u;
-	pos_vel_body[0][1] = *state_v;
-	pos_vel_body[0][2] = *state_w;
+	pos_vel_body[0] = *state_u;
+	pos_vel_body[1] = *state_v;
+	pos_vel_body[2] = *state_w;
 	/* Connect the linear velocities on the inertia frame to the linear velocities in the body frame*/
-	pos_vel_fixed[0][0] = *R_matrix[0][0]*pos_vel_body[0][0] + *R_matrix[0][1]*pos_vel_body[0][2] + *R_matrix[0][2]*pos_vel_body[0][3];
-	pos_vel_fixed[0][1] = *R_matrix[1][0]*pos_vel_body[0][0] + *R_matrix[1][1]*pos_vel_body[0][2] + *R_matrix[1][2]*pos_vel_body[0][3];
-	pos_vel_fixed[0][2] = *R_matrix[2][0]*pos_vel_body[0][0] + *R_matrix[2][1]*pos_vel_body[0][2] + *R_matrix[2][2]*pos_vel_body[0][3];
+	pos_vel_fixed[0] = *R_matrix[0][0]*pos_vel_body[0] + *R_matrix[0][1]*pos_vel_body[1] + *R_matrix[0][2]*pos_vel_body[2];
+	pos_vel_fixed[1] = *R_matrix[1][0]*pos_vel_body[0] + *R_matrix[1][1]*pos_vel_body[1] + *R_matrix[1][2]*pos_vel_body[2];
+	pos_vel_fixed[2] = *R_matrix[2][0]*pos_vel_body[0] + *R_matrix[2][1]*pos_vel_body[1] + *R_matrix[2][2]*pos_vel_body[2];
 	/* Compute the Error*/
-	*x_dot = pos_vel_fixed[0][0];
-	*y_dot = pos_vel_fixed[0][1];
-	*z_dot = pos_vel_fixed[0][2];
+	*x_dot = pos_vel_fixed[0];
+	*y_dot = pos_vel_fixed[1];
+	*z_dot = pos_vel_fixed[2];
 	return 0;
 }
 
@@ -83,7 +83,7 @@ int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw
 	uint8_t k = 0;
 	float Rx[3][3],Ry[3][3],Rz[3][3];
 	float RyRx[3][3];
-	float pos_vel_body[1][3],pos_vel_fixed[1][3];
+	float pos_vel_body[3],pos_vel_fixed[3];
 	float phi,theta,psi;
 #if BNO055_EULER_ANGLES_UNITS == 0
 	/*Convert Degree to Radian*/
@@ -128,17 +128,17 @@ int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw
 	}
 	/*Create pos_vel_body*/
 	//vector for the linear velocities in the body frame V vector B = [ u v w ]T m/s
-	pos_vel_body[0][0] = *state_u;
-	pos_vel_body[0][1] = *state_v;
-	pos_vel_body[0][2] = *state_w;
+	pos_vel_body[0] = *state_u;
+	pos_vel_body[1] = *state_v;
+	pos_vel_body[2] = *state_w;
 	/* Connect the linear velocities on the inertia frame to the linear velocities in the body frame*/
-	pos_vel_fixed[0][0] = *R_matrix[0][0]*pos_vel_body[0][0] + *R_matrix[0][1]*pos_vel_body[0][2] + *R_matrix[0][2]*pos_vel_body[0][3];
-	pos_vel_fixed[0][1] = *R_matrix[1][0]*pos_vel_body[0][0] + *R_matrix[1][1]*pos_vel_body[0][2] + *R_matrix[1][2]*pos_vel_body[0][3];
-	pos_vel_fixed[0][2] = *R_matrix[2][0]*pos_vel_body[0][0] + *R_matrix[2][1]*pos_vel_body[0][2] + *R_matrix[2][2]*pos_vel_body[0][3];
+	pos_vel_fixed[0] = *R_matrix[0][0]*pos_vel_body[0] + *R_matrix[0][1]*pos_vel_body[1] + *R_matrix[0][2]*pos_vel_body[2];
+	pos_vel_fixed[1] = *R_matrix[1][0]*pos_vel_body[0] + *R_matrix[1][1]*pos_vel_body[1] + *R_matrix[1][2]*pos_vel_body[2];
+	pos_vel_fixed[2] = *R_matrix[2][0]*pos_vel_body[0] + *R_matrix[2][1]*pos_vel_body[1] + *R_matrix[2][2]*pos_vel_body[2];
 	/* Compute the Error*/
-	*x_dot = pos_vel_fixed[0][0];
-	*y_dot = pos_vel_fixed[0][1];
-	*z_dot = pos_vel_fixed[0][2];
+	*x_dot = pos_vel_fixed[0];
+	*y_dot = pos_vel_fixed[1];
+	*z_dot = pos_vel_fixed[2];
 	/*To get phi_dot, theta_dot, psi_dot, you need the T matrix*/
 	//Transformation matrix that relates p,q,r with phi_dot,theta_dot,psi_dot
 	/* Transpose Rotation Matrix*/

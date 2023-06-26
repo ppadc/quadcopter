@@ -1,0 +1,18 @@
+/*
+ * LPV_cont_discrete.c
+ *
+ *  Created on: Jun 26, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include <complex.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int lpv_cont_discrete(float *roll_t,float *pitch_t,float *yaw_t,float *states_u,float *states_v,float *states_w,float *states_p,float *states_q,float *states_r,float *states_phi,float *states_theta,float *states_psi){
+	int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot);
+	return 0;
+}

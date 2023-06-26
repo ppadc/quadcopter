@@ -1,10 +1,48 @@
-11:48:45 **** Incremental Build of configuration Debug for project Drone ****
+13:43:26 **** Incremental Build of configuration Debug for project Drone ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -I../Core/Application/lcd -I../Core/Application/MPC/posision_controller -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.d" -MT"Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o"
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c: In function 'lpv_cont_discrete':
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:22:78: warning: passing argument 4 of 'get_rotational_matrix_lpv_cont_discrete' from incompatible pointer type [-Wincompatible-pointer-types]
+   22 |  get_rotational_matrix_lpv_cont_discrete(&euler_t[0],&euler_t[1],&euler_t[2],R_matrix_t,T_matrix_t,&states_t[0],&states_t[1],&states_t[2],&states_t[3],&states_t[4],&states_t[5],&x_dot_t,&y_dot_t,&z_dot_t);
+      |                                                                              ^~~~~~~~~~
+      |                                                                              |
+      |                                                                              float (*)[3]
+In file included from ../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:9:
+../Core/Application/MPC/LPV_cont_discrete/../Rotational_matrix/rotational_matrix.h:16:90: note: expected 'float * (*)[3]' but argument is of type 'float (*)[3]'
+   16 | int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot);
+      |                                                                                   ~~~~~~~^~~~~~~~~~~~~~
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:22:89: warning: passing argument 5 of 'get_rotational_matrix_lpv_cont_discrete' from incompatible pointer type [-Wincompatible-pointer-types]
+   22 |  get_rotational_matrix_lpv_cont_discrete(&euler_t[0],&euler_t[1],&euler_t[2],R_matrix_t,T_matrix_t,&states_t[0],&states_t[1],&states_t[2],&states_t[3],&states_t[4],&states_t[5],&x_dot_t,&y_dot_t,&z_dot_t);
+      |                                                                                         ^~~~~~~~~~
+      |                                                                                         |
+      |                                                                                         float (*)[3]
+In file included from ../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:9:
+../Core/Application/MPC/LPV_cont_discrete/../Rotational_matrix/rotational_matrix.h:16:112: note: expected 'float * (*)[3]' but argument is of type 'float (*)[3]'
+   16 | int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot);
+      |                                                                                                         ~~~~~~~^~~~~~~~~~~~~~~
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:42:10: warning: unused variable 'D_matrix' [-Wunused-variable]
+   42 |  uint8_t D_matrix[3][3];
+      |          ^~~~~~~~
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:41:10: warning: unused variable 'C_matrix' [-Wunused-variable]
+   41 |  uint8_t C_matrix[6][6];
+      |          ^~~~~~~~
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:40:24: warning: variable 'B_matrix' set but not used [-Wunused-but-set-variable]
+   40 |  double A_matrix[6][6],B_matrix[6][3];
+      |                        ^~~~~~~~
+../Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.c:40:9: warning: variable 'A_matrix' set but not used [-Wunused-but-set-variable]
+   40 |  double A_matrix[6][6],B_matrix[6][3];
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone.elf
+ 
 arm-none-eabi-size   Drone.elf 
+arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
    text	   data	    bss	    dec	    hex	filename
   56512	    500	   4756	  61768	   f148	Drone.elf
 Finished building: default.size.stdout
  
+Finished building: Drone.list
+ 
 
-11:48:45 Build Finished. 0 errors, 0 warnings. (took 556ms)
+13:43:30 Build Finished. 0 errors, 6 warnings. (took 3s.802ms)
 

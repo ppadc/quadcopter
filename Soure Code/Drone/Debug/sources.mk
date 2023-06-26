@@ -22,6 +22,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Core/Application/Buzzer \
+Core/Application/MPC/LPV_cont_discrete \
 Core/Application/MPC/Rotational_matrix \
 Core/Application/MPC \
 Core/Application/MPC/posision_controller \
