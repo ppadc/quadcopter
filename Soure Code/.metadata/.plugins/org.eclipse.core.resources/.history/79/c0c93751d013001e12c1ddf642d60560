@@ -1,0 +1,35 @@
+/*
+ * posision_control.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+#include "posision_control.h"
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include <complex.h>
+#include <math.h>
+
+
+int pos_controller(float *roll_t,float *pitch_t,float *yaw_t,float *X_ref,float *X_dot_ref,float *X_dot_dot_ref,float *Y_ref,float *Y_dot_ref,float *Y_dot_dot_ref,float *Z_ref,float *Z_dot_ref,float *Z_dot_dot_ref,float *Psi_ref,float *states_u,float *states_v,float *states_w,float *states_x,float *states_y,float *states_z,float *states_phi,float *states_theta,float *states_psi){
+	float R_matrix_t[3][3];
+	float euler_t[3],states_t[9];
+	float x_dot_t,y_dot_t,z_dot_t;
+	states_t[0] = *states_u; states_t[1] = *states_v; states_t[2] = *states_w;
+	states_t[3] = *states_x; states_t[4] = *states_y; states_t[5] = *states_z;
+	states_t[6] = *states_phi; states_t[7] = *states_theta; states_t[8] = *states_psi;
+	get_rotational_matrix_pos_controller(&euler_t[0],&euler_t[1],&euler_t[2],R_matrix_t,&states_t[0],&states_t[1],&states_t[2],&x_dot_t,&y_dot_t,&z_dot_t);
+	/*Compute the errors*/
+	float ex,ey,ez,ex_dot,ey_dot,ez_dot;
+	ex = *X_ref-states_t[3];
+	ex_dot = *X_dot_ref-x_dot_t;
+	ey = *Y_ref-states_t[4];
+	ey_dot = *Y_dot_ref-y_dot_t;
+	ez = *X_ref-states_t[5];
+	ez_dot = *Z_dot_ref-z_dot_t;
+	/*Compute the feedback constants*/
+	double complex kx1,kx2;
+	kx1 = (params.MPC_Cons_px[0][0]-pow(((params.MPC_Cons_px[0][0]+params.MPC_Cons_px[0][1])/2)));
+	return 0;
+}
+

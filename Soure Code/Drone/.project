@@ -29,4 +29,11 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Application</name>
+			<type>2</type>
+			<location>E:/Drone/Soure Code/Drone/Core/Application</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -1,0 +1,12 @@
+/*
+ * posision_control.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+#include "posision_control.h"
+#include "params.h"
+
+int pos_controller(float *X_ref,float *X_rel){
+	return 0;
+}

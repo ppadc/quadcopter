@@ -24,6 +24,7 @@ SUBDIRS := \
 Core/Application/Buzzer \
 Core/Application/MPC/Rotational_matrix \
 Core/Application/MPC \
+Core/Application/MPC/posision_controller \
 Core/Application/button \
 Core/Application/eeprom \
 Core/Application/imu \

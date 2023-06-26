@@ -1,0 +1,14 @@
+/*
+ * posision_control.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+#include "posision_control.h"
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+
+int pos_controller(float *X_ref,float *X_dot_ref,float *X_dot_dot_ref,float *Y_ref,float *Y_dot_ref,float *Y_dot_dot_ref,float *Z_ref,float *Z_dot_ref,float *Z_dot_dot_ref,float *Psi_ref,float *states_u,float *states_v,float *states_w,float *states_x,float *states_y,float *states_z,float *states_phi,float *states_theta,float *states_psi){
+
+	return 0;
+}

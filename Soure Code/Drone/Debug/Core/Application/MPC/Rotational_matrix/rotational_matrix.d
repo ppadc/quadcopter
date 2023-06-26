@@ -1,7 +1,6 @@
 Core/Application/MPC/Rotational_matrix/rotational_matrix.o: \
  ../Core/Application/MPC/Rotational_matrix/rotational_matrix.c \
  ../Core/Application/MPC/Rotational_matrix/rotational_matrix.h \
- ../Core/Application/timer/timer.h \
  ../Core/Application/sensor/bno055/bno055.h \
  ../Core/Application/sensor/bno055/bno055_register_map.h \
  ../Core/Inc/user_define.h ../Core/Inc/main.h \
@@ -45,10 +44,9 @@ Core/Application/MPC/Rotational_matrix/rotational_matrix.o: \
  ../Core/Inc/gpio.h ../Core/Application/timer/delay_us.h \
  ../Core/Application/imu/imu.h \
  ../Core/Application/sensor/mpu9250/mpu9250.h \
- ../Core/Application/params/params.h ../Core/Application/params/params.h \
- ../Core/Application/pid/pid.h
+ ../Core/Application/timer/timer.h ../Core/Application/params/params.h \
+ ../Core/Application/params/params.h ../Core/Application/pid/pid.h
 ../Core/Application/MPC/Rotational_matrix/rotational_matrix.h:
-../Core/Application/timer/timer.h:
 ../Core/Application/sensor/bno055/bno055.h:
 ../Core/Application/sensor/bno055/bno055_register_map.h:
 ../Core/Inc/user_define.h:
@@ -99,6 +97,7 @@ Core/Application/MPC/Rotational_matrix/rotational_matrix.o: \
 ../Core/Application/timer/delay_us.h:
 ../Core/Application/imu/imu.h:
 ../Core/Application/sensor/mpu9250/mpu9250.h:
+../Core/Application/timer/timer.h:
 ../Core/Application/params/params.h:
 ../Core/Application/params/params.h:
 ../Core/Application/pid/pid.h:

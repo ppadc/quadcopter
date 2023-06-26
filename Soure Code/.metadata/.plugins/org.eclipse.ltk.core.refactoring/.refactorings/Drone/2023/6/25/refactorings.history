@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Drone/Core/Application/MPC/possision_controller&apos; to &apos;posision_controller&apos;" description="Rename resource &apos;possision_controller&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Application/MPC/possision_controller" name="posision_controller" stamp="1687643073153" updateReferences="true"/>
+</session>

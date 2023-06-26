@@ -17,7 +17,8 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	uint8_t k = 0;
 	float Rx[3][3],Ry[3][3],Rz[3][3];
 	float RyRx[3][3];
-	float pos_vel_body[1][3],pos_vel_fixed[1][3];
+	float pos_vel_body[1][3];
+	float pos_vel_fixed[1][3];
 	float phi,theta,psi;
 #if BNO055_EULER_ANGLES_UNITS == 0
 	/*Convert Degree to Radian*/
