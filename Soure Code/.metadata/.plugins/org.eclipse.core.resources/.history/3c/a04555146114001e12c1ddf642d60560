@@ -1,0 +1,44 @@
+/*
+ * mpc_simplification.c
+ *
+ *  Created on: Jun 27, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include <complex.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "../LPV_cont_discrete/LPV_cont_discrete.h"
+
+int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[6][6], double Dd_matrix[3][3],int *hz){
+    /*This function creates the compact matrices for Model Predictive Control*/
+	// db - double bar
+	// dbt - double bar transpose
+	// dc - double circumflex
+	double A_aug[6][9];
+	for(int i=0;i<6;i++){
+		for(int j=0;j<6;j++){
+			A_aug[i][j] = Ad_matrix[i][j];
+		}
+	}
+	for(int i=0;i<6;i++){
+		for(int j=6;j<9;j++){
+			A_aug[i][j] = Bd_matrix[i][j-6];
+		}
+	}
+	double temp[3][9] = {
+	        {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0},
+	        {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0},
+	        {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0}
+	};
+	double A_aug_new[9][9];
+	for(int i=0;i<9;i++){
+		for(int j=0;j<6;j++){
+			A_aug_new[i][j] = A_aug[i][j];
+		}
+	}
+	return 0;
+}

@@ -1,0 +1,14 @@
+/*
+ * mpc_simplification.c
+ *
+ *  Created on: Jun 27, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include <complex.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "../Rotational_matrix/rotational_matrix.h"

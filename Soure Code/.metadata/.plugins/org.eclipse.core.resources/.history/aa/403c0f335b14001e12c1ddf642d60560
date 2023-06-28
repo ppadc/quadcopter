@@ -1,0 +1,13 @@
+/*
+ * LPV_cont_discrete.h
+ *
+ *  Created on: Jun 26, 2023
+ *      Author: nguye
+ */
+
+#ifndef APPLICATION_MPC_LPV_CONT_DISCRETE_LPV_CONT_DISCRETE_H_
+#define APPLICATION_MPC_LPV_CONT_DISCRETE_LPV_CONT_DISCRETE_H_
+
+
+
+#endif /* APPLICATION_MPC_LPV_CONT_DISCRETE_LPV_CONT_DISCRETE_H_ */

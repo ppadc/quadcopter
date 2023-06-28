@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int lpv_cont_discrete(float *roll_t,float *pitch_t,float *yaw_t,float *states_u,float *states_v,float *states_w,float *states_p,float *states_q,float *states_r,float *states_phi,float *states_theta,float *states_psi,float *Omega_total){
+int lpv_cont_discrete(float *roll_t,float *pitch_t,float *yaw_t,float *states_u,float *states_v,float *states_w,float *states_p,float *states_q,float *states_r,float *states_phi,float *states_theta,float *states_psi,float *Omega_total,double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3]){
 	float R_matrix_t[3][3],T_matrix_t[3][3];
 	float euler_t[3],states_t[9];
 	float x_dot_t,y_dot_t,z_dot_t;
@@ -59,10 +59,42 @@ int lpv_cont_discrete(float *roll_t,float *pitch_t,float *yaw_t,float *states_u,
 	C_matrix[1][0]=0;	C_matrix[1][1]=0;	C_matrix[1][2]=1;	C_matrix[1][3]=0;	C_matrix[1][4]=0;	C_matrix[1][5]=0;
 	C_matrix[2][0]=0;	C_matrix[2][1]=0;	C_matrix[2][2]=0;	C_matrix[2][3]=0;	C_matrix[2][4]=1;	C_matrix[2][5]=0;
 	/*Create D matrix*/
-	D_matrix[0][0]=1;	D_matrix[0][1]=0;	D_matrix[0][2]=0;
-	D_matrix[1][0]=1;	D_matrix[1][1]=0;	D_matrix[1][2]=0;
-	D_matrix[2][0]=1;	D_matrix[2][1]=0;	D_matrix[2][2]=0;
+	D_matrix[0][0]=0;	D_matrix[0][1]=0;	D_matrix[0][2]=0;
+	D_matrix[1][0]=0;	D_matrix[1][1]=0;	D_matrix[1][2]=0;
+	D_matrix[2][0]=0;	D_matrix[2][1]=0;	D_matrix[2][2]=0;
 	/* Discretize the system (Forward Euler) */
-
+	//size cols of A = 6
+	// Discretize A_matrix
+	for(int i=0;i<6;i++){
+		for(int j=0;i<6;j++){
+			Ad_matrix[i][j] = 0;
+		}
+	}
+	for(int i=0;i<6;i++){
+		Ad_matrix[i][i]=1;
+	}
+	for(int i=0;i<6;i++){
+		for(int j=0;j<6;j++){
+			Ad_matrix[i][j] += params.MPC_Cons_Ts*A_matrix[i][j];
+		}
+	}
+	// Discretize B_Matrix
+	for(int i=0;i<6;i++){
+		for(int j=0;j<3;j++){
+			Bd_matrix[i][j] *= params.MPC_Cons_Ts*B_matrix[i][j];
+		}
+	}
+	// Discretize C_Matrix
+	for(int i=0;i<3;i++){
+		for(int j=0;j<6;j++){
+			Cd_matrix[i][j] = C_matrix[i][j];
+		}
+	}
+	// Discretize D_Matrix
+	for(int i=0;i<3;i++){
+		for(int j=0;j<3;j++){
+			Dd_matrix[i][j] = D_matrix[i][j];
+		}
+	}
 	return 0;
 }

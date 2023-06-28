@@ -25,6 +25,7 @@ Core/Application/Buzzer \
 Core/Application/MPC/LPV_cont_discrete \
 Core/Application/MPC/Rotational_matrix \
 Core/Application/MPC \
+Core/Application/MPC/mpc_simplification \
 Core/Application/MPC/posision_controller \
 Core/Application/button \
 Core/Application/eeprom \

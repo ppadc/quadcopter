@@ -11,7 +11,7 @@
 #include <math.h>
 
 //Rotational matrix that relates u,v,w with x_dot,y_dot,z_dot
-int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *state_u,float *state_v,float *state_w, float *x_dot, float *y_dot, float *z_dot){
+int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, float R_matrix[3][3],float *state_u,float *state_v,float *state_w, float *x_dot, float *y_dot, float *z_dot){
 	uint8_t i = 0;
 	uint8_t j = 0;
 	uint8_t k = 0;
@@ -55,9 +55,9 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	// Calculation for R Rotation matrix by multiplication Rz & RyRx
 	for(i=0;i<3;i++){
 		for(j=0;j<3;j++){
-			*R_matrix[i][j] = 0;
+			R_matrix[i][j] = 0;
 			for(k=0;k<3;k++){
-				*R_matrix[i][j] += Rz[i][k] * RyRx[k][i];
+				R_matrix[i][j] += Rz[i][k] * RyRx[k][i];
 			}
 		}
 	}
@@ -67,9 +67,9 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	pos_vel_body[1] = *state_v;
 	pos_vel_body[2] = *state_w;
 	/* Connect the linear velocities on the inertia frame to the linear velocities in the body frame*/
-	pos_vel_fixed[0] = *R_matrix[0][0]*pos_vel_body[0] + *R_matrix[0][1]*pos_vel_body[1] + *R_matrix[0][2]*pos_vel_body[2];
-	pos_vel_fixed[1] = *R_matrix[1][0]*pos_vel_body[0] + *R_matrix[1][1]*pos_vel_body[1] + *R_matrix[1][2]*pos_vel_body[2];
-	pos_vel_fixed[2] = *R_matrix[2][0]*pos_vel_body[0] + *R_matrix[2][1]*pos_vel_body[1] + *R_matrix[2][2]*pos_vel_body[2];
+	pos_vel_fixed[0] = R_matrix[0][0]*pos_vel_body[0] + R_matrix[0][1]*pos_vel_body[1] + R_matrix[0][2]*pos_vel_body[2];
+	pos_vel_fixed[1] = R_matrix[1][0]*pos_vel_body[0] + R_matrix[1][1]*pos_vel_body[1] + R_matrix[1][2]*pos_vel_body[2];
+	pos_vel_fixed[2] = R_matrix[2][0]*pos_vel_body[0] + R_matrix[2][1]*pos_vel_body[1] + R_matrix[2][2]*pos_vel_body[2];
 	/* Compute the Error*/
 	*x_dot = pos_vel_fixed[0];
 	*y_dot = pos_vel_fixed[1];
@@ -77,7 +77,7 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	return 0;
 }
 
-int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float *R_matrix[3][3],float *T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot){
+int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float R_matrix[3][3],float T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot){
 	uint8_t i = 0;
 	uint8_t j = 0;
 	uint8_t k = 0;
@@ -120,9 +120,9 @@ int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw
 	// Calculation for R Rotation matrix by multiplication Rz & RyRx
 	for(i=0;i<3;i++){
 		for(j=0;j<3;j++){
-			*R_matrix[i][j] = 0;
+			R_matrix[i][j] = 0;
 			for(k=0;k<3;k++){
-				*R_matrix[i][j] += Rz[i][k] * RyRx[k][i];
+				R_matrix[i][j] += Rz[i][k] * RyRx[k][i];
 			}
 		}
 	}
@@ -132,9 +132,9 @@ int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw
 	pos_vel_body[1] = *state_v;
 	pos_vel_body[2] = *state_w;
 	/* Connect the linear velocities on the inertia frame to the linear velocities in the body frame*/
-	pos_vel_fixed[0] = *R_matrix[0][0]*pos_vel_body[0] + *R_matrix[0][1]*pos_vel_body[1] + *R_matrix[0][2]*pos_vel_body[2];
-	pos_vel_fixed[1] = *R_matrix[1][0]*pos_vel_body[0] + *R_matrix[1][1]*pos_vel_body[1] + *R_matrix[1][2]*pos_vel_body[2];
-	pos_vel_fixed[2] = *R_matrix[2][0]*pos_vel_body[0] + *R_matrix[2][1]*pos_vel_body[1] + *R_matrix[2][2]*pos_vel_body[2];
+	pos_vel_fixed[0] = R_matrix[0][0]*pos_vel_body[0] + R_matrix[0][1]*pos_vel_body[1] + R_matrix[0][2]*pos_vel_body[2];
+	pos_vel_fixed[1] = R_matrix[1][0]*pos_vel_body[0] + R_matrix[1][1]*pos_vel_body[1] + R_matrix[1][2]*pos_vel_body[2];
+	pos_vel_fixed[2] = R_matrix[2][0]*pos_vel_body[0] + R_matrix[2][1]*pos_vel_body[1] + R_matrix[2][2]*pos_vel_body[2];
 	/* Compute the Error*/
 	*x_dot = pos_vel_fixed[0];
 	*y_dot = pos_vel_fixed[1];
@@ -142,9 +142,9 @@ int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw
 	/*To get phi_dot, theta_dot, psi_dot, you need the T matrix*/
 	//Transformation matrix that relates p,q,r with phi_dot,theta_dot,psi_dot
 	/* Transpose Rotation Matrix*/
-	*T_maxtrix[0][0] = 1; *T_maxtrix[0][1] = sin(phi)*tan(theta); *T_maxtrix[0][2] = cos(phi)*tan(theta);
-	*T_maxtrix[1][0] = 0; *T_maxtrix[1][1] = cos(phi); *T_maxtrix[1][2] = -sin(phi);
-	*T_maxtrix[2][0] = 0; *T_maxtrix[2][1] = sin(phi)/cos(theta); *T_maxtrix[2][2] = cos(phi)/cos(theta);
+	T_maxtrix[0][0] = 1; T_maxtrix[0][1] = sin(phi)*tan(theta); T_maxtrix[0][2] = cos(phi)*tan(theta);
+	T_maxtrix[1][0] = 0; T_maxtrix[1][1] = cos(phi); T_maxtrix[1][2] = -sin(phi);
+	T_maxtrix[2][0] = 0; T_maxtrix[2][1] = sin(phi)/cos(theta); T_maxtrix[2][2] = cos(phi)/cos(theta);
 	return 0;
 }
 
