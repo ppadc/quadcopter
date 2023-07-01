@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m "Add lpv_cont_discrete"
+git commit -m "Add lpv_simplification"
 git log
 git log --oneline
 git branch

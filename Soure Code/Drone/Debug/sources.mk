@@ -23,6 +23,7 @@ C_DEPS :=
 SUBDIRS := \
 Core/Application/Buzzer \
 Core/Application/MPC/LPV_cont_discrete \
+Core/Application/MPC/Matrix_calculation \
 Core/Application/MPC/Rotational_matrix \
 Core/Application/MPC \
 Core/Application/MPC/mpc_simplification \

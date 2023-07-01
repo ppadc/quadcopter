@@ -1,5 +1,6 @@
 "./Core/Application/Buzzer/buzzer.o"
 "./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o"
+"./Core/Application/MPC/Matrix_calculation/matrix.o"
 "./Core/Application/MPC/Rotational_matrix/rotational_matrix.o"
 "./Core/Application/MPC/mpc.o"
 "./Core/Application/MPC/mpc_simplification/mpc_simplification.o"

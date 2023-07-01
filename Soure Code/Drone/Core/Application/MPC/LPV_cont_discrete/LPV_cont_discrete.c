@@ -65,6 +65,8 @@ int lpv_cont_discrete(float *roll_t,float *pitch_t,float *yaw_t,float *states_u,
 	/* Discretize the system (Forward Euler) */
 	//size cols of A = 6
 	// Discretize A_matrix
+	/*Ad=np.identity(np.size(A,1))+Ts*A*/
+	//np.identity(np.size(A,1))
 	for(int i=0;i<6;i++){
 		for(int j=0;i<6;j++){
 			Ad_matrix[i][j] = 0;
