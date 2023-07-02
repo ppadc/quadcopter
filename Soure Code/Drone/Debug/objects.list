@@ -5,6 +5,7 @@
 "./Core/Application/MPC/mpc.o"
 "./Core/Application/MPC/mpc_simplification/mpc_simplification.o"
 "./Core/Application/MPC/posision_controller/posision_control.o"
+"./Core/Application/MPC/trajectory/trajectory.o"
 "./Core/Application/button/button.o"
 "./Core/Application/eeprom/eeprom.o"
 "./Core/Application/imu/imu.o"

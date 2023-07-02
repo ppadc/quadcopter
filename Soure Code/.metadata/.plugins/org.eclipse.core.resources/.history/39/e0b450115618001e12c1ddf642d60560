@@ -1,0 +1,19 @@
+/*
+ * trajectory.c
+ *
+ *  Created on: Jul 2, 2023
+ *      Author: nguye
+ */
+
+
+#include "params.h"
+#include <complex.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int generate_trajectory(float time[200]){
+	float Ts = params.MPC_Cons_Ts;
+
+	return 0;
+}

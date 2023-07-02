@@ -1,0 +1,28 @@
+/*
+ * trajectory.c
+ *
+ *  Created on: Jul 2, 2023
+ *      Author: nguye
+ */
+
+
+#include "params.h"
+#include <complex.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int generate_trajectory(float *time[251]){
+	float Ts = params.MPC_Cons_Ts;
+	int innerDyn_length = params.MPC_Cons_innerDyn_length;
+	int r = params.MPC_Cons_r;
+	float f = params.MPC_Cons_f;
+	int height_i = params.MPC_Cons_height_i;
+	int height_f = params.MPC_Cons_height_f;
+	int trajectory = params.MPC_Cons_trajectory;
+	int d_height = height_f - height_i;
+	/*Define the x, y, z dimensions for the drone trajectories*/
+	float alpha;
+	alpha = 2*M_PI*f*time;
+	return 0;
+}

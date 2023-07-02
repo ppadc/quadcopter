@@ -113,7 +113,7 @@ c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externalt
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-s_tan.o)
                               ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o (tan)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_atan2.o)
-                              ./Core/Application/imu/imu.o (atan2)
+                              ./Core/Application/MPC/trajectory/trajectory.o (atan2)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_pow.o)
                               ./Core/Application/MPC/posision_controller/posision_control.o (pow)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_sqrt.o)
@@ -759,8 +759,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .rodata        0x0000000000000000       0x24 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .text.mpc_simplification
-                0x0000000000000000     0x18e4 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_info    0x0000000000000000      0xdb3 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+                0x0000000000000000     0x19b0 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_info    0x0000000000000000      0xdef ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_abbrev  0x0000000000000000      0x138 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
@@ -850,8 +850,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_macro   0x0000000000000000       0x29 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_line    0x0000000000000000     0x11b0 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_str     0x0000000000000000    0xcfb64 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_line    0x0000000000000000     0x11bf ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_str     0x0000000000000000    0xcfb8d ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_frame   0x0000000000000000       0x40 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .ARM.attributes
@@ -1041,6 +1041,191 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0x48 ./Core/Application/MPC/posision_controller/posision_control.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/posision_controller/posision_control.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/trajectory/trajectory.o
+ .text          0x0000000000000000        0x0 ./Core/Application/MPC/trajectory/trajectory.o
+ .data          0x0000000000000000        0x0 ./Core/Application/MPC/trajectory/trajectory.o
+ .bss           0x0000000000000000        0x0 ./Core/Application/MPC/trajectory/trajectory.o
+ .text.generate_trajectory
+                0x0000000000000000      0xd20 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_info    0x0000000000000000      0x80a ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_abbrev  0x0000000000000000      0x16d ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_aranges
+                0x0000000000000000       0x20 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_ranges  0x0000000000000000       0x10 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x49a ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x8e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x51 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x103 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x1df ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x2b3 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x2e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x2f ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0xd9 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000     0x102d ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x11f ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000    0x1426d ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x6d ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000     0x367e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x174 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x5c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x8a7 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x9fe ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x115 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x130 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0xa5 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x174 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x287 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x5f ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x236 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0xb5b ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x38b ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x176 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0xf9 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x40f ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x12c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x21e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x2e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x1b5 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0xd6 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x11a ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x7e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x89 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x225 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x8e6 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x47 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x295 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x12d ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x1f0 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x1f4 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x341 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1e ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x35 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_macro   0x0000000000000000       0x29 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_line    0x0000000000000000      0xf01 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_str     0x0000000000000000    0xcfad3 ./Core/Application/MPC/trajectory/trajectory.o
+ .comment       0x0000000000000000       0x51 ./Core/Application/MPC/trajectory/trajectory.o
+ .debug_frame   0x0000000000000000       0x44 ./Core/Application/MPC/trajectory/trajectory.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ./Core/Application/MPC/trajectory/trajectory.o
  .group         0x0000000000000000        0xc ./Core/Application/button/button.o
  .text          0x0000000000000000        0x0 ./Core/Application/button/button.o
  .data          0x0000000000000000        0x0 ./Core/Application/button/button.o
@@ -9170,6 +9355,7 @@ LOAD ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
 LOAD ./Core/Application/MPC/mpc.o
 LOAD ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
 LOAD ./Core/Application/MPC/posision_controller/posision_control.o
+LOAD ./Core/Application/MPC/trajectory/trajectory.o
 LOAD ./Core/Application/button/button.o
 LOAD ./Core/Application/eeprom/eeprom.o
 LOAD ./Core/Application/imu/imu.o

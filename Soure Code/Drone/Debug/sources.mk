@@ -28,6 +28,7 @@ Core/Application/MPC/Rotational_matrix \
 Core/Application/MPC \
 Core/Application/MPC/mpc_simplification \
 Core/Application/MPC/posision_controller \
+Core/Application/MPC/trajectory \
 Core/Application/button \
 Core/Application/eeprom \
 Core/Application/imu \

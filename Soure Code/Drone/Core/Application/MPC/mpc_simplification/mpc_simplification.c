@@ -163,8 +163,10 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
             }
         }
     }
-    /*Calculation for Qdb,Tdb,Rdb,Cdb,Adc Matrix*/
-	int hz_t = *hz;
+    int CQC_rows = sizeof(CQC) / sizeof(CQC[0]);
+    int CQC_columns = sizeof(CQC[0]) / sizeof(CQC[0][0]);
+    /*Create for Qdb,Tdb,Rdb,Cdb,Adc Matrix which following hz*/
+    int hz_t = *hz;
 	if(hz_t == 1){
 		float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
 	}
@@ -176,22 +178,26 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	}
 	else{
 		float Qdb[36][36] = {0}; float Tdb[12][36] = {0}; float Rdb[12][12] = {0}; float Cdb[36][12] = {0};  float Adc[36][9]={0};
-	}
-
-	for(int i=0;i<hz_t;i++){
-		if(i == hz_t-1){
-			int rows = sizeof(CSC) / sizeof(CSC[0]);
-			int columns = sizeof(CSC[0]) / sizeof(CSC[0][0]);
-
-		}
-		else{
-
-		}
-		for(int j=0;j<hz_t;j++){
-			if(j<=1){
-
+		/*Calculation for Hdb,Fdbt,Cdb,Adc Matrix with hz=4*/
+		for(int i=0;i<hz_t;i++){
+			if(i==hz_t-1){
+			/*Qdb*/
+			/*Tdb*/
 			}
+			else{
+			/*Qdb*/
+				int rows_i = CQC_rows*i; int row_f = CQC_rows*i+CQC_rows;
+				int columns_i = CQC_columns*i; int columns_f = CQC_columns*i+CQC_columns;
+		    /*Tdb*/
+			}
+			    	/*Rdb*/
+			for(int j=0;j<hz_t;j++){
+				if(j<=i){
+			    			/*Cdb*/
+			    }
+			}
+			    	/*Adc*/
 		}
 	}
-	return 0;
+    return 0;
 }
