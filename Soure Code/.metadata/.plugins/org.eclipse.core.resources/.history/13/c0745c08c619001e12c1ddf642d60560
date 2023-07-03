@@ -1,0 +1,35 @@
+/*
+ * matrix.c
+ *
+ *  Created on: Jul 1, 2023
+ *      Author: nguye
+ */
+
+void matrixPower(int matrix[9][9], int n, int result[9][9]) {
+    // Kh?i t?o ma tr?n k?t qu? b?ng ma tr?n don v?
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            result[i][j] = (i == j) ? 1 : 0;
+        }
+    }
+
+    // Tính luy th?a b?ng cách nhân ma tr?n v?i chính nó n l?n
+    for (int k = 0; k < n; k++) {
+        int temp[9][9] = {0}; // Ma tr?n t?m th?i d? luu k?t qu? sau m?i l?n nhân
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                for (int x = 0; x < 9; x++) {
+                    temp[i][j] += matrix[i][x] * result[x][j];
+                }
+            }
+        }
+
+        // Gán ma tr?n t?m th?i vào ma tr?n k?t qu?
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                result[i][j] = temp[i][j];
+            }
+        }
+    }
+}

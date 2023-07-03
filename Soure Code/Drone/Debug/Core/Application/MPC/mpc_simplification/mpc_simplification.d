@@ -45,6 +45,7 @@ Core/Application/MPC/mpc_simplification/mpc_simplification.o: \
  ../Core/Application/sensor/mpu9250/mpu9250.h \
  ../Core/Application/timer/timer.h \
  ../Core/Application/MPC/mpc_simplification/../Rotational_matrix/rotational_matrix.h \
+ ../Core/Application/MPC/mpc_simplification/../Matrix_calculation/matrix.h \
  ../Core/Application/MPC/mpc_simplification/../LPV_cont_discrete/LPV_cont_discrete.h
 ../Core/Application/params/params.h:
 ../Core/Application/params/params.h:
@@ -101,4 +102,5 @@ Core/Application/MPC/mpc_simplification/mpc_simplification.o: \
 ../Core/Application/sensor/mpu9250/mpu9250.h:
 ../Core/Application/timer/timer.h:
 ../Core/Application/MPC/mpc_simplification/../Rotational_matrix/rotational_matrix.h:
+../Core/Application/MPC/mpc_simplification/../Matrix_calculation/matrix.h:
 ../Core/Application/MPC/mpc_simplification/../LPV_cont_discrete/LPV_cont_discrete.h:
