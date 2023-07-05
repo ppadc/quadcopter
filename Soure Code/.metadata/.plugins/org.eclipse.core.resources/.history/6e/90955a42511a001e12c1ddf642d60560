@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
 
-int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],int *hz,double Hdb_r[12][12],double Fdbt_r[21][12],double Cdb_r[36][12],double Adc_r[36][9]){
+int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],int *hz){
     /*This function creates the compact matrices for Model Predictive Control*/
 	// db - double bar
 	// dbt - double bar transpose
@@ -77,7 +77,6 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 			{0.0, 0.0, 0.0}
 	};
 	double C_aug[3][9];
-	double Cdb_transpose[12][36];
 	for(int i=0;i<3;i++){
 		for(int j=0;j<6;j++){
 			C_aug[i][j] = Cd_matrix[i][j];
@@ -186,10 +185,6 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
     //calculation rows and columns of A_aug
     int A_aug_rows = sizeof(A_aug_new) / sizeof(A_aug_new[0]);
     int A_aug_columns = sizeof(A_aug_new[0]) / sizeof(A_aug_new[0][0]);
-    //Create Hdb
-    double Hdb_mul_temp[12][36];
-    double Hdb_mul_temp_2[12][12];
-    double Hdb[12][12];
     /*Create for Qdb,Tdb,Rdb,Cdb,Adc Matrix which following hz*/
     int hz_t = *hz;
 	if(hz_t == 1){
@@ -281,47 +276,13 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 			    }
 			}
 			/*Adc*/
-			int p = hz_i+1;
-			matrixPower(A_aug_new, &p, A_aug_matrixpower_Adc);
+			m = hz_i+1;
+			matrixPower(A_aug_new, &m, A_aug_matrixpower_Adc);
 			int Adc_rows_start = A_aug_rows*hz_i; int Adc_rows_end = A_aug_rows*hz_i+A_aug_rows;
-			int Adc_columns_start = 0; int Adc_columns_end = 0+A_aug_columns;
-			for(j=Adc_rows_start,k=0;j<Adc_rows_end;j++,k++){
-				for(l=Adc_columns_start,m=0;l<Adc_columns_end;l++,m++){
-					Adc[j][l] = A_aug_matrixpower_Adc[k][m];
-				}
-			}
+			int Adc_columns_start = 0; int Adc_columns_end = A_aug_columns*hz_i+A_aug_columns;
+
 		}
 		/*Hdb*/
-		//transpose Cdb[36][12] to CdbT[12][36]
-		for(int i_CdbT=0;i_CdbT<12;i_CdbT++){
-			for(int j_CdbT=0;j_CdbT<36;j_CdbT++){
-					Cdb_transpose[i_CdbT][j_CdbT] = Cdb[j_CdbT][i_CdbT];
-			}
-		}
-		//Mul Cdb_transpose[12][36] with Qdb[36][36]
-	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 36; j_Hdb++) {
-	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0; // Khởi tạo giá trị của phần tử C[i][j] bằng 0
-	            for (int k_Hdb = 0; k_Hdb < 36; k_Hdb++) {
-	                Hdb_mul_temp[i_Hdb][j_Hdb] += Cdb_transpose[i_Hdb][k_Hdb] * Qdb[k_Hdb][j_Hdb]; // Tính tổng các tích của từng phần tử trong hàng i của A và cột j của B
-	            }
-	        }
-	    }
-	    //Mul Hdb_mul_temp[12][36] with Cdb[36][12]
-	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 12; j_Hdb++) {
-	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0; // Khởi tạo giá trị của phần tử C[i][j] bằng 0
-	            for (int k_Hdb = 0; k_Hdb < 36; k_Hdb++) {
-	                Hdb_mul_temp_2[i_Hdb][j_Hdb] += Hdb_mul_temp[i_Hdb][k_Hdb] * Cdb[k_Hdb][j_Hdb]; // Tính tổng các tích của từng phần tử trong hàng i của A và cột j của B
-	            }
-	        }
-	    }
-	    //Add Hdb_mul_temp_2[12][12] with Rdb[12][12]
-	    for (int i_Hdb = 0; i_Hdb < 3; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 3; j_Hdb++) {
-	            Hdb[i_Hdb][j_Hdb] = Hdb_mul_temp_2[i_Hdb][j_Hdb] + Rdb[i_Hdb][j_Hdb];
-	        }
-	    }
 		/*Fdbt*/
 	}
     return 0;

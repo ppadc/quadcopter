@@ -188,8 +188,6 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
     int A_aug_columns = sizeof(A_aug_new[0]) / sizeof(A_aug_new[0][0]);
     //Create Hdb
     double Hdb_mul_temp[12][36];
-    double Hdb_mul_temp_2[12][12];
-    double Hdb[12][12];
     /*Create for Qdb,Tdb,Rdb,Cdb,Adc Matrix which following hz*/
     int hz_t = *hz;
 	if(hz_t == 1){
@@ -302,24 +300,9 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
 	        for (int j_Hdb = 0; j_Hdb < 36; j_Hdb++) {
 	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0; // Khởi tạo giá trị của phần tử C[i][j] bằng 0
-	            for (int k_Hdb = 0; k_Hdb < 36; k_Hdb++) {
+	            for (int k_Hdb = 0; k_Hdb < 12; k_Hdb++) {
 	                Hdb_mul_temp[i_Hdb][j_Hdb] += Cdb_transpose[i_Hdb][k_Hdb] * Qdb[k_Hdb][j_Hdb]; // Tính tổng các tích của từng phần tử trong hàng i của A và cột j của B
 	            }
-	        }
-	    }
-	    //Mul Hdb_mul_temp[12][36] with Cdb[36][12]
-	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 12; j_Hdb++) {
-	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0; // Khởi tạo giá trị của phần tử C[i][j] bằng 0
-	            for (int k_Hdb = 0; k_Hdb < 36; k_Hdb++) {
-	                Hdb_mul_temp_2[i_Hdb][j_Hdb] += Hdb_mul_temp[i_Hdb][k_Hdb] * Cdb[k_Hdb][j_Hdb]; // Tính tổng các tích của từng phần tử trong hàng i của A và cột j của B
-	            }
-	        }
-	    }
-	    //Add Hdb_mul_temp_2[12][12] with Rdb[12][12]
-	    for (int i_Hdb = 0; i_Hdb < 3; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 3; j_Hdb++) {
-	            Hdb[i_Hdb][j_Hdb] = Hdb_mul_temp_2[i_Hdb][j_Hdb] + Rdb[i_Hdb][j_Hdb];
 	        }
 	    }
 		/*Fdbt*/

@@ -763,9 +763,9 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .rodata        0x0000000000000000       0x24 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .text.mpc_simplification
-                0x0000000000000000     0x2740 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_info    0x0000000000000000     0x1166 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_abbrev  0x0000000000000000      0x165 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+                0x0000000000000000     0x2ff4 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_info    0x0000000000000000     0x13d8 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_abbrev  0x0000000000000000      0x176 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_ranges  0x0000000000000000       0x10 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
@@ -854,10 +854,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_macro   0x0000000000000000       0x29 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_line    0x0000000000000000     0x14be ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_str     0x0000000000000000    0xcfd34 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_line    0x0000000000000000     0x167b ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_str     0x0000000000000000    0xcfe04 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_frame   0x0000000000000000       0x40 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_frame   0x0000000000000000       0x48 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/posision_controller/posision_control.o

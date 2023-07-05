@@ -317,8 +317,8 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	        }
 	    }
 	    //Add Hdb_mul_temp_2[12][12] with Rdb[12][12]
-	    for (int i_Hdb = 0; i_Hdb < 3; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 3; j_Hdb++) {
+	    for (i_Hdb = 0; i_Hdb < 3; i_Hdb++) {
+	        for (j_Hdb = 0; j_Hdb < 3; j_Hdb++) {
 	            Hdb[i_Hdb][j_Hdb] = Hdb_mul_temp_2[i_Hdb][j_Hdb] + Rdb[i_Hdb][j_Hdb];
 	        }
 	    }
