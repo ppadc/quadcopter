@@ -187,9 +187,12 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
     int A_aug_rows = sizeof(A_aug_new) / sizeof(A_aug_new[0]);
     int A_aug_columns = sizeof(A_aug_new[0]) / sizeof(A_aug_new[0][0]);
     //Create Hdb
-    double Hdb_mul_temp[12][36];
-    double Hdb_mul_temp_2[12][12];
-    double Hdb[12][12];
+    double Hdb_mul_temp[12][36]={0};
+    double Hdb_mul_temp_2[12][12]={0};
+    double Hdb[12][12]={0};
+    //create Adc transpose
+    double AdcTp[9][36]={0};
+    double temp_Fdbt_1[9][36]={0},temp_Fdbt_2[9][12]={0},temp_Fdbt_3[12][12]={0},Fdbt[21][12]={0};
     /*Create for Qdb,Tdb,Rdb,Cdb,Adc Matrix which following hz*/
     int hz_t = *hz;
 	if(hz_t == 1){
@@ -301,18 +304,18 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 		//Mul Cdb_transpose[12][36] with Qdb[36][36]
 	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
 	        for (int j_Hdb = 0; j_Hdb < 36; j_Hdb++) {
-	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0; // Khởi tạo giá trị của phần tử C[i][j] bằng 0
+	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0;
 	            for (int k_Hdb = 0; k_Hdb < 36; k_Hdb++) {
-	                Hdb_mul_temp[i_Hdb][j_Hdb] += Cdb_transpose[i_Hdb][k_Hdb] * Qdb[k_Hdb][j_Hdb]; // Tính tổng các tích của từng phần tử trong hàng i của A và cột j của B
+	                Hdb_mul_temp[i_Hdb][j_Hdb] += Cdb_transpose[i_Hdb][k_Hdb] * Qdb[k_Hdb][j_Hdb];
 	            }
 	        }
 	    }
 	    //Mul Hdb_mul_temp[12][36] with Cdb[36][12]
 	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
 	        for (int j_Hdb = 0; j_Hdb < 12; j_Hdb++) {
-	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0; // Khởi tạo giá trị của phần tử C[i][j] bằng 0
+	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0;
 	            for (int k_Hdb = 0; k_Hdb < 36; k_Hdb++) {
-	                Hdb_mul_temp_2[i_Hdb][j_Hdb] += Hdb_mul_temp[i_Hdb][k_Hdb] * Cdb[k_Hdb][j_Hdb]; // Tính tổng các tích của từng phần tử trong hàng i của A và cột j của B
+	                Hdb_mul_temp_2[i_Hdb][j_Hdb] += Hdb_mul_temp[i_Hdb][k_Hdb] * Cdb[k_Hdb][j_Hdb];
 	            }
 	        }
 	    }
@@ -323,6 +326,56 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	        }
 	    }
 		/*Fdbt*/
+	    //Transpose ADC[36][9] to AdcT[9][36]
+		for(int i_AdcT=0;i_AdcT<12;i_AdcT++){
+			for(int j_AdcT=0;j_AdcT<36;j_AdcT++){
+				AdcTp[i_AdcT][j_AdcT] = Adc[j_AdcT][i_AdcT];
+			}
+		}
+		//Mul AdcT[9][36] with Qdb[36][36]
+	    for (int i_temp1=0; i_temp1 < 9; i_temp1++) {
+	        for (int j_temp1 = 0; j_temp1 < 36; j_temp1++) {
+	        	temp_Fdbt_1[i_temp1][j_temp1] = 0;
+	            for (int k_temp1 = 0; k_temp1 < 36; k_temp1++) {
+	                temp_Fdbt_1[i_temp1][j_temp1] += AdcTp[i_temp1][k_temp1] * Qdb[k_temp1][j_temp1];
+	            }
+	        }
+	    }
+	    //Mul temp_Fdbt_1[9][36] with Cdb[36][12]
+	    for (int i_temp2 = 0; i_temp2 < 9; i_temp2++) {
+	        for (int j_temp2 = 0; j_temp2 < 12; j_temp2++) {
+	        	temp_Fdbt_2[i_temp2][j_temp2] = 0;
+	            for (int k_temp2 = 0; k_temp2 < 36; k_temp2++) {
+	            	temp_Fdbt_2[i_temp2][j_temp2] += temp_Fdbt_1[i_temp2][k_temp2] * Cdb[k_temp2][j_temp2];
+	            }
+	        }
+	    }
+	    //convert Tdb[12][36] to -Tdb[12][36]
+	    for(int i_cvTdb=0;i_cvTdb<12;i_cvTdb++){
+	    	for(int j_cvTdb=0;j_cvTdb<36;j_cvTdb++){
+	    		Tdb[i_cvTdb][j_cvTdb]=Tdb[i_cvTdb][j_cvTdb]*-1;
+	    	}
+	    }
+	    //Mul -Tdb[12][36] with Cdb[36][12]
+	    for (int i_temp3 = 0; i_temp3 < 12; i_temp3++) {
+	        for (int j_temp3 = 0; j_temp3 < 12; j_temp3++) {
+	        	temp_Fdbt_3[i_temp3][j_temp3] = 0;
+	            for (int k_temp3 = 0; k_temp3 < 36; k_temp3++){
+	            	temp_Fdbt_3[i_temp3][j_temp3] += Tdb[i_temp3][k_temp3] * Cdb[k_temp3][j_temp3];
+	            }
+	        }
+	    }
+	    //Cal Fdbt[21][12] by concatenate  temp_Fdbt_2[9][12] and temp_Fdbt_3[12][12] axis 0
+	    for(int i_Fdbt=0;i_Fdbt<9;i_Fdbt++){
+	    	for(int j_Fdbt=0;j_Fdbt<12;j_Fdbt++){
+	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_2[i_Fdbt][j_Fdbt];
+	    	}
+	    }
+	    for(int i_Fdbt=9;i_Fdbt<21;i_Fdbt++){
+	    	for(int j_Fdbt=0;j_Fdbt<12;j_Fdbt++){
+	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_3[i_Fdbt-9][j_Fdbt];
+	    	}
+	    }
 	}
     return 0;
 }
