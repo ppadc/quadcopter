@@ -202,6 +202,187 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	}
 	else if (hz_t == 2){
 		float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+		for(int hz_i=0;hz_i<hz_t;hz_i++){
+			if(hz_i==hz_t-1){
+			/*Qdb*/
+				int Qdb_rows_start = CSC_rows*hz_i; int Qdb_rows_end = CSC_rows*hz_i+CSC_rows;
+				int Qdb_columns_start = CSC_columns*hz_i; int Qdb_columns_end = CSC_columns*hz_i+CSC_columns;
+				//insert columns of CQC to Qdb
+				int j,k,l,m;
+				for(j=Qdb_rows_start,k=0;j<Qdb_rows_end;j++,k++){
+					for(l=Qdb_columns_start,m=0;l<Qdb_columns_end;l++,m++){
+						Qdb[j][l] = CSC[k][m];
+					}
+				}
+			/*Tdb*/
+				int Tdb_rows_start = SC_rows*hz_i; int Tdb_rows_end = SC_rows*hz_i+SC_rows;
+				int Tdb_columns_start = SC_columns*hz_i; int Tdb_columns_end = SC_columns*hz_i+SC_columns;
+				for(j=Tdb_rows_start,k=0;j<Tdb_rows_end;j++,k++){
+					for(l=Tdb_columns_start,m=0;l<Tdb_columns_end;l++,m++){
+						Tdb[j][l] = SC[k][m];
+					}
+				}
+			}
+			else{
+			/*Qdb*/
+				int Qdb_rows_start = CQC_rows*hz_i; int Qdb_rows_end = CQC_rows*hz_i+CQC_rows;
+				int Qdb_columns_start = CQC_columns*hz_i; int Qdb_columns_end = CQC_columns*hz_i+CQC_columns;
+				//insert columns of CQC to Qdb
+				int j,k,l,m;
+				for(j=Qdb_rows_start,k=0;j<Qdb_rows_end;j++,k++){
+					for(l=Qdb_columns_start,m=0;l<Qdb_columns_end;l++,m++){
+						Qdb[j][l] = CQC[k][m];
+					}
+				}
+		    /*Tdb*/
+				int Tdb_rows_start = QC_rows*hz_i; int Tdb_rows_end = QC_rows*hz_i+QC_rows;
+				int Tdb_columns_start = QC_columns*hz_i; int Tdb_columns_end = QC_columns*hz_i+QC_columns;
+				for(j=Tdb_rows_start,k=0;j<Tdb_rows_end;j++,k++){
+					for(l=Tdb_columns_start,m=0;l<Tdb_columns_end;l++,m++){
+						Tdb[j][l] = QC[k][m];
+					}
+				}
+			}
+			/*Rdb*/
+			int j,k,l,m;
+			int Rdb_rows_start = R_rows*hz_i; int Rdb_rows_end = R_rows*hz_i+R_rows;
+			int Rdb_columns_start = R_columns*hz_i; int Rdb_columns_end = R_columns*hz_i+R_columns;
+			for(j=Rdb_rows_start,k=0;j<Rdb_rows_end;j++,k++){
+				for(l=Rdb_columns_start,m=0;l<Rdb_columns_end;l++,m++){
+					Rdb[j][l] = params.MPC_Cons_R[k][m];
+				}
+			}
+			for(int hz_j=0;hz_j<hz_t;hz_j++){
+				if(hz_j<=hz_i){
+			    /*Cdb*/
+				int j,k,l,m;
+				int Cdb_rows_start = B_aug_rows*hz_i; int Cdb_rows_end = B_aug_rows*hz_i+B_aug_rows;
+				int Cdb_columns_start = B_aug_columns*hz_i; int Cdb_columns_end = B_aug_columns*hz_i+B_aug_columns;
+				int n=(hz_i+1)-(hz_j+1);
+				//matrix power
+				matrixPower(A_aug_new, &n, A_aug_matrixpower);
+				//Calculation for A_aug_matrixpower with B_aug matrix by multiplication
+				for(int i_mul=0;i_mul<9;i_mul++){
+					for(int j_mul=0;j_mul<3;j_mul++){
+						A_aug_matrixpower_B_aug[i_mul][j_mul] = 0;
+						for(int k_mul=0;k_mul<9;k_mul++){
+							A_aug_matrixpower_B_aug[i_mul][j_mul] += A_aug_matrixpower[i_mul][k_mul] * B_aug[k_mul][i_mul];
+						}
+					}
+				}
+				//Calculation Cdb
+				for(j=Cdb_rows_start,k=0;j<Cdb_rows_end;j++,k++){
+					for(l=Cdb_columns_start,m=0;l<Cdb_columns_end;l++,m++){
+						Cdb[j][l] = A_aug_matrixpower_B_aug[k][m];
+					}
+				}
+			    }
+			}
+			/*Adc*/
+			int p = hz_i+1;
+			matrixPower(A_aug_new, &p, A_aug_matrixpower_Adc);
+			int Adc_rows_start = A_aug_rows*hz_i; int Adc_rows_end = A_aug_rows*hz_i+A_aug_rows;
+			int Adc_columns_start = 0; int Adc_columns_end = 0+A_aug_columns;
+			for(j=Adc_rows_start,k=0;j<Adc_rows_end;j++,k++){
+				for(l=Adc_columns_start,m=0;l<Adc_columns_end;l++,m++){
+					Adc[j][l] = A_aug_matrixpower_Adc[k][m];
+				}
+			}
+		}
+		/*Hdb*/
+		//transpose Cdb[18][6] to CdbT[6][18]
+		for(int i_CdbT=0;i_CdbT<6;i_CdbT++){
+			for(int j_CdbT=0;j_CdbT<18;j_CdbT++){
+					Cdb_transpose[i_CdbT][j_CdbT] = Cdb[j_CdbT][i_CdbT];
+			}
+		}
+		//Mul Cdb_transpose[6][18] with Qdb[18][18]
+	    for (int i_Hdb = 0; i_Hdb < 6; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 18; j_Hdb++) {
+	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0;
+	            for (int k_Hdb = 0; k_Hdb < 18; k_Hdb++) {
+	                Hdb_mul_temp[i_Hdb][j_Hdb] += Cdb_transpose[i_Hdb][k_Hdb] * Qdb[k_Hdb][j_Hdb];
+	            }
+	        }
+	    }
+	    //Mul Hdb_mul_temp[6][18] with Cdb[18][6]
+	    for (int i_Hdb = 0; i_Hdb < 6; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 6; j_Hdb++) {
+	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0;
+	            for (int k_Hdb = 0; k_Hdb < 18; k_Hdb++) {
+	                Hdb_mul_temp_2[i_Hdb][j_Hdb] += Hdb_mul_temp[i_Hdb][k_Hdb] * Cdb[k_Hdb][j_Hdb];
+	            }
+	        }
+	    }
+	    //Add Hdb_mul_temp_2[6][6] with Rdb[6][6]
+	    for (int i_Hdb = 0; i_Hdb < 6; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 6; j_Hdb++) {
+	            Hdb[i_Hdb][j_Hdb] = Hdb_mul_temp_2[i_Hdb][j_Hdb] + Rdb[i_Hdb][j_Hdb];
+	        }
+	    }
+	    //Update Hdb to Hdb_r at 2hz
+	    for (int i_Hdb_r = 0; i_Hdb_r < 12; i_Hdb_r++) {
+	        for (int j_Hdb_r = 0; j_Hdb_r < 12; j_Hdb_r++) {
+	            Hdb_r_2hz[i_Hdb_r][j_Hdb_r] = Hdb[i_Hdb_r][j_Hdb_r];
+	        }
+	    }
+		/*Fdbt*/
+	    //Transpose ADC[18][9] to AdcT[9][18]
+		for(int i_AdcT=0;i_AdcT<9;i_AdcT++){
+			for(int j_AdcT=0;j_AdcT<18;j_AdcT++){
+				AdcTp[i_AdcT][j_AdcT] = Adc[j_AdcT][i_AdcT];
+			}
+		}
+		//Mul AdcT[9][18] with Qdb[18][18]
+	    for (int i_temp1=0; i_temp1 < 9; i_temp1++) {
+	        for (int j_temp1 = 0; j_temp1 < 18; j_temp1++) {
+	        	temp_Fdbt_1[i_temp1][j_temp1] = 0;
+	            for (int k_temp1 = 0; k_temp1 < 18; k_temp1++) {
+	                temp_Fdbt_1[i_temp1][j_temp1] += AdcTp[i_temp1][k_temp1] * Qdb[k_temp1][j_temp1];
+	            }
+	        }
+	    }
+	    //Mul temp_Fdbt_1[9][18] with Cdb[18][6]
+	    for (int i_temp2 = 0; i_temp2 < 9; i_temp2++) {
+	        for (int j_temp2 = 0; j_temp2 < 6; j_temp2++) {
+	        	temp_Fdbt_2[i_temp2][j_temp2] = 0;
+	            for (int k_temp2 = 0; k_temp2 < 18; k_temp2++) {
+	            	temp_Fdbt_2[i_temp2][j_temp2] += temp_Fdbt_1[i_temp2][k_temp2] * Cdb[k_temp2][j_temp2];
+	            }
+	        }
+	    }
+	    //convert Tdb[6][18] to -Tdb[6][18]
+	    for(int i_cvTdb=0;i_cvTdb<6;i_cvTdb++){
+	    	for(int j_cvTdb=0;j_cvTdb<18;j_cvTdb++){
+	    		Tdb[i_cvTdb][j_cvTdb]=Tdb[i_cvTdb][j_cvTdb]*-1;
+	    	}
+	    }
+	    //Mul -Tdb[6][18] with Cdb[18][6]
+	    for (int i_temp3 = 0; i_temp3 < 6; i_temp3++) {
+	        for (int j_temp3 = 0; j_temp3 < 6; j_temp3++) {
+	        	temp_Fdbt_3[i_temp3][j_temp3] = 0;
+	            for (int k_temp3 = 0; k_temp3 < 18; k_temp3++){
+	            	temp_Fdbt_3[i_temp3][j_temp3] += Tdb[i_temp3][k_temp3] * Cdb[k_temp3][j_temp3];
+	            }
+	        }
+	    }
+	    //Cal Fdbt[15][6] by concatenate  temp_Fdbt_2[9][6] and temp_Fdbt_3[6][6] axis 0
+	    for(int i_Fdbt=0;i_Fdbt<9;i_Fdbt++){
+	    	for(int j_Fdbt=0;j_Fdbt<6;j_Fdbt++){
+	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_2[i_Fdbt][j_Fdbt];
+	    	}
+	    }
+	    for(int i_Fdbt=9;i_Fdbt<15;i_Fdbt++){
+	    	for(int j_Fdbt=0;j_Fdbt<6;j_Fdbt++){
+	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_3[i_Fdbt-9][j_Fdbt];
+	    	}
+	    }
+	    //update Fdbt to Fdbt_r with 2hz
+	    for(int i_Fdbt_r=0;i_Fdbt_r<15;i_Fdbt_r++){
+	    	for(int j_Fdbt_r=0;j_Fdbt_r<6;j_Fdbt_r++){
+	    		Fdbt_r_2hz[i_Fdbt_r][j_Fdbt_r] = Fdbt[i_Fdbt_r][j_Fdbt_r];
+	    	}
+	    }
 	}
 	else if (hz_t == 3){
 		float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
@@ -381,7 +562,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    	}
 	    }
 	    //update Fdbt to Fdbt_r with 3hz
-	    for(int i_Fdbt_r=9;i_Fdbt_r<18;i_Fdbt_r++){
+	    for(int i_Fdbt_r=0;i_Fdbt_r<18;i_Fdbt_r++){
 	    	for(int j_Fdbt_r=0;j_Fdbt_r<9;j_Fdbt_r++){
 	    		Fdbt_r_3hz[i_Fdbt_r][j_Fdbt_r] = Fdbt[i_Fdbt_r][j_Fdbt_r];
 	    	}
@@ -566,7 +747,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    	}
 	    }
 	    //update Fdbt to Fdbt_r with 4hz
-	    for(int i_Fdbt_r=9;i_Fdbt_r<21;i_Fdbt_r++){
+	    for(int i_Fdbt_r=0;i_Fdbt_r<21;i_Fdbt_r++){
 	    	for(int j_Fdbt_r=0;j_Fdbt_r<12;j_Fdbt_r++){
 	    		Fdbt_r_4hz[i_Fdbt_r][j_Fdbt_r] = Fdbt[i_Fdbt_r][j_Fdbt_r];
 	    	}
