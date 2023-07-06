@@ -12,24 +12,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int lpv_cont_discrete(float *roll_t,float *pitch_t,float *yaw_t,float *states_u,float *states_v,float *states_w,float *states_p,float *states_q,float *states_r,float *states_phi,float *states_theta,float *states_psi,float *Omega_total,double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3]){
-	float R_matrix_t[3][3],T_matrix_t[3][3];
-	float euler_t[3],states_t[9];
-	float x_dot_t,y_dot_t,z_dot_t;
+int lpv_cont_discrete(double *roll_t,double *pitch_t,double *yaw_t,double *states_u,double *states_v,double *states_w,double *states_p,double *states_q,double *states_r,double *states_phi,double *states_theta,double *states_psi,double *Omega_total,double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3]){
+	double R_matrix_t[3][3],T_matrix_t[3][3];
+	double euler_t[3],states_t[9];
+	double x_dot_t,y_dot_t,z_dot_t;
+	euler_t[0] = *roll_t; euler_t[1] = *pitch_t; euler_t[2] =*yaw_t;
 	states_t[0] = *states_u; states_t[1] = *states_v; states_t[2] = *states_w;
 	states_t[3] = *states_p; states_t[4] = *states_q; states_t[5] = *states_r;
 	states_t[6] = *states_phi; states_t[7] = *states_theta; states_t[8] = *states_psi;
 	get_rotational_matrix_lpv_cont_discrete(&euler_t[0],&euler_t[1],&euler_t[2],R_matrix_t,T_matrix_t,&states_t[0],&states_t[1],&states_t[2],&states_t[3],&states_t[4],&states_t[5],&x_dot_t,&y_dot_t,&z_dot_t);
-	float rot_vel_body[3];
-	rot_vel_body[0] = x_dot_t;
-	rot_vel_body[1] = y_dot_t;
-	rot_vel_body[2] = z_dot_t;
+	double rot_vel_body[3];
+	rot_vel_body[0] = states_t[3];
+	rot_vel_body[1] = states_t[4];
+	rot_vel_body[2] = states_t[5];
 	/*Calculation rot_vel_fixed by multiplication T_maxtrix_t with rot_vel_body*/
-	float rot_vel_fix[3];
+	double rot_vel_fix[3];
 	rot_vel_fix[0] = T_matrix_t[0][0]*rot_vel_body[0]+T_matrix_t[0][1]*rot_vel_body[1]+T_matrix_t[0][2]*rot_vel_body[2];
 	rot_vel_fix[1] = T_matrix_t[1][0]*rot_vel_body[0]+T_matrix_t[1][1]*rot_vel_body[1]+T_matrix_t[1][2]*rot_vel_body[2];
 	rot_vel_fix[2] = T_matrix_t[2][0]*rot_vel_body[0]+T_matrix_t[2][1]*rot_vel_body[1]+T_matrix_t[2][2]*rot_vel_body[2];
-	float phi_dot,theta_dot,psi_dot;
+	double phi_dot,theta_dot,psi_dot;
 	phi_dot = rot_vel_fix[0];
 	theta_dot = rot_vel_fix[1];
 	psi_dot = rot_vel_fix[2];

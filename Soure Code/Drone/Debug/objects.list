@@ -4,6 +4,7 @@
 "./Core/Application/MPC/Rotational_matrix/rotational_matrix.o"
 "./Core/Application/MPC/mpc.o"
 "./Core/Application/MPC/mpc_simplification/mpc_simplification.o"
+"./Core/Application/MPC/open_loop_new_states/open_loop_new_states.o"
 "./Core/Application/MPC/posision_controller/posision_control.o"
 "./Core/Application/MPC/trajectory/trajectory.o"
 "./Core/Application/button/button.o"

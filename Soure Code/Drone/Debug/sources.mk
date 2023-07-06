@@ -27,6 +27,7 @@ Core/Application/MPC/Matrix_calculation \
 Core/Application/MPC/Rotational_matrix \
 Core/Application/MPC \
 Core/Application/MPC/mpc_simplification \
+Core/Application/MPC/open_loop_new_states \
 Core/Application/MPC/posision_controller \
 Core/Application/MPC/trajectory \
 Core/Application/button \

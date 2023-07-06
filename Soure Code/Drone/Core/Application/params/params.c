@@ -204,15 +204,14 @@ params_t params={
 		.MPC_Cons_f = 0.025,
 		.MPC_Cons_height_i = 1,
 		.MPC_Cons_height_f = 5,
-#if DRAG_FORCE_SWITCH == 0
-#elif	DRAG_FORCE_SWITCH == 1
+		.MPC_Cons_drag_switch = 0,
 		.MPC_Cons_C_D_u = 1.5,
 		.MPC_Cons_C_D_v = 1.5,
 		.MPC_Cons_C_D_w = 2.0,
 		.MPC_Cons_A_u = (2*0.171*0.01)+0.0025,  	//0.171 la MPC_Cons_l
 		.MPC_Cons_A_v = (2*0.171*0.01)+0.0025,		//0.171 la MPC_Cons_l
 		.MPC_Cons_A_w = (2*2*0.171*0.01)+0.0025,	//0.171 la MPC_Cons_l
-#endif
+		.MPC_Cons_Sub_loop = 5,
 		.MPC_Cons_rho = 1.225,
 		.MPC_Cons_trajectory = 1,
 };
@@ -368,15 +367,14 @@ void params_save(){
 		write_4bytes((uint32_t*)(&params.MPC_Cons_f));
 		write_1byte((uint32_t*)(&params.MPC_Cons_height_i));
 		write_1byte((uint32_t*)(&params.MPC_Cons_height_f));
-#if DRAG_FORCE_SWITCH == 0
-#elif	DRAG_FORCE_SWITCH == 1
+		write_4bytes((uint32_t*)(&params.MPC_Cons_drag_switch));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_C_D_u));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_C_D_v));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_C_D_w));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_A_u));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_A_v));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_A_w));
-#endif
+		write_4bytes((uint32_t*)(&params.MPC_Cons_Sub_loop));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_rho));
 		write_1byte((uint32_t*)(&params.MPC_Cons_trajectory));
 		HAL_FLASH_Lock();
@@ -484,15 +482,14 @@ bool params_load(){
 		read_4bytes((uint32_t*)(&params.MPC_Cons_f));
 		read_1byte((uint8_t*)(&params.MPC_Cons_height_i));
 		read_1byte((uint8_t*)(&params.MPC_Cons_height_f));
-#if DRAG_FORCE_SWITCH == 0
-#elif	DRAG_FORCE_SWITCH == 1
+		read_4bytes((uint32_t*)(&params.MPC_Cons_drag_switch));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_C_D_u));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_C_D_v));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_C_D_w));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_A_u));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_A_v));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_A_w));
-#endif
+		read_4bytes((uint32_t*)(&params.MPC_Cons_Sub_loop));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_rho));
 		read_1byte((uint8_t*)(&params.MPC_Cons_trajectory));
 

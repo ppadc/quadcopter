@@ -1,0 +1,13 @@
+/*
+ * open_loop_new_states.c
+ *
+ *  Created on: Jul 7, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include "../Matrix_calculation/matrix.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>

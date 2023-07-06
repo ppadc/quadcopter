@@ -11,15 +11,15 @@
 #include <math.h>
 
 //Rotational matrix that relates u,v,w with x_dot,y_dot,z_dot
-int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, float R_matrix[3][3],float *state_u,float *state_v,float *state_w, float *x_dot, float *y_dot, float *z_dot){
+int get_rotational_matrix_pos_controller(double *roll, double *pitch,double *yaw, double R_matrix[3][3],double *state_u,double *state_v,double *state_w, double *x_dot, double *y_dot, double *z_dot){
 	uint8_t i = 0;
 	uint8_t j = 0;
 	uint8_t k = 0;
-	float Rx[3][3],Ry[3][3],Rz[3][3];
-	float RyRx[3][3];
-	float pos_vel_body[3];
-	float pos_vel_fixed[3];
-	float phi,theta,psi;
+	double Rx[3][3],Ry[3][3],Rz[3][3];
+	double RyRx[3][3];
+	double pos_vel_body[3];
+	double pos_vel_fixed[3];
+	double phi,theta,psi;
 #if BNO055_EULER_ANGLES_UNITS == 0
 	/*Convert Degree to Radian*/
 	phi = *roll*(M_PI/180);
@@ -77,14 +77,14 @@ int get_rotational_matrix_pos_controller(float *roll, float *pitch,float *yaw, f
 	return 0;
 }
 
-int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float R_matrix[3][3],float T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot){
+int get_rotational_matrix_lpv_cont_discrete(double *roll, double *pitch,double *yaw, double R_matrix[3][3],double T_maxtrix[3][3],double *state_u,double *state_v,double *state_w,double *state_p,double *state_q,double *state_r, double *x_dot, double *y_dot, double *z_dot){
 	uint8_t i = 0;
 	uint8_t j = 0;
 	uint8_t k = 0;
-	float Rx[3][3],Ry[3][3],Rz[3][3];
-	float RyRx[3][3];
-	float pos_vel_body[3],pos_vel_fixed[3];
-	float phi,theta,psi;
+	double Rx[3][3],Ry[3][3],Rz[3][3];
+	double RyRx[3][3];
+	double pos_vel_body[3],pos_vel_fixed[3];
+	double phi,theta,psi;
 #if BNO055_EULER_ANGLES_UNITS == 0
 	/*Convert Degree to Radian*/
 	phi = *roll*(M_PI/180);

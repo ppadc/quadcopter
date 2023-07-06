@@ -1,0 +1,70 @@
+/*
+ * open_loop_new_states.c
+ *
+ *  Created on: Jul 7, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "user_define.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include "../Matrix_calculation/matrix.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int open_new_loop_states(double states[12], double *omega_total,float *U1, float *U2,float *U3,float *U4){
+	double current_states[12],new_states[12];
+	for(int i=0;i<12;i++){
+		current_states[i]=states[i];
+	}
+	for(int i=0;i<12;i++){
+		new_states[i]=current_states[i];
+	}
+	double u,v,w,p,q,r,x,y,z,phi,theta,psi;
+	u = current_states[0];
+	v = current_states[1];
+	w = current_states[2];
+	p = current_states[3];
+	q = current_states[4];
+	r = current_states[5];
+	x = current_states[6];
+	y = current_states[7];
+	z = current_states[8];
+	phi = current_states[9];
+	theta = current_states[10];
+	psi = current_states[11];
+	/*Create states_ani=np.zeros((sub_loop,6))*/
+	float states_ani[5][6]={{0.0}};
+	/*Create U_ani=np.zeros((sub_loop,4))*/
+	float U_ani[5][4]={{0.0}};
+
+	/*Runge-Kutta method*/
+	double u_or,v_or,w_or,p_or,q_or,r_or,x_or,y_or,z_or,phi_or,theta_or,psi_or;
+	int Ts_pos = 2;
+	u_or=u;
+	v_or=v;
+	w_or=w;
+	p_or=p;
+	q_or=q;
+	r_or=r;
+	x_or=x;
+	y_or=y;
+	z_or=z;
+	phi_or=phi;
+	theta_or=theta;
+	psi_or=psi;
+	//Create Fd_u Fd_v Fd_w
+	float Fd_u,Fd_v,Fd_w;
+	for(int j=0;j<4;j++){
+		if(params.MPC_Cons_drag_switch==1){
+			Fd_u = 0.5*params.MPC_Cons_C_D_u*params.MPC_Cons_rho*pow(u,2)*params.MPC_Cons_A_u;
+			Fd_v = 0.5*params.MPC_Cons_C_D_v*params.MPC_Cons_rho*pow(v,2)*params.MPC_Cons_A_v;
+			Fd_w = 0.5*params.MPC_Cons_C_D_w*params.MPC_Cons_rho*pow(w,2)*params.MPC_Cons_A_v;
+		}
+		else{
+
+		}
+	}
+	return 0;
+}

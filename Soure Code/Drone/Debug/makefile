@@ -29,6 +29,7 @@ RM := rm -rf
 -include Core/Application/button/subdir.mk
 -include Core/Application/MPC/trajectory/subdir.mk
 -include Core/Application/MPC/posision_controller/subdir.mk
+-include Core/Application/MPC/open_loop_new_states/subdir.mk
 -include Core/Application/MPC/mpc_simplification/subdir.mk
 -include Core/Application/MPC/Rotational_matrix/subdir.mk
 -include Core/Application/MPC/Matrix_calculation/subdir.mk

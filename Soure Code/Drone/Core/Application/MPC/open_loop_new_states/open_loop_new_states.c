@@ -1,0 +1,224 @@
+/*
+ * open_loop_new_states.c
+ *
+ *  Created on: Jul 7, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "user_define.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include "../Matrix_calculation/matrix.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int open_new_loop_states(double states[12], double *omega_total,float *U1, float *U2,float *U3,float *U4,double new_states_r[12],double states_ani_r[5][6],double U_ani_r[5][4]){
+	double current_states[12];
+	for(int i=0;i<12;i++){
+		current_states[i]=states[i];
+	}
+	for(int i=0;i<12;i++){
+		new_states_r[i]=current_states[i];
+	}
+	double u,v,w,p,q,r,x,y,z,phi,theta,psi;
+	u = current_states[0];
+	v = current_states[1];
+	w = current_states[2];
+	p = current_states[3];
+	q = current_states[4];
+	r = current_states[5];
+	x = current_states[6];
+	y = current_states[7];
+	z = current_states[8];
+	phi = current_states[9];
+	theta = current_states[10];
+	psi = current_states[11];
+	/*Create states_ani_r=np.zeros((sub_loop,6))*/
+	for(int i=0;i<5;i++){
+		for(int j=0;j<6;j++){
+			states_ani_r[i][j]=0;
+		}
+	}
+	/*Create U_ani_r=np.zeros((sub_loop,4))*/
+	for(int i=0;i<5;i++){
+		for(int j=0;j<4;j++){
+			U_ani_r[i][j]=0;
+		}
+	}
+	/*Runge-Kutta method*/
+	double u_or,v_or,w_or,p_or,q_or,r_or,x_or,y_or,z_or,phi_or,theta_or,psi_or;
+	int Ts_pos = 2;
+	u_or=u;
+	v_or=v;
+	w_or=w;
+	p_or=p;
+	q_or=q;
+	r_or=r;
+	x_or=x;
+	y_or=y;
+	z_or=z;
+	phi_or=phi;
+	theta_or=theta;
+	psi_or=psi;
+	//Create Fd_u Fd_v Fd_w
+	float Fd_u,Fd_v,Fd_w;
+	double u_dot,v_dot,w_dot,p_dot,q_dot,r_dot;
+	double x_dot,y_dot,z_dot;
+	double R_matrix_t[3][3]={{0.0}},T_matrix_t[3][3]={{0.0}};
+	double u_dot_k1,v_dot_k1,w_dot_k1,p_dot_k1,q_dot_k1,r_dot_k1,x_dot_k1,y_dot_k1,z_dot_k1,phi_dot_k1,theta_dot_k1,psi_dot_k1;
+	double u_dot_k2,v_dot_k2,w_dot_k2,p_dot_k2,q_dot_k2,r_dot_k2,x_dot_k2,y_dot_k2,z_dot_k2,phi_dot_k2,theta_dot_k2,psi_dot_k2;
+	double u_dot_k3,v_dot_k3,w_dot_k3,p_dot_k3,q_dot_k3,r_dot_k3,x_dot_k3,y_dot_k3,z_dot_k3,phi_dot_k3,theta_dot_k3,psi_dot_k3;
+	double u_dot_k4,v_dot_k4,w_dot_k4,p_dot_k4,q_dot_k4,r_dot_k4,x_dot_k4,y_dot_k4,z_dot_k4,phi_dot_k4,theta_dot_k4,psi_dot_k4;
+	for(int j=0;j<4;j++){
+		if(params.MPC_Cons_drag_switch==1){
+			Fd_u = 0.5*params.MPC_Cons_C_D_u*params.MPC_Cons_rho*pow(u,2)*params.MPC_Cons_A_u;
+			Fd_v = 0.5*params.MPC_Cons_C_D_v*params.MPC_Cons_rho*pow(v,2)*params.MPC_Cons_A_v;
+			Fd_w = 0.5*params.MPC_Cons_C_D_w*params.MPC_Cons_rho*pow(w,2)*params.MPC_Cons_A_v;
+		}
+		else{
+			Fd_u=0;
+			Fd_v=0;
+			Fd_w=0;
+		}
+		/*Compute slopes k_x*/
+		u_dot = (v*r-w*q)+params.MPC_Cons_g*sin(theta)-Fd_u/params.MPC_Cons_m;
+		v_dot = (w*p-u*r)-params.MPC_Cons_g*cos(theta)*sin(phi)-Fd_v/params.MPC_Cons_m;
+		w_dot = (u*q-v*p)-params.MPC_Cons_g*cos(theta)*cos(phi)+((*U1)/params.MPC_Cons_m)-Fd_w/params.MPC_Cons_m;
+		p_dot = (q*r*(params.MPC_Cons_Iy-params.MPC_Cons_Iz)/params.MPC_Cons_Ix)-(params.MPC_Cons_Jtp/params.MPC_Cons_Ix*q*(*omega_total))+(*U2)/params.MPC_Cons_Ix;
+		q_dot = (p*r*(params.MPC_Cons_Iz-params.MPC_Cons_Ix)/params.MPC_Cons_Iy)+(params.MPC_Cons_Jtp/params.MPC_Cons_Iy*p*(*omega_total))+(*U3)/params.MPC_Cons_Iy;
+		r_dot = (p*q*(params.MPC_Cons_Ix-params.MPC_Cons_Iy)/params.MPC_Cons_Iz)+(*U4)/params.MPC_Cons_Iz;
+		/* Get the states in the inertial frame*/
+		// Rotational matrix that relates u,v,w with x_dot,y_dot,z_dot
+		get_rotational_matrix_lpv_cont_discrete(&phi,&theta,&psi,R_matrix_t,T_matrix_t,&u,&v,&w,&p,&q,&r,&x_dot,&y_dot,&z_dot);
+		double rot_vel_body[3];
+		rot_vel_body[0] = p;
+		rot_vel_body[1] = q;
+		rot_vel_body[2] = r;
+		/*Calculation rot_vel_fixed by multiplication T_maxtrix_t with rot_vel_body*/
+		double rot_vel_fix[3];
+		rot_vel_fix[0] = T_matrix_t[0][0]*rot_vel_body[0]+T_matrix_t[0][1]*rot_vel_body[1]+T_matrix_t[0][2]*rot_vel_body[2];
+		rot_vel_fix[1] = T_matrix_t[1][0]*rot_vel_body[0]+T_matrix_t[1][1]*rot_vel_body[1]+T_matrix_t[1][2]*rot_vel_body[2];
+		rot_vel_fix[2] = T_matrix_t[2][0]*rot_vel_body[0]+T_matrix_t[2][1]*rot_vel_body[1]+T_matrix_t[2][2]*rot_vel_body[2];
+		double phi_dot,theta_dot,psi_dot;
+		phi_dot = rot_vel_fix[0];
+		theta_dot = rot_vel_fix[1];
+		psi_dot = rot_vel_fix[2];
+		phi_dot = phi_dot;
+		theta_dot = theta_dot;
+		psi_dot = psi_dot;
+		/*Save the slopes*/
+		if(j==0){
+			u_dot_k1 = u_dot;
+			v_dot_k1 = v_dot;
+			w_dot_k1 = w_dot;
+			p_dot_k1 = p_dot;
+			q_dot_k1 = q_dot;
+			r_dot_k1 = r_dot;
+			x_dot_k1 = x_dot;
+			y_dot_k1 = y_dot;
+			z_dot_k1 = z_dot;
+			phi_dot_k1 = phi_dot;
+			theta_dot_k1 = theta_dot;
+			psi_dot_k1 = psi_dot;
+		}
+		else if(j==1){
+			u_dot_k2 = u_dot;
+			v_dot_k2 = v_dot;
+			w_dot_k2 = w_dot;
+			p_dot_k2 = p_dot;
+			q_dot_k2 = q_dot;
+			r_dot_k2 = r_dot;
+			x_dot_k2 = x_dot;
+			y_dot_k2 = y_dot;
+			z_dot_k2 = z_dot;
+			phi_dot_k2 = phi_dot;
+			theta_dot_k2 = theta_dot;
+			psi_dot_k2 = psi_dot;
+		}
+		else if(j==2){
+			u_dot_k3 = u_dot;
+			v_dot_k3 = v_dot;
+			w_dot_k3 = w_dot;
+			p_dot_k3 = p_dot;
+			q_dot_k3 = q_dot;
+			r_dot_k3 = r_dot;
+			x_dot_k3 = x_dot;
+			y_dot_k3 = y_dot;
+			z_dot_k3 = z_dot;
+			phi_dot_k3 = phi_dot;
+			theta_dot_k3 = theta_dot;
+			psi_dot_k3 = psi_dot;
+			Ts_pos = 1;
+		}
+		else{
+			u_dot_k4 = u_dot;
+			v_dot_k4 = v_dot;
+			w_dot_k4 = w_dot;
+			p_dot_k4 = p_dot;
+			q_dot_k4 = q_dot;
+			r_dot_k4 = r_dot;
+			x_dot_k4 = x_dot;
+			y_dot_k4 = y_dot;
+			z_dot_k4 = z_dot;
+			phi_dot_k4 = phi_dot;
+			theta_dot_k4 = theta_dot;
+			psi_dot_k4 = psi_dot;
+		}
+		if(j<3){
+			u=u_or+u_dot*params.MPC_Cons_Ts/Ts_pos;
+            v=v_or+v_dot*params.MPC_Cons_Ts/Ts_pos;
+            w=w_or+w_dot*params.MPC_Cons_Ts/Ts_pos;
+            p=p_or+p_dot*params.MPC_Cons_Ts/Ts_pos;
+            q=q_or+q_dot*params.MPC_Cons_Ts/Ts_pos;
+            r=r_or+r_dot*params.MPC_Cons_Ts/Ts_pos;
+            x=x_or+x_dot*params.MPC_Cons_Ts/Ts_pos;
+            y=y_or+y_dot*params.MPC_Cons_Ts/Ts_pos;
+            z=z_or+z_dot*params.MPC_Cons_Ts/Ts_pos;
+            phi=phi_or+phi_dot*params.MPC_Cons_Ts/Ts_pos;
+            theta=theta_or+theta_dot*params.MPC_Cons_Ts/Ts_pos;
+            psi=psi_or+psi_dot*params.MPC_Cons_Ts/Ts_pos;
+		}
+		else{
+            u=u_or+1/6*(u_dot_k1+2*u_dot_k2+2*u_dot_k3+u_dot_k4)*params.MPC_Cons_Ts;
+            v=v_or+1/6*(v_dot_k1+2*v_dot_k2+2*v_dot_k3+v_dot_k4)*params.MPC_Cons_Ts;
+            w=w_or+1/6*(w_dot_k1+2*w_dot_k2+2*w_dot_k3+w_dot_k4)*params.MPC_Cons_Ts;
+            p=p_or+1/6*(p_dot_k1+2*p_dot_k2+2*p_dot_k3+p_dot_k4)*params.MPC_Cons_Ts;
+            q=q_or+1/6*(q_dot_k1+2*q_dot_k2+2*q_dot_k3+q_dot_k4)*params.MPC_Cons_Ts;
+            r=r_or+1/6*(r_dot_k1+2*r_dot_k2+2*r_dot_k3+r_dot_k4)*params.MPC_Cons_Ts;
+            x=x_or+1/6*(x_dot_k1+2*x_dot_k2+2*x_dot_k3+x_dot_k4)*params.MPC_Cons_Ts;
+            y=y_or+1/6*(y_dot_k1+2*y_dot_k2+2*y_dot_k3+y_dot_k4)*params.MPC_Cons_Ts;
+            z=z_or+1/6*(z_dot_k1+2*z_dot_k2+2*z_dot_k3+z_dot_k4)*params.MPC_Cons_Ts;
+            phi=phi_or+1/6*(phi_dot_k1+2*phi_dot_k2+2*phi_dot_k3+phi_dot_k4)*params.MPC_Cons_Ts;
+            theta=theta_or+1/6*(theta_dot_k1+2*theta_dot_k2+2*theta_dot_k3+theta_dot_k4)*params.MPC_Cons_Ts;
+            psi=psi_or+1/6*(psi_dot_k1+2*psi_dot_k2+2*psi_dot_k3+psi_dot_k4)*params.MPC_Cons_Ts;
+		}
+	}
+	for(int k=0;k<params.MPC_Cons_Sub_loop;k++){
+		states_ani_r[k][0] = x_or+(x-x_or)/params.MPC_Cons_Ts*(k/(params.MPC_Cons_Sub_loop-1))*params.MPC_Cons_Ts;
+		states_ani_r[k][1] = y_or+(y-y_or)/params.MPC_Cons_Ts*(k/(params.MPC_Cons_Sub_loop-1))*params.MPC_Cons_Ts;
+		states_ani_r[k][2] = z_or+(z-z_or)/params.MPC_Cons_Ts*(k/(params.MPC_Cons_Sub_loop-1))*params.MPC_Cons_Ts;
+		states_ani_r[k][3] = phi_or+(phi-phi_or)/params.MPC_Cons_Ts*(k/(params.MPC_Cons_Sub_loop-1))*params.MPC_Cons_Ts;
+		states_ani_r[k][4] = theta_or+(theta-theta_or)/params.MPC_Cons_Ts*(k/(params.MPC_Cons_Sub_loop-1))*params.MPC_Cons_Ts;
+		states_ani_r[k][5] = psi_or+(psi-psi_or)/params.MPC_Cons_Ts*(k/(params.MPC_Cons_Sub_loop-1))*params.MPC_Cons_Ts;
+	}
+	U_ani_r[0][0] = *U1; U_ani_r[1][0] = *U1; U_ani_r[2][0] = *U1; U_ani_r[3][0] = *U1; U_ani_r[4][0] = *U1;
+	U_ani_r[0][1] = *U2; U_ani_r[1][1] = *U2; U_ani_r[2][1] = *U2; U_ani_r[3][1] = *U2; U_ani_r[4][1] = *U2;
+	U_ani_r[0][2] = *U3; U_ani_r[1][2] = *U3; U_ani_r[2][2] = *U3; U_ani_r[3][2] = *U3; U_ani_r[4][2] = *U3;
+	U_ani_r[0][3] = *U4; U_ani_r[1][3] = *U4; U_ani_r[2][3] = *U4; U_ani_r[3][3] = *U4; U_ani_r[4][3] = *U4;
+	//End of Runge-Kutta method
+	/*Take the last states*/
+	new_states_r[0] = u;
+	new_states_r[1] = v;
+	new_states_r[2] = w;
+	new_states_r[3] = p;
+	new_states_r[4] = q;
+	new_states_r[5] = r;
+	new_states_r[6] = x;
+	new_states_r[7] = y;
+	new_states_r[8] = z;
+	new_states_r[9] = phi;
+	new_states_r[10] = theta;
+	new_states_r[11] = psi;
+	return 0;
+}

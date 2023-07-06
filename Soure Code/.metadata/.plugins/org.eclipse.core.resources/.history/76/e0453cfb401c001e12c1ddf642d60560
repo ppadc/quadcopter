@@ -1,0 +1,21 @@
+/*
+ * open_loop_new_states.c
+ *
+ *  Created on: Jul 7, 2023
+ *      Author: nguye
+ */
+
+#include "params.h"
+#include "../Rotational_matrix/rotational_matrix.h"
+#include "../Matrix_calculation/matrix.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int open_new_loop_states(double states[12], double *omega_total,float *U1, float *U2,float *U3,float *U4){
+	double current_states[12],new_states[12];
+	for(int i=0;i<12;i++){
+		current_states[i]=states[i];
+	}
+	return 0;
+}

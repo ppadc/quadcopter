@@ -72,8 +72,8 @@ typedef struct{
 	float MPC_Cons_f;
 	char  MPC_Cons_height_i;
 	char  MPC_Cons_height_f;
-#if DRAG_FORCE_SWITCH == 0
-#elif	DRAG_FORCE_SWITCH == 1
+	int   MPC_Cons_Sub_loop;
+	int   MPC_Cons_drag_switch;
 	//Drag force coefficients [-]:
 	float MPC_Cons_C_D_u;
 	float MPC_Cons_C_D_v;
@@ -82,7 +82,6 @@ typedef struct{
 	float MPC_Cons_A_u;
 	float MPC_Cons_A_v;
 	float MPC_Cons_A_w;
-#endif
 	//Air density
 	float MPC_Cons_rho;
 	char MPC_Cons_trajectory;

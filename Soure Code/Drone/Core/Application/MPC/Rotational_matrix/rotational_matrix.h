@@ -12,6 +12,6 @@
 #include <stdbool.h>
 #include "bno055.h"
 
-int get_rotational_matrix_pos_controller(float *roll, float *pitch, float *yaw, float R_matrix[3][3],float *state_u,float *state_v,float *state_w, float *x_dot, float *y_dot, float *z_dot);
-int get_rotational_matrix_lpv_cont_discrete(float *roll, float *pitch,float *yaw, float R_matrix[3][3],float T_maxtrix[3][3],float *state_u,float *state_v,float *state_w,float *state_p,float *state_q,float *state_r, float *x_dot, float *y_dot, float *z_dot);
+int get_rotational_matrix_pos_controller(double *roll, double *pitch, double *yaw, double R_matrix[3][3],double *state_u,double *state_v,double *state_w, double *x_dot, double *y_dot, double *z_dot);
+int get_rotational_matrix_lpv_cont_discrete(double *roll, double *pitch,double *yaw, double R_matrix[3][3],double T_maxtrix[3][3],double *state_u,double *state_v,double *state_w,double *state_p,double *state_q,double *state_r, double *x_dot, double *y_dot, double *z_dot);
 #endif /* APPLICATION_MPC_ROTATIONAL_MATRIX_ROTATIONAL_MATRIX_H_ */
