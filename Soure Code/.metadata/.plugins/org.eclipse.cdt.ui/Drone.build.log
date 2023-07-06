@@ -1,22 +1,6 @@
-21:26:45 **** Incremental Build of configuration Debug for project Drone ****
+22:05:39 **** Incremental Build of configuration Debug for project Drone ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Application/MPC/mpc_simplification/mpc_simplification.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -I../Core/Application/lcd -I../Core/Application/MPC/posision_controller -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/MPC/mpc_simplification/mpc_simplification.d" -MT"Core/Application/MPC/mpc_simplification/mpc_simplification.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/MPC/mpc_simplification/mpc_simplification.o"
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c: In function 'mpc_simplification':
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:101: warning: unused variable 'Adc' [-Wunused-variable]
-  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
-      |                                                                                                     ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:78: warning: unused variable 'Cdb' [-Wunused-variable]
-  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
-      |                                                                              ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:55: warning: unused variable 'Rdb' [-Wunused-variable]
-  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
-      |                                                       ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:32: warning: unused variable 'Tdb' [-Wunused-variable]
-  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
-      |                                ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:9: warning: unused variable 'Qdb' [-Wunused-variable]
-  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
-      |         ^~~
 arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Drone.elf
  
@@ -29,5 +13,5 @@ Finished building: default.size.stdout
 Finished building: Drone.list
  
 
-21:26:47 Build Finished. 0 errors, 5 warnings. (took 1s.300ms)
+22:05:40 Build Finished. 0 errors, 0 warnings. (took 1s.297ms)
 
