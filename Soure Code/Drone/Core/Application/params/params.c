@@ -202,8 +202,8 @@ params_t params={
 
 		.MPC_Cons_r = 2,
 		.MPC_Cons_f = 0.025,
-		.MPC_Cons_height_i = 5,
-		.MPC_Cons_height_f = 25,
+		.MPC_Cons_height_i = 1,
+		.MPC_Cons_height_f = 5,
 #if DRAG_FORCE_SWITCH == 0
 #elif	DRAG_FORCE_SWITCH == 1
 		.MPC_Cons_C_D_u = 1.5,

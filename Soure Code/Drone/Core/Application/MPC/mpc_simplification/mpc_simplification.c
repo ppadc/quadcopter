@@ -14,12 +14,11 @@
 #include <stdlib.h>
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
 
-int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],int *hz,double Hdb_r[12][12],double Fdbt_r[21][12],double Cdb_r[36][12],double Adc_r[36][9]){
+int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],int *hz,double Hdb_r_4hz[12][12],double Fdbt_r_4hz[21][12],double Hdb_r_3hz[9][9],double Fdbt_r_3hz[18][9],double Hdb_r_2hz[6][6],double Fdbt_r_2hz[15][6],double Hdb_r_1hz[6][6],double Fdbt_r_1hz[15][6]){
     /*This function creates the compact matrices for Model Predictive Control*/
 	// db - double bar
 	// dbt - double bar transpose
 	// dc - double circumflex
-
 	/*Create A_aug*/
 	//A_aug=np.concatenate((Ad,Bd),axis=1)
 	double A_aug[6][9];
@@ -89,12 +88,12 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 		}
 	}
 	/*Create D_aug*/
-	double D_aug[3][3];
-	for(int i=0;i<3;i++){
-		for(int j=0;j<3;j++){
-			D_aug[i][j] = Dd_matrix[i][j];
-		}
-	}
+//	double D_aug[3][3];
+//	for(int i=0;i<3;i++){
+//		for(int j=0;j<3;j++){
+//			D_aug[i][j] = Dd_matrix[i][j];
+//		}
+//	}
 	/*Calculation for CQC,CSC,QC,SC Matrix*/
 	//transpose C_aug
 	float C_aug_transpose[9][3];
@@ -149,7 +148,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
         }
     }
     //QC=np.matmul(Q,C_aug)
-	float QC[3][9]={0.0};
+	float QC[3][9]={{0.0}};
     for (int i=0;i<3;i++) {
         for (int j=0;j<9;j++) {
         	QC[i][j] = 0;
@@ -159,7 +158,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
         }
     }
     //SC=np.matmul(S,C_aug)
-	float SC[3][9]={0.0};
+	float SC[3][9]={{0.0}};
     for (int i=0;i<3;i++) {
         for (int j=0;j<9;j++) {
         	SC[i][j] = 0;
@@ -171,6 +170,9 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
     //calculation rows and columns of CQC
     int CQC_rows = sizeof(CQC) / sizeof(CQC[0]);
     int CQC_columns = sizeof(CQC[0]) / sizeof(CQC[0][0]);
+    //calculation rows and columns of CQC
+    int CSC_rows = sizeof(CSC) / sizeof(CSC[0]);
+    int CSC_columns = sizeof(CSC[0]) / sizeof(CSC[0][0]);
     //calculation rows and columns of QC
     int QC_rows = sizeof(QC) / sizeof(QC[0]);
     int QC_columns = sizeof(QC[0]) / sizeof(QC[0][0]);
@@ -187,12 +189,12 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
     int A_aug_rows = sizeof(A_aug_new) / sizeof(A_aug_new[0]);
     int A_aug_columns = sizeof(A_aug_new[0]) / sizeof(A_aug_new[0][0]);
     //Create Hdb
-    double Hdb_mul_temp[12][36]={0};
-    double Hdb_mul_temp_2[12][12]={0};
-    double Hdb[12][12]={0};
+    double Hdb_mul_temp[12][36]={{0.0}};
+    double Hdb_mul_temp_2[12][12]={{0.0}};
+    double Hdb[12][12]={{0.0}};
     //create Adc transpose
-    double AdcTp[9][36]={0};
-    double temp_Fdbt_1[9][36]={0},temp_Fdbt_2[9][12]={0},temp_Fdbt_3[12][12]={0},Fdbt[21][12]={0};
+    double AdcTp[9][36]={{0.0}};
+    double temp_Fdbt_1[9][36]={{0.0}},temp_Fdbt_2[9][12]={{0.0}},temp_Fdbt_3[12][12]={{0.0}},Fdbt[21][12]={{0.0}};
     /*Create for Qdb,Tdb,Rdb,Cdb,Adc Matrix which following hz*/
     int hz_t = *hz;
 	if(hz_t == 1){
@@ -203,6 +205,187 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	}
 	else if (hz_t == 3){
 		float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
+		for(int hz_i=0;hz_i<hz_t;hz_i++){
+					if(hz_i==hz_t-1){
+					/*Qdb*/
+						int Qdb_rows_start = CSC_rows*hz_i; int Qdb_rows_end = CSC_rows*hz_i+CSC_rows;
+						int Qdb_columns_start = CSC_columns*hz_i; int Qdb_columns_end = CSC_columns*hz_i+CSC_columns;
+						//insert columns of CSC to Qdb
+						int j,k,l,m;
+						for(j=Qdb_rows_start,k=0;j<Qdb_rows_end;j++,k++){
+							for(l=Qdb_columns_start,m=0;l<Qdb_columns_end;l++,m++){
+								Qdb[j][l] = CSC[k][m];
+							}
+						}
+					/*Tdb*/
+						int Tdb_rows_start = SC_rows*hz_i; int Tdb_rows_end = SC_rows*hz_i+SC_rows;
+						int Tdb_columns_start = SC_columns*hz_i; int Tdb_columns_end = SC_columns*hz_i+SC_columns;
+						for(j=Tdb_rows_start,k=0;j<Tdb_rows_end;j++,k++){
+							for(l=Tdb_columns_start,m=0;l<Tdb_columns_end;l++,m++){
+								Tdb[j][l] = SC[k][m];
+							}
+						}
+					}
+					else{
+					/*Qdb*/
+						int Qdb_rows_start = CQC_rows*hz_i; int Qdb_rows_end = CQC_rows*hz_i+CQC_rows;
+						int Qdb_columns_start = CQC_columns*hz_i; int Qdb_columns_end = CQC_columns*hz_i+CQC_columns;
+						//insert columns of CQC to Qdb
+						int j,k,l,m;
+						for(j=Qdb_rows_start,k=0;j<Qdb_rows_end;j++,k++){
+							for(l=Qdb_columns_start,m=0;l<Qdb_columns_end;l++,m++){
+								Qdb[j][l] = CQC[k][m];
+							}
+						}
+				    /*Tdb*/
+						int Tdb_rows_start = QC_rows*hz_i; int Tdb_rows_end = QC_rows*hz_i+QC_rows;
+						int Tdb_columns_start = QC_columns*hz_i; int Tdb_columns_end = QC_columns*hz_i+QC_columns;
+						for(j=Tdb_rows_start,k=0;j<Tdb_rows_end;j++,k++){
+							for(l=Tdb_columns_start,m=0;l<Tdb_columns_end;l++,m++){
+								Tdb[j][l] = QC[k][m];
+							}
+						}
+					}
+					/*Rdb*/
+					int j,k,l,m;
+					int Rdb_rows_start = R_rows*hz_i; int Rdb_rows_end = R_rows*hz_i+R_rows;
+					int Rdb_columns_start = R_columns*hz_i; int Rdb_columns_end = R_columns*hz_i+R_columns;
+					for(j=Rdb_rows_start,k=0;j<Rdb_rows_end;j++,k++){
+						for(l=Rdb_columns_start,m=0;l<Rdb_columns_end;l++,m++){
+							Rdb[j][l] = params.MPC_Cons_R[k][m];
+						}
+					}
+					for(int hz_j=0;hz_j<hz_t;hz_j++){
+						if(hz_j<=hz_i){
+					    /*Cdb*/
+						int j,k,l,m;
+						int Cdb_rows_start = B_aug_rows*hz_i; int Cdb_rows_end = B_aug_rows*hz_i+B_aug_rows;
+						int Cdb_columns_start = B_aug_columns*hz_i; int Cdb_columns_end = B_aug_columns*hz_i+B_aug_columns;
+						int n=(hz_i+1)-(hz_j+1);
+						//matrix power
+						matrixPower(A_aug_new, &n, A_aug_matrixpower);
+						//Calculation for A_aug_matrixpower with B_aug matrix by multiplication
+						for(int i_mul=0;i_mul<9;i_mul++){
+							for(int j_mul=0;j_mul<3;j_mul++){
+								A_aug_matrixpower_B_aug[i_mul][j_mul] = 0;
+								for(int k_mul=0;k_mul<9;k_mul++){
+									A_aug_matrixpower_B_aug[i_mul][j_mul] += A_aug_matrixpower[i_mul][k_mul] * B_aug[k_mul][i_mul];
+								}
+							}
+						}
+						//Calculation Cdb
+						for(j=Cdb_rows_start,k=0;j<Cdb_rows_end;j++,k++){
+							for(l=Cdb_columns_start,m=0;l<Cdb_columns_end;l++,m++){
+								Cdb[j][l] = A_aug_matrixpower_B_aug[k][m];
+							}
+						}
+					    }
+					}
+					/*Adc*/
+					int p = hz_i+1;
+					matrixPower(A_aug_new, &p, A_aug_matrixpower_Adc);
+					int Adc_rows_start = A_aug_rows*hz_i; int Adc_rows_end = A_aug_rows*hz_i+A_aug_rows;
+					int Adc_columns_start = 0; int Adc_columns_end = 0+A_aug_columns;
+					for(j=Adc_rows_start,k=0;j<Adc_rows_end;j++,k++){
+						for(l=Adc_columns_start,m=0;l<Adc_columns_end;l++,m++){
+							Adc[j][l] = A_aug_matrixpower_Adc[k][m];
+						}
+					}
+				}
+		/*Hdb*/
+		//transpose Cdb[27][9] to CdbT[9][27]
+		for(int i_CdbT=0;i_CdbT<9;i_CdbT++){
+			for(int j_CdbT=0;j_CdbT<27;j_CdbT++){
+					Cdb_transpose[i_CdbT][j_CdbT] = Cdb[j_CdbT][i_CdbT];
+			}
+		}
+		//Mul Cdb_transpose[9][27] with Qdb[27][27]
+	    for (int i_Hdb = 0; i_Hdb < 9; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 27; j_Hdb++) {
+	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0;
+	            for (int k_Hdb = 0; k_Hdb < 27; k_Hdb++) {
+	                Hdb_mul_temp[i_Hdb][j_Hdb] += Cdb_transpose[i_Hdb][k_Hdb] * Qdb[k_Hdb][j_Hdb];
+	            }
+	        }
+	    }
+	    //Mul Hdb_mul_temp[9][27] with Cdb[27][9]
+	    for (int i_Hdb = 0; i_Hdb < 9; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 9; j_Hdb++) {
+	            Hdb_mul_temp[i_Hdb][j_Hdb] = 0;
+	            for (int k_Hdb = 0; k_Hdb < 27; k_Hdb++) {
+	                Hdb_mul_temp_2[i_Hdb][j_Hdb] += Hdb_mul_temp[i_Hdb][k_Hdb] * Cdb[k_Hdb][j_Hdb];
+	            }
+	        }
+	    }
+	    //Add Hdb_mul_temp_2[9][9] with Rdb[9][9]
+	    for (int i_Hdb = 0; i_Hdb < 9; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 9; j_Hdb++) {
+	            Hdb[i_Hdb][j_Hdb] = Hdb_mul_temp_2[i_Hdb][j_Hdb] + Rdb[i_Hdb][j_Hdb];
+	        }
+	    }
+	    //Update Hdb to Hdb_r at 3hz
+	    for (int i_Hdb_r = 0; i_Hdb_r < 9; i_Hdb_r++) {
+	        for (int j_Hdb_r = 0; j_Hdb_r < 9; j_Hdb_r++) {
+	            Hdb_r_3hz[i_Hdb_r][j_Hdb_r] = Hdb[i_Hdb_r][j_Hdb_r];
+	        }
+	    }
+	    /*Fdbt*/
+	    //Transpose ADC[27][9] to AdcT[9][27]
+	    for(int i_AdcT=0;i_AdcT<9;i_AdcT++){
+	    	for(int j_AdcT=0;j_AdcT<27;j_AdcT++){
+	    		AdcTp[i_AdcT][j_AdcT] = Adc[j_AdcT][i_AdcT];
+	    	}
+	    }
+		//Mul AdcT[9][27] with Qdb[27][27]
+	    for (int i_temp1=0; i_temp1 < 9; i_temp1++) {
+	        for (int j_temp1 = 0; j_temp1 < 27; j_temp1++) {
+	        	temp_Fdbt_1[i_temp1][j_temp1] = 0;
+	            for (int k_temp1 = 0; k_temp1 < 27; k_temp1++) {
+	                temp_Fdbt_1[i_temp1][j_temp1] += AdcTp[i_temp1][k_temp1] * Qdb[k_temp1][j_temp1];
+	            }
+	        }
+	    }
+	    //Mul temp_Fdbt_1[9][27] with Cdb[27][9]
+	    for (int i_temp2 = 0; i_temp2 < 9; i_temp2++) {
+	        for (int j_temp2 = 0; j_temp2 < 9; j_temp2++) {
+	        	temp_Fdbt_2[i_temp2][j_temp2] = 0;
+	            for (int k_temp2 = 0; k_temp2 < 27; k_temp2++) {
+	            	temp_Fdbt_2[i_temp2][j_temp2] += temp_Fdbt_1[i_temp2][k_temp2] * Cdb[k_temp2][j_temp2];
+	            }
+	        }
+	    }
+	    //convert Tdb[9][27] to -Tdb[9][27]
+	    for(int i_cvTdb=0;i_cvTdb<9;i_cvTdb++){
+	    	for(int j_cvTdb=0;j_cvTdb<27;j_cvTdb++){
+	    		Tdb[i_cvTdb][j_cvTdb]=Tdb[i_cvTdb][j_cvTdb]*-1;
+	    	}
+	    }
+	    //Mul -Tdb[9][27] with Cdb[27][9]
+	    for (int i_temp3 = 0; i_temp3 < 9; i_temp3++) {
+	        for (int j_temp3 = 0; j_temp3 < 9; j_temp3++) {
+	        	temp_Fdbt_3[i_temp3][j_temp3] = 0;
+	            for (int k_temp3 = 0; k_temp3 < 27; k_temp3++){
+	            	temp_Fdbt_3[i_temp3][j_temp3] += Tdb[i_temp3][k_temp3] * Cdb[k_temp3][j_temp3];
+	            }
+	        }
+	    }
+	    //Cal Fdbt[18][9] by concatenate  temp_Fdbt_2[9][9] and temp_Fdbt_3[9][9] axis 0
+	    for(int i_Fdbt=0;i_Fdbt<9;i_Fdbt++){
+	    	for(int j_Fdbt=0;j_Fdbt<9;j_Fdbt++){
+	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_2[i_Fdbt][j_Fdbt];
+	    	}
+	    }
+	    for(int i_Fdbt=9;i_Fdbt<18;i_Fdbt++){
+	    	for(int j_Fdbt=0;j_Fdbt<9;j_Fdbt++){
+	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_3[i_Fdbt-9][j_Fdbt];
+	    	}
+	    }
+	    //update Fdbt to Fdbt_r with 3hz
+	    for(int i_Fdbt_r=9;i_Fdbt_r<18;i_Fdbt_r++){
+	    	for(int j_Fdbt_r=0;j_Fdbt_r<9;j_Fdbt_r++){
+	    		Fdbt_r_3hz[i_Fdbt_r][j_Fdbt_r] = Fdbt[i_Fdbt_r][j_Fdbt_r];
+	    	}
+	    }
 	}
 	else{
 		float Qdb[36][36] = {0}; float Tdb[12][36] = {0}; float Rdb[12][12] = {0}; float Cdb[36][12] = {0};  float Adc[36][9]={0};
@@ -210,13 +393,13 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 		for(int hz_i=0;hz_i<hz_t;hz_i++){
 			if(hz_i==hz_t-1){
 			/*Qdb*/
-				int Qdb_rows_start = CQC_rows*hz_i; int Qdb_rows_end = CQC_rows*hz_i+CQC_rows;
-				int Qdb_columns_start = CQC_columns*hz_i; int Qdb_columns_end = CQC_columns*hz_i+CQC_columns;
+				int Qdb_rows_start = CSC_rows*hz_i; int Qdb_rows_end = CSC_rows*hz_i+CSC_rows;
+				int Qdb_columns_start = CSC_columns*hz_i; int Qdb_columns_end = CSC_columns*hz_i+CSC_columns;
 				//insert columns of CQC to Qdb
 				int j,k,l,m;
 				for(j=Qdb_rows_start,k=0;j<Qdb_rows_end;j++,k++){
 					for(l=Qdb_columns_start,m=0;l<Qdb_columns_end;l++,m++){
-						Qdb[j][l] = CQC[k][m];
+						Qdb[j][l] = CSC[k][m];
 					}
 				}
 			/*Tdb*/
@@ -320,14 +503,20 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	        }
 	    }
 	    //Add Hdb_mul_temp_2[12][12] with Rdb[12][12]
-	    for (int i_Hdb = 0; i_Hdb < 3; i_Hdb++) {
-	        for (int j_Hdb = 0; j_Hdb < 3; j_Hdb++) {
+	    for (int i_Hdb = 0; i_Hdb < 12; i_Hdb++) {
+	        for (int j_Hdb = 0; j_Hdb < 12; j_Hdb++) {
 	            Hdb[i_Hdb][j_Hdb] = Hdb_mul_temp_2[i_Hdb][j_Hdb] + Rdb[i_Hdb][j_Hdb];
+	        }
+	    }
+	    //Update Hdb to Hdb_r at 4hz
+	    for (int i_Hdb_r = 0; i_Hdb_r < 12; i_Hdb_r++) {
+	        for (int j_Hdb_r = 0; j_Hdb_r < 12; j_Hdb_r++) {
+	            Hdb_r_4hz[i_Hdb_r][j_Hdb_r] = Hdb[i_Hdb_r][j_Hdb_r];
 	        }
 	    }
 		/*Fdbt*/
 	    //Transpose ADC[36][9] to AdcT[9][36]
-		for(int i_AdcT=0;i_AdcT<12;i_AdcT++){
+		for(int i_AdcT=0;i_AdcT<9;i_AdcT++){
 			for(int j_AdcT=0;j_AdcT<36;j_AdcT++){
 				AdcTp[i_AdcT][j_AdcT] = Adc[j_AdcT][i_AdcT];
 			}
@@ -374,6 +563,12 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    for(int i_Fdbt=9;i_Fdbt<21;i_Fdbt++){
 	    	for(int j_Fdbt=0;j_Fdbt<12;j_Fdbt++){
 	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_3[i_Fdbt-9][j_Fdbt];
+	    	}
+	    }
+	    //update Fdbt to Fdbt_r with 4hz
+	    for(int i_Fdbt_r=9;i_Fdbt_r<21;i_Fdbt_r++){
+	    	for(int j_Fdbt_r=0;j_Fdbt_r<12;j_Fdbt_r++){
+	    		Fdbt_r_4hz[i_Fdbt_r][j_Fdbt_r] = Fdbt[i_Fdbt_r][j_Fdbt_r];
 	    	}
 	    }
 	}

@@ -1,69 +1,37 @@
-03:51:37 **** Incremental Build of configuration Debug for project Drone ****
+20:56:41 **** Incremental Build of configuration Debug for project Drone ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Application/MPC/mpc_simplification/mpc_simplification.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -I../Core/Application/lcd -I../Core/Application/MPC/posision_controller -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/MPC/mpc_simplification/mpc_simplification.d" -MT"Core/Application/MPC/mpc_simplification/mpc_simplification.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/MPC/mpc_simplification/mpc_simplification.o"
 ../Core/Application/MPC/mpc_simplification/mpc_simplification.c: In function 'mpc_simplification':
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:152:17: warning: missing braces around initializer [-Wmissing-braces]
-  152 |  float QC[3][9]={0.0};
-      |                 ^
-      |                  {  }
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:162:17: warning: missing braces around initializer [-Wmissing-braces]
-  162 |  float SC[3][9]={0.0};
-      |                 ^
-      |                  {  }
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:199:101: warning: unused variable 'Adc' [-Wunused-variable]
-  199 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:101: warning: unused variable 'Adc' [-Wunused-variable]
+  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
       |                                                                                                     ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:199:78: warning: unused variable 'Cdb' [-Wunused-variable]
-  199 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:78: warning: unused variable 'Cdb' [-Wunused-variable]
+  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
       |                                                                              ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:199:55: warning: unused variable 'Rdb' [-Wunused-variable]
-  199 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:55: warning: unused variable 'Rdb' [-Wunused-variable]
+  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
       |                                                       ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:199:32: warning: unused variable 'Tdb' [-Wunused-variable]
-  199 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:32: warning: unused variable 'Tdb' [-Wunused-variable]
+  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
       |                                ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:199:9: warning: unused variable 'Qdb' [-Wunused-variable]
-  199 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:201:9: warning: unused variable 'Qdb' [-Wunused-variable]
+  201 |   float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
       |         ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:202:105: warning: unused variable 'Adc' [-Wunused-variable]
-  202 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:204:105: warning: unused variable 'Adc' [-Wunused-variable]
+  204 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
       |                                                                                                         ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:202:81: warning: unused variable 'Cdb' [-Wunused-variable]
-  202 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:204:81: warning: unused variable 'Cdb' [-Wunused-variable]
+  204 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
       |                                                                                 ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:202:58: warning: unused variable 'Rdb' [-Wunused-variable]
-  202 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:204:58: warning: unused variable 'Rdb' [-Wunused-variable]
+  204 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
       |                                                          ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:202:34: warning: unused variable 'Tdb' [-Wunused-variable]
-  202 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:204:34: warning: unused variable 'Tdb' [-Wunused-variable]
+  204 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
       |                                  ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:202:9: warning: unused variable 'Qdb' [-Wunused-variable]
-  202 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+../Core/Application/MPC/mpc_simplification/mpc_simplification.c:204:9: warning: unused variable 'Qdb' [-Wunused-variable]
+  204 |   float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
       |         ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:205:106: warning: unused variable 'Adc' [-Wunused-variable]
-  205 |   float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
-      |                                                                                                          ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:205:81: warning: unused variable 'Cdb' [-Wunused-variable]
-  205 |   float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
-      |                                                                                 ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:205:58: warning: unused variable 'Rdb' [-Wunused-variable]
-  205 |   float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
-      |                                                          ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:205:34: warning: unused variable 'Tdb' [-Wunused-variable]
-  205 |   float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
-      |                                  ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:205:9: warning: unused variable 'Qdb' [-Wunused-variable]
-  205 |   float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
-      |         ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:195:82: warning: variable 'Fdbt' set but not used [-Wunused-but-set-variable]
-  195 |     double temp_Fdbt_1[9][36]={0},temp_Fdbt_2[9][12]={0},temp_Fdbt_3[12][12]={0},Fdbt[21][12]={0};
-      |                                                                                  ^~~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:192:12: warning: variable 'Hdb' set but not used [-Wunused-but-set-variable]
-  192 |     double Hdb[12][12]={0};
-      |            ^~~
-../Core/Application/MPC/mpc_simplification/mpc_simplification.c:92:9: warning: variable 'D_aug' set but not used [-Wunused-but-set-variable]
-   92 |  double D_aug[3][3];
-      |         ^~~~~
 arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Drone.elf
  
@@ -76,5 +44,5 @@ Finished building: default.size.stdout
 Finished building: Drone.list
  
 
-03:51:38 Build Finished. 0 errors, 20 warnings. (took 1s.550ms)
+20:56:42 Build Finished. 0 errors, 10 warnings. (took 1s.305ms)
 

@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m "fix lpv_simplification"
+git commit -m "Code for lpv_simplification at 4hz"
 git log
 git log --oneline
 git branch
