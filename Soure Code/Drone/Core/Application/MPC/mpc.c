@@ -30,6 +30,7 @@ short plotl,k;
 float omega1,omega2,omega3,omega4;
 double U1,U2,U3,U4;
 double U1_callback, Phi_ref_callback, Theta_ref_callback;
+double Phi_ref[5][1],Theta_ref[5][1],Psi_ref[5][1]={{0.0}},refSignals[15]={0.0};
 
 static void LPV_technique(){
 	/*Generate the refence signals*/
@@ -67,6 +68,27 @@ static void LPV_technique(){
 	for(int i_global=0;i_global<plotl-1;i_global++){
 		/*outer loop*/
 		pos_controller(&X_ref[i_global+1],&X_dot_ref[i_global+1],&X_dot_dot_ref[i_global+1],&Y_ref[i_global+1],&Y_dot_ref[i_global+1],&Y_dot_dot_ref[i_global+1],&Z_ref[i_global+1],&Z_dot_ref[i_global+1],&Z_dot_dot_ref[i_global+1],&psi_ref[i_global+1],&states[0],&states[1],&states[2],&states[6],&states[7],&states[8],&states[9],&states[10],&states[11],&U1_callback,&Phi_ref_callback,&Theta_ref_callback);
+		//Create Phi_ref[5][1] &Theta_ref[5][1]
+		for(int i=0;i<5;i++){
+			Phi_ref[i][0] = Phi_ref_callback*1;
+			Theta_ref[i][0] = Theta_ref_callback*1;
+		}
+		for(int yaw_step=0;yaw_step<params.MPC_Cons_innerDyn_length+1;yaw_step++){
+			Psi_ref[yaw_step][0] = psi_ref[i_global]+((psi_ref[i_global+1]-psi_ref[i_global])/(params.MPC_Cons_Ts*params.MPC_Cons_innerDyn_length))*params.MPC_Cons_Ts*yaw_step;
+		}
+		//Create a reference vector
+		int k=0;
+		for(int i=0;i<15;i+=3){
+			refSignals[i] = Phi_ref[k][0];
+			refSignals[i+1] = Theta_ref[k][0];
+			refSignals[i+2] = Psi_ref[k][0];
+			k+=1;
+		}
+		k=0;
+		for(int i=0;i<params.MPC_Cons_innerDyn_length;i++){
+
+		}
+
 	}
 }
 

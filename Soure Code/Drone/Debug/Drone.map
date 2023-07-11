@@ -827,9 +827,15 @@ Discarded input sections
                 0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.Theta_ref_callback
                 0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.Phi_ref   0x0000000000000000       0x28 ./Core/Application/MPC/mpc.o
+ .bss.Theta_ref
+                0x0000000000000000       0x28 ./Core/Application/MPC/mpc.o
+ .bss.Psi_ref   0x0000000000000000       0x28 ./Core/Application/MPC/mpc.o
+ .bss.refSignals
+                0x0000000000000000       0x78 ./Core/Application/MPC/mpc.o
  .text.LPV_technique
-                0x0000000000000000      0x6dc ./Core/Application/MPC/mpc.o
- .debug_info    0x0000000000000000      0xa0a ./Core/Application/MPC/mpc.o
+                0x0000000000000000      0x884 ./Core/Application/MPC/mpc.o
+ .debug_info    0x0000000000000000      0xaf9 ./Core/Application/MPC/mpc.o
  .debug_abbrev  0x0000000000000000      0x162 ./Core/Application/MPC/mpc.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
@@ -919,10 +925,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0x1f4 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/mpc.o
- .debug_line    0x0000000000000000      0xe71 ./Core/Application/MPC/mpc.o
- .debug_str     0x0000000000000000    0xcfd70 ./Core/Application/MPC/mpc.o
+ .debug_line    0x0000000000000000      0xf3a ./Core/Application/MPC/mpc.o
+ .debug_str     0x0000000000000000    0xcfd9e ./Core/Application/MPC/mpc.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc.o
- .debug_frame   0x0000000000000000       0x40 ./Core/Application/MPC/mpc.o
+ .debug_frame   0x0000000000000000       0x44 ./Core/Application/MPC/mpc.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/mpc.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc_simplification/mpc_simplification.o

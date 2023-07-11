@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m "add open_loop_new_states & fix some bug at rotation matrix function"
+git commit -m "fix R_matrix bug"
 git log
 git log --oneline
 git branch
