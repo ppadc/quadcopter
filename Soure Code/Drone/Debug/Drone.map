@@ -392,8 +392,8 @@ Discarded input sections
  .data          0x0000000000000000        0x0 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .bss           0x0000000000000000        0x0 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .text.lpv_cont_discrete
-                0x0000000000000000      0xd6c ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
- .debug_info    0x0000000000000000      0xa5b ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
+                0x0000000000000000      0xdec ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
+ .debug_info    0x0000000000000000      0xaa5 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .debug_abbrev  0x0000000000000000      0x156 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
@@ -483,8 +483,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1f4 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
- .debug_line    0x0000000000000000      0xf2f ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
- .debug_str     0x0000000000000000    0xcfd4f ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
+ .debug_line    0x0000000000000000      0xf41 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
+ .debug_str     0x0000000000000000    0xcfd76 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .debug_frame   0x0000000000000000       0x44 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .ARM.attributes
@@ -597,9 +597,9 @@ Discarded input sections
  .text.get_rotational_matrix_pos_controller
                 0x0000000000000000      0x69c ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .text.get_rotational_matrix_lpv_cont_discrete
-                0x0000000000000000      0x7e0 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
- .debug_info    0x0000000000000000      0x426 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
- .debug_abbrev  0x0000000000000000      0x104 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
+                0x0000000000000000      0x814 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
+ .debug_info    0x0000000000000000      0x427 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
+ .debug_abbrev  0x0000000000000000       0xf3 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .debug_aranges
                 0x0000000000000000       0x28 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .debug_ranges  0x0000000000000000       0x18 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
@@ -688,11 +688,13 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1f4 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .debug_line    0x0000000000000000      0xf97 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
- .debug_str     0x0000000000000000    0xcf82b ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
+ .debug_str     0x0000000000000000    0xcf820 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .debug_frame   0x0000000000000000       0x78 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc.o
@@ -817,6 +819,8 @@ Discarded input sections
  .bss.omega2    0x0000000000000000        0x4 ./Core/Application/MPC/mpc.o
  .bss.omega3    0x0000000000000000        0x4 ./Core/Application/MPC/mpc.o
  .bss.omega4    0x0000000000000000        0x4 ./Core/Application/MPC/mpc.o
+ .bss.omega_total
+                0x0000000000000000        0x4 ./Core/Application/MPC/mpc.o
  .bss.U1        0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.U2        0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.U3        0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
@@ -833,14 +837,49 @@ Discarded input sections
  .bss.Psi_ref   0x0000000000000000       0x28 ./Core/Application/MPC/mpc.o
  .bss.refSignals
                 0x0000000000000000       0x78 ./Core/Application/MPC/mpc.o
+ .bss.Ad_matrix
+                0x0000000000000000      0x120 ./Core/Application/MPC/mpc.o
+ .bss.Bd_matrix
+                0x0000000000000000       0x90 ./Core/Application/MPC/mpc.o
+ .bss.Cd_matrix
+                0x0000000000000000       0x90 ./Core/Application/MPC/mpc.o
+ .bss.Dd_matrix
+                0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
+ .bss.x_dot     0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.y_dot     0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.z_dot     0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.phi_dot   0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.theta_dot
+                0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.psi_dot   0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.phi_rt    0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.theta_rt  0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.psi_rt    0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.x_aug_t   0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
+ .bss.Hdb_r_4hz
+                0x0000000000000000      0x480 ./Core/Application/MPC/mpc.o
+ .bss.Fdbt_r_4hz
+                0x0000000000000000      0x7e0 ./Core/Application/MPC/mpc.o
+ .bss.Hdb_r_3hz
+                0x0000000000000000      0x288 ./Core/Application/MPC/mpc.o
+ .bss.Fdbt_r_3hz
+                0x0000000000000000      0x510 ./Core/Application/MPC/mpc.o
+ .bss.Hdb_r_2hz
+                0x0000000000000000      0x120 ./Core/Application/MPC/mpc.o
+ .bss.Fdbt_r_2hz
+                0x0000000000000000      0x2d0 ./Core/Application/MPC/mpc.o
+ .bss.Hdb_r_1hz
+                0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
+ .bss.Fdbt_r_1hz
+                0x0000000000000000      0x240 ./Core/Application/MPC/mpc.o
  .text.LPV_technique
-                0x0000000000000000      0x884 ./Core/Application/MPC/mpc.o
- .debug_info    0x0000000000000000      0xaf9 ./Core/Application/MPC/mpc.o
- .debug_abbrev  0x0000000000000000      0x162 ./Core/Application/MPC/mpc.o
+                0x0000000000000000      0xcf4 ./Core/Application/MPC/mpc.o
+ .debug_info    0x0000000000000000      0xfe6 ./Core/Application/MPC/mpc.o
+ .debug_abbrev  0x0000000000000000      0x16b ./Core/Application/MPC/mpc.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
  .debug_ranges  0x0000000000000000       0x10 ./Core/Application/MPC/mpc.o
- .debug_macro   0x0000000000000000      0x4cd ./Core/Application/MPC/mpc.o
+ .debug_macro   0x0000000000000000      0x4fd ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/mpc.o
@@ -925,8 +964,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0x1f4 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/mpc.o
- .debug_line    0x0000000000000000      0xf3a ./Core/Application/MPC/mpc.o
- .debug_str     0x0000000000000000    0xcfd9e ./Core/Application/MPC/mpc.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc.o
+ .debug_macro   0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
+ .debug_line    0x0000000000000000     0x10b4 ./Core/Application/MPC/mpc.o
+ .debug_str     0x0000000000000000    0xcff41 ./Core/Application/MPC/mpc.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc.o
  .debug_frame   0x0000000000000000       0x44 ./Core/Application/MPC/mpc.o
  .ARM.attributes
@@ -2080,6 +2121,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x12a ./Core/Application/lcd/fonts.o
  .debug_macro   0x0000000000000000      0x341 ./Core/Application/lcd/fonts.o
  .debug_macro   0x0000000000000000       0x35 ./Core/Application/lcd/fonts.o
+ .debug_macro   0x0000000000000000       0x20 ./Core/Application/lcd/fonts.o
  .group         0x0000000000000000        0xc ./Core/Application/lcd/lcd.o
  .text          0x0000000000000000        0x0 ./Core/Application/lcd/lcd.o
  .data          0x0000000000000000        0x0 ./Core/Application/lcd/lcd.o
@@ -2907,6 +2949,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/mav/uart/uart.o
  .debug_macro   0x0000000000000000      0x145 ./Core/Application/mav/uart/uart.o
  .debug_macro   0x0000000000000000       0x22 ./Core/Application/mav/uart/uart.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/mav/uart/uart.o
  .debug_macro   0x0000000000000000       0x35 ./Core/Application/mav/uart/uart.o
  .debug_macro   0x0000000000000000       0x20 ./Core/Application/mav/uart/uart.o
  .debug_macro   0x0000000000000000      0x2b3 ./Core/Application/mav/uart/uart.o
@@ -11767,58 +11810,56 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x00000000000010f8      0x158 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_ranges  0x0000000000001250      0x220 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_macro    0x0000000000000000     0x5c08
+.debug_macro    0x0000000000000000     0x5bd2
  .debug_macro   0x0000000000000000      0x2fc ./Core/Application/lcd/fonts.o
  .debug_macro   0x00000000000002fc       0x10 ./Core/Application/lcd/fonts.o
- .debug_macro   0x000000000000030c       0x20 ./Core/Application/lcd/fonts.o
- .debug_macro   0x000000000000032c      0x4f7 ./Core/Application/lcd/ssd1306.o
- .debug_macro   0x0000000000000823      0x1f6 ./Core/Application/lcd/ssd1306.o
- .debug_macro   0x0000000000000a19       0x1c ./Core/Application/lcd/ssd1306.o
- .debug_macro   0x0000000000000a35       0x1d ./Core/Application/lcd/ssd1306.o
- .debug_macro   0x0000000000000a52      0x4ba ./Core/Application/mav/uart/uart.o
- .debug_macro   0x0000000000000f0c       0x10 ./Core/Application/mav/uart/uart.o
- .debug_macro   0x0000000000000f1c       0x16 ./Core/Application/mav/uart/uart.o
- .debug_macro   0x0000000000000f32      0x206 ./Core/Application/mav/utils/circular_buffer/circular_buffer.o
- .debug_macro   0x0000000000001138      0x10e ./Core/Application/mav/utils/circular_buffer/circular_buffer.o
- .debug_macro   0x0000000000001246       0x8d ./Core/Application/mav/utils/circular_buffer/circular_buffer.o
- .debug_macro   0x00000000000012d3      0x54c ./Core/Application/sensor/bno055/bno055.o
- .debug_macro   0x000000000000181f      0x470 ./Core/Application/timer/delay_us.o
- .debug_macro   0x0000000000001c8f      0x23d ./Core/Src/adc.o
- .debug_macro   0x0000000000001ecc      0x23d ./Core/Src/can.o
- .debug_macro   0x0000000000002109      0x23d ./Core/Src/dma.o
- .debug_macro   0x0000000000002346      0x23d ./Core/Src/gpio.o
- .debug_macro   0x0000000000002583      0x23d ./Core/Src/i2c.o
- .debug_macro   0x00000000000027c0      0x4e7 ./Core/Src/main.o
- .debug_macro   0x0000000000002ca7      0x233 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x0000000000002eda      0x23d ./Core/Src/stm32f4xx_it.o
- .debug_macro   0x0000000000003117      0x24c ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003363       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003373       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003383       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003393       0x35 ./Core/Src/syscalls.o
- .debug_macro   0x00000000000033c8      0x12c ./Core/Src/syscalls.o
- .debug_macro   0x00000000000034f4       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003504      0x241 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003745       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003755      0x189 ./Core/Src/syscalls.o
- .debug_macro   0x00000000000038de       0x16 ./Core/Src/syscalls.o
- .debug_macro   0x00000000000038f4       0xce ./Core/Src/syscalls.o
- .debug_macro   0x00000000000039c2       0xff ./Core/Src/sysmem.o
- .debug_macro   0x0000000000003ac1      0x23b ./Core/Src/sysmem.o
- .debug_macro   0x0000000000003cfc      0x224 ./Core/Src/system_stm32f4xx.o
- .debug_macro   0x0000000000003f20      0x23d ./Core/Src/tim.o
- .debug_macro   0x000000000000415d      0x23d ./Core/Src/usart.o
- .debug_macro   0x000000000000439a      0x284 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_macro   0x000000000000461e      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_macro   0x0000000000004843      0x22c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
- .debug_macro   0x0000000000004a6f      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_macro   0x0000000000004c93      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_macro   0x0000000000004ebd      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_macro   0x00000000000050e7      0x26b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_macro   0x0000000000005352      0x248 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_macro   0x000000000000559a      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_macro   0x00000000000057bf      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_macro   0x00000000000059e3      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_macro   0x000000000000030c      0x4f7 ./Core/Application/lcd/ssd1306.o
+ .debug_macro   0x0000000000000803      0x1f6 ./Core/Application/lcd/ssd1306.o
+ .debug_macro   0x00000000000009f9       0x1c ./Core/Application/lcd/ssd1306.o
+ .debug_macro   0x0000000000000a15       0x1d ./Core/Application/lcd/ssd1306.o
+ .debug_macro   0x0000000000000a32      0x4ba ./Core/Application/mav/uart/uart.o
+ .debug_macro   0x0000000000000eec       0x10 ./Core/Application/mav/uart/uart.o
+ .debug_macro   0x0000000000000efc      0x206 ./Core/Application/mav/utils/circular_buffer/circular_buffer.o
+ .debug_macro   0x0000000000001102      0x10e ./Core/Application/mav/utils/circular_buffer/circular_buffer.o
+ .debug_macro   0x0000000000001210       0x8d ./Core/Application/mav/utils/circular_buffer/circular_buffer.o
+ .debug_macro   0x000000000000129d      0x54c ./Core/Application/sensor/bno055/bno055.o
+ .debug_macro   0x00000000000017e9      0x470 ./Core/Application/timer/delay_us.o
+ .debug_macro   0x0000000000001c59      0x23d ./Core/Src/adc.o
+ .debug_macro   0x0000000000001e96      0x23d ./Core/Src/can.o
+ .debug_macro   0x00000000000020d3      0x23d ./Core/Src/dma.o
+ .debug_macro   0x0000000000002310      0x23d ./Core/Src/gpio.o
+ .debug_macro   0x000000000000254d      0x23d ./Core/Src/i2c.o
+ .debug_macro   0x000000000000278a      0x4e7 ./Core/Src/main.o
+ .debug_macro   0x0000000000002c71      0x233 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x0000000000002ea4      0x23d ./Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000030e1      0x24c ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000332d       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000333d       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000334d       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000335d       0x35 ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003392      0x12c ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000034be       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000034ce      0x241 ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000370f       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000371f      0x189 ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000038a8       0x16 ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000038be       0xce ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000398c       0xff ./Core/Src/sysmem.o
+ .debug_macro   0x0000000000003a8b      0x23b ./Core/Src/sysmem.o
+ .debug_macro   0x0000000000003cc6      0x224 ./Core/Src/system_stm32f4xx.o
+ .debug_macro   0x0000000000003eea      0x23d ./Core/Src/tim.o
+ .debug_macro   0x0000000000004127      0x23d ./Core/Src/usart.o
+ .debug_macro   0x0000000000004364      0x284 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_macro   0x00000000000045e8      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_macro   0x000000000000480d      0x22c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
+ .debug_macro   0x0000000000004a39      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_macro   0x0000000000004c5d      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_macro   0x0000000000004e87      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_macro   0x00000000000050b1      0x26b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_macro   0x000000000000531c      0x248 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_macro   0x0000000000005564      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_macro   0x0000000000005789      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_macro   0x00000000000059ad      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_line     0x0000000000000000    0x1da5f
  .debug_line    0x0000000000000000      0x8cc ./Core/Application/lcd/fonts.o

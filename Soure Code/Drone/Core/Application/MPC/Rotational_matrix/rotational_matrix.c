@@ -77,7 +77,7 @@ int get_rotational_matrix_pos_controller(double R_matrix[3][3], double *state_u,
 	return 0;
 }
 
-int get_rotational_matrix_lpv_cont_discrete(double *roll, double *pitch,double *yaw, double R_matrix[3][3],double T_maxtrix[3][3],double *state_u,double *state_v,double *state_w,double *state_p,double *state_q,double *state_r, double *x_dot, double *y_dot, double *z_dot){
+int get_rotational_matrix_lpv_cont_discrete(double R_matrix[3][3],double T_maxtrix[3][3],double *state_u,double *state_v,double *state_w,double *state_p,double *state_q,double *state_r,double *state_phi, double *state_theta, double *state_psi, double *x_dot, double *y_dot, double *z_dot){
 	uint8_t i = 0;
 	uint8_t j = 0;
 	uint8_t k = 0;
@@ -91,9 +91,9 @@ int get_rotational_matrix_lpv_cont_discrete(double *roll, double *pitch,double *
 	theta = *pitch*(M_PI/180);
 	psi = *yaw*(M_PI/180);
 #elif BNO055_EULER_ANGLES_UNITS == 1
-	phi = *roll;
-	theta = *pitch;
-	psi = *yaw;
+	phi = *state_phi;
+	theta = *state_theta;
+	psi = *state_psi;
 #endif
 	/*Init Rx Matrix*/
 	Rx[0][0] = 1; Rx[0][1] = 0; Rx[0][2] = 0;

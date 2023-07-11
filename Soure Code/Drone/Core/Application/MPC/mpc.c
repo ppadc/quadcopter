@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 #ifndef APPLICATION_MPC_MPC_C_
 #define APPLICATION_MPC_MPC_C_
@@ -27,10 +28,25 @@ double ut,vt,wt,pt,qt,rt,xt,yt,zt,phit,thetat,psit;
 double states[12];
 short genr_t = 0;
 short plotl,k;
-float omega1,omega2,omega3,omega4;
+float omega1,omega2,omega3,omega4,omega_total;
 double U1,U2,U3,U4;
 double U1_callback, Phi_ref_callback, Theta_ref_callback;
 double Phi_ref[5][1],Theta_ref[5][1],Psi_ref[5][1]={{0.0}},refSignals[15]={0.0};
+/*Create Ad_matrix[6][6],Bd_matrix[6][3],Cd_matrix[3][6],Dd_matrix[3][3]*/
+double Ad_matrix[6][6] = {{0.0}};
+double Bd_matrix[6][3] = {{0.0}};
+double Cd_matrix[3][6] = {{0.0}};
+double Dd_matrix[3][3] = {{0.0}};
+/*Create return for Discrete*/
+double x_dot,y_dot,z_dot;
+double phi_dot,theta_dot,psi_dot;
+double phi_rt,theta_rt,psi_rt;
+double x_aug_t[9];
+/*Create return of Hdb_r, Fdbt_r from 4hz to 1hz*/
+double Hdb_r_4hz[12][12],Fdbt_r_4hz[21][12];
+double Hdb_r_3hz[9][9],Fdbt_r_3hz[18][9];
+double Hdb_r_2hz[6][6],Fdbt_r_2hz[15][6];
+double Hdb_r_1hz[3][3],Fdbt_r_1hz[12][6];
 
 static void LPV_technique(){
 	/*Generate the refence signals*/
@@ -57,6 +73,7 @@ static void LPV_technique(){
 		omega2 = params.MPC_Cons_omega2;
 		omega3 = params.MPC_Cons_omega3;
 		omega4 = params.MPC_Cons_omega4;
+		omega_total = omega1-omega2+omega3-omega4;
 
 		U1 = params.MPC_Cons_ct*(pow(omega1,2)+pow(omega2,2)+pow(omega3,2)+pow(omega4,2));
 		U2 = params.MPC_Cons_ct*params.MPC_Cons_l*(pow(omega2,2)-pow(omega4,2));
@@ -85,8 +102,56 @@ static void LPV_technique(){
 			k+=1;
 		}
 		k=0;
+		int hz = params.MPC_Cons_hz;
 		for(int i=0;i<params.MPC_Cons_innerDyn_length;i++){
+			if(hz==4){
+				lpv_cont_discrete(&states[0],&states[1],&states[2],&states[3],&states[4],&states[5],&states[9],&states[10],&states[11],&omega_total, Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix, &x_dot, &y_dot, &z_dot, &phi_rt, &phi_dot, &theta_rt, &theta_dot, &psi_rt, &psi_dot);
+			/*Create x_aug_t*/
+				x_aug_t[0] = phi_rt;
+				x_aug_t[1] = phi_dot;
+				x_aug_t[2] = theta_rt;
+				x_aug_t[3] = theta_dot;
+				x_aug_t[4] = psi_rt;
+				x_aug_t[5] = psi_dot;
+				x_aug_t[6] = U2;
+				x_aug_t[7] = U3;
+				x_aug_t[8] = U4;
+				k = k+params.MPC_Cons_controlled_states;
+				double r[1][12]={{0.0}};
+				for(int i=0;i<params.MPC_Cons_controlled_states*hz;i++){
+					r[0][i] = refSignals[i+k];
+				}
+				mpc_simplification(Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix,&hz,Hdb_r_4hz,Fdbt_r_4hz,Hdb_r_3hz,Fdbt_r_3hz,Hdb_r_2hz,Fdbt_r_2hz,Hdb_r_1hz,Fdbt_r_1hz);
+				//Transpose x_aug_t[9] to x_aug_t[1][9]
+				double x_aug_t_transpose[1][9];
+				double concatenate_x_aug_t_transpose_r[1][21];
+				for(int i=0;i<1;i++){
+					for(int j=0;j<9;j++){
+						x_aug_t_transpose[i][j] =x_aug_t[j];
+					}
+				}
+				//Concatenate x_aug_t_transpose[1][9] with r[12] axis 0 = [1][21]
+				for(int i=0;i<9;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = x_aug_t_transpose[0][i];
+				}
+				for(int i=9;i<21;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = r[0][i-9];
+				}
+				/*Multi concatenate_x_aug_t_transpose_r[1][21] with Fdbt_4hz[21][12] */
+				double ft[1][12]={{0.0}};
+				for(int i=0;i<12;i++){
+					ft[0][i] = 0.0;
+					for(int j = 0;j<21;j++){
+						ft[0][i] += concatenate_x_aug_t_transpose_r[0][j]*Fdbt_r_4hz[j][i];
+					}
+				}
+				/*Calculation du*/
 
+				hz = hz-1;
+			}
+			else if(hz==3){
+
+			}
 		}
 
 	}
