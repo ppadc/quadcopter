@@ -11,6 +11,7 @@
 #include "../trajectory/trajectory.h"
 #include "../mpc_simplification/mpc_simplification.h"
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
+#include "../Matrix_calculation/matrix_inverse12x12.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -30,6 +31,7 @@ short genr_t = 0;
 short plotl,k;
 float omega1,omega2,omega3,omega4,omega_total;
 double U1,U2,U3,U4;
+double U1C,U2C,U3C,U4C;
 double U1_callback, Phi_ref_callback, Theta_ref_callback;
 double Phi_ref[5][1],Theta_ref[5][1],Psi_ref[5][1]={{0.0}},refSignals[15]={0.0};
 /*Create Ad_matrix[6][6],Bd_matrix[6][3],Cd_matrix[3][6],Dd_matrix[3][3]*/
@@ -139,6 +141,7 @@ static void LPV_technique(){
 				}
 				/*Multi concatenate_x_aug_t_transpose_r[1][21] with Fdbt_4hz[21][12] */
 				double ft[1][12]={{0.0}};
+				double du[12][1]={{0.0}};
 				for(int i=0;i<12;i++){
 					ft[0][i] = 0.0;
 					for(int j = 0;j<21;j++){
@@ -146,6 +149,49 @@ static void LPV_technique(){
 					}
 				}
 				/*Calculation du*/
+				//inverse Hdb
+				int size_Hdb = 12;
+				matrix_invert_12x12(Hdb_r_4hz,size_Hdb);
+				//Transpose ft
+				double ft_transpose[12][1]={{0.0}};
+				for(int i = 0;i<12;i++){
+					ft_transpose[i][0] = ft[0][i];
+				}
+				//Multi Hdb_r_4hz[12][12] inverse with ft_transpose[12][1];
+			    for (int i = 0; i < 12; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	du[i][j] = 0;
+			            for (int k = 0; k < 12; k++) {
+			            	du[i][j] += Hdb_r_4hz[i][k] * ft_transpose[k][j];
+			            }
+			        }
+			    }
+			    //Mul du[12][1] for -1
+			    for(int i=0;i<12;i++){
+			    	du[i][0] = du[i][0]*-1;
+			    }
+			    //Update the real inputs
+			    U2 = U2 + du[0][0];
+			    U3 = U3 + du[1][0];
+			    U4 = U3 + du[2][0];
+			    //Compute the new omegas based on the new U-s
+			    U1C = U1/params.MPC_Cons_ct;
+			    U2C = U2/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U3C = U3/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U4C = U4/(params.MPC_Cons_cq);
+			    //Create UC_Vector;
+			    double UC_Vector[4][1]={{0.0}};
+			    UC_Vector[0][0] = U1C;
+			    UC_Vector[1][0] = U2C;
+			    UC_Vector[2][0] = U3C;
+			    UC_Vector[3][0] = U4C;
+			    //Create Omega_Matrix
+			    int Omega_Matrix[4][4] = {
+			    		{1,1,1,1},
+						{0,1,0,-1},
+						{-1,0,1,0},
+						{-1,1,-1,1},
+			    };
 
 				hz = hz-1;
 			}

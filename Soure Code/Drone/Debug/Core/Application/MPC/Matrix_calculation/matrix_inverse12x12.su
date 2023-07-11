@@ -1,0 +1,4 @@
+../Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.c:16:6:matrix_invert_12x12	24	static
+../Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.c:26:8:determinant	1216	static
+../Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.c:60:6:cofactor	2352	static
+../Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.c:86:6:transpose	2352	static

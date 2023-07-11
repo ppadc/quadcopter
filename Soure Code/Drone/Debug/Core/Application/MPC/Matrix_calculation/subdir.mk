@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Core/Application/MPC/Matrix_calculation/matrix.c 
+../Core/Application/MPC/Matrix_calculation/matrix.c \
+../Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.c 
 
 OBJS += \
-./Core/Application/MPC/Matrix_calculation/matrix.o 
+./Core/Application/MPC/Matrix_calculation/matrix.o \
+./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o 
 
 C_DEPS += \
-./Core/Application/MPC/Matrix_calculation/matrix.d 
+./Core/Application/MPC/Matrix_calculation/matrix.d \
+./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +24,7 @@ Core/Application/MPC/Matrix_calculation/%.o Core/Application/MPC/Matrix_calculat
 clean: clean-Core-2f-Application-2f-MPC-2f-Matrix_calculation
 
 clean-Core-2f-Application-2f-MPC-2f-Matrix_calculation:
-	-$(RM) ./Core/Application/MPC/Matrix_calculation/matrix.d ./Core/Application/MPC/Matrix_calculation/matrix.o ./Core/Application/MPC/Matrix_calculation/matrix.su
+	-$(RM) ./Core/Application/MPC/Matrix_calculation/matrix.d ./Core/Application/MPC/Matrix_calculation/matrix.o ./Core/Application/MPC/Matrix_calculation/matrix.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.su
 
 .PHONY: clean-Core-2f-Application-2f-MPC-2f-Matrix_calculation
 

@@ -115,7 +115,7 @@ c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externalt
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_atan2.o)
                               ./Core/Application/MPC/trajectory/trajectory.o (atan2)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_pow.o)
-                              ./Core/Application/MPC/mpc.o (pow)
+                              ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o (pow)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-w_sqrt.o)
                               ./Core/Application/imu/imu.o (sqrt)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-e_atan2.o)
@@ -149,7 +149,7 @@ c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externalt
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
                               ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o (__aeabi_ddiv)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
-                              c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-vfprintf_float.o) (__aeabi_dcmpeq)
+                              ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o (__aeabi_dcmpeq)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
                               c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-vfprintf_float.o) (__aeabi_dcmpun)
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
@@ -490,24 +490,181 @@ Discarded input sections
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix.o
  .text          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .data          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .bss           0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .text.matrixPower
                 0x0000000000000000      0x260 ./Core/Application/MPC/Matrix_calculation/matrix.o
- .debug_info    0x0000000000000000      0x18c ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_info    0x0000000000000000      0x1d9 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .debug_abbrev  0x0000000000000000       0xc3 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .debug_ranges  0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix.o
- .debug_macro   0x0000000000000000       0x11 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000      0x1bc ./Core/Application/MPC/Matrix_calculation/matrix.o
  .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/Matrix_calculation/matrix.o
- .debug_line    0x0000000000000000      0x17a ./Core/Application/MPC/Matrix_calculation/matrix.o
- .debug_str     0x0000000000000000     0x2d0f ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x1e ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x94 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000      0x341 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_line    0x0000000000000000      0x686 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .debug_str     0x0000000000000000     0x7b0d ./Core/Application/MPC/Matrix_calculation/matrix.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/Matrix_calculation/matrix.o
  .debug_frame   0x0000000000000000       0x3c ./Core/Application/MPC/Matrix_calculation/matrix.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .text          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .data          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .bss           0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .text.matrix_invert_12x12
+                0x0000000000000000       0x3c ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .text.determinant
+                0x0000000000000000      0x238 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .text.cofactor
+                0x0000000000000000      0x1f0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .text.transpose
+                0x0000000000000000      0x182 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_info    0x0000000000000000      0x2da ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_abbrev  0x0000000000000000       0xed ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_aranges
+                0x0000000000000000       0x38 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_ranges  0x0000000000000000       0x28 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000      0x1b2 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x1e ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x94 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000      0x341 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_line    0x0000000000000000      0x792 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_str     0x0000000000000000     0x7b08 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .comment       0x0000000000000000       0x51 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .debug_frame   0x0000000000000000       0xb8 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
@@ -825,6 +982,10 @@ Discarded input sections
  .bss.U2        0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.U3        0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.U4        0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.U1C       0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.U2C       0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.U3C       0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
+ .bss.U4C       0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.U1_callback
                 0x0000000000000000        0x8 ./Core/Application/MPC/mpc.o
  .bss.Phi_ref_callback
@@ -872,14 +1033,15 @@ Discarded input sections
                 0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
  .bss.Fdbt_r_1hz
                 0x0000000000000000      0x240 ./Core/Application/MPC/mpc.o
+ .rodata        0x0000000000000000       0x40 ./Core/Application/MPC/mpc.o
  .text.LPV_technique
-                0x0000000000000000      0xcf4 ./Core/Application/MPC/mpc.o
- .debug_info    0x0000000000000000      0xfe6 ./Core/Application/MPC/mpc.o
- .debug_abbrev  0x0000000000000000      0x16b ./Core/Application/MPC/mpc.o
+                0x0000000000000000     0x1050 ./Core/Application/MPC/mpc.o
+ .debug_info    0x0000000000000000     0x115c ./Core/Application/MPC/mpc.o
+ .debug_abbrev  0x0000000000000000      0x180 ./Core/Application/MPC/mpc.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
  .debug_ranges  0x0000000000000000       0x10 ./Core/Application/MPC/mpc.o
- .debug_macro   0x0000000000000000      0x4fd ./Core/Application/MPC/mpc.o
+ .debug_macro   0x0000000000000000      0x507 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/mpc.o
@@ -966,10 +1128,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
- .debug_line    0x0000000000000000     0x10b4 ./Core/Application/MPC/mpc.o
- .debug_str     0x0000000000000000    0xcff41 ./Core/Application/MPC/mpc.o
+ .debug_line    0x0000000000000000     0x122b ./Core/Application/MPC/mpc.o
+ .debug_str     0x0000000000000000    0xcffb9 ./Core/Application/MPC/mpc.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc.o
- .debug_frame   0x0000000000000000       0x44 ./Core/Application/MPC/mpc.o
+ .debug_frame   0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/mpc.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
@@ -10198,6 +10360,7 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD ./Core/Application/Buzzer/buzzer.o
 LOAD ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
 LOAD ./Core/Application/MPC/Matrix_calculation/matrix.o
+LOAD ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
 LOAD ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
 LOAD ./Core/Application/MPC/mpc.o
 LOAD ./Core/Application/MPC/mpc_simplification/mpc_simplification.o

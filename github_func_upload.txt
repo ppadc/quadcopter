@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m "MPC part"
+git commit -m "fix some bug at R_matrix"
 git log
 git log --oneline
 git branch
