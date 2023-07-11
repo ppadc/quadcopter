@@ -50,6 +50,18 @@ typedef struct{
 	double MPC_Cons_Jtp;   //N*m*s^2=kg*m^2
 	float MPC_Cons_Ts;	   //s
 
+	/*the initial state vector*/
+	int MPC_Cons_ut,MPC_Cons_vt,MPC_Cons_wt;
+	int MPC_Cons_pt,MPC_Cons_qt,MPC_Cons_rt;
+	int MPC_Cons_xt,MPC_Cons_yt,MPC_Cons_zt;
+	int MPC_Cons_phit,MPC_Cons_thetat,MPC_Cons_psit;
+
+	/*Initial drone propeller states*/
+	float MPC_Cons_omega1;
+	float MPC_Cons_omega2;
+	float MPC_Cons_omega3;
+	float MPC_Cons_omega4;
+
 	//Matrix weights for the cost function (They must be diagonal)
 	unsigned char MPC_Cons_Q[3][3];         //weights for outputs (all samples, except the last one)
 	unsigned char MPC_Cons_S[3][3]; 		//weights for the final horizon period outputs

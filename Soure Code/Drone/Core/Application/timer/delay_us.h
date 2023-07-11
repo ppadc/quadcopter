@@ -4,6 +4,8 @@
  *  Created on: Apr 1, 2023
  *      Author: nguye
  */
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef APPLICATION_TIMER_DELAY_US_H_
 #define APPLICATION_TIMER_DELAY_US_H_

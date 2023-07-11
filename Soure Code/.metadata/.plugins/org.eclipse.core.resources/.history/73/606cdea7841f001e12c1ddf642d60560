@@ -1,0 +1,61 @@
+/*
+ * mpc.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+#include "delay_us.h"
+#include "params.h"
+#include "../open_loop_new_states/open_loop_new_states.h"
+#include "../posision_controller/posision_control.h"
+#include "../trajectory/trajectory.h"
+#include "../mpc_simplification/mpc_simplification.h"
+#include "../LPV_cont_discrete/LPV_cont_discrete.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#ifndef APPLICATION_MPC_MPC_C_
+#define APPLICATION_MPC_MPC_C_
+
+float t[251]={0.0};
+double X[251]={0.0},X_dot[251]={0.0},X_dot_dot[251]={0.0};
+double Y[251]={0.0},Y_dot[251]={0.0},Y_dot_dot[251]={0.0};
+double Z[251]={0.0},Z_dot[251]={0.0},Z_dot_dot[251]={0.0};
+double psi_ref[251]={0.0};
+double ut,vt,wt,pt,qt,rt,xt,yt,zt,phit,thetat,psit;
+double states[12];
+short genr_t = 0;
+short plotl,k;
+
+static void LPV_technique(){
+	/*Generate the refence signals*/
+	//Generate time refence
+	if(genr_t == 0){
+		for(int i=1;i<251;i++){
+			t[i] = t[i] + 0.4;
+		}
+		plotl = sizeof(t) / sizeof(t[0]);
+		generate_trajectory(t,X,X_dot,X_dot_dot,Y,Y_dot,Y_dot_dot,Z,Z_dot,Z_dot_dot,psi_ref);
+		//Load the initial state vector
+		ut=params.MPC_Cons_ut; vt=params.MPC_Cons_vt; wt=params.MPC_Cons_wt;
+		pt=params.MPC_Cons_pt; qt=params.MPC_Cons_qt; rt=params.MPC_Cons_rt;
+		xt=params.MPC_Cons_xt; yt=params.MPC_Cons_yt; zt=params.MPC_Cons_zt;
+		psi_ref[0]=params.MPC_Cons_psit;
+		phit=params.MPC_Cons_phit; thetat=params.MPC_Cons_thetat; psit=params.MPC_Cons_psit;
+		states[0] = ut; states[1] = vt; states[2] = wt;
+		states[3] = pt; states[4] = qt; states[5] = rt;
+		states[6] = xt; states[7] = yt; states[8] = zt;
+		states[9] = phit; states[10] = thetat; states[11] = psit;
+	genr_t = 1;
+	}
+	/*Initial drone propeller states*/
+
+	/*Start the global controller*/
+	for(int i_global=0;i_global<plotl-1;i_global++){
+
+	}
+}
+
+
+#endif /* APPLICATION_MPC_MPC_C_ */

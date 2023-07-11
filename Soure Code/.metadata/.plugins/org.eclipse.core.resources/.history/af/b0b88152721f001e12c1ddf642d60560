@@ -1,0 +1,19 @@
+/*
+ * mpc.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+#include "delay_us.h"
+
+#ifndef APPLICATION_MPC_MPC_C_
+#define APPLICATION_MPC_MPC_C_
+
+int LPV_technique(){
+	/*Generate the refence signals*/
+
+	return 0;
+}
+
+
+#endif /* APPLICATION_MPC_MPC_C_ */

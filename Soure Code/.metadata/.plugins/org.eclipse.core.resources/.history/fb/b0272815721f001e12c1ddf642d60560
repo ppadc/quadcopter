@@ -1,0 +1,19 @@
+/*
+ * mpc.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+
+#ifndef APPLICATION_MPC_MPC_C_
+#define APPLICATION_MPC_MPC_C_
+
+int mpc_inner_loop_every_100ms(){
+	return 0;
+}
+
+int mpc_outter_loop_every_400ms(){
+	return 0;
+}
+
+#endif /* APPLICATION_MPC_MPC_C_ */

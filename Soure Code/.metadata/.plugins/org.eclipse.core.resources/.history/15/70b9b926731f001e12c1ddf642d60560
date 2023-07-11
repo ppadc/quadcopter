@@ -1,0 +1,26 @@
+/*
+ * mpc.c
+ *
+ *  Created on: Jun 25, 2023
+ *      Author: nguye
+ */
+#include "delay_us.h"
+#include "params.h"
+#include "../open_loop_new_states/open_loop_new_states.h"
+#include "../posision_controller/posision_control.h"
+#include "../trajectory/trajectory.h"
+#include "../mpc_simplification/mpc_simplification.h"
+
+
+#ifndef APPLICATION_MPC_MPC_C_
+#define APPLICATION_MPC_MPC_C_
+
+float time[251];
+
+int LPV_technique(){
+	/*Generate the refence signals*/
+	return 0;
+}
+
+
+#endif /* APPLICATION_MPC_MPC_C_ */

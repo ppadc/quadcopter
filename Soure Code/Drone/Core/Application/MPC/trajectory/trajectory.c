@@ -12,9 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int generate_trajectory(float time[251],double x[251],double x_dot[251],double x_dot_dot[251],double y[251],double y_dot[251],double y_dot_dot[251],float z[251],float z_dot[251],float z_dot_dot[251],double psiInt[251]){
-	float Ts = params.MPC_Cons_Ts;
-	int innerDyn_length = params.MPC_Cons_innerDyn_length;
+int generate_trajectory(float time[251],double x[251],double x_dot[251],double x_dot_dot[251],double y[251],double y_dot[251],double y_dot_dot[251],double z[251],double z_dot[251],double z_dot_dot[251],double psiInt[251]){
 	int r = params.MPC_Cons_r;
 	float f = params.MPC_Cons_f;
 	int height_i = params.MPC_Cons_height_i;
@@ -46,7 +44,7 @@ int generate_trajectory(float time[251],double x[251],double x_dot[251],double x
 	}
 	/*Vector of x and y changes per sample time*/
 	double dx[251],dy[251];
-	float dz[251];
+	double dz[251];
 	for(int i=0;i<250;i++){
 		dx[i+1]=x[i+1]-x[i];
 		dy[i+1]=y[i+1]-y[i];
@@ -57,7 +55,7 @@ int generate_trajectory(float time[251],double x[251],double x_dot[251],double x
 	dy[0] = dy[1];
 	dz[0] = dz[1];
 	//Define the reference yaw angles
-	float psi[251]={0};
+	double psi[251]={0};
 	for(int i=0;i<251;i++){
 		psiInt[i] = psi[i];
 	}

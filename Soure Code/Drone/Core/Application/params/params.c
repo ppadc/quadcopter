@@ -9,7 +9,7 @@
 #include "params.h"
 #include "user_define.h"
 #include <stm32f4xx.h>
-
+#include <math.h>
 
 params_t params={
 #if PID_CONTROL_TYPE == 0
@@ -168,6 +168,24 @@ params_t params={
 		.MPC_Cons_g = 9.81,
 		.MPC_Cons_Jtp = 1.302/1000000,
 		.MPC_Cons_Ts = 0.1,
+		.MPC_Cons_ut = 0,
+		.MPC_Cons_vt = 0,
+		.MPC_Cons_wt = 0,
+		.MPC_Cons_pt = 0,
+		.MPC_Cons_qt = 0,
+		.MPC_Cons_rt = 0,
+		.MPC_Cons_xt = 0,
+		.MPC_Cons_yt = -1,
+		.MPC_Cons_zt = -1,
+		.MPC_Cons_phit = 0,
+		.MPC_Cons_thetat = 0,
+		.MPC_Cons_psit = 0,
+
+		.MPC_Cons_omega1 = 110*M_PI/3, // rad/s at t=-Ts s (Ts seconds before NOW)
+		.MPC_Cons_omega2 = 110*M_PI/3, // rad/s at t=-Ts s (Ts seconds before NOW)
+		.MPC_Cons_omega3 = 110*M_PI/3, // rad/s at t=-Ts s (Ts seconds before NOW)
+		.MPC_Cons_omega4 = 110*M_PI/3, // rad/s at t=-Ts s (Ts seconds before NOW)
+
 		.MPC_Cons_Q = {
 				{10,0,0},
 				{0,10,0},
@@ -315,6 +333,26 @@ void params_save(){
 		write_4bytes((uint32_t*)(&params.MPC_Cons_g));
 		write_8bytes((uint64_t*)(&params.MPC_Cons_Jtp));
 		write_4bytes((uint32_t*)(&params.MPC_Cons_Ts));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_ut));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_vt));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_wt));
+
+		write_4bytes((uint32_t*)(&params.MPC_Cons_pt));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_qt));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_rt));
+
+		write_4bytes((uint32_t*)(&params.MPC_Cons_xt));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_yt));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_zt));
+
+		write_4bytes((uint32_t*)(&params.MPC_Cons_phit));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_thetat));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_psit));
+
+		write_4bytes((uint32_t*)(&params.MPC_Cons_omega1));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_omega2));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_omega3));
+		write_4bytes((uint32_t*)(&params.MPC_Cons_omega4));
 
 		unsigned char i,j;
 		for(i=0;i<3;i++){
@@ -430,6 +468,27 @@ bool params_load(){
 		read_4bytes((uint32_t*)(&params.MPC_Cons_g));
 		read_8bytes((uint64_t*)(&params.MPC_Cons_Jtp));
 		read_4bytes((uint32_t*)(&params.MPC_Cons_Ts));
+
+		read_4bytes((uint32_t*)(&params.MPC_Cons_ut));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_vt));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_wt));
+
+		read_4bytes((uint32_t*)(&params.MPC_Cons_pt));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_qt));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_rt));
+
+		read_4bytes((uint32_t*)(&params.MPC_Cons_xt));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_yt));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_zt));
+
+		read_4bytes((uint32_t*)(&params.MPC_Cons_phit));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_thetat));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_psit));
+
+		read_4bytes((uint32_t*)(&params.MPC_Cons_omega1));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_omega2));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_omega3));
+		read_4bytes((uint32_t*)(&params.MPC_Cons_omega4));
 
 		unsigned char i,j;
 		for(i=0;i<3;i++){
