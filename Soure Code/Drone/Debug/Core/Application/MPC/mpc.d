@@ -49,7 +49,8 @@ Core/Application/MPC/mpc.o: ../Core/Application/MPC/mpc.c \
  ../Core/Application/MPC/posision_controller/../trajectory/trajectory.h \
  ../Core/Application/MPC/posision_controller/../mpc_simplification/mpc_simplification.h \
  ../Core/Application/MPC/posision_controller/../LPV_cont_discrete/LPV_cont_discrete.h \
- ../Core/Application/MPC/posision_controller/../Matrix_calculation/matrix_inverse12x12.h
+ ../Core/Application/MPC/posision_controller/../Matrix_calculation/matrix_inverse12x12.h \
+ ../Core/Application/MPC/posision_controller/../Matrix_calculation/matrix_inverse4x4.h
 ../Core/Application/timer/delay_us.h:
 ../Core/Application/params/params.h:
 ../Core/Application/params/params.h:
@@ -110,3 +111,4 @@ Core/Application/MPC/mpc.o: ../Core/Application/MPC/mpc.c \
 ../Core/Application/MPC/posision_controller/../mpc_simplification/mpc_simplification.h:
 ../Core/Application/MPC/posision_controller/../LPV_cont_discrete/LPV_cont_discrete.h:
 ../Core/Application/MPC/posision_controller/../Matrix_calculation/matrix_inverse12x12.h:
+../Core/Application/MPC/posision_controller/../Matrix_calculation/matrix_inverse4x4.h:

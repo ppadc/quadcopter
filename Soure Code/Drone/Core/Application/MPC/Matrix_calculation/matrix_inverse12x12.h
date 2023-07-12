@@ -8,9 +8,6 @@
 #ifndef APPLICATION_MPC_MATRIX_CALCULATION_MATRIX_INVERSE12X12_H_
 #define APPLICATION_MPC_MATRIX_CALCULATION_MATRIX_INVERSE12X12_H_
 
-void matrix_invert_12x12(double a[12][12], int k);
-double determinant(double a[12][12], int k);
-void cofactor(double num[12][12], int f);
-void transpose(double num[12][12], double fac[12][12], int r);
+void matrix_invert_12x12(double a[12][12], int k, double return_callback[12][12]);
 
 #endif /* APPLICATION_MPC_MATRIX_CALCULATION_MATRIX_INVERSE12X12_H_ */

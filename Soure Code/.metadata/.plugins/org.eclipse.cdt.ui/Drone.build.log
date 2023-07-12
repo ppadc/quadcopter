@@ -1,28 +1,10 @@
-04:19:43 **** Incremental Build of configuration Debug for project Drone ****
+16:45:44 **** Incremental Build of configuration Debug for project Drone ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Application/MPC/mpc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Core/Application/Buzzer -I../Core/Application/mav -I../Core/Application/mode -I../Core/Application/params -I../Core/Application/pid -I../Core/Application/sensor -I../Core/Application/timer -I../Core/Application/mav/mavlink -I../Core/Application/mav/mavlink/quadcopter_protocol -I../Core/Application/mav/uart -I../Core/Application/mav/utils/circular_buffer -I../Core/Application/sensor/bno055 -I../Core/Application/sensor/mpu9250 -I../Core/Application/sensor/bme680 -I../Core/Application/imu -I../Core/Application/motor -I../Core/Application/eeprom -I../Core/Application/lcd -I../Core/Application/MPC/posision_controller -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Application/MPC/mpc.d" -MT"Core/Application/MPC/mpc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Application/MPC/mpc.o"
-../Core/Application/MPC/mpc.c: In function 'LPV_technique':
-../Core/Application/MPC/mpc.c:189:12: warning: unused variable 'Omega_Matrix' [-Wunused-variable]
-  189 |        int Omega_Matrix[4][4] = {
-      |            ^~~~~~~~~~~~
-../Core/Application/MPC/mpc.c:183:15: warning: variable 'UC_Vector' set but not used [-Wunused-but-set-variable]
-  183 |        double UC_Vector[4][1]={{0.0}};
-      |               ^~~~~~~~~
-At top level:
-../Core/Application/MPC/mpc.c:53:13: warning: 'LPV_technique' defined but not used [-Wunused-function]
-   53 | static void LPV_technique(){
-      |             ^~~~~~~~~~~~~
-arm-none-eabi-gcc -o "Drone.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Drone\Soure Code\Drone\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Drone.elf
- 
 arm-none-eabi-size   Drone.elf 
-arm-none-eabi-objdump -h -S  Drone.elf  > "Drone.list"
    text	   data	    bss	    dec	    hex	filename
   56512	    500	   4756	  61768	   f148	Drone.elf
 Finished building: default.size.stdout
  
-Finished building: Drone.list
- 
 
-04:19:44 Build Finished. 0 errors, 3 warnings. (took 1s.291ms)
+16:45:44 Build Finished. 0 errors, 0 warnings. (took 492ms)
 

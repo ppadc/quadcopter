@@ -1,0 +1,13 @@
+/*
+ * open_loop_new_states.h
+ *
+ *  Created on: Jul 7, 2023
+ *      Author: nguye
+ */
+
+#ifndef APPLICATION_MPC_OPEN_LOOP_NEW_STATES_OPEN_LOOP_NEW_STATES_H_
+#define APPLICATION_MPC_OPEN_LOOP_NEW_STATES_OPEN_LOOP_NEW_STATES_H_
+
+
+
+#endif /* APPLICATION_MPC_OPEN_LOOP_NEW_STATES_OPEN_LOOP_NEW_STATES_H_ */

@@ -8,22 +8,22 @@
 #include<stdio.h>
 #include<math.h>
 
-void matrix_invert_12x12(double a[12][12], int k);
-double determinant(double a[12][12], int k);
-void cofactor(double num[12][12], int f);
-void transpose(double num[12][12], double fac[12][12], int r);
+void matrix_invert_12x12(double a[12][12], int k, double return_callback[12][12]);
+double determinant_12x12(double a[12][12], int k);
+void cofactor_12x12(double num[12][12], int f, double return_callback[12][12]);
+void transpose_12x12(double num[12][12], double fac[12][12], int r, double return_callback[12][12]);
 
-void matrix_invert_12x12(double a[12][12], int k) {
+void matrix_invert_12x12(double a[12][12], int k, double return_callback[12][12]) {
     double d;
-    d = determinant(a, k);
+    d = determinant_12x12(a, k);
     if (d == 0) {
 //        printf("\nInverse of Entered Matrix is not possible\n");
     } else {
-        cofactor(a, k);
+        cofactor_12x12(a, k, return_callback);
     }
 }
 
-double determinant(double a[12][12], int k) {
+double determinant_12x12(double a[12][12], int k) {
     double det = 0;
     double b[12][12];
     int i, j, m, n, c;
@@ -49,7 +49,7 @@ double determinant(double a[12][12], int k) {
                     }
                 }
             }
-            det = det + s * (a[0][c] * determinant(b, k - 1));
+            det = det + s * (a[0][c] * determinant_12x12(b, k - 1));
             s = -1*s;
         }
     }
@@ -57,7 +57,7 @@ double determinant(double a[12][12], int k) {
     return (det);
 }
 
-void cofactor(double num[12][12], int f) {
+void cofactor_12x12(double num[12][12], int f, double return_callback[12][12]) {
     double b[12][12], fac[12][12];
     int p, q, m, n, i, j;
     for (q = 0; q < f; q++) {
@@ -77,13 +77,13 @@ void cofactor(double num[12][12], int f) {
                     }
                 }
             }
-            fac[q][p] = pow(-1, q + p) * determinant(b, f - 1);
+            fac[q][p] = pow(-1, q + p) * determinant_12x12(b, f - 1);
         }
     }
-    transpose(num, fac, f);
+    transpose_12x12(num, fac, f,return_callback);
 }
 
-void transpose(double num[12][12], double fac[12][12], int r) {
+void transpose_12x12(double num[12][12], double fac[12][12], int r, double return_callback[12][12]) {
     int i, j;
     double b[12][12], inverse[12][12], d;
 
@@ -92,19 +92,17 @@ void transpose(double num[12][12], double fac[12][12], int r) {
             b[i][j] = fac[j][i];
         }
     }
-    d = determinant(num, r);
+    d = determinant_12x12(num, r);
     for (i = 0; i < r; i++) {
         for (j = 0; j < r; j++) {
             inverse[i][j] = b[i][j] / d;
         }
     }
-//    printf("\n\n\nThe inverse of matrix is : \n");
-//    for (i = 0;i < r; i++)
-//    {
-//     for (j = 0;j < r; j++)
-//       {
-//         printf("\t%lf", inverse[i][j]);
-//        }
-//    printf("\n");
-//     }
+    for (i = 0;i < r; i++)
+    {
+     for (j = 0;j < r; j++)
+       {
+    	 return_callback[i][j]=inverse[i][j];
+        }
+     }
 }

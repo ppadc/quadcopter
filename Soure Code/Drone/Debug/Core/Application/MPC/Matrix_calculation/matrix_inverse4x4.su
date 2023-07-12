@@ -1,0 +1,4 @@
+../Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.c:16:6:matrix_invert_4x4	32	static
+../Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.c:26:8:determinant_4x4	192	static
+../Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.c:60:6:cofactor_4x4	312	static
+../Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.c:86:6:transpose_4x4	304	static

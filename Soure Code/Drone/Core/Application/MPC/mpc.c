@@ -12,6 +12,7 @@
 #include "../mpc_simplification/mpc_simplification.h"
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
 #include "../Matrix_calculation/matrix_inverse12x12.h"
+#include "../Matrix_calculation/matrix_inverse4x4.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -26,10 +27,10 @@ double Y_ref[251]={0.0},Y_dot_ref[251]={0.0},Y_dot_dot_ref[251]={0.0};
 double Z_ref[251]={0.0},Z_dot_ref[251]={0.0},Z_dot_dot_ref[251]={0.0};
 double psi_ref[251]={0.0};
 double ut,vt,wt,pt,qt,rt,xt,yt,zt,phit,thetat,psit;
-double states[12];
+double states[12],states_ani[5][6],U_ani[5][4];
 short genr_t = 0;
 short plotl,k;
-float omega1,omega2,omega3,omega4,omega_total;
+double omega1,omega2,omega3,omega4,omega_total;
 double U1,U2,U3,U4;
 double U1C,U2C,U3C,U4C;
 double U1_callback, Phi_ref_callback, Theta_ref_callback;
@@ -151,7 +152,8 @@ static void LPV_technique(){
 				/*Calculation du*/
 				//inverse Hdb
 				int size_Hdb = 12;
-				matrix_invert_12x12(Hdb_r_4hz,size_Hdb);
+				double matrix_rerturn[12][12];
+				matrix_invert_12x12(Hdb_r_4hz,size_Hdb,matrix_rerturn);
 				//Transpose ft
 				double ft_transpose[12][1]={{0.0}};
 				for(int i = 0;i<12;i++){
@@ -162,7 +164,7 @@ static void LPV_technique(){
 			        for (int j = 0; j < 1; j++) {
 			        	du[i][j] = 0;
 			            for (int k = 0; k < 12; k++) {
-			            	du[i][j] += Hdb_r_4hz[i][k] * ft_transpose[k][j];
+			            	du[i][j] += matrix_rerturn[i][k] * ft_transpose[k][j];
 			            }
 			        }
 			    }
@@ -186,14 +188,47 @@ static void LPV_technique(){
 			    UC_Vector[2][0] = U3C;
 			    UC_Vector[3][0] = U4C;
 			    //Create Omega_Matrix
-			    int Omega_Matrix[4][4] = {
+			    double Omega_Matrix[4][4] = {
 			    		{1,1,1,1},
 						{0,1,0,-1},
 						{-1,0,1,0},
 						{-1,1,-1,1},
 			    };
+			    //Inverse Omega_Matrix
+			    int size_OM=4;
+			    double omega_return[4][4]={{0.0}};
+			    matrix_invert_4x4(Omega_Matrix, size_OM,omega_return);
+			    //Mul omega_return[4][4] inversed with UC_vector[4][1]
+			    double omegas_vector[4][1];
+			    for (int i = 0; i < 4; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	omegas_vector[i][j] = 0;
+			            for (int k = 0; k < 4; k++) {
+			            	omegas_vector[i][j] += omega_return[i][k] * UC_Vector[k][j];
+			            }
+			        }
+			    }
+			    //Calculation OmegaP2
+			    double Omega1P2,Omega2P2,Omega3P2,Omega4P2;
+			    Omega1P2 = omegas_vector[0][0];
+			    Omega2P2 = omegas_vector[1][0];
+			    Omega3P2 = omegas_vector[2][0];
+			    Omega4P2 = omegas_vector[3][0];
+
+			    if(Omega1P2<=0||Omega2P2<=0||Omega3P2<=0||Omega4P2<=0){
+			    }
+			    else{
+			    	omega1 = sqrt(Omega1P2);
+			    	omega2 = sqrt(Omega2P2);
+			    	omega3 = sqrt(Omega3P2);
+			    	omega4 = sqrt(Omega4P2);
+			    }
+			    //compute OmegaTotal
+			    omega_total = omega1-omega2+omega3-omega4;
+			    open_new_loop_states(states, &omega_total, &U1, &U2, &U3, &U4,states,states_ani,U_ani);
 
 				hz = hz-1;
+				k = k+params.MPC_Cons_controlled_states;
 			}
 			else if(hz==3){
 

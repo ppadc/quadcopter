@@ -1,0 +1,13 @@
+/*
+ * matrix_inverse4x4.h
+ *
+ *  Created on: Jul 4, 2023
+ *      Author: nguye
+ */
+
+#ifndef APPLICATION_MPC_MATRIX_CALCULATION_MATRIX_INVERSE4X4_H_
+#define APPLICATION_MPC_MATRIX_CALCULATION_MATRIX_INVERSE4X4_H_
+
+void matrix_invert_4x4(double a[4][4], int k, double return_callback[4][4]);
+
+#endif /* APPLICATION_MPC_MATRIX_CALCULATION_MATRIX_INVERSE4X4_H_ */

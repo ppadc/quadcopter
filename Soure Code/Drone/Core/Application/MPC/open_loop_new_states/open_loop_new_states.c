@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int open_new_loop_states(double states[12], double *omega_total,float *U1, float *U2,float *U3,float *U4,double new_states_r[12],double states_ani_r[5][6],double U_ani_r[5][4]){
+int open_new_loop_states(double states[12], double *omega_total,double *U1, double *U2,double *U3,double *U4,double new_states_r[12],double states_ani_r[5][6],double U_ani_r[5][4]){
 	double current_states[12];
 	for(int i=0;i<12;i++){
 		current_states[i]=states[i];
