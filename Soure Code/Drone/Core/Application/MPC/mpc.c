@@ -12,6 +12,7 @@
 #include "../mpc_simplification/mpc_simplification.h"
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
 #include "../Matrix_calculation/matrix_inverse12x12.h"
+#include "../Matrix_calculation/matrix_inverse9x9.h"
 #include "../Matrix_calculation/matrix_inverse4x4.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -282,7 +283,7 @@ static void LPV_technique(){
 				//inverse Hdb
 				int size_Hdb = 9;
 				double matrix_rerturn[9][9]={{0.0}};
-				matrix_invert_12x12(Hdb_r_3hz,size_Hdb,matrix_rerturn);
+				matrix_invert_9x9(Hdb_r_3hz,size_Hdb,matrix_rerturn);
 				//Transpose ft
 				double ft_transpose[9][1]={{0.0}};
 				for(int i = 0;i<9;i++){
@@ -305,7 +306,61 @@ static void LPV_technique(){
 			    U2 = U2 + du[0][0];
 			    U3 = U3 + du[1][0];
 			    U4 = U3 + du[2][0];
+			    //Compute the new omegas based on the new U-s
+			    U1C = U1/params.MPC_Cons_ct;
+			    U2C = U2/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U3C = U3/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U4C = U4/(params.MPC_Cons_cq);
+			    //Create UC_Vector;
+			    double UC_Vector[4][1]={{0.0}};
+			    UC_Vector[0][0] = U1C;
+			    UC_Vector[1][0] = U2C;
+			    UC_Vector[2][0] = U3C;
+			    UC_Vector[3][0] = U4C;
+			    //Create Omega_Matrix
+			    double Omega_Matrix[4][4]={
+			    		{1,1,1,1},
+			    		{0,1,0,-1},
+			    		{-1,0,1,0},
+			    		{-1,1,-1,1},
+			    };
+			    //Inverse Omega_Matrix
+			    int size_OM=4;
+			    double omega_return[4][4]={{0.0}};
+			    matrix_invert_4x4(Omega_Matrix, size_OM,omega_return);
+			    //Mul omega_return[4][4] inversed with UC_vector[4][1]
+			    double omegas_vector[4][1];
+			    for (int i = 0; i < 4; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	omegas_vector[i][j] = 0;
+			            for (int k = 0; k < 4; k++) {
+			            	omegas_vector[i][j] += omega_return[i][k] * UC_Vector[k][j];
+			            }
+			        }
+			    }
+			    //Calculation OmegaP2
+			    double Omega1P2,Omega2P2,Omega3P2,Omega4P2;
+			    Omega1P2 = omegas_vector[0][0];
+			    Omega2P2 = omegas_vector[1][0];
+			    Omega3P2 = omegas_vector[2][0];
+			    Omega4P2 = omegas_vector[3][0];
 
+			    if(Omega1P2<=0||Omega2P2<=0||Omega3P2<=0||Omega4P2<=0){
+			    }
+			    else{
+			    omega1 = sqrt(Omega1P2);
+			    omega2 = sqrt(Omega2P2);
+			    omega3 = sqrt(Omega3P2);
+			    omega4 = sqrt(Omega4P2);
+			    }
+			    //compute OmegaTotal
+			    omega_total = omega1-omega2+omega3-omega4;
+			    open_new_loop_states(states, &omega_total, &U1, &U2, &U3, &U4,states_new,states_ani,U_ani);
+			    //Update new state
+			    for(int i=0;i<12;i++){
+			    	states[i] = states_new[i];
+			    }
+			    hz = hz-1;
 			}
 			else if(hz==2){
 				//Make all input and output = 0 for new outter loop
