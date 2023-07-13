@@ -7,19 +7,25 @@
 C_SRCS += \
 ../Core/Application/MPC/Matrix_calculation/matrix.c \
 ../Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.c \
+../Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.c \
 ../Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.c \
+../Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.c \
 ../Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.c 
 
 OBJS += \
 ./Core/Application/MPC/Matrix_calculation/matrix.o \
 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o \
+./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o \
 ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o \
+./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o \
 ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o 
 
 C_DEPS += \
 ./Core/Application/MPC/Matrix_calculation/matrix.d \
 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.d \
+./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.d \
 ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.d \
+./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.d \
 ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.d 
 
 
@@ -30,7 +36,7 @@ Core/Application/MPC/Matrix_calculation/%.o Core/Application/MPC/Matrix_calculat
 clean: clean-Core-2f-Application-2f-MPC-2f-Matrix_calculation
 
 clean-Core-2f-Application-2f-MPC-2f-Matrix_calculation:
-	-$(RM) ./Core/Application/MPC/Matrix_calculation/matrix.d ./Core/Application/MPC/Matrix_calculation/matrix.o ./Core/Application/MPC/Matrix_calculation/matrix.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.su
+	-$(RM) ./Core/Application/MPC/Matrix_calculation/matrix.d ./Core/Application/MPC/Matrix_calculation/matrix.o ./Core/Application/MPC/Matrix_calculation/matrix.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.su ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.d ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.su
 
 .PHONY: clean-Core-2f-Application-2f-MPC-2f-Matrix_calculation
 

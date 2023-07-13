@@ -4,6 +4,9 @@
  *  Created on: Jun 25, 2023
  *      Author: nguye
  */
+#ifndef APPLICATION_MPC_MPC_C_
+#define APPLICATION_MPC_MPC_C_
+
 #include "delay_us.h"
 #include "params.h"
 #include "../open_loop_new_states/open_loop_new_states.h"
@@ -13,14 +16,13 @@
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
 #include "../Matrix_calculation/matrix_inverse12x12.h"
 #include "../Matrix_calculation/matrix_inverse9x9.h"
+#include "../Matrix_calculation/matrix_inverse6x6.h"
 #include "../Matrix_calculation/matrix_inverse4x4.h"
+#include "../Matrix_calculation/matrix_inverse3x3.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-
-#ifndef APPLICATION_MPC_MPC_C_
-#define APPLICATION_MPC_MPC_C_
 
 float t[251]={0.0};
 double X_ref[251]={0.0},X_dot_ref[251]={0.0},X_dot_dot_ref[251]={0.0};
@@ -28,7 +30,7 @@ double Y_ref[251]={0.0},Y_dot_ref[251]={0.0},Y_dot_dot_ref[251]={0.0};
 double Z_ref[251]={0.0},Z_dot_ref[251]={0.0},Z_dot_dot_ref[251]={0.0};
 double psi_ref[251]={0.0};
 double ut,vt,wt,pt,qt,rt,xt,yt,zt,phit,thetat,psit;
-double states[12],states_ani[5][6],U_ani[5][4],states_new[12];
+double states[12]={0.0},states_ani[5][6]={0.0},U_ani[5][4]={0.0},states_new[12]={0.0};
 short genr_t = 0;
 short plotl,k;
 double omega1,omega2,omega3,omega4,omega_total;
@@ -50,9 +52,9 @@ double x_aug_t[9];
 double Hdb_r_4hz[12][12],Fdbt_r_4hz[21][12];
 double Hdb_r_3hz[9][9],Fdbt_r_3hz[18][9];
 double Hdb_r_2hz[6][6],Fdbt_r_2hz[15][6];
-double Hdb_r_1hz[3][3],Fdbt_r_1hz[12][6];
+double Hdb_r_1hz[3][3],Fdbt_r_1hz[12][3];
 
-static void LPV_technique(){
+int LPV_technique(double states_r[12],double *omega1_r,double *omega2_r,double *omega3_r,double *omega4_r){
 	/*Generate the refence signals*/
 	//Generate time refence
 	if(genr_t == 0){
@@ -122,7 +124,7 @@ static void LPV_technique(){
 				x_aug_t[6] = U2;
 				x_aug_t[7] = U3;
 				x_aug_t[8] = U4;
-				k = k+params.MPC_Cons_controlled_states;
+				k = k+params.MPC_Cons_controlled_states; //k=3
 				double r[1][12]={{0.0}};
 				for(int i=0;i<params.MPC_Cons_controlled_states*hz;i++){
 					r[0][i] = refSignals[i+k];
@@ -219,6 +221,7 @@ static void LPV_technique(){
 			    Omega4P2 = omegas_vector[3][0];
 
 			    if(Omega1P2<=0||Omega2P2<=0||Omega3P2<=0||Omega4P2<=0){
+			    	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, SET);
 			    }
 			    else{
 			    	omega1 = sqrt(Omega1P2);
@@ -233,6 +236,15 @@ static void LPV_technique(){
 			    for(int i=0;i<12;i++){
 			    	 states[i] = states_new[i];
 			    }
+			    //Update for return states
+			    for(int i=0;i<12;i++){
+			    	states_r[i] = states[i];
+			    }
+			    //Update for return omega
+			    *omega1_r = omega1;
+			    *omega2_r = omega2;
+			    *omega3_r = omega3;
+			    *omega4_r = omega4;
 				hz = hz-1;
 			}
 			else if(hz==3){
@@ -250,12 +262,13 @@ static void LPV_technique(){
 				x_aug_t[6] = U2;
 				x_aug_t[7] = U3;
 				x_aug_t[8] = U4;
-				k = k+params.MPC_Cons_controlled_states;
+				k = k+params.MPC_Cons_controlled_states; //k=6
 				double r[1][9]={{0.0}};
 				for(int i=0;i<9;i++){
 					r[0][i] = refSignals[i+k];
 				}
 				mpc_simplification(Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix,&hz,Hdb_r_4hz,Fdbt_r_4hz,Hdb_r_3hz,Fdbt_r_3hz,Hdb_r_2hz,Fdbt_r_2hz,Hdb_r_1hz,Fdbt_r_1hz);
+				//Transpose x_aug_t[9] to x_aug_t[1][9]
 				double x_aug_t_transpose[1][9]={{0.0}};
 				double concatenate_x_aug_t_transpose_r[1][18]={{0.0}};
 				for(int i=0;i<1;i++){
@@ -299,7 +312,7 @@ static void LPV_technique(){
 			        }
 			    }
 			    //Mul du[9][1] for -1
-			    for(int i=0;i<12;i++){
+			    for(int i=0;i<9;i++){
 			    	du[i][0] = du[i][0]*-1;
 			    }
 			    //Update the real inputs
@@ -346,6 +359,7 @@ static void LPV_technique(){
 			    Omega4P2 = omegas_vector[3][0];
 
 			    if(Omega1P2<=0||Omega2P2<=0||Omega3P2<=0||Omega4P2<=0){
+			    	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, SET);
 			    }
 			    else{
 			    omega1 = sqrt(Omega1P2);
@@ -360,6 +374,15 @@ static void LPV_technique(){
 			    for(int i=0;i<12;i++){
 			    	states[i] = states_new[i];
 			    }
+			    //Update for return states
+			    for(int i=0;i<12;i++){
+			    	states_r[i] = states[i];
+			    }
+			    //Update for return omega
+			    *omega1_r = omega1;
+			    *omega2_r = omega2;
+			    *omega3_r = omega3;
+			    *omega4_r = omega4;
 			    hz = hz-1;
 			}
 			else if(hz==2){
@@ -377,14 +400,270 @@ static void LPV_technique(){
 				x_aug_t[6] = U2;
 				x_aug_t[7] = U3;
 				x_aug_t[8] = U4;
-				k = k+params.MPC_Cons_controlled_states;
-			}
-			else{
+				k = k+params.MPC_Cons_controlled_states; //k=9
+				double r[1][6]={{0.0}};
+				for(int i=0;i<6;i++){
+					r[0][i] = refSignals[i+k];
+				}
+				mpc_simplification(Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix,&hz,Hdb_r_4hz,Fdbt_r_4hz,Hdb_r_3hz,Fdbt_r_3hz,Hdb_r_2hz,Fdbt_r_2hz,Hdb_r_1hz,Fdbt_r_1hz);
+				//Transpose x_aug_t[9] to x_aug_t[1][9]
+				double x_aug_t_transpose[1][9]={{0.0}};
+				double concatenate_x_aug_t_transpose_r[1][15]={{0.0}};
+				for(int i=0;i<1;i++){
+					for(int j=0;j<9;j++){
+						x_aug_t_transpose[i][j] =x_aug_t[j];
+					}
+				}
+				//Concatenate x_aug_t_transpose[1][9] with r[6] axis 0 = [1][15]
+				for(int i=0;i<9;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = x_aug_t_transpose[0][i];
+				}
+				for(int i=9;i<15;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = r[0][i-9];
+				}
+				/*Multi concatenate_x_aug_t_transpose_r[1][15] with Fdbt_2hz[15][6] */
+				double ft[1][6]={{0.0}};
+				double du[6][1]={{0.0}};
+				for(int i=0;i<6;i++){
+					ft[0][i] = 0.0;
+					for(int j = 0;j<15;j++){
+						ft[0][i] += concatenate_x_aug_t_transpose_r[0][j]*Fdbt_r_2hz[j][i];
+					}
+				}
+				/*Calculation du*/
+				//inverse Hdb
+				int size_Hdb = 6;
+				double matrix_rerturn[6][6]={{0.0}};
+				matrix_invert_6x6(Hdb_r_2hz,size_Hdb,matrix_rerturn);
+				//Transpose ft
+				double ft_transpose[6][1]={{0.0}};
+				for(int i = 0;i<6;i++){
+					ft_transpose[i][0] = ft[0][i];
+				}
+				//Multi Hdb_r_2hz[6][6] inverse with ft_transpose[6][1];
+			    for (int i = 0; i < 6; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	du[i][j] = 0;
+			            for (int k = 0; k < 6; k++) {
+			            	du[i][j] += matrix_rerturn[i][k] * ft_transpose[k][j];
+			            }
+			        }
+			    }
+			    //Mul du[6][1] for -1
+			    for(int i=0;i<6;i++){
+			    	du[i][0] = du[i][0]*-1;
+			    }
+			    //Update the real inputs
+			    U2 = U2 + du[0][0];
+			    U3 = U3 + du[1][0];
+			    U4 = U3 + du[2][0];
+			    //Compute the new omegas based on the new U-s
+			    U1C = U1/params.MPC_Cons_ct;
+			    U2C = U2/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U3C = U3/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U4C = U4/(params.MPC_Cons_cq);
+			    //Create UC_Vector;
+			    double UC_Vector[4][1]={{0.0}};
+			    UC_Vector[0][0] = U1C;
+			    UC_Vector[1][0] = U2C;
+			    UC_Vector[2][0] = U3C;
+			    UC_Vector[3][0] = U4C;
+			    //Create Omega_Matrix
+			    double Omega_Matrix[4][4]={
+			    		{1,1,1,1},
+			    		{0,1,0,-1},
+			    		{-1,0,1,0},
+			    		{-1,1,-1,1},
+			    };
+			    //Inverse Omega_Matrix
+			    int size_OM=4;
+			    double omega_return[4][4]={{0.0}};
+			    matrix_invert_4x4(Omega_Matrix, size_OM,omega_return);
+			    //Mul omega_return[4][4] inversed with UC_vector[4][1]
+			    double omegas_vector[4][1];
+			    for (int i = 0; i < 4; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	omegas_vector[i][j] = 0;
+			            for (int k = 0; k < 4; k++) {
+			            	omegas_vector[i][j] += omega_return[i][k] * UC_Vector[k][j];
+			            }
+			        }
+			    }
+			    //Calculation OmegaP2
+			    double Omega1P2,Omega2P2,Omega3P2,Omega4P2;
+			    Omega1P2 = omegas_vector[0][0];
+			    Omega2P2 = omegas_vector[1][0];
+			    Omega3P2 = omegas_vector[2][0];
+			    Omega4P2 = omegas_vector[3][0];
 
+			    if(Omega1P2<=0||Omega2P2<=0||Omega3P2<=0||Omega4P2<=0){
+			    	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, SET);
+			    }
+			    else{
+			    omega1 = sqrt(Omega1P2);
+			    omega2 = sqrt(Omega2P2);
+			    omega3 = sqrt(Omega3P2);
+			    omega4 = sqrt(Omega4P2);
+			    }
+			    //compute OmegaTotal
+			    omega_total = omega1-omega2+omega3-omega4;
+			    open_new_loop_states(states, &omega_total, &U1, &U2, &U3, &U4,states_new,states_ani,U_ani);
+			    //Update new state
+			    for(int i=0;i<12;i++){
+			    	states[i] = states_new[i];
+			    }
+			    //Update for return states
+			    for(int i=0;i<12;i++){
+			    	states_r[i] = states[i];
+			    }
+			    //Update for return omega
+			    *omega1_r = omega1;
+			    *omega2_r = omega2;
+			    *omega3_r = omega3;
+			    *omega4_r = omega4;
+			    hz = hz-1;
+			}
+			else if(hz==1){
+				//Make all input and output = 0 for new outter loop
+				x_dot=0;y_dot=0;z_dot=0;
+				phi_dot=0; theta_rt=0; theta_dot=0; psi_rt=0; psi_dot=0;
+				lpv_cont_discrete(&states[0],&states[1],&states[2],&states[3],&states[4],&states[5],&states[9],&states[10],&states[11],&omega_total, Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix, &x_dot, &y_dot, &z_dot, &phi_rt, &phi_dot, &theta_rt, &theta_dot, &psi_rt, &psi_dot);
+				/*Create x_aug_t*/
+				x_aug_t[0] = phi_rt;
+				x_aug_t[1] = phi_dot;
+				x_aug_t[2] = theta_rt;
+				x_aug_t[3] = theta_dot;
+				x_aug_t[4] = psi_rt;
+				x_aug_t[5] = psi_dot;
+				x_aug_t[6] = U2;
+				x_aug_t[7] = U3;
+				x_aug_t[8] = U4;
+				k = k+params.MPC_Cons_controlled_states; //k=12
+				double r[1][3]={{0.0}};
+				for(int i=0;i<3;i++){
+					r[0][i] = refSignals[i+k];
+				}
+				mpc_simplification(Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix,&hz,Hdb_r_4hz,Fdbt_r_4hz,Hdb_r_3hz,Fdbt_r_3hz,Hdb_r_2hz,Fdbt_r_2hz,Hdb_r_1hz,Fdbt_r_1hz);
+				//Transpose x_aug_t[9] to x_aug_t[1][9]
+				double x_aug_t_transpose[1][9]={{0.0}};
+				for(int i=0;i<1;i++){
+					for(int j=0;j<9;j++){
+						x_aug_t_transpose[i][j] =x_aug_t[j];
+					}
+				}
+				//Concatenate x_aug_t_transpose[1][9] with r[1][3] axis 0 = [1][12]
+				double concatenate_x_aug_t_transpose_r[1][12]={{0.0}};
+				for(int i=0;i<9;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = x_aug_t_transpose[0][i];
+				}
+				for(int i=9;i<12;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = r[0][i-9];
+				}
+				/*Multi concatenate_x_aug_t_transpose_r[1][12] with Fdbt_1hz[12][3] */
+				double ft[1][3]={{0.0}};
+				double du[3][1]={{0.0}};
+				for(int i=0;i<3;i++){
+					ft[0][i] = 0.0;
+					for(int j = 0;j<12;j++){
+						ft[0][i] += concatenate_x_aug_t_transpose_r[0][j]*Fdbt_r_1hz[j][i];
+					}
+				}
+				/*Calculation du*/
+				//inverse Hdb
+				int size_Hdb = 3;
+				double matrix_rerturn[3][3]={{0.0}};
+				matrix_invert_3x3(Hdb_r_1hz,size_Hdb,matrix_rerturn);
+				//Transpose ft
+				double ft_transpose[3][1]={{0.0}};
+				for(int i = 0;i<3;i++){
+					ft_transpose[i][0] = ft[0][i];
+				}
+				//Multi Hdb_r_1hz[3][3] inverse with ft_transpose[3][1];
+			    for (int i = 0; i < 3; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	du[i][j] = 0;
+			            for (int k = 0; k < 3; k++) {
+			            	du[i][j] += matrix_rerturn[i][k] * ft_transpose[k][j];
+			            }
+			        }
+			    }
+			    //Mul du[3][1] for -1
+			    for(int i=0;i<3;i++){
+			    	du[i][0] = du[i][0]*-1;
+			    }
+			    //Update the real inputs
+			    U2 = U2 + du[0][0];
+			    U3 = U3 + du[1][0];
+			    U4 = U3 + du[2][0];
+			    //Compute the new omegas based on the new U-s
+			    U1C = U1/params.MPC_Cons_ct;
+			    U2C = U2/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U3C = U3/(params.MPC_Cons_ct*params.MPC_Cons_l);
+			    U4C = U4/(params.MPC_Cons_cq);
+			    //Create UC_Vector;
+			    double UC_Vector[4][1]={{0.0}};
+			    UC_Vector[0][0] = U1C;
+			    UC_Vector[1][0] = U2C;
+			    UC_Vector[2][0] = U3C;
+			    UC_Vector[3][0] = U4C;
+			    //Create Omega_Matrix
+			    double Omega_Matrix[4][4]={
+			    		{1,1,1,1},
+			    		{0,1,0,-1},
+			    		{-1,0,1,0},
+			    		{-1,1,-1,1},
+			    };
+			    //Inverse Omega_Matrix
+			    int size_OM=4;
+			    double omega_return[4][4]={{0.0}};
+			    matrix_invert_4x4(Omega_Matrix, size_OM,omega_return);
+			    //Mul omega_return[4][4] inversed with UC_vector[4][1]
+			    double omegas_vector[4][1];
+			    for (int i = 0; i < 4; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	omegas_vector[i][j] = 0;
+			            for (int k = 0; k < 4; k++) {
+			            	omegas_vector[i][j] += omega_return[i][k] * UC_Vector[k][j];
+			            }
+			        }
+			    }
+			    //Calculation OmegaP2
+			    double Omega1P2,Omega2P2,Omega3P2,Omega4P2;
+			    Omega1P2 = omegas_vector[0][0];
+			    Omega2P2 = omegas_vector[1][0];
+			    Omega3P2 = omegas_vector[2][0];
+			    Omega4P2 = omegas_vector[3][0];
+
+			    if(Omega1P2<=0||Omega2P2<=0||Omega3P2<=0||Omega4P2<=0){
+			    	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, SET);
+			    }
+			    else{
+			    omega1 = sqrt(Omega1P2);
+			    omega2 = sqrt(Omega2P2);
+			    omega3 = sqrt(Omega3P2);
+			    omega4 = sqrt(Omega4P2);
+			    }
+			    //compute OmegaTotal
+			    omega_total = omega1-omega2+omega3-omega4;
+			    open_new_loop_states(states, &omega_total, &U1, &U2, &U3, &U4,states_new,states_ani,U_ani);
+			    //Update new state
+			    for(int i=0;i<12;i++){
+			    	states[i] = states_new[i];
+			    }
+			    //Update for return states
+			    for(int i=0;i<12;i++){
+			    	states_r[i] = states[i];
+			    }
+			    //Update for return omega
+			    *omega1_r = omega1;
+			    *omega2_r = omega2;
+			    *omega3_r = omega3;
+			    *omega4_r = omega4;
+			    //End innerloop
 			}
 		}
-
 	}
+	return 0;
 }
 
 

@@ -8,6 +8,6 @@
 #ifndef APPLICATION_MPC_MPC_H_
 #define APPLICATION_MPC_MPC_H_
 
-static void LPV_technique();
+int LPV_technique();
 
 #endif /* APPLICATION_MPC_MPC_H_ */

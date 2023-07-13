@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "../LPV_cont_discrete/LPV_cont_discrete.h"
 
-int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],int *hz,double Hdb_r_4hz[12][12],double Fdbt_r_4hz[21][12],double Hdb_r_3hz[9][9],double Fdbt_r_3hz[18][9],double Hdb_r_2hz[6][6],double Fdbt_r_2hz[15][6],double Hdb_r_1hz[3][3],double Fdbt_r_1hz[12][6]){
+int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],int *hz,double Hdb_r_4hz[12][12],double Fdbt_r_4hz[21][12],double Hdb_r_3hz[9][9],double Fdbt_r_3hz[18][9],double Hdb_r_2hz[6][6],double Fdbt_r_2hz[15][6],double Hdb_r_1hz[3][3],double Fdbt_r_1hz[12][3]){
     /*This function creates the compact matrices for Model Predictive Control*/
 	// db - double bar
 	// dbt - double bar transpose
@@ -38,10 +38,10 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	        {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0}
 	};
 	//A_aug=np.concatenate((A_aug,temp),axis=0)
-	double A_aug_matrixpower[9][9];
-	double A_aug_matrixpower_Adc[9][9];
-	double A_aug_matrixpower_B_aug[9][3];
-	double A_aug_new[9][9];
+	double A_aug_matrixpower[9][9]={{0.0}};
+	double A_aug_matrixpower_Adc[9][9]={{0.0}};
+	double A_aug_matrixpower_B_aug[9][3]={{0.0}};
+	double A_aug_new[9][9]={{0.0}};
 	for(int i=0;i<6;i++){
 		for(int j=0;j<9;j++){
 			A_aug_new[i][j] = A_aug[i][j];
@@ -58,7 +58,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 		 {0.0, 1.0, 0.0},
 		 {0.0, 0.0, 1.0}
 	};
-	double B_aug[9][3];
+	double B_aug[9][3]={{0.0}};
 	for(int i=0;i<6;i++){
 		for(int j=0;j<3;j++){
 			B_aug[i][j] = Bd_matrix[i][j];
@@ -75,8 +75,8 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 			{0.0, 0.0, 0.0},
 			{0.0, 0.0, 0.0}
 	};
-	double C_aug[3][9];
-	double Cdb_transpose[12][36];
+	double C_aug[3][9]={{0.0}};
+	double Cdb_transpose[12][36]={{0.0}};
 	for(int i=0;i<3;i++){
 		for(int j=0;j<6;j++){
 			C_aug[i][j] = Cd_matrix[i][j];
@@ -96,7 +96,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 //	}
 	/*Calculation for CQC,CSC,QC,SC Matrix*/
 	//transpose C_aug
-	float C_aug_transpose[9][3];
+	float C_aug_transpose[9][3]={{0.0}};
 	C_aug_transpose[0][0] = C_aug[0][0];	C_aug_transpose[0][1] = C_aug[1][0]; C_aug_transpose[0][2] = C_aug[2][0];
 	C_aug_transpose[1][0] = C_aug[0][1];	C_aug_transpose[1][1] = C_aug[1][1]; C_aug_transpose[1][2] = C_aug[2][1];
 	C_aug_transpose[2][0] = C_aug[0][2];	C_aug_transpose[2][1] = C_aug[1][2]; C_aug_transpose[2][2] = C_aug[2][2];
@@ -363,7 +363,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	            }
 	        }
 	    }
-	    //Cal Fdbt[9][3] by concatenate  temp_Fdbt_2[9][3] and temp_Fdbt_3[3][3] axis 0
+	    //Cal Fdbt[12][3] by concatenate  temp_Fdbt_2[9][3] and temp_Fdbt_3[3][3] axis 0
 	    for(int i_Fdbt=0;i_Fdbt<9;i_Fdbt++){
 	    	for(int j_Fdbt=0;j_Fdbt<3;j_Fdbt++){
 	    		Fdbt[i_Fdbt][j_Fdbt] = temp_Fdbt_2[i_Fdbt][j_Fdbt];

@@ -665,6 +665,97 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0xb8 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .text          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .data          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .bss           0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .text.matrix_invert_3x3
+                0x0000000000000000       0x40 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .text.determinant_3x3
+                0x0000000000000000      0x172 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .text.cofactor_3x3
+                0x0000000000000000      0x188 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .text.transpose_3x3
+                0x0000000000000000      0x188 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_info    0x0000000000000000      0x309 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_abbrev  0x0000000000000000       0xfe ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_aranges
+                0x0000000000000000       0x38 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_ranges  0x0000000000000000       0x28 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000      0x1b2 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x1e ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x94 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000      0x341 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_line    0x0000000000000000      0x7c6 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_str     0x0000000000000000     0x7b20 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .comment       0x0000000000000000       0x51 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .debug_frame   0x0000000000000000       0xb8 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o
@@ -756,6 +847,97 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0xb8 ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .text          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .data          0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .bss           0x0000000000000000        0x0 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .text.matrix_invert_6x6
+                0x0000000000000000       0x40 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .text.determinant_6x6
+                0x0000000000000000      0x216 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .text.cofactor_6x6
+                0x0000000000000000      0x200 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .text.transpose_6x6
+                0x0000000000000000      0x214 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_info    0x0000000000000000      0x309 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_abbrev  0x0000000000000000       0xfe ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_aranges
+                0x0000000000000000       0x38 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_ranges  0x0000000000000000       0x28 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000      0x1b2 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x1e ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x94 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000      0x341 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_line    0x0000000000000000      0x7ce ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_str     0x0000000000000000     0x7b20 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .comment       0x0000000000000000       0x51 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .debug_frame   0x0000000000000000       0xb8 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o
  .group         0x0000000000000000        0xc ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o
@@ -1219,16 +1401,16 @@ Discarded input sections
  .bss.Hdb_r_1hz
                 0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
  .bss.Fdbt_r_1hz
-                0x0000000000000000      0x240 ./Core/Application/MPC/mpc.o
+                0x0000000000000000      0x120 ./Core/Application/MPC/mpc.o
  .rodata        0x0000000000000000       0x80 ./Core/Application/MPC/mpc.o
  .text.LPV_technique
-                0x0000000000000000     0x2090 ./Core/Application/MPC/mpc.o
- .debug_info    0x0000000000000000     0x1656 ./Core/Application/MPC/mpc.o
- .debug_abbrev  0x0000000000000000      0x1a2 ./Core/Application/MPC/mpc.o
+                0x0000000000000000     0x3a10 ./Core/Application/MPC/mpc.o
+ .debug_info    0x0000000000000000     0x1ec6 ./Core/Application/MPC/mpc.o
+ .debug_abbrev  0x0000000000000000      0x225 ./Core/Application/MPC/mpc.o
  .debug_aranges
                 0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
  .debug_ranges  0x0000000000000000       0x10 ./Core/Application/MPC/mpc.o
- .debug_macro   0x0000000000000000      0x51b ./Core/Application/MPC/mpc.o
+ .debug_macro   0x0000000000000000      0x52f ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000      0xa78 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x22 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x4c ./Core/Application/MPC/mpc.o
@@ -1315,8 +1497,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x16 ./Core/Application/MPC/mpc.o
  .debug_macro   0x0000000000000000       0x20 ./Core/Application/MPC/mpc.o
- .debug_line    0x0000000000000000     0x16bb ./Core/Application/MPC/mpc.o
- .debug_str     0x0000000000000000    0xd00df ./Core/Application/MPC/mpc.o
+ .debug_line    0x0000000000000000     0x1dfc ./Core/Application/MPC/mpc.o
+ .debug_str     0x0000000000000000    0xd023e ./Core/Application/MPC/mpc.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc.o
  .debug_frame   0x0000000000000000       0x48 ./Core/Application/MPC/mpc.o
  .ARM.attributes
@@ -1410,7 +1592,7 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .rodata        0x0000000000000000       0x24 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .text.mpc_simplification
-                0x0000000000000000     0xace8 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+                0x0000000000000000     0xada8 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_info    0x0000000000000000     0x2d81 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_abbrev  0x0000000000000000      0x187 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_aranges
@@ -1501,7 +1683,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1f4 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_macro   0x0000000000000000       0x1c ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_macro   0x0000000000000000      0x19b ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
- .debug_line    0x0000000000000000     0x2f05 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
+ .debug_line    0x0000000000000000     0x2f13 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_str     0x0000000000000000    0xd0066 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .comment       0x0000000000000000       0x51 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
  .debug_frame   0x0000000000000000       0x48 ./Core/Application/MPC/mpc_simplification/mpc_simplification.o
@@ -10548,7 +10730,9 @@ LOAD ./Core/Application/Buzzer/buzzer.o
 LOAD ./Core/Application/MPC/LPV_cont_discrete/LPV_cont_discrete.o
 LOAD ./Core/Application/MPC/Matrix_calculation/matrix.o
 LOAD ./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o
+LOAD ./Core/Application/MPC/Matrix_calculation/matrix_inverse3x3.o
 LOAD ./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o
+LOAD ./Core/Application/MPC/Matrix_calculation/matrix_inverse6x6.o
 LOAD ./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o
 LOAD ./Core/Application/MPC/Rotational_matrix/rotational_matrix.o
 LOAD ./Core/Application/MPC/mpc.o
@@ -11645,7 +11829,7 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000010000000                _eccmram = .
                 0x0000000010000000                . = ALIGN (0x4)
 
-.bss            0x00000000200001ec      0xc90
+.bss            0x00000000200001ec      0xc84
                 0x00000000200001ec                _sbss = .
                 0x00000000200001ec                __bss_start__ = _sbss
  *(.bss)
@@ -11694,116 +11878,115 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.angular_acc_z
                 0x0000000020000788        0x4 ./Core/Src/main.o
                 0x0000000020000788                angular_acc_z
- .bss.sys       0x000000002000078c        0x4 ./Core/Src/main.o
+ .bss.sys       0x000000002000078c        0x1 ./Core/Src/main.o
                 0x000000002000078c                sys
- .bss.gyr       0x0000000020000790        0x4 ./Core/Src/main.o
-                0x0000000020000790                gyr
- .bss.acc       0x0000000020000794        0x4 ./Core/Src/main.o
-                0x0000000020000794                acc
- .bss.mag       0x0000000020000798        0x4 ./Core/Src/main.o
-                0x0000000020000798                mag
- .bss.ax        0x000000002000079c        0x4 ./Core/Src/main.o
-                0x000000002000079c                ax
- .bss.ay        0x00000000200007a0        0x4 ./Core/Src/main.o
-                0x00000000200007a0                ay
- .bss.az        0x00000000200007a4        0x4 ./Core/Src/main.o
-                0x00000000200007a4                az
- .bss.gx        0x00000000200007a8        0x4 ./Core/Src/main.o
-                0x00000000200007a8                gx
- .bss.gy        0x00000000200007ac        0x4 ./Core/Src/main.o
-                0x00000000200007ac                gy
- .bss.gz        0x00000000200007b0        0x4 ./Core/Src/main.o
-                0x00000000200007b0                gz
+ .bss.gyr       0x000000002000078d        0x1 ./Core/Src/main.o
+                0x000000002000078d                gyr
+ .bss.acc       0x000000002000078e        0x1 ./Core/Src/main.o
+                0x000000002000078e                acc
+ .bss.mag       0x000000002000078f        0x1 ./Core/Src/main.o
+                0x000000002000078f                mag
+ .bss.ax        0x0000000020000790        0x4 ./Core/Src/main.o
+                0x0000000020000790                ax
+ .bss.ay        0x0000000020000794        0x4 ./Core/Src/main.o
+                0x0000000020000794                ay
+ .bss.az        0x0000000020000798        0x4 ./Core/Src/main.o
+                0x0000000020000798                az
+ .bss.gx        0x000000002000079c        0x4 ./Core/Src/main.o
+                0x000000002000079c                gx
+ .bss.gy        0x00000000200007a0        0x4 ./Core/Src/main.o
+                0x00000000200007a0                gy
+ .bss.gz        0x00000000200007a4        0x4 ./Core/Src/main.o
+                0x00000000200007a4                gz
  .bss.__sbrk_heap_end
-                0x00000000200007b4        0x4 ./Core/Src/sysmem.o
- .bss.htim1     0x00000000200007b8       0x48 ./Core/Src/tim.o
-                0x00000000200007b8                htim1
- .bss.htim3     0x0000000020000800       0x48 ./Core/Src/tim.o
-                0x0000000020000800                htim3
- .bss.htim5     0x0000000020000848       0x48 ./Core/Src/tim.o
-                0x0000000020000848                htim5
- .bss.htim8     0x0000000020000890       0x48 ./Core/Src/tim.o
-                0x0000000020000890                htim8
- .bss.huart5    0x00000000200008d8       0x44 ./Core/Src/usart.o
-                0x00000000200008d8                huart5
- .bss.huart1    0x000000002000091c       0x44 ./Core/Src/usart.o
-                0x000000002000091c                huart1
- .bss.huart3    0x0000000020000960       0x44 ./Core/Src/usart.o
-                0x0000000020000960                huart3
- .bss.huart6    0x00000000200009a4       0x44 ./Core/Src/usart.o
-                0x00000000200009a4                huart6
+                0x00000000200007a8        0x4 ./Core/Src/sysmem.o
+ .bss.htim1     0x00000000200007ac       0x48 ./Core/Src/tim.o
+                0x00000000200007ac                htim1
+ .bss.htim3     0x00000000200007f4       0x48 ./Core/Src/tim.o
+                0x00000000200007f4                htim3
+ .bss.htim5     0x000000002000083c       0x48 ./Core/Src/tim.o
+                0x000000002000083c                htim5
+ .bss.htim8     0x0000000020000884       0x48 ./Core/Src/tim.o
+                0x0000000020000884                htim8
+ .bss.huart5    0x00000000200008cc       0x44 ./Core/Src/usart.o
+                0x00000000200008cc                huart5
+ .bss.huart1    0x0000000020000910       0x44 ./Core/Src/usart.o
+                0x0000000020000910                huart1
+ .bss.huart3    0x0000000020000954       0x44 ./Core/Src/usart.o
+                0x0000000020000954                huart3
+ .bss.huart6    0x0000000020000998       0x44 ./Core/Src/usart.o
+                0x0000000020000998                huart6
  .bss.hdma_uart4_rx
-                0x00000000200009e8       0x60 ./Core/Src/usart.o
-                0x00000000200009e8                hdma_uart4_rx
+                0x00000000200009dc       0x60 ./Core/Src/usart.o
+                0x00000000200009dc                hdma_uart4_rx
  .bss.hdma_uart4_tx
-                0x0000000020000a48       0x60 ./Core/Src/usart.o
-                0x0000000020000a48                hdma_uart4_tx
+                0x0000000020000a3c       0x60 ./Core/Src/usart.o
+                0x0000000020000a3c                hdma_uart4_tx
  .bss.hdma_uart5_rx
-                0x0000000020000aa8       0x60 ./Core/Src/usart.o
-                0x0000000020000aa8                hdma_uart5_rx
+                0x0000000020000a9c       0x60 ./Core/Src/usart.o
+                0x0000000020000a9c                hdma_uart5_rx
  .bss.hdma_uart5_tx
-                0x0000000020000b08       0x60 ./Core/Src/usart.o
-                0x0000000020000b08                hdma_uart5_tx
+                0x0000000020000afc       0x60 ./Core/Src/usart.o
+                0x0000000020000afc                hdma_uart5_tx
  .bss.hdma_usart1_rx
-                0x0000000020000b68       0x60 ./Core/Src/usart.o
-                0x0000000020000b68                hdma_usart1_rx
+                0x0000000020000b5c       0x60 ./Core/Src/usart.o
+                0x0000000020000b5c                hdma_usart1_rx
  .bss.hdma_usart1_tx
-                0x0000000020000bc8       0x60 ./Core/Src/usart.o
-                0x0000000020000bc8                hdma_usart1_tx
+                0x0000000020000bbc       0x60 ./Core/Src/usart.o
+                0x0000000020000bbc                hdma_usart1_tx
  .bss.hdma_usart2_rx
-                0x0000000020000c28       0x60 ./Core/Src/usart.o
-                0x0000000020000c28                hdma_usart2_rx
+                0x0000000020000c1c       0x60 ./Core/Src/usart.o
+                0x0000000020000c1c                hdma_usart2_rx
  .bss.hdma_usart2_tx
-                0x0000000020000c88       0x60 ./Core/Src/usart.o
-                0x0000000020000c88                hdma_usart2_tx
+                0x0000000020000c7c       0x60 ./Core/Src/usart.o
+                0x0000000020000c7c                hdma_usart2_tx
  .bss.hdma_usart3_rx
-                0x0000000020000ce8       0x60 ./Core/Src/usart.o
-                0x0000000020000ce8                hdma_usart3_rx
+                0x0000000020000cdc       0x60 ./Core/Src/usart.o
+                0x0000000020000cdc                hdma_usart3_rx
  .bss.hdma_usart3_tx
-                0x0000000020000d48       0x60 ./Core/Src/usart.o
-                0x0000000020000d48                hdma_usart3_tx
+                0x0000000020000d3c       0x60 ./Core/Src/usart.o
+                0x0000000020000d3c                hdma_usart3_tx
  .bss.hdma_usart6_rx
-                0x0000000020000da8       0x60 ./Core/Src/usart.o
-                0x0000000020000da8                hdma_usart6_rx
+                0x0000000020000d9c       0x60 ./Core/Src/usart.o
+                0x0000000020000d9c                hdma_usart6_rx
  .bss.hdma_usart6_tx
-                0x0000000020000e08       0x60 ./Core/Src/usart.o
-                0x0000000020000e08                hdma_usart6_tx
- .bss.uwTick    0x0000000020000e68        0x4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x0000000020000e68                uwTick
+                0x0000000020000dfc       0x60 ./Core/Src/usart.o
+                0x0000000020000dfc                hdma_usart6_tx
+ .bss.uwTick    0x0000000020000e5c        0x4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x0000000020000e5c                uwTick
  .bss.__malloc_free_list
-                0x0000000020000e6c        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000020000e6c                __malloc_free_list
+                0x0000000020000e60        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000020000e60                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x0000000020000e70        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000020000e70                __malloc_sbrk_start
- .bss.errno     0x0000000020000e74        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-reent.o)
-                0x0000000020000e74                errno
+                0x0000000020000e64        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000020000e64                __malloc_sbrk_start
+ .bss.errno     0x0000000020000e68        0x4 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-reent.o)
+                0x0000000020000e68                errno
  .bss.__lock___malloc_recursive_mutex
-                0x0000000020000e78        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
-                0x0000000020000e78                __lock___malloc_recursive_mutex
+                0x0000000020000e6c        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
+                0x0000000020000e6c                __lock___malloc_recursive_mutex
  .bss.__lock___sfp_recursive_mutex
-                0x0000000020000e79        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
-                0x0000000020000e79                __lock___sfp_recursive_mutex
+                0x0000000020000e6d        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
+                0x0000000020000e6d                __lock___sfp_recursive_mutex
  .bss.__lock___sinit_recursive_mutex
-                0x0000000020000e7a        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
-                0x0000000020000e7a                __lock___sinit_recursive_mutex
+                0x0000000020000e6e        0x1 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-lock.o)
+                0x0000000020000e6e                __lock___sinit_recursive_mutex
  *(COMMON)
-                0x0000000020000e7c                . = ALIGN (0x4)
- *fill*         0x0000000020000e7b        0x1 
-                0x0000000020000e7c                _ebss = .
-                0x0000000020000e7c                __bss_end__ = _ebss
+                0x0000000020000e70                . = ALIGN (0x4)
+ *fill*         0x0000000020000e6f        0x1 
+                0x0000000020000e70                _ebss = .
+                0x0000000020000e70                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000e7c      0x604
-                0x0000000020000e80                . = ALIGN (0x8)
- *fill*         0x0000000020000e7c        0x4 
+                0x0000000020000e70      0x600
+                0x0000000020000e70                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x0000000020000e80                PROVIDE (_end = .)
-                0x0000000020001080                . = (. + _Min_Heap_Size)
- *fill*         0x0000000020000e80      0x200 
-                0x0000000020001480                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020001080      0x400 
-                0x0000000020001480                . = ALIGN (0x8)
+                0x0000000020000e70                PROVIDE (_end = .)
+                0x0000000020001070                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020000e70      0x200 
+                0x0000000020001470                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020001070      0x400 
+                0x0000000020001470                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -12162,7 +12345,7 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x00000000000010f8      0x158 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_ranges  0x0000000000001250      0x220 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_macro    0x0000000000000000     0x5bd2
+.debug_macro    0x0000000000000000     0x5bdc
  .debug_macro   0x0000000000000000      0x2fc ./Core/Application/lcd/fonts.o
  .debug_macro   0x00000000000002fc       0x10 ./Core/Application/lcd/fonts.o
  .debug_macro   0x000000000000030c      0x4f7 ./Core/Application/lcd/ssd1306.o
@@ -12181,39 +12364,39 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x00000000000020d3      0x23d ./Core/Src/dma.o
  .debug_macro   0x0000000000002310      0x23d ./Core/Src/gpio.o
  .debug_macro   0x000000000000254d      0x23d ./Core/Src/i2c.o
- .debug_macro   0x000000000000278a      0x4e7 ./Core/Src/main.o
- .debug_macro   0x0000000000002c71      0x233 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x0000000000002ea4      0x23d ./Core/Src/stm32f4xx_it.o
- .debug_macro   0x00000000000030e1      0x24c ./Core/Src/syscalls.o
- .debug_macro   0x000000000000332d       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x000000000000333d       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x000000000000334d       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x000000000000335d       0x35 ./Core/Src/syscalls.o
- .debug_macro   0x0000000000003392      0x12c ./Core/Src/syscalls.o
- .debug_macro   0x00000000000034be       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x00000000000034ce      0x241 ./Core/Src/syscalls.o
- .debug_macro   0x000000000000370f       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x000000000000371f      0x189 ./Core/Src/syscalls.o
- .debug_macro   0x00000000000038a8       0x16 ./Core/Src/syscalls.o
- .debug_macro   0x00000000000038be       0xce ./Core/Src/syscalls.o
- .debug_macro   0x000000000000398c       0xff ./Core/Src/sysmem.o
- .debug_macro   0x0000000000003a8b      0x23b ./Core/Src/sysmem.o
- .debug_macro   0x0000000000003cc6      0x224 ./Core/Src/system_stm32f4xx.o
- .debug_macro   0x0000000000003eea      0x23d ./Core/Src/tim.o
- .debug_macro   0x0000000000004127      0x23d ./Core/Src/usart.o
- .debug_macro   0x0000000000004364      0x284 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_macro   0x00000000000045e8      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_macro   0x000000000000480d      0x22c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
- .debug_macro   0x0000000000004a39      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_macro   0x0000000000004c5d      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_macro   0x0000000000004e87      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_macro   0x00000000000050b1      0x26b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_macro   0x000000000000531c      0x248 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_macro   0x0000000000005564      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_macro   0x0000000000005789      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_macro   0x00000000000059ad      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_macro   0x000000000000278a      0x4f1 ./Core/Src/main.o
+ .debug_macro   0x0000000000002c7b      0x233 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x0000000000002eae      0x23d ./Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000030eb      0x24c ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003337       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003347       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003357       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003367       0x35 ./Core/Src/syscalls.o
+ .debug_macro   0x000000000000339c      0x12c ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000034c8       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000034d8      0x241 ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003719       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003729      0x189 ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000038b2       0x16 ./Core/Src/syscalls.o
+ .debug_macro   0x00000000000038c8       0xce ./Core/Src/syscalls.o
+ .debug_macro   0x0000000000003996       0xff ./Core/Src/sysmem.o
+ .debug_macro   0x0000000000003a95      0x23b ./Core/Src/sysmem.o
+ .debug_macro   0x0000000000003cd0      0x224 ./Core/Src/system_stm32f4xx.o
+ .debug_macro   0x0000000000003ef4      0x23d ./Core/Src/tim.o
+ .debug_macro   0x0000000000004131      0x23d ./Core/Src/usart.o
+ .debug_macro   0x000000000000436e      0x284 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_macro   0x00000000000045f2      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_macro   0x0000000000004817      0x22c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
+ .debug_macro   0x0000000000004a43      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_macro   0x0000000000004c67      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_macro   0x0000000000004e91      0x22a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_macro   0x00000000000050bb      0x26b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_macro   0x0000000000005326      0x248 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_macro   0x000000000000556e      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_macro   0x0000000000005793      0x224 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_macro   0x00000000000059b7      0x225 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_line     0x0000000000000000    0x1da5f
+.debug_line     0x0000000000000000    0x1da80
  .debug_line    0x0000000000000000      0x8cc ./Core/Application/lcd/fonts.o
  .debug_line    0x00000000000008cc     0x1291 ./Core/Application/lcd/ssd1306.o
  .debug_line    0x0000000000001b5d      0xe16 ./Core/Application/mav/uart/uart.o
@@ -12225,28 +12408,28 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000005e2b      0x770 ./Core/Src/dma.o
  .debug_line    0x000000000000659b      0x7b3 ./Core/Src/gpio.o
  .debug_line    0x0000000000006d4e      0x7c8 ./Core/Src/i2c.o
- .debug_line    0x0000000000007516      0xc06 ./Core/Src/main.o
- .debug_line    0x000000000000811c      0x75d ./Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000008879      0x988 ./Core/Src/stm32f4xx_it.o
- .debug_line    0x0000000000009201      0x7ef ./Core/Src/syscalls.o
- .debug_line    0x00000000000099f0      0x4e5 ./Core/Src/sysmem.o
- .debug_line    0x0000000000009ed5      0x7df ./Core/Src/system_stm32f4xx.o
- .debug_line    0x000000000000a6b4      0xa2a ./Core/Src/tim.o
- .debug_line    0x000000000000b0de      0xbda ./Core/Src/usart.o
- .debug_line    0x000000000000bcb8       0x88 ./Core/Startup/startup_stm32f405rgtx.o
- .debug_line    0x000000000000bd40      0xa73 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x000000000000c7b3     0x12e9 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_line    0x000000000000da9c     0x11df ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
- .debug_line    0x000000000000ec7b      0xd22 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x000000000000f99d      0xfd7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x0000000000010974      0xbe7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x000000000001155b     0x3a28 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_line    0x0000000000014f83      0xded ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000015d70     0x3767 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x00000000000194d7     0x1a70 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x000000000001af47     0x2b18 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_line    0x0000000000007516      0xc27 ./Core/Src/main.o
+ .debug_line    0x000000000000813d      0x75d ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x000000000000889a      0x988 ./Core/Src/stm32f4xx_it.o
+ .debug_line    0x0000000000009222      0x7ef ./Core/Src/syscalls.o
+ .debug_line    0x0000000000009a11      0x4e5 ./Core/Src/sysmem.o
+ .debug_line    0x0000000000009ef6      0x7df ./Core/Src/system_stm32f4xx.o
+ .debug_line    0x000000000000a6d5      0xa2a ./Core/Src/tim.o
+ .debug_line    0x000000000000b0ff      0xbda ./Core/Src/usart.o
+ .debug_line    0x000000000000bcd9       0x88 ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_line    0x000000000000bd61      0xa73 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x000000000000c7d4     0x12e9 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_line    0x000000000000dabd     0x11df ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
+ .debug_line    0x000000000000ec9c      0xd22 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x000000000000f9be      0xfd7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x0000000000010995      0xbe7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x000000000001157c     0x3a28 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_line    0x0000000000014fa4      0xded ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000015d91     0x3767 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x00000000000194f8     0x1a70 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x000000000001af68     0x2b18 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_str      0x0000000000000000    0xd7370
+.debug_str      0x0000000000000000    0xd7388
  .debug_str     0x0000000000000000    0xccad1 ./Core/Application/lcd/fonts.o
                                       0xccd76 (size before relaxing)
  .debug_str     0x00000000000ccad1     0x2cd5 ./Core/Application/lcd/ssd1306.o
@@ -12269,45 +12452,45 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                                       0xca93e (size before relaxing)
  .debug_str     0x00000000000d1a2e       0x58 ./Core/Src/i2c.o
                                       0xcae5b (size before relaxing)
- .debug_str     0x00000000000d1a86      0x28e ./Core/Src/main.o
-                                      0xcfc50 (size before relaxing)
- .debug_str     0x00000000000d1d14       0x2c ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_str     0x00000000000d1a86      0x2a6 ./Core/Src/main.o
+                                      0xcfc68 (size before relaxing)
+ .debug_str     0x00000000000d1d2c       0x2c ./Core/Src/stm32f4xx_hal_msp.o
                                       0xca861 (size before relaxing)
- .debug_str     0x00000000000d1d40      0x2fc ./Core/Src/stm32f4xx_it.o
+ .debug_str     0x00000000000d1d58      0x2fc ./Core/Src/stm32f4xx_it.o
                                       0xcae83 (size before relaxing)
- .debug_str     0x00000000000d203c     0x165e ./Core/Src/syscalls.o
+ .debug_str     0x00000000000d2054     0x165e ./Core/Src/syscalls.o
                                        0x8a58 (size before relaxing)
- .debug_str     0x00000000000d369a       0x6b ./Core/Src/sysmem.o
+ .debug_str     0x00000000000d36b2       0x6b ./Core/Src/sysmem.o
                                        0x5d94 (size before relaxing)
- .debug_str     0x00000000000d3705       0xdb ./Core/Src/system_stm32f4xx.o
+ .debug_str     0x00000000000d371d       0xdb ./Core/Src/system_stm32f4xx.o
                                       0xca045 (size before relaxing)
- .debug_str     0x00000000000d37e0      0x299 ./Core/Src/tim.o
+ .debug_str     0x00000000000d37f8      0x299 ./Core/Src/tim.o
                                       0xcb140 (size before relaxing)
- .debug_str     0x00000000000d3a79       0x99 ./Core/Src/usart.o
+ .debug_str     0x00000000000d3a91       0x99 ./Core/Src/usart.o
                                       0xcb41b (size before relaxing)
- .debug_str     0x00000000000d3b12       0x36 ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_str     0x00000000000d3b2a       0x36 ./Core/Startup/startup_stm32f405rgtx.o
                                          0x56 (size before relaxing)
- .debug_str     0x00000000000d3b48      0x612 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x00000000000d3b60      0x612 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
                                       0xcaba8 (size before relaxing)
- .debug_str     0x00000000000d415a      0x2d0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_str     0x00000000000d4172      0x2d0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
                                       0xca632 (size before relaxing)
- .debug_str     0x00000000000d442a      0x565 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
+ .debug_str     0x00000000000d4442      0x565 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.o
                                       0xca731 (size before relaxing)
- .debug_str     0x00000000000d498f      0x326 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x00000000000d49a7      0x326 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
                                       0xca8db (size before relaxing)
- .debug_str     0x00000000000d4cb5      0x2c7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x00000000000d4ccd      0x2c7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
                                       0xca45f (size before relaxing)
- .debug_str     0x00000000000d4f7c      0x109 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x00000000000d4f94      0x109 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
                                       0xca1c0 (size before relaxing)
- .debug_str     0x00000000000d5085      0xa6a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_str     0x00000000000d509d      0xa6a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
                                       0xcb010 (size before relaxing)
- .debug_str     0x00000000000d5aef      0x213 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x00000000000d5b07      0x213 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
                                       0xca479 (size before relaxing)
- .debug_str     0x00000000000d5d02      0xd48 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x00000000000d5d1a      0xd48 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
                                       0xcb3bf (size before relaxing)
- .debug_str     0x00000000000d6a4a      0x3e1 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x00000000000d6a62      0x3e1 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
                                       0xcabdb (size before relaxing)
- .debug_str     0x00000000000d6e2b      0x545 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_str     0x00000000000d6e43      0x545 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
                                       0xcaa18 (size before relaxing)
 
 .comment        0x0000000000000000       0x50

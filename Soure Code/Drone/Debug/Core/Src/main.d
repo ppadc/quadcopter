@@ -45,7 +45,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Application/timer/delay_us.h ../Core/Application/imu/imu.h \
  ../Core/Application/sensor/mpu9250/mpu9250.h \
  ../Core/Application/timer/timer.h ../Core/Application/lcd/lcd.h \
- ../Core/Application/lcd/ssd1306.h ../Core/Application/lcd/fonts.h
+ ../Core/Application/lcd/ssd1306.h ../Core/Application/lcd/fonts.h \
+ ../Core/Application/MPC/mpc.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -109,3 +110,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Application/lcd/lcd.h:
 ../Core/Application/lcd/ssd1306.h:
 ../Core/Application/lcd/fonts.h:
+../Core/Application/MPC/mpc.h:
