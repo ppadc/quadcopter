@@ -27,7 +27,7 @@ double Y_ref[251]={0.0},Y_dot_ref[251]={0.0},Y_dot_dot_ref[251]={0.0};
 double Z_ref[251]={0.0},Z_dot_ref[251]={0.0},Z_dot_dot_ref[251]={0.0};
 double psi_ref[251]={0.0};
 double ut,vt,wt,pt,qt,rt,xt,yt,zt,phit,thetat,psit;
-double states[12],states_ani[5][6],U_ani[5][4];
+double states[12],states_ani[5][6],U_ani[5][4],states_new[12];
 short genr_t = 0;
 short plotl,k;
 double omega1,omega2,omega3,omega4,omega_total;
@@ -108,6 +108,8 @@ static void LPV_technique(){
 		int hz = params.MPC_Cons_hz;
 		for(int i=0;i<params.MPC_Cons_innerDyn_length;i++){
 			if(hz==4){
+				x_dot=0;y_dot=0;z_dot=0;
+				phi_dot=0; theta_rt=0; theta_dot=0; psi_rt=0; psi_dot=0;
 				lpv_cont_discrete(&states[0],&states[1],&states[2],&states[3],&states[4],&states[5],&states[9],&states[10],&states[11],&omega_total, Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix, &x_dot, &y_dot, &z_dot, &phi_rt, &phi_dot, &theta_rt, &theta_dot, &psi_rt, &psi_dot);
 			/*Create x_aug_t*/
 				x_aug_t[0] = phi_rt;
@@ -126,8 +128,8 @@ static void LPV_technique(){
 				}
 				mpc_simplification(Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix,&hz,Hdb_r_4hz,Fdbt_r_4hz,Hdb_r_3hz,Fdbt_r_3hz,Hdb_r_2hz,Fdbt_r_2hz,Hdb_r_1hz,Fdbt_r_1hz);
 				//Transpose x_aug_t[9] to x_aug_t[1][9]
-				double x_aug_t_transpose[1][9];
-				double concatenate_x_aug_t_transpose_r[1][21];
+				double x_aug_t_transpose[1][9]={{0.0}};
+				double concatenate_x_aug_t_transpose_r[1][21]={{0.0}};
 				for(int i=0;i<1;i++){
 					for(int j=0;j<9;j++){
 						x_aug_t_transpose[i][j] =x_aug_t[j];
@@ -225,12 +227,104 @@ static void LPV_technique(){
 			    }
 			    //compute OmegaTotal
 			    omega_total = omega1-omega2+omega3-omega4;
-			    open_new_loop_states(states, &omega_total, &U1, &U2, &U3, &U4,states,states_ani,U_ani);
-
+			    open_new_loop_states(states, &omega_total, &U1, &U2, &U3, &U4,states_new,states_ani,U_ani);
+			    //Update new state
+			    for(int i=0;i<12;i++){
+			    	 states[i] = states_new[i];
+			    }
 				hz = hz-1;
-				k = k+params.MPC_Cons_controlled_states;
 			}
 			else if(hz==3){
+				//Make all input and output = 0 for new outter loop
+				x_dot=0;y_dot=0;z_dot=0;
+				phi_dot=0; theta_rt=0; theta_dot=0; psi_rt=0; psi_dot=0;
+				lpv_cont_discrete(&states[0],&states[1],&states[2],&states[3],&states[4],&states[5],&states[9],&states[10],&states[11],&omega_total, Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix, &x_dot, &y_dot, &z_dot, &phi_rt, &phi_dot, &theta_rt, &theta_dot, &psi_rt, &psi_dot);
+				/*Create x_aug_t*/
+				x_aug_t[0] = phi_rt;
+				x_aug_t[1] = phi_dot;
+				x_aug_t[2] = theta_rt;
+				x_aug_t[3] = theta_dot;
+				x_aug_t[4] = psi_rt;
+				x_aug_t[5] = psi_dot;
+				x_aug_t[6] = U2;
+				x_aug_t[7] = U3;
+				x_aug_t[8] = U4;
+				k = k+params.MPC_Cons_controlled_states;
+				double r[1][9]={{0.0}};
+				for(int i=0;i<9;i++){
+					r[0][i] = refSignals[i+k];
+				}
+				mpc_simplification(Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix,&hz,Hdb_r_4hz,Fdbt_r_4hz,Hdb_r_3hz,Fdbt_r_3hz,Hdb_r_2hz,Fdbt_r_2hz,Hdb_r_1hz,Fdbt_r_1hz);
+				double x_aug_t_transpose[1][9]={{0.0}};
+				double concatenate_x_aug_t_transpose_r[1][18]={{0.0}};
+				for(int i=0;i<1;i++){
+					for(int j=0;j<9;j++){
+						x_aug_t_transpose[i][j] =x_aug_t[j];
+					}
+				}
+				//Concatenate x_aug_t_transpose[1][9] with r[9] axis 0 = [1][18]
+				for(int i=0;i<9;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = x_aug_t_transpose[0][i];
+				}
+				for(int i=9;i<18;i++){
+					concatenate_x_aug_t_transpose_r[0][i] = r[0][i-9];
+				}
+				/*Multi concatenate_x_aug_t_transpose_r[1][18] with Fdbt_3hz[18][9] */
+				double ft[1][9]={{0.0}};
+				double du[9][1]={{0.0}};
+				for(int i=0;i<9;i++){
+					ft[0][i] = 0.0;
+					for(int j = 0;j<18;j++){
+						ft[0][i] += concatenate_x_aug_t_transpose_r[0][j]*Fdbt_r_3hz[j][i];
+					}
+				}
+				/*Calculation du*/
+				//inverse Hdb
+				int size_Hdb = 9;
+				double matrix_rerturn[9][9]={{0.0}};
+				matrix_invert_12x12(Hdb_r_3hz,size_Hdb,matrix_rerturn);
+				//Transpose ft
+				double ft_transpose[9][1]={{0.0}};
+				for(int i = 0;i<9;i++){
+					ft_transpose[i][0] = ft[0][i];
+				}
+				//Multi Hdb_r_3hz[9][9] inverse with ft_transpose[9][1];
+			    for (int i = 0; i < 9; i++) {
+			        for (int j = 0; j < 1; j++) {
+			        	du[i][j] = 0;
+			            for (int k = 0; k < 9; k++) {
+			            	du[i][j] += matrix_rerturn[i][k] * ft_transpose[k][j];
+			            }
+			        }
+			    }
+			    //Mul du[9][1] for -1
+			    for(int i=0;i<12;i++){
+			    	du[i][0] = du[i][0]*-1;
+			    }
+			    //Update the real inputs
+			    U2 = U2 + du[0][0];
+			    U3 = U3 + du[1][0];
+			    U4 = U3 + du[2][0];
+
+			}
+			else if(hz==2){
+				//Make all input and output = 0 for new outter loop
+				x_dot=0;y_dot=0;z_dot=0;
+				phi_dot=0; theta_rt=0; theta_dot=0; psi_rt=0; psi_dot=0;
+				lpv_cont_discrete(&states[0],&states[1],&states[2],&states[3],&states[4],&states[5],&states[9],&states[10],&states[11],&omega_total, Ad_matrix, Bd_matrix, Cd_matrix, Dd_matrix, &x_dot, &y_dot, &z_dot, &phi_rt, &phi_dot, &theta_rt, &theta_dot, &psi_rt, &psi_dot);
+				/*Create x_aug_t*/
+				x_aug_t[0] = phi_rt;
+				x_aug_t[1] = phi_dot;
+				x_aug_t[2] = theta_rt;
+				x_aug_t[3] = theta_dot;
+				x_aug_t[4] = psi_rt;
+				x_aug_t[5] = psi_dot;
+				x_aug_t[6] = U2;
+				x_aug_t[7] = U3;
+				x_aug_t[8] = U4;
+				k = k+params.MPC_Cons_controlled_states;
+			}
+			else{
 
 			}
 		}

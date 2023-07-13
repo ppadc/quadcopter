@@ -198,7 +198,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
     /*Create for Qdb,Tdb,Rdb,Cdb,Adc Matrix which following hz*/
     int hz_t = *hz;
 	if(hz_t == 1){
-		float Qdb[9][9] = {0}; float Tdb[3][9] = {0}; float Rdb[3][3] = {0}; float Cdb[9][3] = {0}; float Adc[9][9] = {0};
+		float Qdb[9][9] = {{0.0}}; float Tdb[3][9] = {{0.0}}; float Rdb[3][3] = {{0.0}}; float Cdb[9][3] = {{0.0}}; float Adc[9][9] = {{0.0}};
 		for(int hz_i=0;hz_i<hz_t;hz_i++){
 			if(hz_i==hz_t-1){
 			/*Qdb*/
@@ -382,7 +382,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    }
 	}
 	else if (hz_t == 2){
-		float Qdb[18][18] = {0}; float Tdb[6][18] = {0}; float Rdb[6][6] = {0}; float Cdb[18][6] = {0}; float Adc[18][9] = {0};
+		float Qdb[18][18] = {{0.0}}; float Tdb[6][18] = {{0.0}}; float Rdb[6][6] = {{0.0}}; float Cdb[18][6] = {{0.0}}; float Adc[18][9] = {{0.0}};
 		for(int hz_i=0;hz_i<hz_t;hz_i++){
 			if(hz_i==hz_t-1){
 			/*Qdb*/
@@ -566,7 +566,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    }
 	}
 	else if (hz_t == 3){
-		float Qdb[27][27] = {0}; float Tdb[9][27] = {0}; float Rdb[9][9] = {0}; float Cdb[27][9] = {0};  float Adc[27][9]={0};
+		float Qdb[27][27] = {{0.0}}; float Tdb[9][27] = {{0.0}}; float Rdb[9][9] = {{0.0}}; float Cdb[27][9] = {{0.0}};  float Adc[27][9]={{0.0}};
 		for(int hz_i=0;hz_i<hz_t;hz_i++){
 					if(hz_i==hz_t-1){
 					/*Qdb*/
@@ -750,7 +750,7 @@ int mpc_simplification(double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_m
 	    }
 	}
 	else{
-		float Qdb[36][36] = {0}; float Tdb[12][36] = {0}; float Rdb[12][12] = {0}; float Cdb[36][12] = {0};  float Adc[36][9]={0};
+		float Qdb[36][36] = {{0.0}}; float Tdb[12][36] = {{0.0}}; float Rdb[12][12] = {{0.0}}; float Cdb[36][12] = {{0.0}};  float Adc[36][9]= {{0.0}};
 		/*Calculation for Hdb,Fdbt,Cdb,Adc Matrix with hz=4*/
 		for(int hz_i=0;hz_i<hz_t;hz_i++){
 			if(hz_i==hz_t-1){

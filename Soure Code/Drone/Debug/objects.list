@@ -3,6 +3,7 @@
 "./Core/Application/MPC/Matrix_calculation/matrix.o"
 "./Core/Application/MPC/Matrix_calculation/matrix_inverse12x12.o"
 "./Core/Application/MPC/Matrix_calculation/matrix_inverse4x4.o"
+"./Core/Application/MPC/Matrix_calculation/matrix_inverse9x9.o"
 "./Core/Application/MPC/Rotational_matrix/rotational_matrix.o"
 "./Core/Application/MPC/mpc.o"
 "./Core/Application/MPC/mpc_simplification/mpc_simplification.o"

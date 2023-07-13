@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m "Add inverse Matrix funtion"
+git commit -m "Fix return inverse matrix bug and finish mpc_4hz function"
 git log
 git log --oneline
 git branch

@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int lpv_cont_discrete(double *states_u,double *states_v,double *states_w,double *states_p,double *states_q,double *states_r,double *states_phi,double *states_theta,double *states_psi,float	 *Omega_total,double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],double *x_dot_r,double *y_dot_r,double *z_dot_r,double *phi_r, double *phi_dot_r,double *theta_r,double *theta_dot_r,double *psi_r,double *psi_dot_r){
+int lpv_cont_discrete(double *states_u,double *states_v,double *states_w,double *states_p,double *states_q,double *states_r,double *states_phi,double *states_theta,double *states_psi,double *Omega_total,double Ad_matrix[6][6],double Bd_matrix[6][3],double Cd_matrix[3][6], double Dd_matrix[3][3],double *x_dot_r,double *y_dot_r,double *z_dot_r,double *phi_r, double *phi_dot_r,double *theta_r,double *theta_dot_r,double *psi_r,double *psi_dot_r){
 	double R_matrix_t[3][3],T_matrix_t[3][3];
 	double states_t[9];
 	double x_dot_t,y_dot_t,z_dot_t;
@@ -73,16 +73,38 @@ int lpv_cont_discrete(double *states_u,double *states_v,double *states_w,double 
 	D_matrix[2][0]=0;	D_matrix[2][1]=0;	D_matrix[2][2]=0;
 	/* Discretize the system (Forward Euler) */
 	//size cols of A = 6
+	/*Discretize Matrix*/
+	//Make all Discretize matrix = 0 ;
+	for(int i=0;i<6;i++){
+		for(int j=0;j<6;j++){
+			Ad_matrix[i][j] = 0.0;
+		}
+	}
+	for(int i=0;i<6;i++){
+		for(int j=0;j<3;j++){
+			Bd_matrix[i][j] = 0.0;
+		}
+	}
+	for(int i=0;i<3;i++){
+		for(int j=0;j<6;j++){
+			Cd_matrix[i][j] = 0.0;
+		}
+	}
+	for(int i=0;i<3;i++){
+		for(int j=0;j<3;j++){
+			Dd_matrix[i][j] = 0.0;
+		}
+	}
 	// Discretize A_matrix
 	/*Ad=np.identity(np.size(A,1))+Ts*A*/
 	//np.identity(np.size(A,1))
 	for(int i=0;i<6;i++){
 		for(int j=0;i<6;j++){
-			Ad_matrix[i][j] = 0;
+			Ad_matrix[i][j] = 0.0;
 		}
 	}
 	for(int i=0;i<6;i++){
-		Ad_matrix[i][i]=1;
+		Ad_matrix[i][i]=1.0;
 	}
 	for(int i=0;i<6;i++){
 		for(int j=0;j<6;j++){
