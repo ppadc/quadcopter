@@ -7,7 +7,7 @@ git remote -v
 git status
 git add .
 git commit -m "first commit"
-git commit -m " Add MPC at 3hz "
+git commit -m " fix MPC_simplification bug and done LVP_technique "
 git log
 git log --oneline
 git branch

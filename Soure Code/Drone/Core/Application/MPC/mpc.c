@@ -30,7 +30,7 @@ double Y_ref[251]={0.0},Y_dot_ref[251]={0.0},Y_dot_dot_ref[251]={0.0};
 double Z_ref[251]={0.0},Z_dot_ref[251]={0.0},Z_dot_dot_ref[251]={0.0};
 double psi_ref[251]={0.0};
 double ut,vt,wt,pt,qt,rt,xt,yt,zt,phit,thetat,psit;
-double states[12]={0.0},states_ani[5][6]={0.0},U_ani[5][4]={0.0},states_new[12]={0.0};
+double states[12]={0.0},states_ani[5][6]={{0.0}},U_ani[5][4]={{0.0}},states_new[12]={0.0};
 short genr_t = 0;
 short plotl,k;
 double omega1,omega2,omega3,omega4,omega_total;
@@ -54,7 +54,7 @@ double Hdb_r_3hz[9][9],Fdbt_r_3hz[18][9];
 double Hdb_r_2hz[6][6],Fdbt_r_2hz[15][6];
 double Hdb_r_1hz[3][3],Fdbt_r_1hz[12][3];
 
-int LPV_technique(double states_r[12],double *omega1_r,double *omega2_r,double *omega3_r,double *omega4_r){
+int LPV_technique(){
 	/*Generate the refence signals*/
 	//Generate time refence
 	if(genr_t == 0){
@@ -236,15 +236,6 @@ int LPV_technique(double states_r[12],double *omega1_r,double *omega2_r,double *
 			    for(int i=0;i<12;i++){
 			    	 states[i] = states_new[i];
 			    }
-			    //Update for return states
-			    for(int i=0;i<12;i++){
-			    	states_r[i] = states[i];
-			    }
-			    //Update for return omega
-			    *omega1_r = omega1;
-			    *omega2_r = omega2;
-			    *omega3_r = omega3;
-			    *omega4_r = omega4;
 				hz = hz-1;
 			}
 			else if(hz==3){
@@ -374,15 +365,6 @@ int LPV_technique(double states_r[12],double *omega1_r,double *omega2_r,double *
 			    for(int i=0;i<12;i++){
 			    	states[i] = states_new[i];
 			    }
-			    //Update for return states
-			    for(int i=0;i<12;i++){
-			    	states_r[i] = states[i];
-			    }
-			    //Update for return omega
-			    *omega1_r = omega1;
-			    *omega2_r = omega2;
-			    *omega3_r = omega3;
-			    *omega4_r = omega4;
 			    hz = hz-1;
 			}
 			else if(hz==2){
@@ -512,15 +494,6 @@ int LPV_technique(double states_r[12],double *omega1_r,double *omega2_r,double *
 			    for(int i=0;i<12;i++){
 			    	states[i] = states_new[i];
 			    }
-			    //Update for return states
-			    for(int i=0;i<12;i++){
-			    	states_r[i] = states[i];
-			    }
-			    //Update for return omega
-			    *omega1_r = omega1;
-			    *omega2_r = omega2;
-			    *omega3_r = omega3;
-			    *omega4_r = omega4;
 			    hz = hz-1;
 			}
 			else if(hz==1){
@@ -650,15 +623,6 @@ int LPV_technique(double states_r[12],double *omega1_r,double *omega2_r,double *
 			    for(int i=0;i<12;i++){
 			    	states[i] = states_new[i];
 			    }
-			    //Update for return states
-			    for(int i=0;i<12;i++){
-			    	states_r[i] = states[i];
-			    }
-			    //Update for return omega
-			    *omega1_r = omega1;
-			    *omega2_r = omega2;
-			    *omega3_r = omega3;
-			    *omega4_r = omega4;
 			    //End innerloop
 			}
 		}
